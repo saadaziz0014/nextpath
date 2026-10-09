@@ -1,0 +1,3178 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-07T14:06:06Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 17680222,
+  "lat": 33.7687147,
+  "lon": -118.1893988,
+  "tags": {
+    "light_rail": "yes",
+    "name": "1st Street",
+    "network": "LACMTA",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "wheelchair": "yes",
+    "wikidata": "Q4596639"
+  }
+},
+{
+  "type": "node",
+  "id": 17680230,
+  "lat": 33.7680387,
+  "lon": -118.1929586,
+  "tags": {
+    "alt_name": "Transit Mall",
+    "light_rail": "yes",
+    "name": "Downtown Long Beach",
+    "network": "LACMTA",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "wheelchair": "yes",
+    "wikidata": "Q771702"
+  }
+},
+{
+  "type": "node",
+  "id": 17706965,
+  "lat": 33.7735381,
+  "lon": -118.1893802,
+  "tags": {
+    "light_rail": "yes",
+    "name": "5th Street",
+    "network": "Metro Rail",
+    "network:wikidata": "Q1339558",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "operator:wikidata": "Q3259702",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q970664"
+  }
+},
+{
+  "type": "node",
+  "id": 247141462,
+  "lat": 33.8094008,
+  "lon": -117.9245408,
+  "tags": {
+    "air_conditioning": "no",
+    "fee": "Disneyland Park admittance required to enter Downtown Disney station",
+    "internet_access": "no",
+    "name": "Downtown Disney Monorail Station",
+    "old_name": "Disneyland Hotel Monorail Station",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "http://disneyland.disney.go.com/disneyland/disneyland-monorail/",
+    "tourism": "attraction",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 265017159,
+  "lat": 33.7727706,
+  "lon": 134.5838377,
+  "tags": {
+    "KSJ2:LIN": "牟岐線",
+    "KSJ2:STN": "田井ノ浜",
+    "description": "臨時駅（海水浴シーズンのみ営業）",
+    "description:en": "Open only during the summer",
+    "name": "田井ノ浜",
+    "name:en": "Tainohama",
+    "name:ja": "田井ノ浜",
+    "name:ja-Hira": "たいのはま",
+    "name:ko": "다이노하마",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "四国旅客鉄道",
+    "operator:ja": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "seasonal": "summer",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q860801",
+    "wikipedia": "ja:田井ノ浜駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265017851,
+  "lat": 33.7665162,
+  "lon": 134.5694466,
+  "tags": {
+    "KSJ2:LIN": "牟岐線",
+    "KSJ2:STN": "木岐",
+    "name": "木岐",
+    "name:en": "Kiki",
+    "name:ja": "木岐",
+    "name:ko": "기키",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "四国旅客鉄道",
+    "operator:ja": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q6406270",
+    "wikipedia": "ja:木岐駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265040980,
+  "lat": 33.7952114,
+  "lon": 132.8561079,
+  "tags": {
+    "name": "牛渕",
+    "name:en": "Ushibuchi",
+    "name:ja": "牛渕",
+    "name:ja-Latn": "Ushibuchi",
+    "name:ko": "우시부치",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY20",
+    "wikidata": "Q11570181",
+    "wikipedia": "ja:牛渕駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265041001,
+  "lat": 33.7929531,
+  "lon": 132.8654144,
+  "tags": {
+    "name": "田窪",
+    "name:en": "Tanokubo",
+    "name:ja": "田窪",
+    "name:ja-Latn": "Tanokubo",
+    "name:ko": "다노쿠보",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY21",
+    "wikidata": "Q11577219",
+    "wikipedia": "ja:田窪駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265041175,
+  "lat": 33.7718784,
+  "lon": 132.7041423,
+  "tags": {
+    "name": "新川",
+    "name:en": "Shinkawa",
+    "name:ja": "新川",
+    "name:ja-Latn": "Shinkawa",
+    "name:ko": "신카와",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY33",
+    "wikidata": "Q11502113",
+    "wikipedia": "ja:新川駅 (愛媛県)"
+  }
+},
+{
+  "type": "node",
+  "id": 265041184,
+  "lat": 33.7861048,
+  "lon": 132.7050016,
+  "tags": {
+    "name": "松前",
+    "name:en": "Masaki",
+    "name:ja": "松前",
+    "name:ja-Latn": "Masaki",
+    "name:ko": "마사키",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY31",
+    "train": "yes",
+    "wikidata": "Q11529329",
+    "wikipedia": "ja:松前駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265041210,
+  "lat": 33.7795550,
+  "lon": 132.7041954,
+  "tags": {
+    "name": "地蔵町",
+    "name:en": "Jizomachi",
+    "name:ja": "地蔵町",
+    "name:ja-Latn": "Jizomachi",
+    "name:ko": "지조마치",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY32",
+    "train": "yes",
+    "wikidata": "Q11424683",
+    "wikipedia": "ja:地蔵町駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265825519,
+  "lat": 33.8048076,
+  "lon": 136.0423644,
+  "tags": {
+    "KSJ2:LIN": "紀勢線",
+    "KSJ2:STN": "阿田和",
+    "name": "阿田和",
+    "name:en": "Atawa",
+    "name:ja": "阿田和",
+    "name:ja-Hira": "あたわ",
+    "name:ja_rm": "Atawa",
+    "name:ko": "아타와",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年 国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q899275",
+    "wikipedia": "ja:阿田和駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265826014,
+  "lat": 33.7601927,
+  "lon": 136.0239144,
+  "tags": {
+    "KSJ2:LIN": "紀勢線",
+    "KSJ2:STN": "紀伊井田",
+    "name": "紀伊井田",
+    "name:en": "Kii-Ida",
+    "name:ja": "紀伊井田",
+    "name:ja-Hira": "きいいだ",
+    "name:ja_rm": "Kii-Ida",
+    "name:ko": "기이이다",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年 国土交通省",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5357310",
+    "wikipedia": "ja:紀伊井田駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265880935,
+  "lat": 33.7765069,
+  "lon": 130.7082350,
+  "tags": {
+    "KSJ2:LIN": "筑豊線",
+    "KSJ2:STN": "筑前植木",
+    "name": "筑前植木",
+    "name:en": "Chikuzen-Ueki",
+    "name:ja": "筑前植木",
+    "name:ko": "지쿠젠우에키",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "operator:ja": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JC21",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5097535",
+    "wikipedia": "ja:筑前植木駅"
+  }
+},
+{
+  "type": "node",
+  "id": 265881296,
+  "lat": 33.7639101,
+  "lon": 130.7135661,
+  "tags": {
+    "KSJ2:LIN": "筑豊線",
+    "KSJ2:STN": "新入",
+    "name": "新入",
+    "name:en": "Shinnyū",
+    "name:ja": "新入",
+    "name:ko": "신뉴",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JC20",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q7497693",
+    "wikipedia": "ja:新入駅"
+  }
+},
+{
+  "type": "node",
+  "id": 267323039,
+  "lat": 33.7674776,
+  "lon": 135.3243949,
+  "tags": {
+    "KSJ2:LIN": "紀勢線",
+    "KSJ2:STN": "南部",
+    "name": "南部",
+    "name:en": "Minabe",
+    "name:ja": "南部",
+    "name:ja-Hira": "みなべ",
+    "name:ja_rm": "Minabe",
+    "name:ko": "미나베",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年 国土交通省",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q2897595",
+    "wikipedia": "ja:南部駅"
+  }
+},
+{
+  "type": "node",
+  "id": 267323779,
+  "lat": 33.7971183,
+  "lon": 135.2410195,
+  "tags": {
+    "KSJ2:LIN": "紀勢線",
+    "KSJ2:STN": "切目",
+    "name": "切目",
+    "name:en": "Kirime",
+    "name:ja": "切目",
+    "name:ko": "기리메",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q2898692",
+    "wikipedia": "ja:切目駅"
+  }
+},
+{
+  "type": "node",
+  "id": 267324207,
+  "lat": 33.7804911,
+  "lon": 135.2792960,
+  "tags": {
+    "KSJ2:LIN": "紀勢線",
+    "KSJ2:STN": "岩代",
+    "name": "岩代",
+    "name:en": "Iwashiro",
+    "name:ja": "岩代",
+    "name:ko": "이와시로",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "train": "yes",
+    "wikidata": "Q2897566",
+    "wikipedia": "ja:岩代駅"
+  }
+},
+{
+  "type": "node",
+  "id": 318451223,
+  "lat": 33.7538868,
+  "lon": -84.3915963,
+  "tags": {
+    "bus": "yes",
+    "name": "Five Points",
+    "network": "MARTA",
+    "network:wikidata": "Q1423792",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Five-Points.aspx",
+    "wikidata": "Q5456094"
+  }
+},
+{
+  "type": "node",
+  "id": 822965460,
+  "lat": 33.7997313,
+  "lon": 130.7187434,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5332",
+    "KSJ2:STN": "筑豊香月",
+    "KSJ2:segment": "eb02_11084",
+    "name": "筑豊香月",
+    "name:en": "Chikuhō-Katsuki",
+    "name:ja": "筑豊香月",
+    "name:ko": "지쿠호카쓰키",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK15",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11602990",
+    "wikipedia": "ja:筑豊香月駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822966218,
+  "lat": 33.7835820,
+  "lon": 130.7244692,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5349",
+    "KSJ2:STN": "新木屋瀬",
+    "KSJ2:segment": "eb02_11096",
+    "name": "新木屋瀬",
+    "name:en": "Shin-Koyanose",
+    "name:ja": "新木屋瀬",
+    "name:ko": "신코야노세",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK17",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11502520",
+    "wikipedia": "ja:新木屋瀬駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822966699,
+  "lat": 33.7535355,
+  "lon": 130.7262452,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5350",
+    "KSJ2:STN": "筑豊直方",
+    "KSJ2:segment": "eb02_11083",
+    "name": "筑豊直方",
+    "name:en": "Chikuhō-Nōgata",
+    "name:ja": "筑豊直方",
+    "name:ko": "지쿠호노가타",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "railway": "station",
+    "ref": "CK21",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11602982",
+    "wikipedia": "ja:筑豊直方駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822966888,
+  "lat": 33.7582480,
+  "lon": 130.7327000,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5348",
+    "KSJ2:STN": "感田",
+    "KSJ2:segment": "eb02_11083;eb02_11089",
+    "name": "感田",
+    "name:en": "Ganda",
+    "name:ja": "感田",
+    "name:ko": "간다",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK20",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11494970",
+    "wikipedia": "ja:感田駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822967010,
+  "lat": 33.7790934,
+  "lon": 130.7247669,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5351",
+    "KSJ2:STN": "木屋瀬",
+    "KSJ2:segment": "eb02_11090",
+    "name": "木屋瀬",
+    "name:en": "Koyanose",
+    "name:ja": "木屋瀬",
+    "name:ko": "고야노세",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK18",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11518304",
+    "wikipedia": "ja:木屋瀬駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822967170,
+  "lat": 33.8087075,
+  "lon": 130.7115356,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5333",
+    "KSJ2:STN": "土手ノ内",
+    "KSJ2:segment": "eb02_11100",
+    "alt_name:ko": "기보가오카코코마에",
+    "name": "希望が丘高校前",
+    "name:en": "Dotenouchi",
+    "name:ja": "希望が丘高校前",
+    "name:ja-Hira": "きぼうがおかこうこうまえ",
+    "name:ko": "기보가오카고교앞",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK14",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11480913",
+    "wikipedia": "ja:希望が丘高校前駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822967180,
+  "lat": 33.7690540,
+  "lon": 130.7306299,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5352",
+    "KSJ2:STN": "遠賀野",
+    "KSJ2:segment": "eb02_11086;eb02_11089",
+    "light_rail": "yes",
+    "name": "遠賀野",
+    "name:en": "Ongano",
+    "name:ja": "遠賀野",
+    "name:ko": "온가노",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK19",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11642390",
+    "wikipedia": "ja:遠賀野駅"
+  }
+},
+{
+  "type": "node",
+  "id": 822967441,
+  "lat": 33.7890995,
+  "lon": 130.7246545,
+  "tags": {
+    "KSJ2:LIN": "筑豊電気鉄道",
+    "KSJ2:RAS": "eb03_5347",
+    "KSJ2:STN": "楠橋",
+    "KSJ2:segment": "eb02_11098",
+    "name": "楠橋",
+    "name:en": "Kusubashi",
+    "name:ja": "楠橋",
+    "name:ko": "구스바시",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CK16",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "station": "light_rail",
+    "wikidata": "Q11541233",
+    "wikipedia": "ja:楠橋駅"
+  }
+},
+{
+  "type": "node",
+  "id": 1077030424,
+  "lat": 33.7895162,
+  "lon": 75.0756994,
+  "tags": {
+    "internet_access": "no",
+    "name": "Bijbiara",
+    "name:ur": "بیج بہاڑہ",
+    "network": "IR",
+    "operator": "NR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BJBA",
+    "train": "yes",
+    "wikidata": "Q18358031",
+    "wikipedia": "en:Bijbehara railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 1474022664,
+  "lat": 33.8099111,
+  "lon": -117.9189560,
+  "tags": {
+    "designation": "2",
+    "name": "Main Street Station",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "DRR: Main Street Station",
+    "website": "https://disneyland.disney.go.com/attractions/disneyland/disneyland-railroad/",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1481425129,
+  "lat": 33.7902280,
+  "lon": -7.1620710,
+  "tags": {
+    "name": "Gare de Bouznika",
+    "public_transport": "station",
+    "public_transport:version": "2",
+    "railway": "station",
+    "train": "yes",
+    "wikidata": "Q19406978",
+    "wikimedia_commons": "Category:Bouznika train station",
+    "wikipedia": "ar:محطة بوزنيقة"
+  }
+},
+{
+  "type": "node",
+  "id": 1577895084,
+  "lat": 33.7501329,
+  "lon": 112.8975132,
+  "tags": {
+    "alt_name": "鲁山站;鲁山火车站;Lushan Railway Station",
+    "name": "鲁山",
+    "name:en": "Lushan",
+    "name:zh": "鲁山",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "node",
+  "id": 1842116070,
+  "lat": 33.7888103,
+  "lon": -117.8572654,
+  "tags": {
+    "name": "Orange",
+    "network": "Metrolink",
+    "network:wikidata": "Q766647",
+    "old_name": "Orange Santa Fe Depot",
+    "operator": "Southern California Regional Rail Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:position": "mi:172.6",
+    "railway:ref": "OGE",
+    "source": "local_knowledge;bing_imagery",
+    "train": "yes",
+    "wikidata": "Q6379805"
+  }
+},
+{
+  "type": "node",
+  "id": 2119540519,
+  "lat": 33.7945091,
+  "lon": 130.5288515,
+  "tags": {
+    "gauge": "1067",
+    "name": "東郷",
+    "name:de": "Togo",
+    "name:en": "Togo",
+    "name:ja": "東郷",
+    "name:ko": "도고",
+    "network": "JR鹿児島本線",
+    "operator": "九州旅客鉄道",
+    "operator:ja": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JA13",
+    "wikidata": "Q5359652",
+    "wikipedia": "ja:東郷駅"
+  }
+},
+{
+  "type": "node",
+  "id": 2121373004,
+  "lat": 33.8082939,
+  "lon": 130.5695947,
+  "tags": {
+    "name": "赤間",
+    "name:de": "Akama",
+    "name:en": "Akama",
+    "name:ja": "赤間",
+    "name:ko": "아카마",
+    "network": "JR鹿児島本線",
+    "operator": "九州旅客鉄道",
+    "platforms": "2",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JA14",
+    "wikidata": "Q871575",
+    "wikipedia": "ja:赤間駅"
+  }
+},
+{
+  "type": "node",
+  "id": 2191859954,
+  "lat": 33.7723341,
+  "lon": -118.1937561,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Pacific Avenue",
+    "network": "LACMTA",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "wheelchair": "yes",
+    "wikidata": "Q196297",
+    "wikipedia": "en:Pacific Avenue station"
+  }
+},
+{
+  "type": "node",
+  "id": 2199119185,
+  "lat": 33.7894805,
+  "lon": -118.1893842,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Pacific Coast Highway",
+    "network": "LACMTA",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "wikidata": "Q7122368"
+  }
+},
+{
+  "type": "node",
+  "id": 2199120096,
+  "lat": 33.7819667,
+  "lon": -118.1893846,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Anaheim Street",
+    "network": "LACMTA",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "wheelchair": "yes",
+    "wikidata": "Q196250"
+  }
+},
+{
+  "type": "node",
+  "id": 2199125063,
+  "lat": 33.8066989,
+  "lon": -118.1896702,
+  "tags": {
+    "light_rail": "yes",
+    "name": "Willow Street",
+    "network": "LACMTA",
+    "operator": "Los Angeles County Metropolitan Transportation Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "light_rail",
+    "wikidata": "Q8022258"
+  }
+},
+{
+  "type": "node",
+  "id": 2279562922,
+  "lat": 33.7745100,
+  "lon": 72.3516178,
+  "tags": {
+    "name": "اٹک سٹی جنکشن",
+    "name:en": "Attock City Junction",
+    "name:ur": "اٹک سٹی جنکشن",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "ATCY",
+    "wikidata": "Q18346510",
+    "wikimedia_commons": "Category:Attock_City_Junction_railway_station",
+    "wikipedia": "en:Attock City Junction railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2373342127,
+  "lat": 33.7768227,
+  "lon": 106.3063995,
+  "tags": {
+    "name": "两当",
+    "name:en": "Liangdang",
+    "name:zh": "两当",
+    "operator": "中国铁路西安局集团有限公司",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "45341",
+    "train": "yes",
+    "wikidata": "Q10871425"
+  }
+},
+{
+  "type": "node",
+  "id": 2432186131,
+  "lat": 33.8092965,
+  "lon": 72.4330079,
+  "tags": {
+    "name": "سنجوال",
+    "name:en": "Sanjwal",
+    "name:ur": "سنجوال",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "SJU",
+    "wikidata": "Q18516033",
+    "wikipedia": "en:Sanjwal railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2965578067,
+  "lat": 33.7969572,
+  "lon": 109.0313132,
+  "tags": {
+    "alt_name": "营盘站;营盘火车站;Yingpan Railway Station",
+    "name": "营镇",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3483861809,
+  "lat": 33.7559585,
+  "lon": 118.7087571,
+  "tags": {
+    "alt_name": "泗阳站;泗阳火车站;Siyang Railway Station",
+    "name": "泗阳",
+    "name:en": "Siyang",
+    "name:zh": "泗阳",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes",
+    "wikidata": "Q71016705"
+  }
+},
+{
+  "type": "node",
+  "id": 3624940373,
+  "lat": 33.7616289,
+  "lon": 116.9803742,
+  "tags": {
+    "alt_name": "符离集站;符离集火车站;Fuliji Railway Station",
+    "name": "符离集",
+    "name:en": "Fuliji",
+    "name:zh": "符离集",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3634554441,
+  "lat": 33.8085405,
+  "lon": 132.8289599,
+  "tags": {
+    "name": "平井",
+    "name:en": "Hirai",
+    "name:ja": "平井",
+    "name:ja-Latn": "Hirai",
+    "name:ko": "히라이",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY17",
+    "wikidata": "Q11482061",
+    "wikipedia": "ja:平井駅 (愛媛県)"
+  }
+},
+{
+  "type": "node",
+  "id": 3634554442,
+  "lat": 33.7983407,
+  "lon": 132.8791635,
+  "tags": {
+    "addr:city": "東温市",
+    "addr:province": "愛媛県",
+    "name": "愛大医学部南口",
+    "name:en": "Ehime Univ. Hospital",
+    "name:ja": "愛大医学部南口",
+    "name:ja-Latn": "Aidai-Igakubu-Minamiguchi",
+    "name:ko": "아이다이이가쿠부미나미구치",
+    "network": "横河原線",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY23",
+    "start_date": "1981/08/10",
+    "wikidata": "Q11493498",
+    "wikipedia": "ja:愛大医学部南口駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3634554443,
+  "lat": 33.8013391,
+  "lon": 132.8387599,
+  "tags": {
+    "name": "梅本",
+    "name:en": "Umenomoto",
+    "name:ja": "梅本",
+    "name:ja-Latn": "Umenomoto",
+    "name:ko": "우메노모토",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY18",
+    "wikidata": "Q11538501",
+    "wikipedia": "ja:梅本駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3634554445,
+  "lat": 33.8033319,
+  "lon": 132.8842865,
+  "tags": {
+    "name": "横河原",
+    "name:en": "Yokogawara",
+    "name:ja": "横河原",
+    "name:ja-Latn": "Yokogawara",
+    "name:ko": "요코가와라",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY24",
+    "wikidata": "Q11542807",
+    "wikipedia": "ja:横河原駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3634554446,
+  "lat": 33.7977433,
+  "lon": 132.8460490,
+  "tags": {
+    "alt_name:ko": "우시부치단치마에",
+    "name": "牛渕団地前",
+    "name:en": "Ushibuchi-Danchi",
+    "name:ja": "牛渕団地前",
+    "name:ja-Latn": "Ushibuchi-Danchi",
+    "name:ko": "우시부치단지앞",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY19",
+    "wikidata": "Q11570180",
+    "wikipedia": "ja:牛渕団地前駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3634554451,
+  "lat": 33.7927396,
+  "lon": 132.8733774,
+  "tags": {
+    "name": "見奈良",
+    "name:en": "Minara",
+    "name:ja": "見奈良",
+    "name:ja-Latn": "Minara",
+    "name:ko": "미나라",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY22",
+    "wikidata": "Q11630170",
+    "wikipedia": "ja:見奈良駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3637536524,
+  "lat": 33.7926256,
+  "lon": 132.7172912,
+  "tags": {
+    "name": "古泉",
+    "name:en": "Koizumi",
+    "name:ja": "古泉",
+    "name:ja-Latn": "Koizumi",
+    "name:ko": "고이즈미",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY30",
+    "train": "yes",
+    "wikidata": "Q11411412",
+    "wikipedia": "ja:古泉駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3637536526,
+  "lat": 33.7991278,
+  "lon": 132.7241135,
+  "tags": {
+    "name": "岡田",
+    "name:en": "Okada",
+    "name:ja": "岡田",
+    "name:ja-Latn": "Okada",
+    "name:ko": "오카다",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY29",
+    "wikidata": "Q11473734",
+    "wikipedia": "ja:岡田駅 (愛媛県)"
+  }
+},
+{
+  "type": "node",
+  "id": 3637536527,
+  "lat": 33.7606162,
+  "lon": 132.7039005,
+  "tags": {
+    "name": "郡中",
+    "name:en": "Gunchu",
+    "name:ja": "郡中",
+    "name:ja-Latn": "Gunchū",
+    "name:ko": "군추",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY34",
+    "wikidata": "Q11643098",
+    "wikipedia": "ja:郡中駅"
+  }
+},
+{
+  "type": "node",
+  "id": 3637536528,
+  "lat": 33.7560670,
+  "lon": 132.7021151,
+  "tags": {
+    "name": "郡中港",
+    "name:en": "Gunchu Port",
+    "name:ja": "郡中港",
+    "name:ja-Latn": "Gunchūkō",
+    "name:ko": "군추코",
+    "operator": "伊予鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "IY35",
+    "train": "yes",
+    "wikidata": "Q11643096",
+    "wikipedia": "ja:郡中港駅"
+  }
+},
+{
+  "type": "node",
+  "id": 4011567236,
+  "lat": 33.7826805,
+  "lon": -117.2293783,
+  "tags": {
+    "name": "Downtown Perris",
+    "network": "Metrolink",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:position": "mi:83.1",
+    "toilets": "no",
+    "train": "yes",
+    "website": "https://metrolinktrains.com/rider-info/general-info/stations/perris---downtown/",
+    "wikidata": "Q23016790"
+  }
+},
+{
+  "type": "node",
+  "id": 4050188145,
+  "lat": 33.8005449,
+  "lon": 119.9342980,
+  "tags": {
+    "alt_name": "阜宁东站;Funing East;Funing East Railway Station;Funingdong Railway Station",
+    "name": "阜宁东",
+    "name:en": "Funingdong",
+    "name:zh": "阜宁东",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4082290806,
+  "lat": 33.7722571,
+  "lon": -84.4289408,
+  "tags": {
+    "name": "Bankhead",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "P4",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Bankhead.aspx",
+    "wikidata": "Q4856286",
+    "wikipedia": "en:Bankhead station"
+  }
+},
+{
+  "type": "node",
+  "id": 4170221445,
+  "lat": 33.7581455,
+  "lon": -84.3876126,
+  "tags": {
+    "internet_access": "wlan",
+    "name": "Peachtree Center",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "N1",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Peachtree-Center.aspx",
+    "wheelchair": "yes",
+    "wikidata": "Q7157705",
+    "wikipedia": "en:Peachtree Center station"
+  }
+},
+{
+  "type": "node",
+  "id": 4170391718,
+  "lat": 33.7533207,
+  "lon": -84.4453009,
+  "tags": {
+    "name": "West Lake",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "W4",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/West-Lake.aspx",
+    "wikidata": "Q7985673"
+  }
+},
+{
+  "type": "node",
+  "id": 4172168711,
+  "lat": 33.7545134,
+  "lon": -84.4699478,
+  "tags": {
+    "name": "Hamilton E. Holmes",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "W5",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Hamilton-E-Holmes.aspx",
+    "wikidata": "Q5644912"
+  }
+},
+{
+  "type": "node",
+  "id": 4172450832,
+  "lat": 33.7665094,
+  "lon": -84.3875419,
+  "tags": {
+    "name": "Civic Center",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "N2",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Civic-Center.aspx",
+    "wikidata": "Q5124274"
+  }
+},
+{
+  "type": "node",
+  "id": 4172450833,
+  "lat": 33.7716046,
+  "lon": -84.3867688,
+  "tags": {
+    "name": "North Avenue",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "N3",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/North-Ave.aspx",
+    "wheelchair": "yes",
+    "wikidata": "Q7054024",
+    "wikipedia": "en:North Avenue station (MARTA)"
+  }
+},
+{
+  "type": "node",
+  "id": 4172450835,
+  "lat": 33.7891209,
+  "lon": -84.3873247,
+  "tags": {
+    "name": "Arts Center",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "N5",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Arts-Center.aspx",
+    "wheelchair": "yes",
+    "wikidata": "Q4801432"
+  }
+},
+{
+  "type": "node",
+  "id": 4172458457,
+  "lat": 33.7751541,
+  "lon": -84.2822446,
+  "tags": {
+    "name": "Avondale",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E7",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Avondale.aspx",
+    "wikidata": "Q4829296",
+    "wikipedia": "en:Avondale station (MARTA)"
+  }
+},
+{
+  "type": "node",
+  "id": 4172458489,
+  "lat": 33.7500081,
+  "lon": -84.3754514,
+  "tags": {
+    "name": "King Memorial",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E2",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/King-Memorial.aspx",
+    "wikidata": "Q6411876"
+  }
+},
+{
+  "type": "node",
+  "id": 4172458490,
+  "lat": 33.7501652,
+  "lon": -84.3859566,
+  "tags": {
+    "name": "Georgia State",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E1",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Georgia-State.aspx",
+    "wikidata": "Q5547742",
+    "wikipedia": "en:Georgia State station"
+  }
+},
+{
+  "type": "node",
+  "id": 4172458491,
+  "lat": 33.7578223,
+  "lon": -84.3523602,
+  "tags": {
+    "name": "Inman Park/Reynoldstown",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E3",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Inman-Park.aspx",
+    "wheelchair": "yes",
+    "wikidata": "Q6035047"
+  }
+},
+{
+  "type": "node",
+  "id": 4172458492,
+  "lat": 33.7619053,
+  "lon": -84.3398665,
+  "tags": {
+    "name": "Edgewood/Candler Park",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E4",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Edgewood-Candler-Park.aspx",
+    "wikidata": "Q5337879"
+  }
+},
+{
+  "type": "node",
+  "id": 4172458493,
+  "lat": 33.7651943,
+  "lon": -84.3128808,
+  "tags": {
+    "name": "East Lake",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E5",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/East-Lake.aspx",
+    "wikidata": "Q5328766"
+  }
+},
+{
+  "type": "node",
+  "id": 4172459856,
+  "lat": 33.7726386,
+  "lon": -84.2518908,
+  "tags": {
+    "name": "Kensington",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E8",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Kensington.aspx",
+    "wikidata": "Q6391424",
+    "wikipedia": "en:Kensington station (MARTA)"
+  }
+},
+{
+  "type": "node",
+  "id": 4172459857,
+  "lat": 33.7698370,
+  "lon": -84.2297224,
+  "tags": {
+    "name": "Indian Creek",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E9",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Indian-Creek.aspx",
+    "wikidata": "Q6020135",
+    "wikipedia": "en:Indian Creek station"
+  }
+},
+{
+  "type": "node",
+  "id": 4693355490,
+  "lat": 33.7802792,
+  "lon": 116.6869004,
+  "tags": {
+    "name": "百善",
+    "name:en": "Baishan",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 5514948721,
+  "lat": 33.7516070,
+  "lon": -117.8564700,
+  "tags": {
+    "addr:state": "CA",
+    "bus": "yes",
+    "name": "Santa Ana Regional Transportation Center",
+    "network": "Amtrak;Metrolink",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:position": "mi:175.2",
+    "railway:ref": "SNA",
+    "train": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q3097671"
+  }
+},
+{
+  "type": "node",
+  "id": 5726007922,
+  "lat": 33.7634831,
+  "lon": 130.4868186,
+  "tags": {
+    "name": "福間",
+    "name:de": "Fukuma",
+    "name:en": "Fukuma",
+    "name:ja": "福間",
+    "name:ko": "후쿠마",
+    "network": "JR鹿児島本線",
+    "operator": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JA11",
+    "wikidata": "Q5359639",
+    "wikipedia": "ja:福間駅"
+  }
+},
+{
+  "type": "node",
+  "id": 5726477790,
+  "lat": 33.7740686,
+  "lon": 130.5109685,
+  "tags": {
+    "name": "東福間",
+    "name:en": "Higashifukuma",
+    "name:ja": "東福間",
+    "name:ko": "히가시후쿠마",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JA12",
+    "wikidata": "Q5359754",
+    "wikipedia": "ja:東福間駅"
+  }
+},
+{
+  "type": "node",
+  "id": 6064680204,
+  "lat": 33.7628245,
+  "lon": -117.2036781,
+  "tags": {
+    "name": "South Perris",
+    "network": "Metrolink",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:position": "mi:85.3",
+    "train": "yes",
+    "wikidata": "Q23058690"
+  }
+},
+{
+  "type": "node",
+  "id": 6845509568,
+  "lat": 33.8072412,
+  "lon": 130.9551711,
+  "tags": {
+    "KSJ2:LIN": "日豊線",
+    "KSJ2:STN": "朽網",
+    "name": "朽網",
+    "name:en": "Kusami",
+    "name:ja": "朽網",
+    "name:ko": "구사미",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5360727",
+    "wikipedia": "ja:朽網駅"
+  }
+},
+{
+  "type": "node",
+  "id": 6848941952,
+  "lat": 33.7532097,
+  "lon": 130.9718907,
+  "tags": {
+    "KSJ2:LIN": "日豊線",
+    "KSJ2:STN": "小波瀬西工大前",
+    "alt_name:ko": "오바세니시코다이마에",
+    "name": "小波瀬西工大前",
+    "name:en": "Obase-Nishikōdai-mae",
+    "name:ja": "小波瀬西工大前",
+    "name:ko": "오바세서일본공대앞",
+    "network": "JR日豊線",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5360737",
+    "wikipedia": "ja:小波瀬西工大前駅"
+  }
+},
+{
+  "type": "node",
+  "id": 6848959288,
+  "lat": 33.7845501,
+  "lon": 130.9787920,
+  "tags": {
+    "KSJ2:LIN": "日豊線",
+    "KSJ2:STN": "苅田",
+    "name": "苅田",
+    "name:en": "Kanda",
+    "name:ja": "苅田",
+    "name:ko": "간다",
+    "network": "JR日豊線",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5360826",
+    "wikipedia": "ja:苅田駅"
+  }
+},
+{
+  "type": "node",
+  "id": 6863544212,
+  "lat": 33.7564795,
+  "lon": -84.4173474,
+  "tags": {
+    "name": "Ashby",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "W3",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Ashby.aspx",
+    "wikidata": "Q4804699"
+  }
+},
+{
+  "type": "node",
+  "id": 6863551312,
+  "lat": 33.7561897,
+  "lon": -84.3975955,
+  "tags": {
+    "name": "SEC District",
+    "network": "MARTA",
+    "official_name": "Sports, Entertainment, and Convention District",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "W1",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://itsmarta.com/Omni.aspx",
+    "wikidata": "Q5289997"
+  }
+},
+{
+  "type": "node",
+  "id": 6871127498,
+  "lat": 33.8084045,
+  "lon": 130.5914153,
+  "tags": {
+    "name": "教育大前",
+    "name:de": "Kyōikudai-mae",
+    "name:en": "Kyōikudai-mae",
+    "name:ja-Hira": "きょういくだいまえ",
+    "name:ko": "교이쿠다이마에",
+    "network": "JR鹿児島本線",
+    "operator": "九州旅客鉄道",
+    "platforms": "2",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JA15",
+    "wikidata": "Q5359543",
+    "wikipedia": "ja:教育大前駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7022934274,
+  "lat": 33.7993702,
+  "lon": -84.3926489,
+  "tags": {
+    "addr:state": "GA",
+    "name": "Atlanta",
+    "network": "Amtrak",
+    "network:wikidata": "Q23239",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "ATL",
+    "train": "yes",
+    "wikidata": "Q7157723"
+  }
+},
+{
+  "type": "node",
+  "id": 7740322566,
+  "lat": 33.7632858,
+  "lon": 111.0400790,
+  "tags": {
+    "name": "五里川",
+    "public_transport": "station",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 7745032438,
+  "lat": 33.7565641,
+  "lon": -84.4040115,
+  "tags": {
+    "addr:city": "Atlanta",
+    "addr:housenumber": "503",
+    "addr:postcode": "30314",
+    "addr:street": "Carter Street Northwest",
+    "name": "Vine City",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "W2",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Vine-City.aspx",
+    "wikidata": "Q7932371",
+    "wikipedia": "en:Vine City station"
+  }
+},
+{
+  "type": "node",
+  "id": 7795593133,
+  "lat": 33.7727704,
+  "lon": 132.7268010,
+  "tags": {
+    "KSJ2:LIN": "予讃線",
+    "KSJ2:STN": "伊予横田",
+    "name": "伊予横田",
+    "name:en": "Iyo-Yokota",
+    "name:ja": "伊予横田",
+    "name:ko": "이요요코타",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "U03",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q898981",
+    "wikipedia": "ja:伊予横田駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7795593135,
+  "lat": 33.7776893,
+  "lon": 132.7387684,
+  "tags": {
+    "brand": "JR四国",
+    "brand:en": "JR Shikoku",
+    "brand:ja": "JR四国",
+    "brand:ja-Latn": "JR Shikoku",
+    "name": "南伊予",
+    "name:en": "Minami-Iyo",
+    "name:ja": "南伊予",
+    "name:ja-Hira": "みなみいよ",
+    "name:ja-Latn": "Minami-Iyo",
+    "name:ko": "미나미이요",
+    "network": "JR",
+    "network:en": "JR",
+    "network:ja": "JR",
+    "network:wikidata": "Q864495",
+    "operator": "四国旅客鉄道株式会社",
+    "operator:en": "Shikoku Railway Company",
+    "operator:ja": "四国旅客鉄道株式会社",
+    "operator:wikidata": "Q496531",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "U02-1",
+    "start_date": "2020-03-14",
+    "supervised": "no",
+    "wikidata": "Q60987891",
+    "wikipedia": "ja:南伊予駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7795593136,
+  "lat": 33.7877056,
+  "lon": 132.7489528,
+  "tags": {
+    "name": "北伊予",
+    "name:en": "Kita-Iyo",
+    "name:ja-Latn": "Kita-Iyo",
+    "name:ko": "기타이요",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "U02",
+    "wikidata": "Q898935",
+    "wikipedia": "ja:北伊予駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7795593137,
+  "lat": 33.7554599,
+  "lon": 132.7023293,
+  "tags": {
+    "KSJ2:LIN": "予讃線",
+    "KSJ2:STN": "伊予市",
+    "name": "伊予市",
+    "name:en": "Iyoshi",
+    "name:ja": "伊予市",
+    "name:ja-Hira": "いよし",
+    "name:ja-Latn": "Iyo-shi",
+    "name:ko": "이요시",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年 国土交通省",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "U05",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q869533",
+    "wikipedia": "ja:伊予市駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7795593139,
+  "lat": 33.7638599,
+  "lon": 132.7114843,
+  "tags": {
+    "KSJ2:LIN": "予讃線",
+    "KSJ2:STN": "鳥ノ木",
+    "name": "鳥ノ木",
+    "name:en": "Torinoki",
+    "name:ja": "鳥ノ木",
+    "name:ko": "도리노키",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "U04",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q513429",
+    "wikipedia": "ja:鳥ノ木駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7795593140,
+  "lat": 33.8095121,
+  "lon": 132.7492846,
+  "tags": {
+    "KSJ2:LIN": "予讃線",
+    "KSJ2:STN": "市坪",
+    "name": "市坪",
+    "name:en": "Ichitsubo",
+    "name:ja": "市坪",
+    "name:ja-Hira": "いちつぼ",
+    "name:ko": "이치쓰보",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "U01",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q899104",
+    "wikipedia": "ja:市坪駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7814521945,
+  "lat": 33.7978180,
+  "lon": 130.6995624,
+  "tags": {
+    "KSJ2:LIN": "筑豊線",
+    "KSJ2:STN": "鞍手",
+    "name": "鞍手",
+    "name:en": "Kurate",
+    "name:ja": "鞍手",
+    "name:ko": "구라테",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JC22",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q11663882",
+    "wikipedia": "ja:鞍手駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7841329208,
+  "lat": 33.8035748,
+  "lon": 130.8746605,
+  "tags": {
+    "KSJ2:LIN": "日田彦山線",
+    "KSJ2:STN": "志井",
+    "name": "志井",
+    "name:en": "Shii",
+    "name:ja": "志井",
+    "name:ko": "시이",
+    "network": "JR日田彦山線",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "operator:en": "Kyushu Railway Company",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5360642",
+    "wikipedia": "ja:志井駅 (JR九州)"
+  }
+},
+{
+  "type": "node",
+  "id": 7842663914,
+  "lat": 33.7545260,
+  "lon": 130.8615182,
+  "tags": {
+    "KSJ2:LIN": "日田彦山線",
+    "KSJ2:STN": "呼野",
+    "name": "呼野",
+    "name:en": "Yobuno",
+    "name:ja": "呼野",
+    "name:ko": "요부노",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "operator:en": "Kyushu Railway Company",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5360267",
+    "wikipedia": "ja:呼野駅"
+  }
+},
+{
+  "type": "node",
+  "id": 7842663915,
+  "lat": 33.7850439,
+  "lon": 130.8658884,
+  "tags": {
+    "KSJ2:LIN": "日田彦山線",
+    "KSJ2:STN": "石原町",
+    "name": "石原町",
+    "name:en": "Ishiharamachi",
+    "name:ja": "石原町",
+    "name:ko": "이시하라마치",
+    "network": "JR日田彦山線",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "九州旅客鉄道",
+    "operator:en": "Kyushu Railway Company",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JI08",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q5360226",
+    "wikipedia": "ja:石原町駅"
+  }
+},
+{
+  "type": "node",
+  "id": 8043424413,
+  "lat": 33.8039616,
+  "lon": 113.4503549,
+  "tags": {
+    "alt_name": "范庄站;范庄火车站;Fanzhuang Railway Station",
+    "name": "范庄",
+    "name:en": "Fanzhuang",
+    "name:zh": "范庄",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8093975759,
+  "lat": 33.8075877,
+  "lon": 113.1372151,
+  "tags": {
+    "name": "苗圃",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8093975760,
+  "lat": 33.8090609,
+  "lon": 113.1343693,
+  "tags": {
+    "name": "余官营",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8095297275,
+  "lat": 33.7518772,
+  "lon": 113.2983622,
+  "tags": {
+    "name": "矿区铁路中心站",
+    "operator": "中国平煤神马控股集团有限公司铁路运输处",
+    "public_transport": "station",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 8095297279,
+  "lat": 33.7528339,
+  "lon": 113.2271603,
+  "tags": {
+    "name": "姚孟",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8140627609,
+  "lat": 33.7746104,
+  "lon": -84.2960337,
+  "tags": {
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Decatur",
+    "network": "MARTA",
+    "operator": "Metropolitan Atlanta Rapid Transit Authority",
+    "operator:short": "MARTA",
+    "public_transport": "station",
+    "railway": "station",
+    "railway:ref": "E6",
+    "station": "subway",
+    "subway": "yes",
+    "website": "https://www.itsmarta.com/Decatur.aspx",
+    "wheelchair": "yes",
+    "wikidata": "Q5248764",
+    "wikipedia": "en:Decatur station"
+  }
+},
+{
+  "type": "node",
+  "id": 8163363262,
+  "lat": 33.7887292,
+  "lon": 113.1973919,
+  "tags": {
+    "name": "九矿",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8163363263,
+  "lat": 33.7555086,
+  "lon": 113.2603009,
+  "tags": {
+    "name": "七矿",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8163363264,
+  "lat": 33.7826700,
+  "lon": 113.2246738,
+  "tags": {
+    "name": "五矿",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8163363268,
+  "lat": 33.7545143,
+  "lon": 113.4264426,
+  "tags": {
+    "name": "八矿",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8465329837,
+  "lat": 33.7951774,
+  "lon": 114.6045794,
+  "tags": {
+    "name": "西华",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8502558721,
+  "lat": 33.7834204,
+  "lon": 116.9201146,
+  "tags": {
+    "name": "闸河",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8517087075,
+  "lat": 33.7774594,
+  "lon": 119.1915242,
+  "tags": {
+    "name": "涟水",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8861427375,
+  "lat": 33.7612526,
+  "lon": 133.6643562,
+  "tags": {
+    "KSJ2:LIN": "土讃線",
+    "KSJ2:STN": "大杉",
+    "local_ref": "2",
+    "name": "大杉",
+    "name:en": "Osugi",
+    "name:ja": "大杉",
+    "name:ja-Hira": "おおすぎ",
+    "name:ko": "오스기",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "D32",
+    "wikidata": "Q901012",
+    "wikipedia": "ja:大杉駅"
+  }
+},
+{
+  "type": "node",
+  "id": 8862848035,
+  "lat": 33.7792786,
+  "lon": 133.6957688,
+  "tags": {
+    "KSJ2:LIN": "土讃線",
+    "KSJ2:STN": "土佐穴内",
+    "name": "土佐穴内",
+    "name:en": "Tosaananai",
+    "name:ja": "土佐穴内",
+    "name:ja-Hira": "とさあなない",
+    "name:ko": "도사아나나이",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "D31",
+    "wikidata": "Q900641",
+    "wikipedia": "ja:土佐穴内駅"
+  }
+},
+{
+  "type": "node",
+  "id": 8864403330,
+  "lat": 33.7863363,
+  "lon": 133.7249818,
+  "tags": {
+    "KSJ2:LIN": "土讃線",
+    "KSJ2:STN": "大田口",
+    "name": "大田口",
+    "name:en": "Otaguchi",
+    "name:ja": "大田口",
+    "name:ja-Hira": "おおたぐち",
+    "name:ko": "오타구치",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "D30",
+    "wikidata": "Q900670",
+    "wikipedia": "ja:大田口駅"
+  }
+},
+{
+  "type": "node",
+  "id": 8867301429,
+  "lat": 33.7967507,
+  "lon": 133.7591960,
+  "tags": {
+    "KSJ2:LIN": "土讃線",
+    "KSJ2:STN": "豊永",
+    "name": "豊永",
+    "name:en": "Toyonaga",
+    "name:ja": "豊永",
+    "name:ja-Hira": "とよなが",
+    "name:ko": "도요나가",
+    "operator": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "D29",
+    "wikidata": "Q901431",
+    "wikipedia": "ja:豊永駅"
+  }
+},
+{
+  "type": "node",
+  "id": 8930866816,
+  "lat": 33.7962410,
+  "lon": 115.7930907,
+  "tags": {
+    "alt_name:en": "Bozhou South;Bozhou South Railway Station",
+    "name": "亳州南",
+    "name:en": "Bozhounan",
+    "name:zh": "亳州南",
+    "official_name": "亳州南站",
+    "official_name:en": "Bozhounan Railway Station",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9223366459,
+  "lat": 33.7725971,
+  "lon": 118.5508785,
+  "tags": {
+    "name": "郑楼",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 9223366460,
+  "lat": 33.7909089,
+  "lon": 118.3625418,
+  "tags": {
+    "name": "洋河",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 9226690987,
+  "lat": 33.7941723,
+  "lon": 116.6895032,
+  "tags": {
+    "name": "百善物流园",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 9430425139,
+  "lat": 33.7758043,
+  "lon": 134.5916364,
+  "tags": {
+    "KSJ2:LIN": "牟岐線",
+    "KSJ2:STN": "由岐",
+    "name": "由岐",
+    "name:en": "Yuki",
+    "name:ja": "由岐",
+    "name:ja-Hira": "ゆき",
+    "name:ko": "유키",
+    "note": "National-Land Numerical Information (Railway) 2007, MLIT Japan",
+    "note:ja": "国土数値情報（鉄道データ）平成19年　国土交通省",
+    "operator": "四国旅客鉄道",
+    "operator:ja": "四国旅客鉄道",
+    "public_transport": "station",
+    "railway": "station",
+    "source": "KSJ2",
+    "source_ref": "http://nlftp.mlit.go.jp/ksj/jpgis/datalist/KsjTmplt-N02-v1_1.html",
+    "wikidata": "Q8060670",
+    "wikipedia": "ja:由岐駅"
+  }
+},
+{
+  "type": "node",
+  "id": 10120263953,
+  "lat": 33.8082207,
+  "lon": 113.9146480,
+  "tags": {
+    "name": "临颍",
+    "name:en": "Linying",
+    "public_transport": "station",
+    "railway": "station",
+    "wikidata": "Q10877235"
+  }
+},
+{
+  "type": "node",
+  "id": 10594574788,
+  "lat": 33.7589139,
+  "lon": 132.7939767,
+  "tags": {
+    "name": "冒険ステーション",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10594575218,
+  "lat": 33.7588938,
+  "lon": 132.7971336,
+  "tags": {
+    "name": "てっぺんとりで",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10811793013,
+  "lat": 33.7608540,
+  "lon": -117.2333510,
+  "tags": {
+    "name": "Pinacate Station",
+    "operator": "Southern California Railway Museum",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11134133622,
+  "lat": 33.8068643,
+  "lon": 105.7209415,
+  "tags": {
+    "name": "王磨",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12126214237,
+  "lat": 33.7986637,
+  "lon": 2.8197607,
+  "tags": {
+    "name": "Laghouat ⵍⴰⴴⵡⴰⵟ الأغواط",
+    "name:ar": "الأغواط",
+    "name:ber": "ⵍⴰⴴⵡⴰⵟ",
+    "name:en": "Laghouat",
+    "name:fr": "Laghouat",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes",
+    "wikidata": "Q123529434",
+    "wikipedia": "ar:محطة قطار الأغواط"
+  }
+},
+{
+  "type": "node",
+  "id": 13301973858,
+  "lat": 33.7582369,
+  "lon": 72.7930331,
+  "tags": {
+    "name": "واہ کینٹ ریلوے",
+    "name:en": "Wah Cantonment",
+    "name:ur": "واہ کینٹ ریلوے",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "WHC",
+    "train": "yes",
+    "wikidata": "Q18536660",
+    "wikipedia": "en:Wah Cantonment railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13301973862,
+  "lat": 33.7947531,
+  "lon": 72.7679202,
+  "tags": {
+    "name": "بودھو",
+    "name:en": "Budho",
+    "name:ur": "بودھو",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BUO",
+    "train": "yes",
+    "wikidata": "Q18379311",
+    "wikipedia": "en:Budho railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13826306834,
+  "lat": 33.7624636,
+  "lon": -117.2329077,
+  "tags": {
+    "name": "Cottonwood Station",
+    "operator": "Southern California Railway Museum",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 74015410,
+  "bounds": {
+    "minlat": 33.7734864,
+    "minlon": 72.3454480,
+    "maxlat": 33.7736074,
+    "maxlon": 72.3462669
+  },
+  "nodes": [
+    875831804,
+    2279562996
+  ],
+  "geometry": [
+    { "lat": 33.7736074, "lon": 72.3462669 },
+    { "lat": 33.7734864, "lon": 72.3454480 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 74017073,
+  "bounds": {
+    "minlat": 33.7984373,
+    "minlon": 72.3956202,
+    "maxlat": 33.8280848,
+    "maxlon": 72.5124588
+  },
+  "nodes": [
+    13301973823,
+    875831580,
+    13301973824,
+    13301973825,
+    875831734,
+    13301973826,
+    2429970956,
+    2429970955,
+    875831505,
+    2429970957,
+    2429970959,
+    2429970958,
+    875831636,
+    13301973829,
+    13301973828,
+    13301973830,
+    13301973831,
+    875831544,
+    13301973832,
+    13301973833,
+    13301973827,
+    13645821794,
+    875831752,
+    13301973836,
+    875831520,
+    13301973837,
+    875831658,
+    13301973838,
+    875831799,
+    13301973843,
+    13301973842,
+    875925931,
+    875831543,
+    13301973841,
+    13301973840,
+    875831684,
+    2279837279,
+    2279837281,
+    2279837285,
+    2279837292,
+    875831475,
+    13301973839,
+    2279837301,
+    875831793,
+    2279837303,
+    2279837305,
+    13301973844,
+    2418382190
+  ],
+  "geometry": [
+    { "lat": 33.7984373, "lon": 72.3956202 },
+    { "lat": 33.7995460, "lon": 72.3976931 },
+    { "lat": 33.8008217, "lon": 72.4001151 },
+    { "lat": 33.8015888, "lon": 72.4015622 },
+    { "lat": 33.8021442, "lon": 72.4027249 },
+    { "lat": 33.8026505, "lon": 72.4039601 },
+    { "lat": 33.8031567, "lon": 72.4055869 },
+    { "lat": 33.8036203, "lon": 72.4075610 },
+    { "lat": 33.8042116, "lon": 72.4114239 },
+    { "lat": 33.8055816, "lon": 72.4203122 },
+    { "lat": 33.8058747, "lon": 72.4217251 },
+    { "lat": 33.8065177, "lon": 72.4240083 },
+    { "lat": 33.8076095, "lon": 72.4276591 },
+    { "lat": 33.8082080, "lon": 72.4296818 },
+    { "lat": 33.8089580, "lon": 72.4322931 },
+    { "lat": 33.8094517, "lon": 72.4339443 },
+    { "lat": 33.8098746, "lon": 72.4353855 },
+    { "lat": 33.8101604, "lon": 72.4362969 },
+    { "lat": 33.8104572, "lon": 72.4374191 },
+    { "lat": 33.8107438, "lon": 72.4387902 },
+    { "lat": 33.8110303, "lon": 72.4404456 },
+    { "lat": 33.8111175, "lon": 72.4409896 },
+    { "lat": 33.8113181, "lon": 72.4422420 },
+    { "lat": 33.8132399, "lon": 72.4536726 },
+    { "lat": 33.8140368, "lon": 72.4586356 },
+    { "lat": 33.8142005, "lon": 72.4600395 },
+    { "lat": 33.8142707, "lon": 72.4614918 },
+    { "lat": 33.8142463, "lon": 72.4629297 },
+    { "lat": 33.8139742, "lon": 72.4719178 },
+    { "lat": 33.8140349, "lon": 72.4733128 },
+    { "lat": 33.8143274, "lon": 72.4746328 },
+    { "lat": 33.8146984, "lon": 72.4755560 },
+    { "lat": 33.8166667, "lon": 72.4794430 },
+    { "lat": 33.8197016, "lon": 72.4854170 },
+    { "lat": 33.8237800, "lon": 72.4934753 },
+    { "lat": 33.8247658, "lon": 72.4954032 },
+    { "lat": 33.8253554, "lon": 72.4966014 },
+    { "lat": 33.8256266, "lon": 72.4973469 },
+    { "lat": 33.8258049, "lon": 72.4979146 },
+    { "lat": 33.8260278, "lon": 72.4988167 },
+    { "lat": 33.8262194, "lon": 72.4997924 },
+    { "lat": 33.8266770, "lon": 72.5036948 },
+    { "lat": 33.8268662, "lon": 72.5053700 },
+    { "lat": 33.8268938, "lon": 72.5056149 },
+    { "lat": 33.8272364, "lon": 72.5085572 },
+    { "lat": 33.8275534, "lon": 72.5107027 },
+    { "lat": 33.8278102, "lon": 72.5116344 },
+    { "lat": 33.8280848, "lon": 72.5124588 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 218730371,
+  "bounds": {
+    "minlat": 33.7675113,
+    "minlon": 72.3384235,
+    "maxlat": 33.7768216,
+    "maxlon": 72.3424052
+  },
+  "nodes": [
+    2279562955,
+    13313717124,
+    4514897140,
+    13313717125,
+    4514897141,
+    3503690652,
+    2279562956,
+    2279562957,
+    2279562959,
+    2279562960,
+    13313717129,
+    2279562963,
+    2279562964,
+    13301973818,
+    2279562966,
+    2279562970,
+    2279562975,
+    2279563040,
+    2279563080,
+    2279563096,
+    2279563108
+  ],
+  "geometry": [
+    { "lat": 33.7675113, "lon": 72.3423729 },
+    { "lat": 33.7679041, "lon": 72.3423901 },
+    { "lat": 33.7681901, "lon": 72.3424052 },
+    { "lat": 33.7683681, "lon": 72.3424011 },
+    { "lat": 33.7685402, "lon": 72.3423971 },
+    { "lat": 33.7687873, "lon": 72.3423760 },
+    { "lat": 33.7691160, "lon": 72.3422890 },
+    { "lat": 33.7694728, "lon": 72.3421578 },
+    { "lat": 33.7698746, "lon": 72.3419026 },
+    { "lat": 33.7701649, "lon": 72.3416384 },
+    { "lat": 33.7704326, "lon": 72.3413050 },
+    { "lat": 33.7707516, "lon": 72.3409541 },
+    { "lat": 33.7709943, "lon": 72.3407065 },
+    { "lat": 33.7712163, "lon": 72.3404913 },
+    { "lat": 33.7715016, "lon": 72.3402921 },
+    { "lat": 33.7719899, "lon": 72.3400097 },
+    { "lat": 33.7725169, "lon": 72.3397677 },
+    { "lat": 33.7734239, "lon": 72.3394857 },
+    { "lat": 33.7752619, "lon": 72.3388942 },
+    { "lat": 33.7763816, "lon": 72.3384896 },
+    { "lat": 33.7768216, "lon": 72.3384235 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 218730372,
+  "bounds": {
+    "minlat": 33.7975577,
+    "minlon": 72.3180884,
+    "maxlat": 33.8376762,
+    "maxlon": 72.3314782
+  },
+  "nodes": [
+    13301973750,
+    13301973752,
+    875821456,
+    875817211
+  ],
+  "geometry": [
+    { "lat": 33.7975577, "lon": 72.3314782 },
+    { "lat": 33.8052964, "lon": 72.3288908 },
+    { "lat": 33.8108150, "lon": 72.3270456 },
+    { "lat": 33.8376762, "lon": 72.3180884 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 218730380,
+  "bounds": {
+    "minlat": 33.7740495,
+    "minlon": 72.3482554,
+    "maxlat": 33.7755534,
+    "maxlon": 72.3556941
+  },
+  "nodes": [
+    2279563018,
+    13313717131,
+    4514897162
+  ],
+  "geometry": [
+    { "lat": 33.7740495, "lon": 72.3482554 },
+    { "lat": 33.7744503, "lon": 72.3502313 },
+    { "lat": 33.7755534, "lon": 72.3556941 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 455034165,
+  "bounds": {
+    "minlat": 33.7331699,
+    "minlon": 72.3422992,
+    "maxlat": 33.7738490,
+    "maxlon": 72.3509512
+  },
+  "nodes": [
+    875831700,
+    13314047358,
+    875831483,
+    13314047357,
+    2279562936,
+    875831651,
+    875831712,
+    13314047356,
+    2279562948,
+    2279562950,
+    875831814,
+    4514897139,
+    13314047355,
+    2279562955,
+    13313717123,
+    875831590,
+    13313717122,
+    2279562961,
+    13313717121,
+    875831746,
+    13313717120,
+    2279562969,
+    13313717119,
+    13313717118,
+    2279562974,
+    2279562979,
+    2279562987,
+    2279562992,
+    4514897144,
+    875831804,
+    875831737,
+    4514958986
+  ],
+  "geometry": [
+    { "lat": 33.7331699, "lon": 72.3509512 },
+    { "lat": 33.7469175, "lon": 72.3481124 },
+    { "lat": 33.7488039, "lon": 72.3477289 },
+    { "lat": 33.7492328, "lon": 72.3476193 },
+    { "lat": 33.7533709, "lon": 72.3462441 },
+    { "lat": 33.7592547, "lon": 72.3442797 },
+    { "lat": 33.7640099, "lon": 72.3426864 },
+    { "lat": 33.7645040, "lon": 72.3425266 },
+    { "lat": 33.7649847, "lon": 72.3424205 },
+    { "lat": 33.7653370, "lon": 72.3423716 },
+    { "lat": 33.7656511, "lon": 72.3423348 },
+    { "lat": 33.7660775, "lon": 72.3422992 },
+    { "lat": 33.7664465, "lon": 72.3423066 },
+    { "lat": 33.7675113, "lon": 72.3423729 },
+    { "lat": 33.7679016, "lon": 72.3424170 },
+    { "lat": 33.7689134, "lon": 72.3425251 },
+    { "lat": 33.7695824, "lon": 72.3425891 },
+    { "lat": 33.7702849, "lon": 72.3426773 },
+    { "lat": 33.7706297, "lon": 72.3427557 },
+    { "lat": 33.7709388, "lon": 72.3428502 },
+    { "lat": 33.7713913, "lon": 72.3430396 },
+    { "lat": 33.7717546, "lon": 72.3432558 },
+    { "lat": 33.7720644, "lon": 72.3435007 },
+    { "lat": 33.7722538, "lon": 72.3436759 },
+    { "lat": 33.7726058, "lon": 72.3440316 },
+    { "lat": 33.7728884, "lon": 72.3444227 },
+    { "lat": 33.7731765, "lon": 72.3449490 },
+    { "lat": 33.7733475, "lon": 72.3453489 },
+    { "lat": 33.7734844, "lon": 72.3457699 },
+    { "lat": 33.7736074, "lon": 72.3462669 },
+    { "lat": 33.7736913, "lon": 72.3466809 },
+    { "lat": 33.7738490, "lon": 72.3472527 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321535,
+  "bounds": {
+    "minlat": 33.7731440,
+    "minlon": 72.3371312,
+    "maxlat": 33.7806190,
+    "maxlon": 72.3472527
+  },
+  "nodes": [
+    4514958986,
+    2279562996,
+    2279562988,
+    13301973747,
+    2279562984,
+    875831525,
+    2279562991,
+    2279562998,
+    13313717093,
+    2279563015,
+    13313717092,
+    875831756,
+    13313717091,
+    2279563052,
+    13313717090,
+    875831638,
+    4514959018,
+    13313717089,
+    13313717088,
+    2279563108,
+    13301973749
+  ],
+  "geometry": [
+    { "lat": 33.7738490, "lon": 72.3472527 },
+    { "lat": 33.7734864, "lon": 72.3454480 },
+    { "lat": 33.7733224, "lon": 72.3446452 },
+    { "lat": 33.7731669, "lon": 72.3437942 },
+    { "lat": 33.7731440, "lon": 72.3432625 },
+    { "lat": 33.7731826, "lon": 72.3426042 },
+    { "lat": 33.7732821, "lon": 72.3420340 },
+    { "lat": 33.7734569, "lon": 72.3414049 },
+    { "lat": 33.7736609, "lon": 72.3409030 },
+    { "lat": 33.7739440, "lon": 72.3403770 },
+    { "lat": 33.7741851, "lon": 72.3400481 },
+    { "lat": 33.7744753, "lon": 72.3397018 },
+    { "lat": 33.7747214, "lon": 72.3394660 },
+    { "lat": 33.7750066, "lon": 72.3392261 },
+    { "lat": 33.7752274, "lon": 72.3390680 },
+    { "lat": 33.7754572, "lon": 72.3389395 },
+    { "lat": 33.7758177, "lon": 72.3387695 },
+    { "lat": 33.7760573, "lon": 72.3386743 },
+    { "lat": 33.7762957, "lon": 72.3385925 },
+    { "lat": 33.7768216, "lon": 72.3384235 },
+    { "lat": 33.7806190, "lon": 72.3371312 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321536,
+  "bounds": {
+    "minlat": 33.7806190,
+    "minlon": 72.3370938,
+    "maxlat": 33.7807316,
+    "maxlon": 72.3371312
+  },
+  "nodes": [
+    13301973749,
+    13301973748
+  ],
+  "geometry": [
+    { "lat": 33.7806190, "lon": 72.3371312 },
+    { "lat": 33.7807316, "lon": 72.3370938 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321537,
+  "bounds": {
+    "minlat": 33.7807316,
+    "minlon": 72.3315042,
+    "maxlat": 33.7974801,
+    "maxlon": 72.3370938
+  },
+  "nodes": [
+    13301973748,
+    13301973751
+  ],
+  "geometry": [
+    { "lat": 33.7807316, "lon": 72.3370938 },
+    { "lat": 33.7974801, "lon": 72.3315042 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321538,
+  "bounds": {
+    "minlat": 33.7974801,
+    "minlon": 72.3314782,
+    "maxlat": 33.7975577,
+    "maxlon": 72.3315042
+  },
+  "nodes": [
+    13301973751,
+    13301973750
+  ],
+  "geometry": [
+    { "lat": 33.7974801, "lon": 72.3315042 },
+    { "lat": 33.7975577, "lon": 72.3314782 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321577,
+  "bounds": {
+    "minlat": 33.7759807,
+    "minlon": 72.3578195,
+    "maxlat": 33.7983658,
+    "maxlon": 72.3954828
+  },
+  "nodes": [
+    2279563090,
+    13313717098,
+    13313717097,
+    2279563104,
+    875831766,
+    4514959021,
+    3283648540,
+    13301973820,
+    875831537,
+    875831675,
+    13301973821,
+    2279563263,
+    2279563266,
+    2279563272,
+    875831780,
+    875831558,
+    2279563275,
+    875831701,
+    4514959022,
+    4514959023,
+    875831539,
+    13301973822
+  ],
+  "geometry": [
+    { "lat": 33.7759807, "lon": 72.3578195 },
+    { "lat": 33.7762392, "lon": 72.3590897 },
+    { "lat": 33.7767303, "lon": 72.3615531 },
+    { "lat": 33.7770127, "lon": 72.3628649 },
+    { "lat": 33.7772518, "lon": 72.3638133 },
+    { "lat": 33.7775087, "lon": 72.3647064 },
+    { "lat": 33.7782696, "lon": 72.3666391 },
+    { "lat": 33.7807126, "lon": 72.3727580 },
+    { "lat": 33.7818531, "lon": 72.3754921 },
+    { "lat": 33.7822891, "lon": 72.3763235 },
+    { "lat": 33.7826371, "lon": 72.3768612 },
+    { "lat": 33.7829986, "lon": 72.3773346 },
+    { "lat": 33.7834574, "lon": 72.3777884 },
+    { "lat": 33.7839126, "lon": 72.3781331 },
+    { "lat": 33.7844657, "lon": 72.3784757 },
+    { "lat": 33.7890170, "lon": 72.3802688 },
+    { "lat": 33.7897723, "lon": 72.3806694 },
+    { "lat": 33.7903947, "lon": 72.3811775 },
+    { "lat": 33.7911096, "lon": 72.3819664 },
+    { "lat": 33.7916512, "lon": 72.3828328 },
+    { "lat": 33.7947070, "lon": 72.3885683 },
+    { "lat": 33.7983658, "lon": 72.3954828 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321578,
+  "bounds": {
+    "minlat": 33.7983658,
+    "minlon": 72.3954828,
+    "maxlat": 33.7984373,
+    "maxlon": 72.3956202
+  },
+  "nodes": [
+    13301973822,
+    13301973823
+  ],
+  "geometry": [
+    { "lat": 33.7983658, "lon": 72.3954828 },
+    { "lat": 33.7984373, "lon": 72.3956202 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450333276,
+  "bounds": {
+    "minlat": 33.7736913,
+    "minlon": 72.3466809,
+    "maxlat": 33.7759807,
+    "maxlon": 72.3578195
+  },
+  "nodes": [
+    875831737,
+    2279563002,
+    2279563004,
+    4514897146,
+    2279563005,
+    13313717096,
+    2279563006,
+    2279563007,
+    2279563013,
+    13302030297,
+    13301973745,
+    13313717099,
+    2279563055,
+    4514897158,
+    4514897159,
+    2279563061,
+    4514897163,
+    4514897164,
+    875831664,
+    2279563090
+  ],
+  "geometry": [
+    { "lat": 33.7736913, "lon": 72.3466809 },
+    { "lat": 33.7737565, "lon": 72.3470732 },
+    { "lat": 33.7737844, "lon": 72.3473662 },
+    { "lat": 33.7737944, "lon": 72.3476810 },
+    { "lat": 33.7737978, "lon": 72.3478119 },
+    { "lat": 33.7737900, "lon": 72.3482305 },
+    { "lat": 33.7737899, "lon": 72.3486036 },
+    { "lat": 33.7738106, "lon": 72.3489611 },
+    { "lat": 33.7739042, "lon": 72.3494489 },
+    { "lat": 33.7740943, "lon": 72.3503830 },
+    { "lat": 33.7746070, "lon": 72.3528891 },
+    { "lat": 33.7749509, "lon": 72.3546412 },
+    { "lat": 33.7751710, "lon": 72.3557352 },
+    { "lat": 33.7752636, "lon": 72.3560495 },
+    { "lat": 33.7753628, "lon": 72.3563419 },
+    { "lat": 33.7754767, "lon": 72.3565713 },
+    { "lat": 33.7756939, "lon": 72.3569816 },
+    { "lat": 33.7757920, "lon": 72.3572056 },
+    { "lat": 33.7758828, "lon": 72.3574585 },
+    { "lat": 33.7759807, "lon": 72.3578195 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1451909541,
+  "bounds": {
+    "minlat": 33.7744083,
+    "minlon": 72.3502544,
+    "maxlat": 33.7759807,
+    "maxlon": 72.3578195
+  },
+  "nodes": [
+    2279563090,
+    2279563086,
+    4514897162,
+    2279563062,
+    13301973746
+  ],
+  "geometry": [
+    { "lat": 33.7759807, "lon": 72.3578195 },
+    { "lat": 33.7757761, "lon": 72.3567889 },
+    { "lat": 33.7755534, "lon": 72.3556941 },
+    { "lat": 33.7753333, "lon": 72.3548479 },
+    { "lat": 33.7744083, "lon": 72.3502544 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1451909542,
+  "bounds": {
+    "minlat": 33.7738490,
+    "minlon": 72.3472527,
+    "maxlat": 33.7744083,
+    "maxlon": 72.3502544
+  },
+  "nodes": [
+    13301973746,
+    4514897151,
+    4514897150,
+    2279563018,
+    2279563016,
+    4514958986
+  ],
+  "geometry": [
+    { "lat": 33.7744083, "lon": 72.3502544 },
+    { "lat": 33.7741243, "lon": 72.3488465 },
+    { "lat": 33.7740830, "lon": 72.3485514 },
+    { "lat": 33.7740495, "lon": 72.3482554 },
+    { "lat": 33.7739313, "lon": 72.3476485 },
+    { "lat": 33.7738490, "lon": 72.3472527 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+}
+
+  ]
+}

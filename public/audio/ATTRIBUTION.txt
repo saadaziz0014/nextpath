@@ -1,0 +1,25 @@
+# Engine recording attribution
+
+File: ge-7fdl-v16-idle.mp3 (191,040 bytes)
+Title: Diesel Locomotive V16 GE Engine Idling (Loop)
+Creator: WeenyBeany
+Source: https://freesound.org/people/WeenyBeany/sounds/773336/
+Downloaded preview: https://cdn.freesound.org/previews/773/773336_15119557-hq.mp3
+License: Creative Commons Attribution 4.0 International
+License link: https://creativecommons.org/licenses/by/4.0/
+Retrieved: 9 October 2026
+
+The author describes a Pacific National NR Class locomotive idle recording,
+tagged 7FDL / V16. This is an engine-family substitute, not a Pakistan AGE-30
+recording. The app loops the supplied loop, changes its playback rate and volume
+according to throttle/load and speed, and blends low-level synthetic turbo and
+rail sounds. Full throttle is an approximation from an idle recording, not an
+authentic recorded notch 8. The bundled file has not otherwise been edited.
+
+AGE-30 engine specification: https://pakistanrail.com/locotech/pages/AGE30.htm
+Exact AGE-30 reference video (not downloaded or redistributed):
+https://www.youtube.com/watch?v=o0kzVrRpbD8
+
+License attribution is also displayed in the train controls. The horn remains
+an original synthesized horn. If loading or decoding fails, the engine uses its
+procedural fallback. No account or third-party audio request is needed at runtime.

@@ -1,0 +1,2289 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-07T12:24:18Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 307527622,
+  "lat": 34.0133737,
+  "lon": 71.7809285,
+  "tags": {
+    "name": "پبی",
+    "name:en": "Pabbi",
+    "name:ps": "پبی",
+    "name:ur": "پبی",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "PBI",
+    "train": "yes",
+    "wikidata": "Q18516179",
+    "wikipedia": "en:Pabbi railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 307633246,
+  "lat": 34.0022483,
+  "lon": 71.5504094,
+  "tags": {
+    "name": "پشاور چھاؤنی",
+    "name:en": "Peshawar Cantonment",
+    "name:ps": "پشاور چھاؤنی",
+    "name:ur": "پشاور چھاؤنی",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "PSC",
+    "short_name:en": "Peshawar Cantt",
+    "wikidata": "Q7171369",
+    "wikimedia_commons": "Category:Peshawar_Cantonment_railway_station",
+    "wikipedia": "en:Peshawar Cantonment railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2432067850,
+  "lat": 34.0179762,
+  "lon": 71.5869468,
+  "tags": {
+    "addr:city": "پشاور",
+    "name": "پشاور شہر",
+    "name:en": "Peshawar City",
+    "name:ps": "پشاور شہر",
+    "name:ur": "پشاور شہر",
+    "operator": "پاکستان ریلویز",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "PSH",
+    "wikidata": "Q15983602",
+    "wikipedia": "en:Peshawar City railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2433024865,
+  "lat": 34.0073228,
+  "lon": 71.3780493,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "جمرود",
+    "name:ar": "جمرود",
+    "name:en": "Jamrud",
+    "name:ks": "جمرود",
+    "name:ps": "جمرود",
+    "name:ur": "جمرود",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JRD",
+    "wikidata": "Q18516988",
+    "wikipedia": "en:Jamrud railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2671932802,
+  "lat": 34.1509460,
+  "lon": 71.7592937,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "چارسدہ",
+    "name:ar": "تشارسادا",
+    "name:en": "Charsadda",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "CSD",
+    "wikidata": "Q18386972",
+    "wikipedia": "en:Charsadda railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13301788538,
+  "lat": 34.0188776,
+  "lon": 71.6779548,
+  "tags": {
+    "name": "نصرپور",
+    "name:en": "Nasarpur",
+    "name:ps": "نصرپور",
+    "name:ur": "نصرپور",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "NPP",
+    "train": "yes",
+    "wikidata": "Q18516218",
+    "wikipedia": "en:Nasarpur railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13301788539,
+  "lat": 34.0171867,
+  "lon": 71.7277121,
+  "tags": {
+    "name": "تارو جبہ",
+    "name:en": "Taru Jabba",
+    "name:ps": "تارو جبہ",
+    "name:ur": "تارو جبہ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "TAJ",
+    "train": "yes",
+    "wikidata": "Q18536710",
+    "wikipedia": "en:Taru Jabba railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13347265847,
+  "lat": 34.0100734,
+  "lon": 71.3039473,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "چاغی",
+    "name:en": "Chaghi",
+    "name:ur": "چاغی",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "GNGI",
+    "train": "yes",
+    "wikidata": "Q18391445",
+    "wikipedia": "en:Chaghi railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13347265858,
+  "lat": 34.0082288,
+  "lon": 71.3083652,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "میڈانک",
+    "name:en": "Medanak",
+    "name:ur": "میڈانک",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "MDNK",
+    "train": "yes",
+    "wikidata": "Q18516302",
+    "wikipedia": "en:Medanak railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13347265859,
+  "lat": 33.9986500,
+  "lon": 71.3248215,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "باگیاری",
+    "name:en": "Bagiari",
+    "name:ur": "باگیاری",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BGRI",
+    "train": "yes",
+    "wikidata": "Q18356109",
+    "wikipedia": "en:Bagiari railway station"
+  }
+},
+{
+  "type": "way",
+  "id": 28007303,
+  "bounds": {
+    "minlat": 34.0138404,
+    "minlon": 71.7733873,
+    "maxlat": 34.0138932,
+    "maxlon": 71.7741414
+  },
+  "nodes": [
+    307527633,
+    307527632
+  ],
+  "geometry": [
+    { "lat": 34.0138932, "lon": 71.7733873 },
+    { "lat": 34.0138404, "lon": 71.7741414 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28007304,
+  "bounds": {
+    "minlat": 34.0101965,
+    "minlon": 71.7864258,
+    "maxlat": 34.0129455,
+    "maxlon": 71.8322835
+  },
+  "nodes": [
+    307527620,
+    857755387,
+    307527619,
+    307527618,
+    9414054276,
+    307527617,
+    307527616,
+    307527615,
+    307527614,
+    307527613,
+    307527611,
+    10559652429,
+    307527608,
+    307527606,
+    307527605,
+    307527604,
+    307527595,
+    307527591
+  ],
+  "geometry": [
+    { "lat": 34.0129455, "lon": 71.7864258 },
+    { "lat": 34.0127259, "lon": 71.7896271 },
+    { "lat": 34.0126009, "lon": 71.7912477 },
+    { "lat": 34.0123920, "lon": 71.7940791 },
+    { "lat": 34.0121428, "lon": 71.7975096 },
+    { "lat": 34.0119214, "lon": 71.8003197 },
+    { "lat": 34.0117472, "lon": 71.8029047 },
+    { "lat": 34.0114688, "lon": 71.8066391 },
+    { "lat": 34.0110880, "lon": 71.8118338 },
+    { "lat": 34.0109226, "lon": 71.8141061 },
+    { "lat": 34.0107205, "lon": 71.8171441 },
+    { "lat": 34.0106110, "lon": 71.8185304 },
+    { "lat": 34.0105000, "lon": 71.8200167 },
+    { "lat": 34.0103285, "lon": 71.8223381 },
+    { "lat": 34.0102633, "lon": 71.8238502 },
+    { "lat": 34.0102182, "lon": 71.8266317 },
+    { "lat": 34.0102121, "lon": 71.8301474 },
+    { "lat": 34.0101965, "lon": 71.8322835 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28007305,
+  "bounds": {
+    "minlat": 34.0153387,
+    "minlon": 71.7527952,
+    "maxlat": 34.0153877,
+    "maxlon": 71.7533771
+  },
+  "nodes": [
+    307527641,
+    307527639
+  ],
+  "geometry": [
+    { "lat": 34.0153877, "lon": 71.7527952 },
+    { "lat": 34.0153387, "lon": 71.7533771 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28007306,
+  "bounds": {
+    "minlat": 34.0140649,
+    "minlon": 71.7533771,
+    "maxlat": 34.0153387,
+    "maxlon": 71.7710377
+  },
+  "nodes": [
+    307527639,
+    869688243,
+    307527638,
+    307527637,
+    13301788579,
+    307527636,
+    307527635,
+    11409949012,
+    13301788578
+  ],
+  "geometry": [
+    { "lat": 34.0153387, "lon": 71.7533771 },
+    { "lat": 34.0153331, "lon": 71.7534778 },
+    { "lat": 34.0151421, "lon": 71.7558844 },
+    { "lat": 34.0148354, "lon": 71.7601846 },
+    { "lat": 34.0147281, "lon": 71.7617000 },
+    { "lat": 34.0146120, "lon": 71.7632879 },
+    { "lat": 34.0143036, "lon": 71.7676605 },
+    { "lat": 34.0142701, "lon": 71.7681612 },
+    { "lat": 34.0140649, "lon": 71.7710377 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28007307,
+  "bounds": {
+    "minlat": 34.0181596,
+    "minlon": 71.7027747,
+    "maxlat": 34.0181807,
+    "maxlon": 71.7034925
+  },
+  "nodes": [
+    307527668,
+    307527667
+  ],
+  "geometry": [
+    { "lat": 34.0181807, "lon": 71.7027747 },
+    { "lat": 34.0181596, "lon": 71.7034925 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28007308,
+  "bounds": {
+    "minlat": 34.0153877,
+    "minlon": 71.7034925,
+    "maxlat": 34.0181596,
+    "maxlon": 71.7527952
+  },
+  "nodes": [
+    307527667,
+    307527666,
+    9564941048,
+    307527665,
+    13301788584,
+    307527663,
+    307527654,
+    869718113,
+    307527652,
+    13347618098,
+    13301788583,
+    13347618909,
+    307527651,
+    307527649,
+    13347618926,
+    307527648,
+    13347618087,
+    13301788582,
+    307527647,
+    9598176590,
+    9598176591,
+    13301788581,
+    307527644,
+    13301788580,
+    307527643,
+    869739989,
+    307527642,
+    6333779956,
+    307527641
+  ],
+  "geometry": [
+    { "lat": 34.0181596, "lon": 71.7034925 },
+    { "lat": 34.0181202, "lon": 71.7046324 },
+    { "lat": 34.0180090, "lon": 71.7078191 },
+    { "lat": 34.0179868, "lon": 71.7086823 },
+    { "lat": 34.0179389, "lon": 71.7101530 },
+    { "lat": 34.0178131, "lon": 71.7139088 },
+    { "lat": 34.0176879, "lon": 71.7175992 },
+    { "lat": 34.0175259, "lon": 71.7225192 },
+    { "lat": 34.0174651, "lon": 71.7240940 },
+    { "lat": 34.0173720, "lon": 71.7255192 },
+    { "lat": 34.0173658, "lon": 71.7256143 },
+    { "lat": 34.0173158, "lon": 71.7262521 },
+    { "lat": 34.0172442, "lon": 71.7271668 },
+    { "lat": 34.0169290, "lon": 71.7314671 },
+    { "lat": 34.0167981, "lon": 71.7332765 },
+    { "lat": 34.0167696, "lon": 71.7336705 },
+    { "lat": 34.0166596, "lon": 71.7352463 },
+    { "lat": 34.0166118, "lon": 71.7359314 },
+    { "lat": 34.0163926, "lon": 71.7392610 },
+    { "lat": 34.0162141, "lon": 71.7415823 },
+    { "lat": 34.0162008, "lon": 71.7417405 },
+    { "lat": 34.0160927, "lon": 71.7432343 },
+    { "lat": 34.0159801, "lon": 71.7445698 },
+    { "lat": 34.0158293, "lon": 71.7463548 },
+    { "lat": 34.0156847, "lon": 71.7484296 },
+    { "lat": 34.0155501, "lon": 71.7503091 },
+    { "lat": 34.0155257, "lon": 71.7506023 },
+    { "lat": 34.0153954, "lon": 71.7526941 },
+    { "lat": 34.0153877, "lon": 71.7527952 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 59784163,
+  "bounds": {
+    "minlat": 34.0142123,
+    "minlon": 71.5679442,
+    "maxlat": 34.0148653,
+    "maxlon": 71.5687131
+  },
+  "nodes": [
+    307612527,
+    3912877023,
+    307612529
+  ],
+  "geometry": [
+    { "lat": 34.0142123, "lon": 71.5679442 },
+    { "lat": 34.0146041, "lon": 71.5684374 },
+    { "lat": 34.0148653, "lon": 71.5687131 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "name": "خیبر درہ لائن",
+    "name:en": "Khyber-Pass-Line",
+    "name:ur": "خیبر درہ لائن",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "railway": "rail",
+    "usage": "main",
+    "wikidata": "Q30588087"
+  }
+},
+{
+  "type": "way",
+  "id": 59784164,
+  "bounds": {
+    "minlat": 34.0148653,
+    "minlon": 71.5687131,
+    "maxlat": 34.0180329,
+    "maxlon": 71.5869400
+  },
+  "nodes": [
+    307612529,
+    13302030296,
+    307612533,
+    307612534,
+    13411047135,
+    13315899056,
+    886339939,
+    307612536,
+    307612537,
+    307612538,
+    307612539,
+    307612540,
+    307612541,
+    13306824835,
+    13306824836,
+    4109634691,
+    4109634697,
+    4109634698,
+    13306824844,
+    13301788537
+  ],
+  "geometry": [
+    { "lat": 34.0148653, "lon": 71.5687131 },
+    { "lat": 34.0151800, "lon": 71.5691487 },
+    { "lat": 34.0159102, "lon": 71.5703784 },
+    { "lat": 34.0164672, "lon": 71.5715521 },
+    { "lat": 34.0164971, "lon": 71.5716198 },
+    { "lat": 34.0165534, "lon": 71.5717473 },
+    { "lat": 34.0169103, "lon": 71.5727389 },
+    { "lat": 34.0172870, "lon": 71.5739828 },
+    { "lat": 34.0174747, "lon": 71.5748852 },
+    { "lat": 34.0175999, "lon": 71.5756041 },
+    { "lat": 34.0177190, "lon": 71.5767096 },
+    { "lat": 34.0177558, "lon": 71.5773785 },
+    { "lat": 34.0178247, "lon": 71.5802556 },
+    { "lat": 34.0178519, "lon": 71.5808091 },
+    { "lat": 34.0178871, "lon": 71.5814775 },
+    { "lat": 34.0178989, "lon": 71.5818388 },
+    { "lat": 34.0179316, "lon": 71.5822858 },
+    { "lat": 34.0179405, "lon": 71.5824791 },
+    { "lat": 34.0179930, "lon": 71.5851784 },
+    { "lat": 34.0180329, "lon": 71.5869400 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "خیبر درہ لائن",
+    "name:en": "Khyber-Pass-Line",
+    "name:ur": "خیبر درہ لائن",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "usage": "main",
+    "wikidata": "Q30588087"
+  }
+},
+{
+  "type": "way",
+  "id": 409074608,
+  "bounds": {
+    "minlat": 34.0181560,
+    "minlon": 71.5925598,
+    "maxlat": 34.0181565,
+    "maxlon": 71.5926802
+  },
+  "nodes": [
+    4109634716,
+    4109634717
+  ],
+  "geometry": [
+    { "lat": 34.0181560, "lon": 71.5925598 },
+    { "lat": 34.0181565, "lon": 71.5926802 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 409074614,
+  "bounds": {
+    "minlat": 34.0181565,
+    "minlon": 71.5926802,
+    "maxlat": 34.0204591,
+    "maxlon": 71.7027747
+  },
+  "nodes": [
+    4109634717,
+    4109634718,
+    4109634720,
+    13306824856,
+    4109634719,
+    4109634721,
+    307612953,
+    307612954,
+    307612955,
+    307612956,
+    307612957,
+    307612959,
+    2495668790,
+    307612960,
+    307527743,
+    8420428786,
+    307527742,
+    307527741,
+    307527740,
+    307527738,
+    3280479380,
+    307527736,
+    307527735,
+    13301788586,
+    307527734,
+    3280427101,
+    307527733,
+    307527732,
+    307527731,
+    307527730,
+    12321327288,
+    307527729,
+    307527728,
+    307527718,
+    307527691,
+    12589624867,
+    307527682,
+    13301788585,
+    307527681,
+    9564940964,
+    307527680,
+    13347618051,
+    307527679,
+    307527678,
+    9564940981,
+    9564940982,
+    13347618050,
+    13347618064,
+    307527677,
+    13301788590,
+    307527676,
+    13301788589,
+    307527673,
+    307527672,
+    307527670,
+    307527669,
+    9564941047,
+    307527668
+  ],
+  "geometry": [
+    { "lat": 34.0181565, "lon": 71.5926802 },
+    { "lat": 34.0181594, "lon": 71.5927881 },
+    { "lat": 34.0181707, "lon": 71.5935329 },
+    { "lat": 34.0181761, "lon": 71.5940069 },
+    { "lat": 34.0181605, "lon": 71.5952791 },
+    { "lat": 34.0181886, "lon": 71.5968049 },
+    { "lat": 34.0182236, "lon": 71.5985062 },
+    { "lat": 34.0182540, "lon": 71.6003794 },
+    { "lat": 34.0182864, "lon": 71.6022232 },
+    { "lat": 34.0183358, "lon": 71.6046448 },
+    { "lat": 34.0183820, "lon": 71.6065206 },
+    { "lat": 34.0184176, "lon": 71.6072244 },
+    { "lat": 34.0185436, "lon": 71.6086956 },
+    { "lat": 34.0185670, "lon": 71.6089582 },
+    { "lat": 34.0191729, "lon": 71.6162757 },
+    { "lat": 34.0192541, "lon": 71.6171179 },
+    { "lat": 34.0193088, "lon": 71.6177741 },
+    { "lat": 34.0194430, "lon": 71.6193639 },
+    { "lat": 34.0196262, "lon": 71.6215432 },
+    { "lat": 34.0198580, "lon": 71.6242489 },
+    { "lat": 34.0200212, "lon": 71.6260232 },
+    { "lat": 34.0202387, "lon": 71.6286727 },
+    { "lat": 34.0204169, "lon": 71.6308166 },
+    { "lat": 34.0204547, "lon": 71.6317945 },
+    { "lat": 34.0204591, "lon": 71.6326409 },
+    { "lat": 34.0203673, "lon": 71.6350915 },
+    { "lat": 34.0203355, "lon": 71.6361030 },
+    { "lat": 34.0202175, "lon": 71.6398651 },
+    { "lat": 34.0200877, "lon": 71.6437684 },
+    { "lat": 34.0199729, "lon": 71.6473905 },
+    { "lat": 34.0199445, "lon": 71.6483513 },
+    { "lat": 34.0198767, "lon": 71.6503417 },
+    { "lat": 34.0197537, "lon": 71.6544867 },
+    { "lat": 34.0196474, "lon": 71.6574656 },
+    { "lat": 34.0195570, "lon": 71.6601822 },
+    { "lat": 34.0194762, "lon": 71.6629122 },
+    { "lat": 34.0194173, "lon": 71.6649991 },
+    { "lat": 34.0193596, "lon": 71.6668746 },
+    { "lat": 34.0192851, "lon": 71.6687112 },
+    { "lat": 34.0191777, "lon": 71.6720526 },
+    { "lat": 34.0191612, "lon": 71.6725603 },
+    { "lat": 34.0191336, "lon": 71.6733483 },
+    { "lat": 34.0190477, "lon": 71.6758062 },
+    { "lat": 34.0189185, "lon": 71.6800520 },
+    { "lat": 34.0188740, "lon": 71.6813135 },
+    { "lat": 34.0188550, "lon": 71.6819422 },
+    { "lat": 34.0188351, "lon": 71.6826733 },
+    { "lat": 34.0188191, "lon": 71.6831841 },
+    { "lat": 34.0188114, "lon": 71.6834306 },
+    { "lat": 34.0187716, "lon": 71.6845447 },
+    { "lat": 34.0186523, "lon": 71.6874295 },
+    { "lat": 34.0185970, "lon": 71.6894048 },
+    { "lat": 34.0185543, "lon": 71.6909330 },
+    { "lat": 34.0184196, "lon": 71.6945406 },
+    { "lat": 34.0183277, "lon": 71.6976337 },
+    { "lat": 34.0182218, "lon": 71.7016221 },
+    { "lat": 34.0182053, "lon": 71.7020361 },
+    { "lat": 34.0181807, "lon": 71.7027747 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 409074615,
+  "bounds": {
+    "minlat": 34.0180329,
+    "minlon": 71.5869400,
+    "maxlat": 34.0181560,
+    "maxlon": 71.5925598
+  },
+  "nodes": [
+    13301788537,
+    4109634709,
+    13306824846,
+    13306824873,
+    4109634713,
+    4109634715,
+    4109634716
+  ],
+  "geometry": [
+    { "lat": 34.0180329, "lon": 71.5869400 },
+    { "lat": 34.0180677, "lon": 71.5884650 },
+    { "lat": 34.0180932, "lon": 71.5893705 },
+    { "lat": 34.0181033, "lon": 71.5898577 },
+    { "lat": 34.0181054, "lon": 71.5899603 },
+    { "lat": 34.0181519, "lon": 71.5922257 },
+    { "lat": 34.0181560, "lon": 71.5925598 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 701677790,
+  "bounds": {
+    "minlat": 34.0022421,
+    "minlon": 71.5503619,
+    "maxlat": 34.0142123,
+    "maxlon": 71.5679442
+  },
+  "nodes": [
+    13301788536,
+    307613968,
+    13306732154,
+    13306732155,
+    13306732157,
+    13306732156,
+    13306732189,
+    307613969,
+    13306732158,
+    307613970,
+    13306732159,
+    13306732160,
+    307613971,
+    13306786221,
+    13306732161,
+    307613972,
+    9666831783,
+    307613973,
+    307613974,
+    307613975,
+    307613976,
+    13302030295,
+    307613977,
+    307613978,
+    307612526,
+    307612527
+  ],
+  "geometry": [
+    { "lat": 34.0022421, "lon": 71.5503619 },
+    { "lat": 34.0031151, "lon": 71.5515640 },
+    { "lat": 34.0033952, "lon": 71.5519617 },
+    { "lat": 34.0036702, "lon": 71.5524078 },
+    { "lat": 34.0038651, "lon": 71.5526803 },
+    { "lat": 34.0039782, "lon": 71.5528350 },
+    { "lat": 34.0041316, "lon": 71.5530492 },
+    { "lat": 34.0043262, "lon": 71.5533211 },
+    { "lat": 34.0045428, "lon": 71.5536501 },
+    { "lat": 34.0047015, "lon": 71.5539067 },
+    { "lat": 34.0048900, "lon": 71.5542456 },
+    { "lat": 34.0050918, "lon": 71.5546323 },
+    { "lat": 34.0052636, "lon": 71.5549988 },
+    { "lat": 34.0057196, "lon": 71.5561005 },
+    { "lat": 34.0057867, "lon": 71.5562626 },
+    { "lat": 34.0061563, "lon": 71.5571401 },
+    { "lat": 34.0066495, "lon": 71.5583308 },
+    { "lat": 34.0069067, "lon": 71.5588336 },
+    { "lat": 34.0072010, "lon": 71.5593845 },
+    { "lat": 34.0077249, "lon": 71.5600288 },
+    { "lat": 34.0086977, "lon": 71.5612336 },
+    { "lat": 34.0093470, "lon": 71.5620259 },
+    { "lat": 34.0098357, "lon": 71.5626263 },
+    { "lat": 34.0110879, "lon": 71.5641497 },
+    { "lat": 34.0129177, "lon": 71.5663899 },
+    { "lat": 34.0142123, "lon": 71.5679442 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "خیبر درہ لائن",
+    "name:en": "Khyber-Pass-Line",
+    "name:ur": "خیبر درہ لائن",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "railway": "rail",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1026068289,
+  "bounds": {
+    "minlat": 33.9957694,
+    "minlon": 71.5415134,
+    "maxlat": 33.9958374,
+    "maxlon": 71.5416147
+  },
+  "nodes": [
+    9460154307,
+    11503450127,
+    9460154306
+  ],
+  "geometry": [
+    { "lat": 33.9957694, "lon": 71.5415134 },
+    { "lat": 33.9958055, "lon": 71.5415642 },
+    { "lat": 33.9958374, "lon": 71.5416147 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "railway": "rail",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1132480535,
+  "bounds": {
+    "minlat": 34.0129618,
+    "minlon": 71.7741414,
+    "maxlat": 34.0138404,
+    "maxlon": 71.7862159
+  },
+  "nodes": [
+    307527632,
+    13315899057,
+    307527631,
+    13301788540,
+    13315899058,
+    307527621,
+    10559652430,
+    10559652432
+  ],
+  "geometry": [
+    { "lat": 34.0138404, "lon": 71.7741414 },
+    { "lat": 34.0138243, "lon": 71.7743745 },
+    { "lat": 34.0136677, "lon": 71.7765924 },
+    { "lat": 34.0133537, "lon": 71.7808950 },
+    { "lat": 34.0131761, "lon": 71.7832624 },
+    { "lat": 34.0130458, "lon": 71.7850799 },
+    { "lat": 34.0130274, "lon": 71.7853519 },
+    { "lat": 34.0129618, "lon": 71.7862159 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1132480536,
+  "bounds": {
+    "minlat": 34.0129455,
+    "minlon": 71.7862159,
+    "maxlat": 34.0129618,
+    "maxlon": 71.7864258
+  },
+  "nodes": [
+    10559652432,
+    307527620
+  ],
+  "geometry": [
+    { "lat": 34.0129618, "lon": 71.7862159 },
+    { "lat": 34.0129455, "lon": 71.7864258 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302611,
+  "bounds": {
+    "minlat": 34.0138932,
+    "minlon": 71.7715003,
+    "maxlat": 34.0140319,
+    "maxlon": 71.7733873
+  },
+  "nodes": [
+    307527634,
+    307527633
+  ],
+  "geometry": [
+    { "lat": 34.0140319, "lon": 71.7715003 },
+    { "lat": 34.0138932, "lon": 71.7733873 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302612,
+  "bounds": {
+    "minlat": 34.0140319,
+    "minlon": 71.7710377,
+    "maxlat": 34.0140649,
+    "maxlon": 71.7715003
+  },
+  "nodes": [
+    13301788578,
+    307527634
+  ],
+  "geometry": [
+    { "lat": 34.0140649, "lon": 71.7710377 },
+    { "lat": 34.0140319, "lon": 71.7715003 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450333275,
+  "bounds": {
+    "minlat": 33.9958374,
+    "minlon": 71.5416147,
+    "maxlat": 34.0022421,
+    "maxlon": 71.5503619
+  },
+  "nodes": [
+    9460154306,
+    11503450128,
+    307613959,
+    11503450126,
+    13306786349,
+    307613960,
+    307613961,
+    307613962,
+    13306786329,
+    307613963,
+    13306786330,
+    13306786331,
+    13306786327,
+    307613964,
+    307613965,
+    13306786222,
+    307613966,
+    307613967,
+    13301788536
+  ],
+  "geometry": [
+    { "lat": 33.9958374, "lon": 71.5416147 },
+    { "lat": 33.9959231, "lon": 71.5417630 },
+    { "lat": 33.9961956, "lon": 71.5422083 },
+    { "lat": 33.9964718, "lon": 71.5426653 },
+    { "lat": 33.9967072, "lon": 71.5431897 },
+    { "lat": 33.9969643, "lon": 71.5436458 },
+    { "lat": 33.9971392, "lon": 71.5439125 },
+    { "lat": 33.9976000, "lon": 71.5445363 },
+    { "lat": 33.9980843, "lon": 71.5452021 },
+    { "lat": 33.9985664, "lon": 71.5458718 },
+    { "lat": 33.9987429, "lon": 71.5461158 },
+    { "lat": 33.9991364, "lon": 71.5465658 },
+    { "lat": 33.9992007, "lon": 71.5466562 },
+    { "lat": 33.9994140, "lon": 71.5469168 },
+    { "lat": 34.0001570, "lon": 71.5477239 },
+    { "lat": 34.0004315, "lon": 71.5479527 },
+    { "lat": 34.0006881, "lon": 71.5482351 },
+    { "lat": 34.0009392, "lon": 71.5485717 },
+    { "lat": 34.0022421, "lon": 71.5503619 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "خیبر درہ لائن",
+    "name:en": "Khyber-Pass-Line",
+    "name:ur": "خیبر درہ لائن",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "railway": "rail",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915763,
+  "bounds": {
+    "minlat": 34.0001570,
+    "minlon": 71.5477239,
+    "maxlat": 34.0036702,
+    "maxlon": 71.5524078
+  },
+  "nodes": [
+    307613965,
+    13306732162,
+    13306732163,
+    13306732164,
+    13306732165,
+    13306732166,
+    13306732167,
+    13306732155
+  ],
+  "geometry": [
+    { "lat": 34.0001570, "lon": 71.5477239 },
+    { "lat": 34.0004360, "lon": 71.5480243 },
+    { "lat": 34.0006551, "lon": 71.5482657 },
+    { "lat": 34.0009452, "lon": 71.5486533 },
+    { "lat": 34.0014500, "lon": 71.5493412 },
+    { "lat": 34.0026908, "lon": 71.5510632 },
+    { "lat": 34.0032689, "lon": 71.5518639 },
+    { "lat": 34.0036702, "lon": 71.5524078 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915764,
+  "bounds": {
+    "minlat": 33.9997989,
+    "minlon": 71.5474704,
+    "maxlat": 34.0050533,
+    "maxlon": 71.5546949
+  },
+  "nodes": [
+    13306732168,
+    13306732169,
+    13306732170,
+    13306732171,
+    13306732172,
+    13306732173,
+    13306732174,
+    13306732175,
+    13306732176,
+    13306732177,
+    13306732178,
+    13306732179,
+    13306732180,
+    13306732181,
+    13306732182,
+    13306732183,
+    13306732184,
+    13306732185,
+    13306732186,
+    13306732187,
+    13306732188
+  ],
+  "geometry": [
+    { "lat": 33.9997989, "lon": 71.5474704 },
+    { "lat": 33.9999079, "lon": 71.5476166 },
+    { "lat": 34.0000547, "lon": 71.5477990 },
+    { "lat": 34.0002148, "lon": 71.5479693 },
+    { "lat": 34.0003838, "lon": 71.5481436 },
+    { "lat": 34.0004994, "lon": 71.5482670 },
+    { "lat": 34.0006606, "lon": 71.5484856 },
+    { "lat": 34.0008563, "lon": 71.5487565 },
+    { "lat": 34.0013822, "lon": 71.5494941 },
+    { "lat": 34.0030165, "lon": 71.5517445 },
+    { "lat": 34.0033067, "lon": 71.5521482 },
+    { "lat": 34.0034457, "lon": 71.5523011 },
+    { "lat": 34.0036080, "lon": 71.5524808 },
+    { "lat": 34.0036747, "lon": 71.5525572 },
+    { "lat": 34.0038037, "lon": 71.5527262 },
+    { "lat": 34.0039404, "lon": 71.5529193 },
+    { "lat": 34.0040849, "lon": 71.5531258 },
+    { "lat": 34.0041450, "lon": 71.5532184 },
+    { "lat": 34.0044863, "lon": 71.5537696 },
+    { "lat": 34.0048921, "lon": 71.5544307 },
+    { "lat": 34.0050533, "lon": 71.5546949 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915765,
+  "bounds": {
+    "minlat": 34.0036747,
+    "minlon": 71.5525572,
+    "maxlat": 34.0041316,
+    "maxlon": 71.5530492
+  },
+  "nodes": [
+    13306732181,
+    13306732189
+  ],
+  "geometry": [
+    { "lat": 34.0036747, "lon": 71.5525572 },
+    { "lat": 34.0041316, "lon": 71.5530492 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915766,
+  "bounds": {
+    "minlat": 34.0004994,
+    "minlon": 71.5482670,
+    "maxlat": 34.0012993,
+    "maxlon": 71.5492259
+  },
+  "nodes": [
+    13306732173,
+    13306732190,
+    13306732191,
+    13306732192,
+    13306732193,
+    13306732194
+  ],
+  "geometry": [
+    { "lat": 34.0004994, "lon": 71.5482670 },
+    { "lat": 34.0006906, "lon": 71.5484588 },
+    { "lat": 34.0008307, "lon": 71.5486063 },
+    { "lat": 34.0009546, "lon": 71.5487512 },
+    { "lat": 34.0010613, "lon": 71.5488960 },
+    { "lat": 34.0012993, "lon": 71.5492259 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915767,
+  "bounds": {
+    "minlat": 33.9997605,
+    "minlon": 71.5475133,
+    "maxlat": 34.0057196,
+    "maxlon": 71.5561005
+  },
+  "nodes": [
+    13306732195,
+    13306732196,
+    13306732197,
+    13306732198,
+    13306732199,
+    13306732200,
+    13306786201,
+    13306786202,
+    13306786203,
+    13306786204,
+    13306786205,
+    13306786206,
+    13306786207,
+    13306786208,
+    13306786209,
+    13306786210,
+    13306786211,
+    13306786212,
+    13306786213,
+    13306786214,
+    13306786215,
+    13306786216,
+    13306786217,
+    13306786218,
+    13306786219,
+    13306786220,
+    13306786221
+  ],
+  "geometry": [
+    { "lat": 33.9997605, "lon": 71.5475133 },
+    { "lat": 33.9998695, "lon": 71.5476622 },
+    { "lat": 34.0000040, "lon": 71.5478164 },
+    { "lat": 34.0001708, "lon": 71.5480028 },
+    { "lat": 34.0003753, "lon": 71.5482080 },
+    { "lat": 34.0004676, "lon": 71.5483113 },
+    { "lat": 34.0005855, "lon": 71.5484668 },
+    { "lat": 34.0007723, "lon": 71.5487217 },
+    { "lat": 34.0010246, "lon": 71.5490730 },
+    { "lat": 34.0014760, "lon": 71.5496940 },
+    { "lat": 34.0019786, "lon": 71.5503927 },
+    { "lat": 34.0025878, "lon": 71.5512335 },
+    { "lat": 34.0029936, "lon": 71.5517901 },
+    { "lat": 34.0033972, "lon": 71.5523453 },
+    { "lat": 34.0037597, "lon": 71.5528509 },
+    { "lat": 34.0040865, "lon": 71.5533015 },
+    { "lat": 34.0042377, "lon": 71.5535121 },
+    { "lat": 34.0043556, "lon": 71.5536985 },
+    { "lat": 34.0044478, "lon": 71.5538782 },
+    { "lat": 34.0046079, "lon": 71.5541679 },
+    { "lat": 34.0047113, "lon": 71.5543087 },
+    { "lat": 34.0049081, "lon": 71.5545823 },
+    { "lat": 34.0050593, "lon": 71.5548197 },
+    { "lat": 34.0051972, "lon": 71.5550718 },
+    { "lat": 34.0053406, "lon": 71.5553548 },
+    { "lat": 34.0055174, "lon": 71.5557021 },
+    { "lat": 34.0057196, "lon": 71.5561005 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915768,
+  "bounds": {
+    "minlat": 33.9998695,
+    "minlon": 71.5476622,
+    "maxlat": 34.0041056,
+    "maxlon": 71.5534695
+  },
+  "nodes": [
+    13306732196,
+    13306786223,
+    13306786232,
+    13306786224,
+    13306786225,
+    13306786226,
+    13306786227,
+    13306786228,
+    13306786229,
+    13306786230,
+    13306786231
+  ],
+  "geometry": [
+    { "lat": 33.9998695, "lon": 71.5476622 },
+    { "lat": 34.0000442, "lon": 71.5479508 },
+    { "lat": 34.0001049, "lon": 71.5480564 },
+    { "lat": 34.0004656, "lon": 71.5486831 },
+    { "lat": 34.0005400, "lon": 71.5487957 },
+    { "lat": 34.0032473, "lon": 71.5525280 },
+    { "lat": 34.0033718, "lon": 71.5526943 },
+    { "lat": 34.0034652, "lon": 71.5527962 },
+    { "lat": 34.0037042, "lon": 71.5530376 },
+    { "lat": 34.0038788, "lon": 71.5532133 },
+    { "lat": 34.0041056, "lon": 71.5534695 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915769,
+  "bounds": {
+    "minlat": 34.0001049,
+    "minlon": 71.5480564,
+    "maxlat": 34.0037042,
+    "maxlon": 71.5530376
+  },
+  "nodes": [
+    13306786232,
+    13306786233,
+    13306786239,
+    13306786234,
+    13306786235,
+    13306786236,
+    13306786237,
+    13306786238,
+    13306786229
+  ],
+  "geometry": [
+    { "lat": 34.0001049, "lon": 71.5480564 },
+    { "lat": 34.0001933, "lon": 71.5481748 },
+    { "lat": 34.0002166, "lon": 71.5482096 },
+    { "lat": 34.0002945, "lon": 71.5483263 },
+    { "lat": 34.0004324, "lon": 71.5485610 },
+    { "lat": 34.0005369, "lon": 71.5487247 },
+    { "lat": 34.0006736, "lon": 71.5489070 },
+    { "lat": 34.0034442, "lon": 71.5527211 },
+    { "lat": 34.0037042, "lon": 71.5530376 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915770,
+  "bounds": {
+    "minlat": 34.0002166,
+    "minlon": 71.5482096,
+    "maxlat": 34.0038788,
+    "maxlon": 71.5532133
+  },
+  "nodes": [
+    13306786239,
+    13306786240,
+    13306786241,
+    13306786242,
+    13306786243,
+    13306786230
+  ],
+  "geometry": [
+    { "lat": 34.0002166, "lon": 71.5482096 },
+    { "lat": 34.0003940, "lon": 71.5484446 },
+    { "lat": 34.0005730, "lon": 71.5486980 },
+    { "lat": 34.0034814, "lon": 71.5526999 },
+    { "lat": 34.0037016, "lon": 71.5529963 },
+    { "lat": 34.0038788, "lon": 71.5532133 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915771,
+  "bounds": {
+    "minlat": 34.0003940,
+    "minlon": 71.5484446,
+    "maxlat": 34.0041056,
+    "maxlon": 71.5534695
+  },
+  "nodes": [
+    13306786240,
+    13306786244,
+    13306786245,
+    13306786246,
+    13306786247,
+    13306786231
+  ],
+  "geometry": [
+    { "lat": 34.0003940, "lon": 71.5484446 },
+    { "lat": 34.0005897, "lon": 71.5486659 },
+    { "lat": 34.0007420, "lon": 71.5488428 },
+    { "lat": 34.0008654, "lon": 71.5490132 },
+    { "lat": 34.0038770, "lon": 71.5531616 },
+    { "lat": 34.0041056, "lon": 71.5534695 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915772,
+  "bounds": {
+    "minlat": 34.0041056,
+    "minlon": 71.5534695,
+    "maxlat": 34.0046079,
+    "maxlon": 71.5541679
+  },
+  "nodes": [
+    13306786231,
+    13306786248,
+    13306786249,
+    13306786214
+  ],
+  "geometry": [
+    { "lat": 34.0041056, "lon": 71.5534695 },
+    { "lat": 34.0043206, "lon": 71.5537744 },
+    { "lat": 34.0044129, "lon": 71.5539045 },
+    { "lat": 34.0046079, "lon": 71.5541679 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915773,
+  "bounds": {
+    "minlat": 34.0031166,
+    "minlon": 71.5524293,
+    "maxlat": 34.0044129,
+    "maxlon": 71.5539045
+  },
+  "nodes": [
+    13306786250,
+    13306786251,
+    13306786252,
+    13306786253,
+    13306786254,
+    13306786255,
+    13306786256,
+    13306786257,
+    13306786249
+  ],
+  "geometry": [
+    { "lat": 34.0031166, "lon": 71.5524293 },
+    { "lat": 34.0032756, "lon": 71.5526479 },
+    { "lat": 34.0034323, "lon": 71.5528316 },
+    { "lat": 34.0035824, "lon": 71.5529858 },
+    { "lat": 34.0036858, "lon": 71.5530904 },
+    { "lat": 34.0038603, "lon": 71.5532742 },
+    { "lat": 34.0040193, "lon": 71.5534458 },
+    { "lat": 34.0041867, "lon": 71.5536363 },
+    { "lat": 34.0044129, "lon": 71.5539045 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915774,
+  "bounds": {
+    "minlat": 34.0007420,
+    "minlon": 71.5488428,
+    "maxlat": 34.0044478,
+    "maxlon": 71.5538782
+  },
+  "nodes": [
+    13306786245,
+    13306786258,
+    13306786259,
+    13306786260,
+    13306786261,
+    13306786262,
+    13306786213
+  ],
+  "geometry": [
+    { "lat": 34.0007420, "lon": 71.5488428 },
+    { "lat": 34.0009436, "lon": 71.5490551 },
+    { "lat": 34.0010492, "lon": 71.5491878 },
+    { "lat": 34.0036637, "lon": 71.5527941 },
+    { "lat": 34.0040872, "lon": 71.5533694 },
+    { "lat": 34.0042551, "lon": 71.5536027 },
+    { "lat": 34.0044478, "lon": 71.5538782 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915775,
+  "bounds": {
+    "minlat": 34.0038651,
+    "minlon": 71.5526803,
+    "maxlat": 34.0064341,
+    "maxlon": 71.5564944
+  },
+  "nodes": [
+    13306732157,
+    13306786263,
+    13306786264,
+    13306786265,
+    13306786266,
+    13306786326,
+    13306786267,
+    13306786268,
+    13306786269,
+    13306786270,
+    13306786271,
+    13306786278,
+    13306786272,
+    13306786275,
+    13306786273,
+    13306786274,
+    13306786288,
+    13306786289
+  ],
+  "geometry": [
+    { "lat": 34.0038651, "lon": 71.5526803 },
+    { "lat": 34.0040553, "lon": 71.5528842 },
+    { "lat": 34.0043622, "lon": 71.5531872 },
+    { "lat": 34.0044678, "lon": 71.5533120 },
+    { "lat": 34.0046334, "lon": 71.5535440 },
+    { "lat": 34.0046952, "lon": 71.5536367 },
+    { "lat": 34.0047291, "lon": 71.5536875 },
+    { "lat": 34.0049065, "lon": 71.5539544 },
+    { "lat": 34.0051133, "lon": 71.5542655 },
+    { "lat": 34.0052601, "lon": 71.5544841 },
+    { "lat": 34.0053979, "lon": 71.5546853 },
+    { "lat": 34.0056046, "lon": 71.5549925 },
+    { "lat": 34.0056659, "lon": 71.5550836 },
+    { "lat": 34.0057637, "lon": 71.5552282 },
+    { "lat": 34.0058137, "lon": 71.5553022 },
+    { "lat": 34.0060116, "lon": 71.5556066 },
+    { "lat": 34.0062707, "lon": 71.5561457 },
+    { "lat": 34.0064341, "lon": 71.5564944 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915776,
+  "bounds": {
+    "minlat": 34.0057637,
+    "minlon": 71.5552282,
+    "maxlat": 34.0059738,
+    "maxlon": 71.5556401
+  },
+  "nodes": [
+    13306786275,
+    13306786276,
+    13306786277
+  ],
+  "geometry": [
+    { "lat": 34.0057637, "lon": 71.5552282 },
+    { "lat": 34.0058538, "lon": 71.5553960 },
+    { "lat": 34.0059738, "lon": 71.5556401 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915777,
+  "bounds": {
+    "minlat": 34.0056046,
+    "minlon": 71.5549925,
+    "maxlat": 34.0059394,
+    "maxlon": 71.5556656
+  },
+  "nodes": [
+    13306786278,
+    13306786279,
+    13306786280,
+    13306786281
+  ],
+  "geometry": [
+    { "lat": 34.0056046, "lon": 71.5549925 },
+    { "lat": 34.0056948, "lon": 71.5551614 },
+    { "lat": 34.0057893, "lon": 71.5553531 },
+    { "lat": 34.0059394, "lon": 71.5556656 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915778,
+  "bounds": {
+    "minlat": 34.0053979,
+    "minlon": 71.5546853,
+    "maxlat": 34.0066153,
+    "maxlon": 71.5571958
+  },
+  "nodes": [
+    13306786271,
+    13306786282,
+    13306786283,
+    13306786284,
+    13306786285,
+    13306786286,
+    13306786287
+  ],
+  "geometry": [
+    { "lat": 34.0053979, "lon": 71.5546853 },
+    { "lat": 34.0055514, "lon": 71.5549615 },
+    { "lat": 34.0056648, "lon": 71.5551922 },
+    { "lat": 34.0057203, "lon": 71.5553142 },
+    { "lat": 34.0059182, "lon": 71.5557179 },
+    { "lat": 34.0061506, "lon": 71.5562141 },
+    { "lat": 34.0066153, "lon": 71.5571958 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915779,
+  "bounds": {
+    "minlat": 34.0052601,
+    "minlon": 71.5544841,
+    "maxlat": 34.0065964,
+    "maxlon": 71.5572910
+  },
+  "nodes": [
+    13306786270,
+    13306786290,
+    13306786291,
+    13306786292,
+    13306786293,
+    13306786294,
+    13306786295
+  ],
+  "geometry": [
+    { "lat": 34.0052601, "lon": 71.5544841 },
+    { "lat": 34.0053557, "lon": 71.5546698 },
+    { "lat": 34.0054124, "lon": 71.5547892 },
+    { "lat": 34.0056325, "lon": 71.5552378 },
+    { "lat": 34.0059227, "lon": 71.5558574 },
+    { "lat": 34.0063418, "lon": 71.5567439 },
+    { "lat": 34.0065964, "lon": 71.5572910 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915780,
+  "bounds": {
+    "minlat": 34.0049065,
+    "minlon": 71.5539544,
+    "maxlat": 34.0055736,
+    "maxlon": 71.5547939
+  },
+  "nodes": [
+    13306786268,
+    13306786296,
+    13306786297,
+    13306786298,
+    13306786299
+  ],
+  "geometry": [
+    { "lat": 34.0049065, "lon": 71.5539544 },
+    { "lat": 34.0050722, "lon": 71.5541676 },
+    { "lat": 34.0052045, "lon": 71.5543097 },
+    { "lat": 34.0052845, "lon": 71.5544103 },
+    { "lat": 34.0055736, "lon": 71.5547939 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915781,
+  "bounds": {
+    "minlat": 34.0047291,
+    "minlon": 71.5536875,
+    "maxlat": 34.0066787,
+    "maxlon": 71.5577202
+  },
+  "nodes": [
+    13306786267,
+    13306786300,
+    13306786301,
+    13306786312,
+    13306786302,
+    13306786313,
+    13306786303,
+    13306786304,
+    13306786305,
+    13306786306,
+    13306786307
+  ],
+  "geometry": [
+    { "lat": 34.0047291, "lon": 71.5536875 },
+    { "lat": 34.0048965, "lon": 71.5539731 },
+    { "lat": 34.0050222, "lon": 71.5542186 },
+    { "lat": 34.0051071, "lon": 71.5543983 },
+    { "lat": 34.0051311, "lon": 71.5544492 },
+    { "lat": 34.0051998, "lon": 71.5545924 },
+    { "lat": 34.0053190, "lon": 71.5548408 },
+    { "lat": 34.0056247, "lon": 71.5554819 },
+    { "lat": 34.0060705, "lon": 71.5564206 },
+    { "lat": 34.0064808, "lon": 71.5572897 },
+    { "lat": 34.0066787, "lon": 71.5577202 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915782,
+  "bounds": {
+    "minlat": 34.0043262,
+    "minlon": 71.5533211,
+    "maxlat": 34.0051071,
+    "maxlon": 71.5543983
+  },
+  "nodes": [
+    307613969,
+    13306786308,
+    13306786309,
+    13306786310,
+    13306786311,
+    13306786312
+  ],
+  "geometry": [
+    { "lat": 34.0043262, "lon": 71.5533211 },
+    { "lat": 34.0045918, "lon": 71.5536700 },
+    { "lat": 34.0047830, "lon": 71.5539088 },
+    { "lat": 34.0049097, "lon": 71.5540818 },
+    { "lat": 34.0049953, "lon": 71.5542145 },
+    { "lat": 34.0051071, "lon": 71.5543983 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915783,
+  "bounds": {
+    "minlat": 34.0051998,
+    "minlon": 71.5545924,
+    "maxlat": 34.0066941,
+    "maxlon": 71.5576169
+  },
+  "nodes": [
+    13306786313,
+    13306786314,
+    13306786315,
+    13306786316,
+    13306786317,
+    13306786318,
+    13306786319,
+    13306786320
+  ],
+  "geometry": [
+    { "lat": 34.0051998, "lon": 71.5545924 },
+    { "lat": 34.0053822, "lon": 71.5548878 },
+    { "lat": 34.0054967, "lon": 71.5550943 },
+    { "lat": 34.0056268, "lon": 71.5553598 },
+    { "lat": 34.0057980, "lon": 71.5557099 },
+    { "lat": 34.0061293, "lon": 71.5564019 },
+    { "lat": 34.0064851, "lon": 71.5571556 },
+    { "lat": 34.0066941, "lon": 71.5576169 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915784,
+  "bounds": {
+    "minlat": 34.0040325,
+    "minlon": 71.5523343,
+    "maxlat": 34.0046952,
+    "maxlon": 71.5536367
+  },
+  "nodes": [
+    13306786321,
+    13306786322,
+    13306786323,
+    13306786324,
+    13306786325,
+    13306786326
+  ],
+  "geometry": [
+    { "lat": 34.0040325, "lon": 71.5523343 },
+    { "lat": 34.0041548, "lon": 71.5526079 },
+    { "lat": 34.0042682, "lon": 71.5528426 },
+    { "lat": 34.0043961, "lon": 71.5530853 },
+    { "lat": 34.0045492, "lon": 71.5533720 },
+    { "lat": 34.0046952, "lon": 71.5536367 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915785,
+  "bounds": {
+    "minlat": 33.9992007,
+    "minlon": 71.5466562,
+    "maxlat": 33.9997989,
+    "maxlon": 71.5474704
+  },
+  "nodes": [
+    13306786327,
+    13306786328,
+    13306732168
+  ],
+  "geometry": [
+    { "lat": 33.9992007, "lon": 71.5466562 },
+    { "lat": 33.9994649, "lon": 71.5470147 },
+    { "lat": 33.9997989, "lon": 71.5474704 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915786,
+  "bounds": {
+    "minlat": 33.9987429,
+    "minlon": 71.5461158,
+    "maxlat": 33.9997605,
+    "maxlon": 71.5475133
+  },
+  "nodes": [
+    13306786330,
+    13306786332,
+    13306786333,
+    13306786347,
+    13306786334,
+    13306732195
+  ],
+  "geometry": [
+    { "lat": 33.9987429, "lon": 71.5461158 },
+    { "lat": 33.9990246, "lon": 71.5465024 },
+    { "lat": 33.9992937, "lon": 71.5468645 },
+    { "lat": 33.9994192, "lon": 71.5470326 },
+    { "lat": 33.9995160, "lon": 71.5471622 },
+    { "lat": 33.9997605, "lon": 71.5475133 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915787,
+  "bounds": {
+    "minlat": 33.9967072,
+    "minlon": 71.5431897,
+    "maxlat": 34.0004277,
+    "maxlon": 71.5491927
+  },
+  "nodes": [
+    13306786349,
+    13306786361,
+    13306786360,
+    13306786370,
+    13306786359,
+    13306786358,
+    13306786335,
+    13306786336,
+    13306786337,
+    13306786345,
+    13306786338,
+    13306786339,
+    13306786340,
+    13306786362,
+    13306786341,
+    13306786342,
+    13306786343,
+    13306786344
+  ],
+  "geometry": [
+    { "lat": 33.9967072, "lon": 71.5431897 },
+    { "lat": 33.9968087, "lon": 71.5434955 },
+    { "lat": 33.9970377, "lon": 71.5438871 },
+    { "lat": 33.9971763, "lon": 71.5440902 },
+    { "lat": 33.9972757, "lon": 71.5442358 },
+    { "lat": 33.9977560, "lon": 71.5448741 },
+    { "lat": 33.9983330, "lon": 71.5456656 },
+    { "lat": 33.9986277, "lon": 71.5460639 },
+    { "lat": 33.9989090, "lon": 71.5464407 },
+    { "lat": 33.9989761, "lon": 71.5465299 },
+    { "lat": 33.9991814, "lon": 71.5468028 },
+    { "lat": 33.9995127, "lon": 71.5472387 },
+    { "lat": 33.9995738, "lon": 71.5473258 },
+    { "lat": 33.9996914, "lon": 71.5475235 },
+    { "lat": 33.9998196, "lon": 71.5477389 },
+    { "lat": 34.0000519, "lon": 71.5482445 },
+    { "lat": 34.0002409, "lon": 71.5487072 },
+    { "lat": 34.0004277, "lon": 71.5491927 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915788,
+  "bounds": {
+    "minlat": 33.9989761,
+    "minlon": 71.5465299,
+    "maxlat": 33.9994192,
+    "maxlon": 71.5470326
+  },
+  "nodes": [
+    13306786345,
+    13306786346,
+    13306786347
+  ],
+  "geometry": [
+    { "lat": 33.9989761, "lon": 71.5465299 },
+    { "lat": 33.9992136, "lon": 71.5468095 },
+    { "lat": 33.9994192, "lon": 71.5470326 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915789,
+  "bounds": {
+    "minlat": 33.9994649,
+    "minlon": 71.5470147,
+    "maxlat": 33.9997605,
+    "maxlon": 71.5475133
+  },
+  "nodes": [
+    13306786328,
+    13306786348,
+    13306732195
+  ],
+  "geometry": [
+    { "lat": 33.9994649, "lon": 71.5470147 },
+    { "lat": 33.9996116, "lon": 71.5472641 },
+    { "lat": 33.9997605, "lon": 71.5475133 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915790,
+  "bounds": {
+    "minlat": 33.9964718,
+    "minlon": 71.5426653,
+    "maxlat": 33.9991364,
+    "maxlon": 71.5465658
+  },
+  "nodes": [
+    11503450126,
+    13306786369,
+    13306786368,
+    13306786367,
+    13306786357,
+    13306786356,
+    13306786355,
+    13306786350,
+    13306786351,
+    13306786353,
+    13306786354,
+    13306786331
+  ],
+  "geometry": [
+    { "lat": 33.9964718, "lon": 71.5426653 },
+    { "lat": 33.9966308, "lon": 71.5429564 },
+    { "lat": 33.9967197, "lon": 71.5431133 },
+    { "lat": 33.9969443, "lon": 71.5435008 },
+    { "lat": 33.9971311, "lon": 71.5437905 },
+    { "lat": 33.9972423, "lon": 71.5439380 },
+    { "lat": 33.9978205, "lon": 71.5447442 },
+    { "lat": 33.9981729, "lon": 71.5452176 },
+    { "lat": 33.9985876, "lon": 71.5457822 },
+    { "lat": 33.9988067, "lon": 71.5460880 },
+    { "lat": 33.9990502, "lon": 71.5464380 },
+    { "lat": 33.9991364, "lon": 71.5465658 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915791,
+  "bounds": {
+    "minlat": 33.9996914,
+    "minlon": 71.5475235,
+    "maxlat": 34.0003755,
+    "maxlon": 71.5487499
+  },
+  "nodes": [
+    13306786362,
+    13306786366,
+    13306786363,
+    13306786364,
+    13306786365
+  ],
+  "geometry": [
+    { "lat": 33.9996914, "lon": 71.5475235 },
+    { "lat": 33.9998500, "lon": 71.5477384 },
+    { "lat": 34.0000164, "lon": 71.5479855 },
+    { "lat": 34.0002120, "lon": 71.5483878 },
+    { "lat": 34.0003755, "lon": 71.5487499 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915792,
+  "bounds": {
+    "minlat": 33.9971763,
+    "minlon": 71.5440902,
+    "maxlat": 33.9974480,
+    "maxlon": 71.5447896
+  },
+  "nodes": [
+    13306786370,
+    13306786371,
+    13306786372
+  ],
+  "geometry": [
+    { "lat": 33.9971763, "lon": 71.5440902 },
+    { "lat": 33.9973479, "lon": 71.5445187 },
+    { "lat": 33.9974480, "lon": 71.5447896 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+},
+{
+  "type": "way",
+  "id": 1450915793,
+  "bounds": {
+    "minlat": 33.9968087,
+    "minlon": 71.5434955,
+    "maxlat": 33.9973035,
+    "maxlon": 71.5448916
+  },
+  "nodes": [
+    13306786361,
+    13306786373,
+    13306786374,
+    13306786375
+  ],
+  "geometry": [
+    { "lat": 33.9968087, "lon": 71.5434955 },
+    { "lat": 33.9970422, "lon": 71.5441110 },
+    { "lat": 33.9972134, "lon": 71.5446113 },
+    { "lat": 33.9973035, "lon": 71.5448916 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "name": "پاکستان ریلوے",
+    "name:en": "Pakistan Railway",
+    "name:ur": "پاکستان ریلوے",
+    "railway": "rail"
+  }
+}
+
+  ]
+}

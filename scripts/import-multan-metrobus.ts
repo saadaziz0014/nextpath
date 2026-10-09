@@ -1,0 +1,13 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { buildMultanPaths } from '../lib/bus/multanImport';
+import { verifyBusSource, type BusSourceSnapshot } from '../lib/bus/sourceQuality';
+import { multanSourceWays } from '../lib/bus/multanSource';
+import { validateBusDataset } from '../lib/bus/track';
+import type { BusDataset } from '../lib/bus/types';
+const source=JSON.parse(readFileSync('data/bus/multan-metrobus.osm.json','utf8')) as BusSourceSnapshot;
+const paths=buildMultanPaths(source);
+const dataset:BusDataset={version:1,id:'multan-metrobus',fingerprint:createHash('sha256').update(JSON.stringify(paths)).digest('hex').slice(0,16),attribution:'© OpenStreetMap contributors, ODbL 1.0',sourceTimestamp:source.fetchedAt,paths};
+validateBusDataset(dataset,'multan-metrobus');verifyBusSource(dataset,multanSourceWays(source));
+writeFileSync('public/data/bus/multan-metrobus.json',JSON.stringify(dataset));
+console.log(paths.map(path=>({direction:path.direction,km:path.distanceKm,stations:path.stations.length,vertices:path.coordinates.length,underground:path.stations.filter(station=>station.underground).map(station=>station.name)})));

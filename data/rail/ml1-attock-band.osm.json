@@ -1,0 +1,3203 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-07T13:44:49Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 875866698,
+  "lat": 33.8561241,
+  "lon": 72.3031056,
+  "tags": {
+    "name": "رومیان",
+    "name:en": "Rumiān",
+    "name:ur": "رومیان",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "ROM",
+    "wikidata": "Q18516070",
+    "wikipedia": "en:Rumian railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2432160530,
+  "lat": 33.8736840,
+  "lon": 72.2409449,
+  "tags": {
+    "internet_access": "no",
+    "name": "اٹک خورد",
+    "name:en": "Attock Khurd",
+    "name:ur": "اٹک خورد",
+    "operator": "Pakistan Railway",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "ATKD",
+    "wikidata": "Q18346573",
+    "wikimedia_commons": "Category:Attock_Khurd_railway_station",
+    "wikipedia": "en:Attock Khurd railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2432186131,
+  "lat": 33.8092965,
+  "lon": 72.4330079,
+  "tags": {
+    "name": "سنجوال",
+    "name:en": "Sanjwal",
+    "name:ur": "سنجوال",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "SJU",
+    "wikidata": "Q18516033",
+    "wikipedia": "en:Sanjwal railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 2653607928,
+  "lat": 33.9583258,
+  "lon": 72.1971529,
+  "tags": {
+    "name": "جہانگیرا",
+    "name:en": "Jehangira",
+    "name:hi": "जहांगीरा",
+    "name:ps": "جهانګیره",
+    "name:ur": "جہانگیرا",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JHR",
+    "wikidata": "Q18517000",
+    "wikipedia": "en:Jehangira Road railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13301788544,
+  "lat": 34.0068550,
+  "lon": 72.0603185,
+  "tags": {
+    "name": "حیات شیر پاؤ شہید",
+    "name:en": "Hayat Sher Pao Shaheed",
+    "name:ur": "حیات شیر پاؤ شہید",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "HSPS",
+    "train": "yes",
+    "wikidata": "Q18516948",
+    "wikipedia": "en:Hayat Sher Pao Shaheed railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13301788545,
+  "lat": 33.9946823,
+  "lon": 72.1471483,
+  "tags": {
+    "addr:city": "اکوڑا خٹک",
+    "name": "اکوڑا خٹک",
+    "name:en": "Akora Khattak",
+    "name:ur": "اکوڑا خٹک",
+    "operator": "پاکستان ریلویز",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "AKO",
+    "train": "yes",
+    "wikidata": "Q18350675",
+    "wikipedia": "en:Akora Khattak railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13301973742,
+  "lat": 33.9002211,
+  "lon": 72.2262821,
+  "tags": {
+    "name": "خیرآباد کنڈ",
+    "name:en": "Khairabad Kund",
+    "name:ur": "خیرآباد کنڈ",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "KBD",
+    "train": "yes",
+    "wikidata": "Q18517059",
+    "wikipedia": "en:Khairabad Kund railway station"
+  }
+},
+{
+  "type": "way",
+  "id": 28005596,
+  "bounds": {
+    "minlat": 34.0010712,
+    "minlon": 72.1098023,
+    "maxlat": 34.0013550,
+    "maxlon": 72.1115581
+  },
+  "nodes": [
+    307508681,
+    307508702
+  ],
+  "geometry": [
+    { "lat": 34.0010712, "lon": 72.1115581 },
+    { "lat": 34.0013550, "lon": 72.1098023 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005599,
+  "bounds": {
+    "minlat": 34.0026583,
+    "minlon": 72.0916558,
+    "maxlat": 34.0042269,
+    "maxlon": 72.1015900
+  },
+  "nodes": [
+    307508791,
+    307508830,
+    307508840,
+    307508854
+  ],
+  "geometry": [
+    { "lat": 34.0026583, "lon": 72.1015900 },
+    { "lat": 34.0033500, "lon": 72.0972472 },
+    { "lat": 34.0039902, "lon": 72.0931470 },
+    { "lat": 34.0042269, "lon": 72.0916558 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005600,
+  "bounds": {
+    "minlat": 34.0013550,
+    "minlon": 72.1095104,
+    "maxlat": 34.0014024,
+    "maxlon": 72.1098023
+  },
+  "nodes": [
+    307508702,
+    307508714
+  ],
+  "geometry": [
+    { "lat": 34.0013550, "lon": 72.1098023 },
+    { "lat": 34.0014024, "lon": 72.1095104 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005601,
+  "bounds": {
+    "minlat": 34.0042269,
+    "minlon": 72.0913244,
+    "maxlat": 34.0042821,
+    "maxlon": 72.0916558
+  },
+  "nodes": [
+    307508854,
+    307508872
+  ],
+  "geometry": [
+    { "lat": 34.0042269, "lon": 72.0916558 },
+    { "lat": 34.0042821, "lon": 72.0913244 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005602,
+  "bounds": {
+    "minlat": 34.0042821,
+    "minlon": 72.0896700,
+    "maxlat": 34.0045541,
+    "maxlon": 72.0913244
+  },
+  "nodes": [
+    307508872,
+    307508882,
+    307508935
+  ],
+  "geometry": [
+    { "lat": 34.0042821, "lon": 72.0913244 },
+    { "lat": 34.0043216, "lon": 72.0910877 },
+    { "lat": 34.0045541, "lon": 72.0896700 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005611,
+  "bounds": {
+    "minlat": 34.0050505,
+    "minlon": 72.0812728,
+    "maxlat": 34.0058917,
+    "maxlon": 72.0866259
+  },
+  "nodes": [
+    13301788569,
+    307508998,
+    307509008,
+    307509105
+  ],
+  "geometry": [
+    { "lat": 34.0050505, "lon": 72.0866259 },
+    { "lat": 34.0055208, "lon": 72.0836398 },
+    { "lat": 34.0057982, "lon": 72.0818591 },
+    { "lat": 34.0058917, "lon": 72.0812728 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005612,
+  "bounds": {
+    "minlat": 34.0045541,
+    "minlon": 72.0891784,
+    "maxlat": 34.0046340,
+    "maxlon": 72.0896700
+  },
+  "nodes": [
+    307508935,
+    307508957
+  ],
+  "geometry": [
+    { "lat": 34.0045541, "lon": 72.0896700 },
+    { "lat": 34.0046340, "lon": 72.0891784 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005618,
+  "bounds": {
+    "minlat": 34.0065219,
+    "minlon": 72.0766845,
+    "maxlat": 34.0066145,
+    "maxlon": 72.0772647
+  },
+  "nodes": [
+    307509120,
+    307509129
+  ],
+  "geometry": [
+    { "lat": 34.0065219, "lon": 72.0772647 },
+    { "lat": 34.0066145, "lon": 72.0766845 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005619,
+  "bounds": {
+    "minlat": 34.0059469,
+    "minlon": 72.0772647,
+    "maxlat": 34.0065219,
+    "maxlon": 72.0809099
+  },
+  "nodes": [
+    307509112,
+    13301788570,
+    307509120
+  ],
+  "geometry": [
+    { "lat": 34.0059469, "lon": 72.0809099 },
+    { "lat": 34.0062344, "lon": 72.0790833 },
+    { "lat": 34.0065219, "lon": 72.0772647 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 28005621,
+  "bounds": {
+    "minlat": 34.0058917,
+    "minlon": 72.0809099,
+    "maxlat": 34.0059469,
+    "maxlon": 72.0812728
+  },
+  "nodes": [
+    307509105,
+    307509112
+  ],
+  "geometry": [
+    { "lat": 34.0058917, "lon": 72.0812728 },
+    { "lat": 34.0059469, "lon": 72.0809099 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 73315564,
+  "bounds": {
+    "minlat": 33.9363351,
+    "minlon": 72.2160586,
+    "maxlat": 33.9410493,
+    "maxlon": 72.2212453
+  },
+  "nodes": [
+    13301973797,
+    13301973798,
+    13301973800
+  ],
+  "geometry": [
+    { "lat": 33.9363351, "lon": 72.2212453 },
+    { "lat": 33.9375831, "lon": 72.2198243 },
+    { "lat": 33.9410493, "lon": 72.2160586 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 73657696,
+  "bounds": {
+    "minlat": 33.9897602,
+    "minlon": 72.1419142,
+    "maxlat": 33.9961595,
+    "maxlon": 72.1596187
+  },
+  "nodes": [
+    13301973816,
+    9517266673,
+    13347655793,
+    872562202,
+    13301788546,
+    13301788565,
+    13347655788,
+    13347670408,
+    872562165,
+    13315899071
+  ],
+  "geometry": [
+    { "lat": 33.9897602, "lon": 72.1596187 },
+    { "lat": 33.9925825, "lon": 72.1522417 },
+    { "lat": 33.9930553, "lon": 72.1510304 },
+    { "lat": 33.9932909, "lon": 72.1504267 },
+    { "lat": 33.9945777, "lon": 72.1470563 },
+    { "lat": 33.9952628, "lon": 72.1451814 },
+    { "lat": 33.9955570, "lon": 72.1442593 },
+    { "lat": 33.9957909, "lon": 72.1434376 },
+    { "lat": 33.9958156, "lon": 72.1433507 },
+    { "lat": 33.9961595, "lon": 72.1419142 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 74015409,
+  "bounds": {
+    "minlat": 33.8376762,
+    "minlon": 72.3176510,
+    "maxlat": 33.8389808,
+    "maxlon": 72.3180884
+  },
+  "nodes": [
+    875817885,
+    875817211
+  ],
+  "geometry": [
+    { "lat": 33.8389808, "lon": 72.3176510 },
+    { "lat": 33.8376762, "lon": 72.3180884 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 74017071,
+  "bounds": {
+    "minlat": 33.8389808,
+    "minlon": 72.3069301,
+    "maxlat": 33.8545540,
+    "maxlon": 72.3176510
+  },
+  "nodes": [
+    875831800,
+    13301973754,
+    875821459,
+    875821457,
+    13301973753,
+    875867047,
+    876504949,
+    875817885
+  ],
+  "geometry": [
+    { "lat": 33.8545540, "lon": 72.3069301 },
+    { "lat": 33.8538225, "lon": 72.3079534 },
+    { "lat": 33.8529930, "lon": 72.3089338 },
+    { "lat": 33.8464807, "lon": 72.3149047 },
+    { "lat": 33.8457131, "lon": 72.3153739 },
+    { "lat": 33.8449321, "lon": 72.3157090 },
+    { "lat": 33.8425672, "lon": 72.3164804 },
+    { "lat": 33.8389808, "lon": 72.3176510 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 74017073,
+  "bounds": {
+    "minlat": 33.7984373,
+    "minlon": 72.3956202,
+    "maxlat": 33.8280848,
+    "maxlon": 72.5124588
+  },
+  "nodes": [
+    13301973823,
+    875831580,
+    13301973824,
+    13301973825,
+    875831734,
+    13301973826,
+    2429970956,
+    2429970955,
+    875831505,
+    2429970957,
+    2429970959,
+    2429970958,
+    875831636,
+    13301973829,
+    13301973828,
+    13301973830,
+    13301973831,
+    875831544,
+    13301973832,
+    13301973833,
+    13301973827,
+    13645821794,
+    875831752,
+    13301973836,
+    875831520,
+    13301973837,
+    875831658,
+    13301973838,
+    875831799,
+    13301973843,
+    13301973842,
+    875925931,
+    875831543,
+    13301973841,
+    13301973840,
+    875831684,
+    2279837279,
+    2279837281,
+    2279837285,
+    2279837292,
+    875831475,
+    13301973839,
+    2279837301,
+    875831793,
+    2279837303,
+    2279837305,
+    13301973844,
+    2418382190
+  ],
+  "geometry": [
+    { "lat": 33.7984373, "lon": 72.3956202 },
+    { "lat": 33.7995460, "lon": 72.3976931 },
+    { "lat": 33.8008217, "lon": 72.4001151 },
+    { "lat": 33.8015888, "lon": 72.4015622 },
+    { "lat": 33.8021442, "lon": 72.4027249 },
+    { "lat": 33.8026505, "lon": 72.4039601 },
+    { "lat": 33.8031567, "lon": 72.4055869 },
+    { "lat": 33.8036203, "lon": 72.4075610 },
+    { "lat": 33.8042116, "lon": 72.4114239 },
+    { "lat": 33.8055816, "lon": 72.4203122 },
+    { "lat": 33.8058747, "lon": 72.4217251 },
+    { "lat": 33.8065177, "lon": 72.4240083 },
+    { "lat": 33.8076095, "lon": 72.4276591 },
+    { "lat": 33.8082080, "lon": 72.4296818 },
+    { "lat": 33.8089580, "lon": 72.4322931 },
+    { "lat": 33.8094517, "lon": 72.4339443 },
+    { "lat": 33.8098746, "lon": 72.4353855 },
+    { "lat": 33.8101604, "lon": 72.4362969 },
+    { "lat": 33.8104572, "lon": 72.4374191 },
+    { "lat": 33.8107438, "lon": 72.4387902 },
+    { "lat": 33.8110303, "lon": 72.4404456 },
+    { "lat": 33.8111175, "lon": 72.4409896 },
+    { "lat": 33.8113181, "lon": 72.4422420 },
+    { "lat": 33.8132399, "lon": 72.4536726 },
+    { "lat": 33.8140368, "lon": 72.4586356 },
+    { "lat": 33.8142005, "lon": 72.4600395 },
+    { "lat": 33.8142707, "lon": 72.4614918 },
+    { "lat": 33.8142463, "lon": 72.4629297 },
+    { "lat": 33.8139742, "lon": 72.4719178 },
+    { "lat": 33.8140349, "lon": 72.4733128 },
+    { "lat": 33.8143274, "lon": 72.4746328 },
+    { "lat": 33.8146984, "lon": 72.4755560 },
+    { "lat": 33.8166667, "lon": 72.4794430 },
+    { "lat": 33.8197016, "lon": 72.4854170 },
+    { "lat": 33.8237800, "lon": 72.4934753 },
+    { "lat": 33.8247658, "lon": 72.4954032 },
+    { "lat": 33.8253554, "lon": 72.4966014 },
+    { "lat": 33.8256266, "lon": 72.4973469 },
+    { "lat": 33.8258049, "lon": 72.4979146 },
+    { "lat": 33.8260278, "lon": 72.4988167 },
+    { "lat": 33.8262194, "lon": 72.4997924 },
+    { "lat": 33.8266770, "lon": 72.5036948 },
+    { "lat": 33.8268662, "lon": 72.5053700 },
+    { "lat": 33.8268938, "lon": 72.5056149 },
+    { "lat": 33.8272364, "lon": 72.5085572 },
+    { "lat": 33.8275534, "lon": 72.5107027 },
+    { "lat": 33.8278102, "lon": 72.5116344 },
+    { "lat": 33.8280848, "lon": 72.5124588 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 218730372,
+  "bounds": {
+    "minlat": 33.7975577,
+    "minlon": 72.3180884,
+    "maxlat": 33.8376762,
+    "maxlon": 72.3314782
+  },
+  "nodes": [
+    13301973750,
+    13301973752,
+    875821456,
+    875817211
+  ],
+  "geometry": [
+    { "lat": 33.7975577, "lon": 72.3314782 },
+    { "lat": 33.8052964, "lon": 72.3288908 },
+    { "lat": 33.8108150, "lon": 72.3270456 },
+    { "lat": 33.8376762, "lon": 72.3180884 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 235124582,
+  "bounds": {
+    "minlat": 33.8716769,
+    "minlon": 72.2302382,
+    "maxlat": 33.8739439,
+    "maxlon": 72.2346939
+  },
+  "nodes": [
+    2432160503,
+    4109633157,
+    4109633154,
+    875831656,
+    4109633152,
+    13301973768,
+    875831555,
+    7943091256,
+    4109633151,
+    7943091255,
+    2590120123,
+    875831678
+  ],
+  "geometry": [
+    { "lat": 33.8739439, "lon": 72.2302382 },
+    { "lat": 33.8734676, "lon": 72.2304105 },
+    { "lat": 33.8730172, "lon": 72.2306613 },
+    { "lat": 33.8725804, "lon": 72.2310623 },
+    { "lat": 33.8721980, "lon": 72.2315851 },
+    { "lat": 33.8718992, "lon": 72.2322331 },
+    { "lat": 33.8717452, "lon": 72.2327094 },
+    { "lat": 33.8716851, "lon": 72.2332279 },
+    { "lat": 33.8716769, "lon": 72.2335293 },
+    { "lat": 33.8716938, "lon": 72.2338851 },
+    { "lat": 33.8717325, "lon": 72.2342555 },
+    { "lat": 33.8718326, "lon": 72.2346939 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 235124583,
+  "bounds": {
+    "minlat": 33.8739439,
+    "minlon": 72.2301753,
+    "maxlat": 33.8758613,
+    "maxlon": 72.2304957
+  },
+  "nodes": [
+    875831797,
+    4109633163,
+    4109633162,
+    4109633161,
+    2432160503
+  ],
+  "geometry": [
+    { "lat": 33.8758613, "lon": 72.2304957 },
+    { "lat": 33.8755019, "lon": 72.2304048 },
+    { "lat": 33.8749078, "lon": 72.2302395 },
+    { "lat": 33.8744245, "lon": 72.2301753 },
+    { "lat": 33.8739439, "lon": 72.2302382 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "tunnel": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 235124585,
+  "bounds": {
+    "minlat": 33.8758613,
+    "minlon": 72.2297341,
+    "maxlat": 33.8814729,
+    "maxlon": 72.2306688
+  },
+  "nodes": [
+    875831578,
+    4109633167,
+    2432160514,
+    4109633166,
+    2432160507,
+    2432160512,
+    4109633165,
+    2432160509,
+    4109633164,
+    875831797
+  ],
+  "geometry": [
+    { "lat": 33.8814729, "lon": 72.2297341 },
+    { "lat": 33.8811797, "lon": 72.2297765 },
+    { "lat": 33.8801964, "lon": 72.2297691 },
+    { "lat": 33.8796958, "lon": 72.2298307 },
+    { "lat": 33.8791770, "lon": 72.2299833 },
+    { "lat": 33.8783479, "lon": 72.2303635 },
+    { "lat": 33.8777276, "lon": 72.2306045 },
+    { "lat": 33.8771518, "lon": 72.2306688 },
+    { "lat": 33.8766020, "lon": 72.2306351 },
+    { "lat": 33.8758613, "lon": 72.2304957 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 235124586,
+  "bounds": {
+    "minlat": 33.8814729,
+    "minlon": 72.2289882,
+    "maxlat": 33.8833968,
+    "maxlon": 72.2297341
+  },
+  "nodes": [
+    2432160517,
+    875831578
+  ],
+  "geometry": [
+    { "lat": 33.8833968, "lon": 72.2289882 },
+    { "lat": 33.8814729, "lon": 72.2297341 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "tunnel": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 235124587,
+  "bounds": {
+    "minlat": 33.8718326,
+    "minlon": 72.2346939,
+    "maxlat": 33.8734431,
+    "maxlon": 72.2397661
+  },
+  "nodes": [
+    875831678,
+    2590120124
+  ],
+  "geometry": [
+    { "lat": 33.8718326, "lon": 72.2346939 },
+    { "lat": 33.8734431, "lon": 72.2397661 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "2",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 353245209,
+  "bounds": {
+    "minlat": 33.8671882,
+    "minlon": 72.2397661,
+    "maxlat": 33.8737667,
+    "maxlon": 72.2603454
+  },
+  "nodes": [
+    2590120124,
+    4109633158,
+    7943091259,
+    7943091261,
+    13301973743,
+    2590120125,
+    7943091260,
+    875831540,
+    875831794,
+    4109633155,
+    4109633156,
+    4109633159,
+    4109633160,
+    2432160525,
+    2432160528,
+    13301973767,
+    875831650,
+    875831518,
+    875831750,
+    875831630,
+    13301973766
+  ],
+  "geometry": [
+    { "lat": 33.8734431, "lon": 72.2397661 },
+    { "lat": 33.8735689, "lon": 72.2402487 },
+    { "lat": 33.8736255, "lon": 72.2405225 },
+    { "lat": 33.8736464, "lon": 72.2406736 },
+    { "lat": 33.8736629, "lon": 72.2409449 },
+    { "lat": 33.8736863, "lon": 72.2413130 },
+    { "lat": 33.8736693, "lon": 72.2416888 },
+    { "lat": 33.8736239, "lon": 72.2421197 },
+    { "lat": 33.8733518, "lon": 72.2446966 },
+    { "lat": 33.8732916, "lon": 72.2459911 },
+    { "lat": 33.8734334, "lon": 72.2473578 },
+    { "lat": 33.8736107, "lon": 72.2481799 },
+    { "lat": 33.8737171, "lon": 72.2488525 },
+    { "lat": 33.8737667, "lon": 72.2495059 },
+    { "lat": 33.8736773, "lon": 72.2504898 },
+    { "lat": 33.8735303, "lon": 72.2511443 },
+    { "lat": 33.8733076, "lon": 72.2517452 },
+    { "lat": 33.8706615, "lon": 72.2571499 },
+    { "lat": 33.8700091, "lon": 72.2580569 },
+    { "lat": 33.8691939, "lon": 72.2587938 },
+    { "lat": 33.8671882, "lon": 72.2603454 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 851637941,
+  "bounds": {
+    "minlat": 33.8734431,
+    "minlon": 72.2397661,
+    "maxlat": 33.8740736,
+    "maxlon": 72.2421219
+  },
+  "nodes": [
+    2590120124,
+    7943091262,
+    7943091263,
+    7943091264,
+    7943091265,
+    7943091266,
+    7943091267,
+    7943091268,
+    7943091269,
+    7943091270,
+    7943091272,
+    7943091274,
+    7943091276
+  ],
+  "geometry": [
+    { "lat": 33.8734431, "lon": 72.2397661 },
+    { "lat": 33.8735939, "lon": 72.2402153 },
+    { "lat": 33.8736244, "lon": 72.2403452 },
+    { "lat": 33.8736592, "lon": 72.2404956 },
+    { "lat": 33.8736812, "lon": 72.2406290 },
+    { "lat": 33.8736954, "lon": 72.2407520 },
+    { "lat": 33.8737074, "lon": 72.2408828 },
+    { "lat": 33.8737323, "lon": 72.2411776 },
+    { "lat": 33.8737607, "lon": 72.2413764 },
+    { "lat": 33.8738008, "lon": 72.2415060 },
+    { "lat": 33.8738683, "lon": 72.2416967 },
+    { "lat": 33.8739728, "lon": 72.2419351 },
+    { "lat": 33.8740736, "lon": 72.2421219 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "railway": "rail",
+    "usage": "branch"
+  }
+},
+{
+  "type": "way",
+  "id": 1032969666,
+  "bounds": {
+    "minlat": 33.9983533,
+    "minlon": 72.1115581,
+    "maxlat": 34.0010712,
+    "maxlon": 72.1285567
+  },
+  "nodes": [
+    9517266678,
+    9517266677,
+    9517266676,
+    2418466068,
+    13301788568,
+    307508681
+  ],
+  "geometry": [
+    { "lat": 33.9983533, "lon": 72.1285567 },
+    { "lat": 33.9988358, "lon": 72.1255303 },
+    { "lat": 34.0000703, "lon": 72.1177443 },
+    { "lat": 34.0004794, "lon": 72.1152461 },
+    { "lat": 34.0007742, "lon": 72.1134196 },
+    { "lat": 34.0010712, "lon": 72.1115581 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1032969667,
+  "bounds": {
+    "minlat": 33.9983261,
+    "minlon": 72.1285567,
+    "maxlat": 33.9983533,
+    "maxlon": 72.1287301
+  },
+  "nodes": [
+    9517266679,
+    9517266678
+  ],
+  "geometry": [
+    { "lat": 33.9983261, "lon": 72.1287301 },
+    { "lat": 33.9983533, "lon": 72.1285567 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1198158846,
+  "bounds": {
+    "minlat": 34.0074762,
+    "minlon": 72.0711293,
+    "maxlat": 34.0074962,
+    "maxlon": 72.0712607
+  },
+  "nodes": [
+    307509236,
+    1943223562
+  ],
+  "geometry": [
+    { "lat": 34.0074762, "lon": 72.0712607 },
+    { "lat": 34.0074962, "lon": 72.0711293 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1198158847,
+  "bounds": {
+    "minlat": 34.0066145,
+    "minlon": 72.0712607,
+    "maxlat": 34.0074762,
+    "maxlon": 72.0766845
+  },
+  "nodes": [
+    307509129,
+    307509138,
+    307509230,
+    307509236
+  ],
+  "geometry": [
+    { "lat": 34.0066145, "lon": 72.0766845 },
+    { "lat": 34.0068622, "lon": 72.0750818 },
+    { "lat": 34.0070695, "lon": 72.0738131 },
+    { "lat": 34.0074762, "lon": 72.0712607 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302589,
+  "bounds": {
+    "minlat": 34.0014024,
+    "minlon": 72.1018652,
+    "maxlat": 34.0026120,
+    "maxlon": 72.1095104
+  },
+  "nodes": [
+    307508714,
+    307508725,
+    307508738,
+    307508759
+  ],
+  "geometry": [
+    { "lat": 34.0014024, "lon": 72.1095104 },
+    { "lat": 34.0018442, "lon": 72.1066780 },
+    { "lat": 34.0023807, "lon": 72.1033248 },
+    { "lat": 34.0026120, "lon": 72.1018652 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302590,
+  "bounds": {
+    "minlat": 34.0026120,
+    "minlon": 72.1015900,
+    "maxlat": 34.0026583,
+    "maxlon": 72.1018652
+  },
+  "nodes": [
+    307508759,
+    307508791
+  ],
+  "geometry": [
+    { "lat": 34.0026120, "lon": 72.1018652 },
+    { "lat": 34.0026583, "lon": 72.1015900 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302591,
+  "bounds": {
+    "minlat": 34.0046340,
+    "minlon": 72.0867957,
+    "maxlat": 34.0050238,
+    "maxlon": 72.0891784
+  },
+  "nodes": [
+    307508957,
+    307508972,
+    307508982
+  ],
+  "geometry": [
+    { "lat": 34.0046340, "lon": 72.0891784 },
+    { "lat": 34.0047634, "lon": 72.0884131 },
+    { "lat": 34.0050238, "lon": 72.0867957 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302592,
+  "bounds": {
+    "minlat": 34.0050238,
+    "minlon": 72.0866259,
+    "maxlat": 34.0050505,
+    "maxlon": 72.0867957
+  },
+  "nodes": [
+    307508982,
+    13301788569
+  ],
+  "geometry": [
+    { "lat": 34.0050238, "lon": 72.0867957 },
+    { "lat": 34.0050505, "lon": 72.0866259 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302593,
+  "bounds": {
+    "minlat": 34.0070442,
+    "minlon": 72.0617864,
+    "maxlat": 34.0077594,
+    "maxlon": 72.0711293
+  },
+  "nodes": [
+    1943223562,
+    307509241,
+    307509246,
+    307509251,
+    307509371,
+    307509379,
+    307509387,
+    13347655767,
+    307509401
+  ],
+  "geometry": [
+    { "lat": 34.0074962, "lon": 72.0711293 },
+    { "lat": 34.0076199, "lon": 72.0703181 },
+    { "lat": 34.0077027, "lon": 72.0693752 },
+    { "lat": 34.0077594, "lon": 72.0680548 },
+    { "lat": 34.0077333, "lon": 72.0672738 },
+    { "lat": 34.0076710, "lon": 72.0663966 },
+    { "lat": 34.0075132, "lon": 72.0651100 },
+    { "lat": 34.0074873, "lon": 72.0649263 },
+    { "lat": 34.0070442, "lon": 72.0617864 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302594,
+  "bounds": {
+    "minlat": 34.0070316,
+    "minlon": 72.0616868,
+    "maxlat": 34.0070442,
+    "maxlon": 72.0617864
+  },
+  "nodes": [
+    307509401,
+    307509427
+  ],
+  "geometry": [
+    { "lat": 34.0070442, "lon": 72.0617864 },
+    { "lat": 34.0070316, "lon": 72.0616868 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450302595,
+  "bounds": {
+    "minlat": 34.0061947,
+    "minlon": 72.0557589,
+    "maxlat": 34.0070316,
+    "maxlon": 72.0616868
+  },
+  "nodes": [
+    307509427,
+    307509453,
+    13347655750,
+    307509459
+  ],
+  "geometry": [
+    { "lat": 34.0070316, "lon": 72.0616868 },
+    { "lat": 34.0067125, "lon": 72.0593898 },
+    { "lat": 34.0062521, "lon": 72.0561615 },
+    { "lat": 34.0061947, "lon": 72.0557589 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321535,
+  "bounds": {
+    "minlat": 33.7731440,
+    "minlon": 72.3371312,
+    "maxlat": 33.7806190,
+    "maxlon": 72.3472527
+  },
+  "nodes": [
+    4514958986,
+    2279562996,
+    2279562988,
+    13301973747,
+    2279562984,
+    875831525,
+    2279562991,
+    2279562998,
+    13313717093,
+    2279563015,
+    13313717092,
+    875831756,
+    13313717091,
+    2279563052,
+    13313717090,
+    875831638,
+    4514959018,
+    13313717089,
+    13313717088,
+    2279563108,
+    13301973749
+  ],
+  "geometry": [
+    { "lat": 33.7738490, "lon": 72.3472527 },
+    { "lat": 33.7734864, "lon": 72.3454480 },
+    { "lat": 33.7733224, "lon": 72.3446452 },
+    { "lat": 33.7731669, "lon": 72.3437942 },
+    { "lat": 33.7731440, "lon": 72.3432625 },
+    { "lat": 33.7731826, "lon": 72.3426042 },
+    { "lat": 33.7732821, "lon": 72.3420340 },
+    { "lat": 33.7734569, "lon": 72.3414049 },
+    { "lat": 33.7736609, "lon": 72.3409030 },
+    { "lat": 33.7739440, "lon": 72.3403770 },
+    { "lat": 33.7741851, "lon": 72.3400481 },
+    { "lat": 33.7744753, "lon": 72.3397018 },
+    { "lat": 33.7747214, "lon": 72.3394660 },
+    { "lat": 33.7750066, "lon": 72.3392261 },
+    { "lat": 33.7752274, "lon": 72.3390680 },
+    { "lat": 33.7754572, "lon": 72.3389395 },
+    { "lat": 33.7758177, "lon": 72.3387695 },
+    { "lat": 33.7760573, "lon": 72.3386743 },
+    { "lat": 33.7762957, "lon": 72.3385925 },
+    { "lat": 33.7768216, "lon": 72.3384235 },
+    { "lat": 33.7806190, "lon": 72.3371312 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321536,
+  "bounds": {
+    "minlat": 33.7806190,
+    "minlon": 72.3370938,
+    "maxlat": 33.7807316,
+    "maxlon": 72.3371312
+  },
+  "nodes": [
+    13301973749,
+    13301973748
+  ],
+  "geometry": [
+    { "lat": 33.7806190, "lon": 72.3371312 },
+    { "lat": 33.7807316, "lon": 72.3370938 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321537,
+  "bounds": {
+    "minlat": 33.7807316,
+    "minlon": 72.3315042,
+    "maxlat": 33.7974801,
+    "maxlon": 72.3370938
+  },
+  "nodes": [
+    13301973748,
+    13301973751
+  ],
+  "geometry": [
+    { "lat": 33.7807316, "lon": 72.3370938 },
+    { "lat": 33.7974801, "lon": 72.3315042 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321538,
+  "bounds": {
+    "minlat": 33.7974801,
+    "minlon": 72.3314782,
+    "maxlat": 33.7975577,
+    "maxlon": 72.3315042
+  },
+  "nodes": [
+    13301973751,
+    13301973750
+  ],
+  "geometry": [
+    { "lat": 33.7974801, "lon": 72.3315042 },
+    { "lat": 33.7975577, "lon": 72.3314782 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321539,
+  "bounds": {
+    "minlat": 33.8545540,
+    "minlon": 72.2724666,
+    "maxlat": 33.8599084,
+    "maxlon": 72.3069301
+  },
+  "nodes": [
+    13301973758,
+    875831500,
+    875831729,
+    875831576,
+    2432186107,
+    13301973757,
+    2432186102,
+    2432186123,
+    875831661,
+    875831560,
+    2432186125,
+    13301973756,
+    875831782,
+    13301973744,
+    13301973755,
+    875831800
+  ],
+  "geometry": [
+    { "lat": 33.8592413, "lon": 72.2724666 },
+    { "lat": 33.8575942, "lon": 72.2746795 },
+    { "lat": 33.8570708, "lon": 72.2755968 },
+    { "lat": 33.8567411, "lon": 72.2769862 },
+    { "lat": 33.8567188, "lon": 72.2780537 },
+    { "lat": 33.8569349, "lon": 72.2792098 },
+    { "lat": 33.8572757, "lon": 72.2804302 },
+    { "lat": 33.8595075, "lon": 72.2882783 },
+    { "lat": 33.8598149, "lon": 72.2897910 },
+    { "lat": 33.8599084, "lon": 72.2912448 },
+    { "lat": 33.8597792, "lon": 72.2929506 },
+    { "lat": 33.8595298, "lon": 72.2941335 },
+    { "lat": 33.8591957, "lon": 72.2951501 },
+    { "lat": 33.8561219, "lon": 72.3032879 },
+    { "lat": 33.8552687, "lon": 72.3055720 },
+    { "lat": 33.8545540, "lon": 72.3069301 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321540,
+  "bounds": {
+    "minlat": 33.8592413,
+    "minlon": 72.2723188,
+    "maxlat": 33.8593241,
+    "maxlon": 72.2724666
+  },
+  "nodes": [
+    13301973759,
+    13301973758
+  ],
+  "geometry": [
+    { "lat": 33.8593241, "lon": 72.2723188 },
+    { "lat": 33.8592413, "lon": 72.2724666 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321541,
+  "bounds": {
+    "minlat": 33.8593241,
+    "minlon": 72.2604331,
+    "maxlat": 33.8670697,
+    "maxlon": 72.2723188
+  },
+  "nodes": [
+    13301973765,
+    13301973764,
+    2432186088,
+    2432186086,
+    13301973763,
+    2432186101,
+    13301973762,
+    13301973761,
+    13301973760,
+    2432186091,
+    13301973759
+  ],
+  "geometry": [
+    { "lat": 33.8670697, "lon": 72.2604331 },
+    { "lat": 33.8649098, "lon": 72.2620616 },
+    { "lat": 33.8641313, "lon": 72.2628724 },
+    { "lat": 33.8619887, "lon": 72.2659247 },
+    { "lat": 33.8609364, "lon": 72.2674277 },
+    { "lat": 33.8604697, "lon": 72.2682797 },
+    { "lat": 33.8602119, "lon": 72.2690374 },
+    { "lat": 33.8600432, "lon": 72.2697791 },
+    { "lat": 33.8598884, "lon": 72.2708063 },
+    { "lat": 33.8596857, "lon": 72.2715198 },
+    { "lat": 33.8593241, "lon": 72.2723188 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321542,
+  "bounds": {
+    "minlat": 33.8670697,
+    "minlon": 72.2603454,
+    "maxlat": 33.8671882,
+    "maxlon": 72.2604331
+  },
+  "nodes": [
+    13301973766,
+    13301973765
+  ],
+  "geometry": [
+    { "lat": 33.8671882, "lon": 72.2603454 },
+    { "lat": 33.8670697, "lon": 72.2604331 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321543,
+  "bounds": {
+    "minlat": 33.8833968,
+    "minlon": 72.2258823,
+    "maxlat": 33.8927172,
+    "maxlon": 72.2289882
+  },
+  "nodes": [
+    2432160517,
+    13301973769,
+    875831730,
+    13301973770,
+    875831470,
+    13301973772
+  ],
+  "geometry": [
+    { "lat": 33.8833968, "lon": 72.2289882 },
+    { "lat": 33.8841093, "lon": 72.2286422 },
+    { "lat": 33.8872444, "lon": 72.2270517 },
+    { "lat": 33.8879068, "lon": 72.2267837 },
+    { "lat": 33.8905219, "lon": 72.2262363 },
+    { "lat": 33.8927172, "lon": 72.2258823 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321544,
+  "bounds": {
+    "minlat": 33.8927172,
+    "minlon": 72.2257830,
+    "maxlat": 33.8933116,
+    "maxlon": 72.2258823
+  },
+  "nodes": [
+    13301973772,
+    13301973773
+  ],
+  "geometry": [
+    { "lat": 33.8927172, "lon": 72.2258823 },
+    { "lat": 33.8933116, "lon": 72.2257830 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321545,
+  "bounds": {
+    "minlat": 33.8933116,
+    "minlon": 72.2254156,
+    "maxlat": 33.9044275,
+    "maxlon": 72.2273415
+  },
+  "nodes": [
+    13301973773,
+    875831599,
+    13301973774,
+    2432160522,
+    2432160520,
+    13301973775,
+    869607500
+  ],
+  "geometry": [
+    { "lat": 33.8933116, "lon": 72.2257830 },
+    { "lat": 33.8947299, "lon": 72.2254960 },
+    { "lat": 33.8955114, "lon": 72.2254156 },
+    { "lat": 33.8963997, "lon": 72.2255068 },
+    { "lat": 33.8985839, "lon": 72.2259848 },
+    { "lat": 33.9030641, "lon": 72.2270639 },
+    { "lat": 33.9044275, "lon": 72.2273415 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321546,
+  "bounds": {
+    "minlat": 33.9044275,
+    "minlon": 72.2273415,
+    "maxlat": 33.9045204,
+    "maxlon": 72.2273592
+  },
+  "nodes": [
+    869607500,
+    13301973776
+  ],
+  "geometry": [
+    { "lat": 33.9044275, "lon": 72.2273415 },
+    { "lat": 33.9045204, "lon": 72.2273592 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321547,
+  "bounds": {
+    "minlat": 33.9045204,
+    "minlon": 72.2273592,
+    "maxlat": 33.9118931,
+    "maxlon": 72.2284174
+  },
+  "nodes": [
+    13301973776,
+    13301973777,
+    869607490,
+    13301973778,
+    869607494,
+    13301973779,
+    13301973780
+  ],
+  "geometry": [
+    { "lat": 33.9045204, "lon": 72.2273592 },
+    { "lat": 33.9087050, "lon": 72.2282997 },
+    { "lat": 33.9092649, "lon": 72.2284174 },
+    { "lat": 33.9099378, "lon": 72.2283949 },
+    { "lat": 33.9105884, "lon": 72.2282490 },
+    { "lat": 33.9113098, "lon": 72.2279009 },
+    { "lat": 33.9118931, "lon": 72.2275230 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321548,
+  "bounds": {
+    "minlat": 33.9118931,
+    "minlon": 72.2274443,
+    "maxlat": 33.9120104,
+    "maxlon": 72.2275230
+  },
+  "nodes": [
+    13301973780,
+    13301973781
+  ],
+  "geometry": [
+    { "lat": 33.9118931, "lon": 72.2275230 },
+    { "lat": 33.9120104, "lon": 72.2274443 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321549,
+  "bounds": {
+    "minlat": 33.9120104,
+    "minlon": 72.2269412,
+    "maxlat": 33.9126767,
+    "maxlon": 72.2274443
+  },
+  "nodes": [
+    13301973781,
+    869607513
+  ],
+  "geometry": [
+    { "lat": 33.9120104, "lon": 72.2274443 },
+    { "lat": 33.9126767, "lon": 72.2269412 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321550,
+  "bounds": {
+    "minlat": 33.9126767,
+    "minlon": 72.2267547,
+    "maxlat": 33.9129294,
+    "maxlon": 72.2269412
+  },
+  "nodes": [
+    869607513,
+    13301973783
+  ],
+  "geometry": [
+    { "lat": 33.9126767, "lon": 72.2269412 },
+    { "lat": 33.9129294, "lon": 72.2267547 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "-1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "tunnel": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321551,
+  "bounds": {
+    "minlat": 33.9129294,
+    "minlon": 72.2265038,
+    "maxlat": 33.9134491,
+    "maxlon": 72.2267547
+  },
+  "nodes": [
+    13301973783,
+    869607508
+  ],
+  "geometry": [
+    { "lat": 33.9129294, "lon": 72.2267547 },
+    { "lat": 33.9134491, "lon": 72.2265038 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321552,
+  "bounds": {
+    "minlat": 33.9134491,
+    "minlon": 72.2263154,
+    "maxlat": 33.9146208,
+    "maxlon": 72.2265038
+  },
+  "nodes": [
+    869607508,
+    13301973782
+  ],
+  "geometry": [
+    { "lat": 33.9134491, "lon": 72.2265038 },
+    { "lat": 33.9146208, "lon": 72.2263154 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "-1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "tunnel": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321553,
+  "bounds": {
+    "minlat": 33.9146208,
+    "minlon": 72.2263154,
+    "maxlat": 33.9156499,
+    "maxlon": 72.2265294
+  },
+  "nodes": [
+    13301973782,
+    869607509
+  ],
+  "geometry": [
+    { "lat": 33.9146208, "lon": 72.2263154 },
+    { "lat": 33.9156499, "lon": 72.2265294 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321554,
+  "bounds": {
+    "minlat": 33.9156499,
+    "minlon": 72.2265294,
+    "maxlat": 33.9159733,
+    "maxlon": 72.2266370
+  },
+  "nodes": [
+    869607509,
+    869607521
+  ],
+  "geometry": [
+    { "lat": 33.9156499, "lon": 72.2265294 },
+    { "lat": 33.9159733, "lon": 72.2266370 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "-1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "tunnel": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321555,
+  "bounds": {
+    "minlat": 33.9159733,
+    "minlon": 72.2266370,
+    "maxlat": 33.9165418,
+    "maxlon": 72.2268336
+  },
+  "nodes": [
+    869607521,
+    13301973784
+  ],
+  "geometry": [
+    { "lat": 33.9159733, "lon": 72.2266370 },
+    { "lat": 33.9165418, "lon": 72.2268336 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321556,
+  "bounds": {
+    "minlat": 33.9165418,
+    "minlon": 72.2268336,
+    "maxlat": 33.9168438,
+    "maxlon": 72.2269533
+  },
+  "nodes": [
+    13301973784,
+    13301973785
+  ],
+  "geometry": [
+    { "lat": 33.9165418, "lon": 72.2268336 },
+    { "lat": 33.9168438, "lon": 72.2269533 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "-1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "tunnel": "yes",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321557,
+  "bounds": {
+    "minlat": 33.9168438,
+    "minlon": 72.2268072,
+    "maxlat": 33.9276763,
+    "maxlon": 72.2274668
+  },
+  "nodes": [
+    13301973785,
+    13301973786,
+    13301973787,
+    869607504,
+    869607519,
+    13301973788,
+    13301973789,
+    869607498,
+    13301973790,
+    869607511,
+    869607495,
+    869607507,
+    13301973792
+  ],
+  "geometry": [
+    { "lat": 33.9168438, "lon": 72.2269533 },
+    { "lat": 33.9176181, "lon": 72.2272600 },
+    { "lat": 33.9182500, "lon": 72.2273489 },
+    { "lat": 33.9189933, "lon": 72.2273628 },
+    { "lat": 33.9204976, "lon": 72.2274668 },
+    { "lat": 33.9215483, "lon": 72.2274379 },
+    { "lat": 33.9218919, "lon": 72.2273959 },
+    { "lat": 33.9237045, "lon": 72.2270105 },
+    { "lat": 33.9244887, "lon": 72.2268579 },
+    { "lat": 33.9251215, "lon": 72.2268072 },
+    { "lat": 33.9267610, "lon": 72.2269514 },
+    { "lat": 33.9273105, "lon": 72.2270830 },
+    { "lat": 33.9276763, "lon": 72.2272308 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321558,
+  "bounds": {
+    "minlat": 33.9276763,
+    "minlon": 72.2272308,
+    "maxlat": 33.9281763,
+    "maxlon": 72.2274030
+  },
+  "nodes": [
+    13301973792,
+    13301973791
+  ],
+  "geometry": [
+    { "lat": 33.9276763, "lon": 72.2272308 },
+    { "lat": 33.9281763, "lon": 72.2274030 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321559,
+  "bounds": {
+    "minlat": 33.9281763,
+    "minlon": 72.2215933,
+    "maxlat": 33.9360170,
+    "maxlon": 72.2279847
+  },
+  "nodes": [
+    13301973791,
+    869607492,
+    13301973793,
+    869607496,
+    13301973794,
+    869607518,
+    13301973795,
+    13301973796,
+    869607506,
+    869607487
+  ],
+  "geometry": [
+    { "lat": 33.9281763, "lon": 72.2274030 },
+    { "lat": 33.9295780, "lon": 72.2278506 },
+    { "lat": 33.9303169, "lon": 72.2279847 },
+    { "lat": 33.9308734, "lon": 72.2279740 },
+    { "lat": 33.9315552, "lon": 72.2278005 },
+    { "lat": 33.9321835, "lon": 72.2275089 },
+    { "lat": 33.9327438, "lon": 72.2270680 },
+    { "lat": 33.9331218, "lon": 72.2266437 },
+    { "lat": 33.9334821, "lon": 72.2260799 },
+    { "lat": 33.9360170, "lon": 72.2215933 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321560,
+  "bounds": {
+    "minlat": 33.9360170,
+    "minlon": 72.2212453,
+    "maxlat": 33.9363351,
+    "maxlon": 72.2215933
+  },
+  "nodes": [
+    869607487,
+    13301973797
+  ],
+  "geometry": [
+    { "lat": 33.9360170, "lon": 72.2215933 },
+    { "lat": 33.9363351, "lon": 72.2212453 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321561,
+  "bounds": {
+    "minlat": 33.9411232,
+    "minlon": 72.2122377,
+    "maxlat": 33.9445274,
+    "maxlon": 72.2159784
+  },
+  "nodes": [
+    13301973799,
+    13301973801,
+    869607505
+  ],
+  "geometry": [
+    { "lat": 33.9411232, "lon": 72.2159784 },
+    { "lat": 33.9431824, "lon": 72.2137070 },
+    { "lat": 33.9445274, "lon": 72.2122377 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321562,
+  "bounds": {
+    "minlat": 33.9410493,
+    "minlon": 72.2159784,
+    "maxlat": 33.9411232,
+    "maxlon": 72.2160586
+  },
+  "nodes": [
+    13301973800,
+    13301973799
+  ],
+  "geometry": [
+    { "lat": 33.9410493, "lon": 72.2160586 },
+    { "lat": 33.9411232, "lon": 72.2159784 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "source": "SPOTIMAGE-CNES-2009",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321563,
+  "bounds": {
+    "minlat": 33.9445274,
+    "minlon": 72.2102667,
+    "maxlat": 33.9463312,
+    "maxlon": 72.2122377
+  },
+  "nodes": [
+    869607505,
+    13301973803,
+    13301973802,
+    13301973804
+  ],
+  "geometry": [
+    { "lat": 33.9445274, "lon": 72.2122377 },
+    { "lat": 33.9451529, "lon": 72.2115441 },
+    { "lat": 33.9458563, "lon": 72.2107835 },
+    { "lat": 33.9463312, "lon": 72.2102667 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321564,
+  "bounds": {
+    "minlat": 33.9463312,
+    "minlon": 72.2101970,
+    "maxlat": 33.9463953,
+    "maxlon": 72.2102667
+  },
+  "nodes": [
+    13301973804,
+    13301973805
+  ],
+  "geometry": [
+    { "lat": 33.9463312, "lon": 72.2102667 },
+    { "lat": 33.9463953, "lon": 72.2101970 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321565,
+  "bounds": {
+    "minlat": 33.9463953,
+    "minlon": 72.1991529,
+    "maxlat": 33.9564868,
+    "maxlon": 72.2101970
+  },
+  "nodes": [
+    13301973805,
+    13301973806,
+    13301973807,
+    872562178,
+    13313717078,
+    13301788554,
+    13313717077,
+    13313717076
+  ],
+  "geometry": [
+    { "lat": 33.9463953, "lon": 72.2101970 },
+    { "lat": 33.9482348, "lon": 72.2081603 },
+    { "lat": 33.9492984, "lon": 72.2070167 },
+    { "lat": 33.9535358, "lon": 72.2024272 },
+    { "lat": 33.9539199, "lon": 72.2019685 },
+    { "lat": 33.9542700, "lon": 72.2015694 },
+    { "lat": 33.9561191, "lon": 72.1995460 },
+    { "lat": 33.9564868, "lon": 72.1991529 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321566,
+  "bounds": {
+    "minlat": 33.9611465,
+    "minlon": 72.1939677,
+    "maxlat": 33.9612322,
+    "maxlon": 72.1940618
+  },
+  "nodes": [
+    13301973809,
+    13301788548
+  ],
+  "geometry": [
+    { "lat": 33.9611465, "lon": 72.1940618 },
+    { "lat": 33.9612322, "lon": 72.1939677 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321567,
+  "bounds": {
+    "minlat": 33.9612322,
+    "minlon": 72.1911196,
+    "maxlat": 33.9638432,
+    "maxlon": 72.1939677
+  },
+  "nodes": [
+    13301788548,
+    9559925706,
+    13301973810
+  ],
+  "geometry": [
+    { "lat": 33.9612322, "lon": 72.1939677 },
+    { "lat": 33.9635431, "lon": 72.1914628 },
+    { "lat": 33.9638432, "lon": 72.1911196 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321568,
+  "bounds": {
+    "minlat": 33.9638432,
+    "minlon": 72.1910570,
+    "maxlat": 33.9638979,
+    "maxlon": 72.1911196
+  },
+  "nodes": [
+    13301973810,
+    872562235
+  ],
+  "geometry": [
+    { "lat": 33.9638432, "lon": 72.1911196 },
+    { "lat": 33.9638979, "lon": 72.1910570 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321569,
+  "bounds": {
+    "minlat": 33.9638979,
+    "minlon": 72.1879616,
+    "maxlat": 33.9667041,
+    "maxlon": 72.1910570
+  },
+  "nodes": [
+    872562235,
+    9559925707,
+    9559925710,
+    13301973812
+  ],
+  "geometry": [
+    { "lat": 33.9638979, "lon": 72.1910570 },
+    { "lat": 33.9655037, "lon": 72.1892652 },
+    { "lat": 33.9663746, "lon": 72.1883194 },
+    { "lat": 33.9667041, "lon": 72.1879616 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321570,
+  "bounds": {
+    "minlat": 33.9667041,
+    "minlon": 72.1879003,
+    "maxlat": 33.9667604,
+    "maxlon": 72.1879616
+  },
+  "nodes": [
+    13301973812,
+    13301973811
+  ],
+  "geometry": [
+    { "lat": 33.9667041, "lon": 72.1879616 },
+    { "lat": 33.9667604, "lon": 72.1879003 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321571,
+  "bounds": {
+    "minlat": 33.9667604,
+    "minlon": 72.1851710,
+    "maxlat": 33.9692647,
+    "maxlon": 72.1879003
+  },
+  "nodes": [
+    13301973811,
+    9559925711,
+    9559925714,
+    13301973813
+  ],
+  "geometry": [
+    { "lat": 33.9667604, "lon": 72.1879003 },
+    { "lat": 33.9682396, "lon": 72.1862749 },
+    { "lat": 33.9689037, "lon": 72.1855725 },
+    { "lat": 33.9692647, "lon": 72.1851710 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321572,
+  "bounds": {
+    "minlat": 33.9692647,
+    "minlon": 72.1850890,
+    "maxlat": 33.9693384,
+    "maxlon": 72.1851710
+  },
+  "nodes": [
+    13301973813,
+    9559925715
+  ],
+  "geometry": [
+    { "lat": 33.9692647, "lon": 72.1851710 },
+    { "lat": 33.9693384, "lon": 72.1850890 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321573,
+  "bounds": {
+    "minlat": 33.9693384,
+    "minlon": 72.1660871,
+    "maxlat": 33.9865691,
+    "maxlon": 72.1850890
+  },
+  "nodes": [
+    9559925715,
+    13301788558,
+    6629437225,
+    13301788559,
+    13301788560,
+    13301788561,
+    872705839,
+    13301788562,
+    13301973815
+  ],
+  "geometry": [
+    { "lat": 33.9693384, "lon": 72.1850890 },
+    { "lat": 33.9741783, "lon": 72.1797775 },
+    { "lat": 33.9783488, "lon": 72.1752625 },
+    { "lat": 33.9801541, "lon": 72.1732660 },
+    { "lat": 33.9818443, "lon": 72.1714314 },
+    { "lat": 33.9835509, "lon": 72.1695169 },
+    { "lat": 33.9850835, "lon": 72.1678820 },
+    { "lat": 33.9863676, "lon": 72.1663786 },
+    { "lat": 33.9865691, "lon": 72.1660871 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321574,
+  "bounds": {
+    "minlat": 33.9865691,
+    "minlon": 72.1660239,
+    "maxlat": 33.9866127,
+    "maxlon": 72.1660871
+  },
+  "nodes": [
+    13301973815,
+    13301973814
+  ],
+  "geometry": [
+    { "lat": 33.9865691, "lon": 72.1660871 },
+    { "lat": 33.9866127, "lon": 72.1660239 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321575,
+  "bounds": {
+    "minlat": 33.9866127,
+    "minlon": 72.1597097,
+    "maxlat": 33.9897255,
+    "maxlon": 72.1660239
+  },
+  "nodes": [
+    13301973814,
+    13301788563,
+    872706501,
+    13301788564,
+    9517266675,
+    13301973817
+  ],
+  "geometry": [
+    { "lat": 33.9866127, "lon": 72.1660239 },
+    { "lat": 33.9871868, "lon": 72.1651934 },
+    { "lat": 33.9879748, "lon": 72.1638634 },
+    { "lat": 33.9884887, "lon": 72.1627645 },
+    { "lat": 33.9889936, "lon": 72.1616226 },
+    { "lat": 33.9897255, "lon": 72.1597097 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321576,
+  "bounds": {
+    "minlat": 33.9897255,
+    "minlon": 72.1596187,
+    "maxlat": 33.9897602,
+    "maxlon": 72.1597097
+  },
+  "nodes": [
+    13301973817,
+    13301973816
+  ],
+  "geometry": [
+    { "lat": 33.9897255, "lon": 72.1597097 },
+    { "lat": 33.9897602, "lon": 72.1596187 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321577,
+  "bounds": {
+    "minlat": 33.7759807,
+    "minlon": 72.3578195,
+    "maxlat": 33.7983658,
+    "maxlon": 72.3954828
+  },
+  "nodes": [
+    2279563090,
+    13313717098,
+    13313717097,
+    2279563104,
+    875831766,
+    4514959021,
+    3283648540,
+    13301973820,
+    875831537,
+    875831675,
+    13301973821,
+    2279563263,
+    2279563266,
+    2279563272,
+    875831780,
+    875831558,
+    2279563275,
+    875831701,
+    4514959022,
+    4514959023,
+    875831539,
+    13301973822
+  ],
+  "geometry": [
+    { "lat": 33.7759807, "lon": 72.3578195 },
+    { "lat": 33.7762392, "lon": 72.3590897 },
+    { "lat": 33.7767303, "lon": 72.3615531 },
+    { "lat": 33.7770127, "lon": 72.3628649 },
+    { "lat": 33.7772518, "lon": 72.3638133 },
+    { "lat": 33.7775087, "lon": 72.3647064 },
+    { "lat": 33.7782696, "lon": 72.3666391 },
+    { "lat": 33.7807126, "lon": 72.3727580 },
+    { "lat": 33.7818531, "lon": 72.3754921 },
+    { "lat": 33.7822891, "lon": 72.3763235 },
+    { "lat": 33.7826371, "lon": 72.3768612 },
+    { "lat": 33.7829986, "lon": 72.3773346 },
+    { "lat": 33.7834574, "lon": 72.3777884 },
+    { "lat": 33.7839126, "lon": 72.3781331 },
+    { "lat": 33.7844657, "lon": 72.3784757 },
+    { "lat": 33.7890170, "lon": 72.3802688 },
+    { "lat": 33.7897723, "lon": 72.3806694 },
+    { "lat": 33.7903947, "lon": 72.3811775 },
+    { "lat": 33.7911096, "lon": 72.3819664 },
+    { "lat": 33.7916512, "lon": 72.3828328 },
+    { "lat": 33.7947070, "lon": 72.3885683 },
+    { "lat": 33.7983658, "lon": 72.3954828 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1450321578,
+  "bounds": {
+    "minlat": 33.7983658,
+    "minlon": 72.3954828,
+    "maxlat": 33.7984373,
+    "maxlon": 72.3956202
+  },
+  "nodes": [
+    13301973822,
+    13301973823
+  ],
+  "geometry": [
+    { "lat": 33.7983658, "lon": 72.3954828 },
+    { "lat": 33.7984373, "lon": 72.3956202 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "source": "historical",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1451657250,
+  "bounds": {
+    "minlat": 33.9565324,
+    "minlon": 72.1940618,
+    "maxlat": 33.9611465,
+    "maxlon": 72.1991030
+  },
+  "nodes": [
+    13313717075,
+    13313717084,
+    13301788547,
+    13313717074,
+    13301973809
+  ],
+  "geometry": [
+    { "lat": 33.9565324, "lon": 72.1991030 },
+    { "lat": 33.9566930, "lon": 72.1989254 },
+    { "lat": 33.9583012, "lon": 72.1971479 },
+    { "lat": 33.9607983, "lon": 72.1944382 },
+    { "lat": 33.9611465, "lon": 72.1940618 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1451657251,
+  "bounds": {
+    "minlat": 33.9564868,
+    "minlon": 72.1991030,
+    "maxlat": 33.9565324,
+    "maxlon": 72.1991529
+  },
+  "nodes": [
+    13313717076,
+    13313717075
+  ],
+  "geometry": [
+    { "lat": 33.9564868, "lon": 72.1991529 },
+    { "lat": 33.9565324, "lon": 72.1991030 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1451909539,
+  "bounds": {
+    "minlat": 33.9962239,
+    "minlon": 72.1287301,
+    "maxlat": 33.9983261,
+    "maxlon": 72.1416226
+  },
+  "nodes": [
+    13301788567,
+    13301788566,
+    872562222,
+    9517266679
+  ],
+  "geometry": [
+    { "lat": 33.9962239, "lon": 72.1416226 },
+    { "lat": 33.9964421, "lon": 72.1405235 },
+    { "lat": 33.9970163, "lon": 72.1369358 },
+    { "lat": 33.9983261, "lon": 72.1287301 }
+  ],
+  "tags": {
+    "electrified": "no",
+    "gauge": "1676",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+},
+{
+  "type": "way",
+  "id": 1451909540,
+  "bounds": {
+    "minlat": 33.9961595,
+    "minlon": 72.1416226,
+    "maxlat": 33.9962239,
+    "maxlon": 72.1419142
+  },
+  "nodes": [
+    13315899071,
+    13301788567
+  ],
+  "geometry": [
+    { "lat": 33.9961595, "lon": 72.1419142 },
+    { "lat": 33.9962239, "lon": 72.1416226 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "electrified": "no",
+    "gauge": "1676",
+    "layer": "1",
+    "note": "Contributors are requested to not edit the \"operator\" and \"operator:ur\" tags. (2024/05/18)",
+    "operator": "Pakistan Railways",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "passenger_lines": "1",
+    "railway": "rail",
+    "railway:traffic_mode": "mixed",
+    "usage": "main"
+  }
+}
+
+  ]
+}

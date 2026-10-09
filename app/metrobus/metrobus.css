@@ -1,0 +1,100 @@
+.bus-shell { color:#19252d; background:#fff1f2; height:100dvh; min-height:620px; display:grid; grid-template-rows:76px minmax(0,1fr) 96px; font-family:Arial,Helvetica,sans-serif; }
+.bus-header { display:flex; justify-content:space-between; align-items:center; padding:0 28px; background:#fffafa; border-bottom:1px solid #fecdd3; }
+.bus-brand { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+.bus-brand>span { background:#e11d48; color:white; padding:12px; border-radius:14px; }
+.bus-brand h1 { margin:0; font-size:24px; font-weight:800; letter-spacing:-.8px; }
+.bus-brand p { margin:4px 0 0; color:#9f1239; font-size:9px; font-weight:700; letter-spacing:2px; }
+.bus-header nav { display:flex; align-items:center; gap:22px; font-size:12px; font-weight:700; }
+.bus-header nav a { display:flex; gap:6px; align-items:center; text-decoration:none; }
+.bus-header nav a:hover { color:#be123c; }
+.bus-layout { min-height:0; display:grid; grid-template-columns:330px minmax(0,1fr); }
+.bus-cab { padding:22px; background:#162128; color:#f1f5f9; overflow-y:auto; min-height:0; scrollbar-width:thin; scrollbar-color:#556068 #162128; }
+.bus-cab-heading { display:flex; align-items:center; justify-content:space-between; color:#fda4af; }
+.bus-kicker { font-size:10px; font-weight:bold; letter-spacing:2px; }
+.bus-destination { padding:18px 0; border-bottom:1px solid #35424b; }
+.bus-destination>span,.bus-platform-display>span { font-size:9px; letter-spacing:1.8px; color:#94a3b8; }
+.bus-destination h2 { font-size:28px; font-weight:700; letter-spacing:-1px; margin:5px 0 8px; }
+.bus-destination p { display:flex; gap:6px; align-items:center; color:#cbd5e1; font-size:11px; margin:0; }
+.bus-departure { padding-top:18px; }
+.bus-departure label { display:block; margin:0 0 7px; color:#cbd5e1; font-size:11px; }
+.bus-departure select { color-scheme:dark; width:100%; padding:11px; margin-bottom:14px; border:1px solid #475569; border-radius:7px; background:#202e37; color:#f8fafc; font-size:12px; }
+.bus-shell button { cursor:pointer; transition:background-color .15s; }
+.bus-shell button:disabled { opacity:.4; cursor:not-allowed; }
+.bus-shell :is(button,select,a):focus-visible { outline:2px solid #e11d48; outline-offset:3px; }
+.bus-primary { width:100%; display:flex; align-items:center; justify-content:space-between; padding:12px; font-size:12px; font-weight:700; border-radius:7px; background:#e11d48; color:#fff; border:0; }
+.bus-platform-display { background:#0d151b; border:1px solid #344651; border-left:3px solid #fb7185; padding:14px; margin-top:18px; border-radius:5px; }
+.bus-platform-display strong { display:block; margin:6px 0; font-size:19px; }
+.bus-platform-display p { margin:0; font-size:11px; color:#fda4af; }
+.bus-speedometer { display:flex; flex-direction:column; align-items:center; padding:20px 0 10px; }
+.bus-speed-arc { width:144px; height:144px; padding:9px; border-radius:50%; background:conic-gradient(from 220deg,#fb7185 0 var(--bus-speed),#33434d var(--bus-speed) 78%,transparent 78% 100%); }
+.bus-speed-arc>div { width:100%; height:100%; border-radius:50%; background:#162128; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.bus-speed-arc strong { font-size:54px; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:-3px; line-height:1; }
+.bus-speed-arc span { font-size:10px; color:#94a3b8; margin-top:7px; }
+.bus-speedometer p { display:flex; align-items:center; gap:6px; color:#94a3b8; font-size:10px; margin-top:-9px; }
+.bus-system-status { display:flex; justify-content:space-between; gap:6px; font-size:8px; font-weight:700; letter-spacing:.5px; padding:12px 0; border-top:1px solid #35424b; }
+.bus-system-status span { display:flex; gap:5px; align-items:center; }
+.bus-status-good { color:#86efac; }.bus-status-warning { color:#fda4af; }
+.bus-traction-buttons { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.bus-traction-buttons button { min-height:48px; display:flex; justify-content:center; gap:7px; align-items:center; border-radius:7px; border:0; font-size:12px; font-weight:700; touch-action:none; user-select:none; }
+.bus-traction { background:#e11d48; color:white; }.bus-brake { background:#344651; color:#e2e8f0; }
+.bus-hint { margin:10px 0; font-size:10px; color:#a7b5be; line-height:1.6; }
+.bus-action-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:15px; }
+.bus-action-grid button { display:flex; gap:6px; align-items:center; padding:11px 9px; border:1px solid #43535e; border-radius:6px; color:#e2e8f0; background:#21303a; font-size:10px; }
+.bus-action-grid button[aria-pressed=true] { border-color:#e11d48; color:#fda4af; }
+.bus-utility { display:flex; gap:8px; margin-top:15px; }
+.bus-utility button { display:flex; align-items:center; gap:6px; padding:8px; border-radius:5px; border:0; color:#cbd5e1; background:#263640; font-size:10px; }
+.bus-new-trip { background:transparent; border:0; padding:10px 0; color:#fda4af; font-size:11px; text-decoration:underline; }
+.bus-save-note { margin:7px 0 0; color:#8499a6; font-size:9px; line-height:1.5; }
+.bus-map-panel { position:relative; min-width:0; min-height:0; background:#ede9e3; }
+.bus-map-top { position:absolute; top:18px; left:18px; right:18px; display:flex; align-items:center; justify-content:space-between; gap:10px; pointer-events:none; }
+.bus-map-top>span { border-radius:5px; padding:9px 11px; background:#fffef9e8; color:#9f1239; font-size:9px; font-weight:700; letter-spacing:1px; box-shadow:0 3px 12px #0001; }
+.bus-map-top>button { display:flex; gap:7px; align-items:center; border:0; border-radius:6px; background:#fffef9ed; padding:9px 11px; color:#334155; font-size:10px; pointer-events:auto; }
+.bus-map-message { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; gap:12px; align-items:center; justify-content:center; background:#fff1f2ec; text-align:center; padding:30px; }
+.bus-map-message h2 { margin:0; font-size:22px; }.bus-map-message p { max-width:360px; margin:0; font-size:13px; line-height:1.5; }
+.bus-map-message button { padding:10px 18px; background:#e11d48; color:white; border:0; border-radius:7px; }
+.bus-journey-strip { position:absolute; bottom:22px; left:22px; right:62px; padding:18px 20px 22px; display:flex; justify-content:space-between; align-items:center; background:#fffafaf5; box-shadow:0 6px 25px #0002; border-radius:9px; border-top:3px solid #e11d48; }
+.bus-journey-strip>div>span { display:block; color:#9f1239; font-size:8px; font-weight:700; letter-spacing:1.5px; }.bus-journey-strip strong { display:block; font-size:20px; margin-top:5px; }.bus-journey-strip p { color:#64748b; font-size:10px; margin:6px 0 0; }
+.bus-strip-distance { text-align:right; }.bus-strip-distance strong { font-size:25px; }.bus-strip-distance small { font-size:11px; font-weight:400; }.bus-strip-distance span { margin-top:7px; }
+.bus-journey-strip progress { position:absolute; left:0; bottom:0; height:3px; width:100%; accent-color:#e11d48; }
+.bus-route-ribbon { display:flex; align-items:stretch; overflow-x:auto; padding:15px 20px; background:#fffafa; border-top:1px solid #fecdd3; scrollbar-width:thin; scrollbar-color:#fda4af #fffafa; }
+.bus-route-ribbon>div { min-width:120px; max-width:150px; border-top:3px solid #fda4af; padding:7px 15px 0 0; position:relative; }
+.bus-route-ribbon>div:before { content:''; position:absolute; top:-6px; left:0; width:9px; height:9px; border:2px solid #e11d48; border-radius:50%; background:white; }
+.bus-route-ribbon span { font-size:8px; color:#9f1239; }.bus-route-ribbon strong { display:block; font-size:10px; margin-top:3px; }.bus-route-ribbon small { display:block; font-size:7px; color:#64748b; margin-top:3px; }.bus-stop-passed { opacity:.4; }.bus-stop-current strong { color:#be123c; }
+.bus-shell .mapboxgl-ctrl-group { background:white; }.bus-shell .mapboxgl-ctrl-icon { filter:none; }
+@media(max-width:800px) { .bus-shell { height:auto; min-height:100dvh; grid-template-rows:76px auto 96px; }.bus-layout { display:flex; flex-direction:column-reverse; }.bus-map-panel { height:52dvh; min-height:360px; }.bus-cab { overflow:visible; }.bus-cab-heading,.bus-destination,.bus-departure,.bus-platform-display,.bus-system-status,.bus-traction-buttons,.bus-action-grid,.bus-utility,.bus-hint,.bus-new-trip,.bus-save-note { max-width:480px; margin-left:auto; margin-right:auto; }.bus-cab-heading { margin-bottom:10px; }.bus-destination { text-align:center; }.bus-destination p { justify-content:center; }.bus-header { padding:0 16px; }.bus-header nav { gap:12px; font-size:10px; }.bus-brand h1 { font-size:20px; }.bus-brand p { letter-spacing:1px; font-size:8px; }.bus-brand>span { padding:9px; }.bus-map-top { left:12px; right:12px; top:12px; }.bus-map-top>span { font-size:8px; letter-spacing:.4px; }.bus-journey-strip { left:12px; bottom:16px; padding:14px; }.bus-journey-strip strong { font-size:16px; }.bus-strip-distance span { font-size:7px!important; letter-spacing:.3px!important; } }
+@media(prefers-reduced-motion:reduce) { .bus-shell button { transition:none; } }
+
+@media(max-width:600px) { .bus-shell { grid-template-rows:108px auto 96px; } .bus-header { flex-wrap:wrap; align-content:center; gap:8px; padding:10px 16px; } .bus-header nav { width:100%; justify-content:flex-end; gap:16px; } .bus-brand h1 { font-size:20px; } }
+
+.bus-network-switch { display:flex; gap:6px; margin-bottom:20px; padding:4px; border:1px solid #43535e; border-radius:8px; background:#0d151b; }
+.bus-network-switch a { flex:1; display:flex; align-items:center; justify-content:center; padding:10px 4px; text-align:center; font-size:10px; color:#cbd5e1; text-decoration:none; border-radius:5px; }
+.bus-network-switch a[aria-current=page] { background:#be123c; color:white; font-weight:700; }
+.bus-network-switch a:hover { background:#344651; }
+@media(max-width:800px) { .bus-network-switch { max-width:480px; margin-left:auto; margin-right:auto; } }
+.bus-volume { display:flex; align-items:center; gap:10px; margin:14px 0; font-size:10px; color:#a7b5be; }
+.bus-volume label { white-space:nowrap; }
+.bus-volume input { flex:1; min-width:0; accent-color:#fb7185; }
+.bus-volume output { min-width:30px; text-align:right; font-variant-numeric:tabular-nums; }
+.bus-shell input:focus-visible { outline:2px solid #fb7185; outline-offset:3px; }
+@media(max-width:800px) { .bus-volume { max-width:480px; margin-left:auto; margin-right:auto; } }
+
+/* Zu's green identity stays scoped to Peshawar. The shared cab, keyboard
+   controls and accessible city switcher work identically in all three cities. */
+.bus-network-switch { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.bus-shell-zu { background:#f0fdf4; }
+.bus-shell-zu .bus-header,.bus-shell-zu .bus-route-ribbon { background:#f7fff9; border-color:#bbf7d0; }
+.bus-shell-zu .bus-brand>span,.bus-shell-zu .bus-primary,.bus-shell-zu .bus-traction,.bus-shell-zu .bus-map-message button { background:#16a34a; }
+.bus-shell-zu .bus-brand p,.bus-shell-zu .bus-map-top>span,.bus-shell-zu .bus-journey-strip>div>span,.bus-shell-zu .bus-route-ribbon span { color:#166534; }
+.bus-shell-zu .bus-header nav a:hover,.bus-shell-zu .bus-stop-current strong { color:#15803d; }
+.bus-shell-zu .bus-cab-heading,.bus-shell-zu .bus-platform-display p,.bus-shell-zu .bus-status-warning,.bus-shell-zu .bus-action-grid button[aria-pressed=true],.bus-shell-zu .bus-new-trip { color:#86efac; }
+.bus-shell-zu .bus-network-switch a[aria-current=page] { background:#15803d; }
+.bus-shell-zu .bus-platform-display,.bus-shell-zu .bus-journey-strip { border-color:#4ade80; }
+.bus-shell-zu .bus-action-grid button[aria-pressed=true] { border-color:#16a34a; }
+.bus-shell-zu .bus-speed-arc { background:conic-gradient(from 220deg,#4ade80 0 var(--bus-speed),#33434d var(--bus-speed) 78%,transparent 78% 100%); }
+.bus-shell-zu .bus-journey-strip { background:#f7fff9f5; }
+.bus-shell-zu .bus-journey-strip progress,.bus-shell-zu .bus-volume input { accent-color:#16a34a; }
+.bus-shell-zu .bus-route-ribbon { scrollbar-color:#86efac #f7fff9; }
+.bus-shell-zu .bus-route-ribbon>div { border-color:#86efac; }
+.bus-shell-zu .bus-route-ribbon>div:before { border-color:#16a34a; }
+.bus-shell-zu .bus-map-message { background:#f0fdf4ec; }
+.bus-shell-zu :is(button,select,a,input):focus-visible { outline-color:#4ade80; }

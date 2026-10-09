@@ -1,0 +1,12 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { buildPeshawarPaths } from '../lib/bus/peshawarImport';
+import { busSourceWays, verifyBusSource, type BusSourceSnapshot } from '../lib/bus/sourceQuality';
+import { validateBusDataset } from '../lib/bus/track';
+import type { BusDataset } from '../lib/bus/types';
+const source=JSON.parse(readFileSync('data/bus/peshawar-brt.osm.json','utf8')) as BusSourceSnapshot;
+const paths=buildPeshawarPaths(source);
+const dataset:BusDataset={version:1,id:'peshawar-brt',fingerprint:createHash('sha256').update(JSON.stringify(paths)).digest('hex').slice(0,16),attribution:'© OpenStreetMap contributors, ODbL 1.0',sourceTimestamp:source.fetchedAt,paths};
+validateBusDataset(dataset,'peshawar-brt');verifyBusSource(dataset,busSourceWays(source,null));
+writeFileSync('public/data/bus/peshawar-brt.json',JSON.stringify(dataset));
+console.log(paths.map(path=>({direction:path.direction,km:path.distanceKm,stations:path.stations.length,vertices:path.coordinates.length,underground:path.stations.filter(station=>station.underground).map(station=>station.name)})));

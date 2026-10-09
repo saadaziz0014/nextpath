@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root { color-scheme: dark; }
+html, body { margin: 0; background: #080f19; color: #f1f5f9; }
+body { font-family: Arial, Helvetica, sans-serif; }
+button, input { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid #38bdf8; outline-offset: 4px; }
+.glass { background: rgba(12,22,36,.9); backdrop-filter: blur(20px); border: 1px solid rgba(148,163,184,.2); box-shadow: 0 20px 60px #0006; }
+.vehicle { width: 30px; height: 52px; filter: drop-shadow(0 1px 1px #0006); }
+.mapboxgl-ctrl-group { background: #172334; }
+.mapboxgl-ctrl-icon { filter: invert(1); }
+@media (prefers-reduced-motion: reduce) { .animate-spin { animation: none; } }
+
+

@@ -1,0 +1,10 @@
+import{readFileSync}from'node:fs';
+import{validateBusDataset}from'../lib/bus/track';
+import{BUS_NETWORKS}from'../lib/bus/networks';
+import{verifyBusSource,busSourceWays,type BusSourceSnapshot}from'../lib/bus/sourceQuality';
+const network=BUS_NETWORKS['islamabad-metrobus'];
+const data=validateBusDataset(JSON.parse(readFileSync('public'+network.dataUrl,'utf8')),network.id);
+const source=JSON.parse(readFileSync('data/bus/islamabad-metrobus.osm.json','utf8')) as BusSourceSnapshot;
+const ways=busSourceWays(source,network.sourceRelation);verifyBusSource(data,ways);
+console.log('Verified both Red Line directions, all 24 platforms, original geometry and scoped terminal-stem exception.');
+console.log('Direction exceptions:',ways.filter(w=>w.note).map(w=>({way:w.wayId,nodes:w.nodeIds,note:w.note})));

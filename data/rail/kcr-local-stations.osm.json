@@ -1,0 +1,628 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-15T15:22:01Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2775029954,
+  "lat": 24.8127692,
+  "lon": 67.5011886,
+  "tags": {
+    "name": "داھابیجی",
+    "name:en": "Dhabeji",
+    "name:hi": "दाभेजी",
+    "name:ur": "دابهيجي",
+    "network": "ML1",
+    "operator": "PR",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "DBJ",
+    "train": "yes",
+    "wikidata": "Q18387985",
+    "wikipedia": "en:Dabheji railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 3523382867,
+  "lat": 24.8863153,
+  "lon": 67.1261891,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:street": "Shahrah-e-Faisal",
+    "air_conditioning": "no",
+    "baby_feeding": "no",
+    "internet_access": "no",
+    "name": "ڈرگ روڈ",
+    "name:en": "Drigh Road",
+    "name:hi": "ड्रिघ रोड",
+    "name:sd": "ڊرگ روڊ",
+    "name:ur": "ڈرگ روڈ",
+    "operator": "پاکستان ریلویز",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "operator:wikipedia:ur": "پاکستان ریلویز",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "DID",
+    "train": "yes",
+    "wheelchair": "no",
+    "wikidata": "Q5307524",
+    "wikimedia_commons": "Category:Drigh Road railway station, Karachi",
+    "wikipedia": "ur:ڈرگ روڈ ریلوے اسٹیشن"
+  }
+},
+{
+  "type": "node",
+  "id": 4104332771,
+  "lat": 24.8508469,
+  "lon": 67.2118950,
+  "tags": {
+    "name": "لانڈھی ریلوے اسٹیشن",
+    "name:en": "Landhi",
+    "name:ur": "لانڈھی ریلوے اسٹیشن",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "LND",
+    "wikidata": "Q6484562",
+    "wikipedia": "en:Landhi Junction railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 4104333346,
+  "lat": 24.8861183,
+  "lon": 67.1440848,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:country": "PK",
+    "addr:street": "Shahrah-e-Faisal",
+    "name": "Airport",
+    "public_transport": "station",
+    "railway": "station",
+    "wikidata": "Q124962761",
+    "wikimedia_commons": "Category:Airport railway station, Karachi"
+  }
+},
+{
+  "type": "node",
+  "id": 5164599146,
+  "lat": 24.8446008,
+  "lon": 67.3394606,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:street": "National Highway",
+    "name": "بن قاسم ریلوے اسٹیشن",
+    "name:en": "Bin Qasim",
+    "name:hi": "बिन कासिम रेलवे स्टेशन",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BQM",
+    "wikidata": "Q18378608",
+    "wikipedia": "ur:بن قاسم ریلوے اسٹیشن"
+  }
+},
+{
+  "type": "node",
+  "id": 5226556649,
+  "lat": 24.8844268,
+  "lon": 67.1745528,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:street": "Malir Halt Flyover",
+    "alt_name:en": "Malir Colony",
+    "name": "ملیر",
+    "name:en": "Malir Halt",
+    "name:ur": "ملیر",
+    "public_transport": "station",
+    "railway": "halt",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5232539135,
+  "lat": 24.8567918,
+  "lon": 66.9867717,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:street": "Mauripur Road",
+    "name": "وزیر مینشن ریلوے اسٹیشن",
+    "name:en": "Wazir Mansion Railway Station",
+    "name:hi": "वज़ीर मैंशन रेलवे स्टेशन",
+    "public_transport": "station",
+    "railway": "station",
+    "wikidata": "Q18536650",
+    "wikipedia": "ur:وزیر مینشن ریلوے اسٹیشن"
+  }
+},
+{
+  "type": "node",
+  "id": 5336782581,
+  "lat": 24.8950805,
+  "lon": 66.9882904,
+  "tags": {
+    "addr:city": "کراچی",
+    "name": "سندھ انڈسٹریل ٹریڈنگ اسٹیٹ",
+    "name:en": "Sindh Industrial Trading Estate",
+    "name:hi": "सिंध औद्योगिक व्यापार क्षेत्र",
+    "name:ur": "سندھ انڈسٹریل ٹریڈنگ اسٹیٹ",
+    "network": "کراچی سرکلر ریلوے",
+    "operator": "پاکستان ریلویز",
+    "operator:ur": "پاکستان ریلویز",
+    "public_transport": "station",
+    "railway": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 8294565795,
+  "lat": 24.9215162,
+  "lon": 67.0358669,
+  "tags": {
+    "internet_access": "no",
+    "name": "نارتھ ناظم آباد",
+    "name:en": "North Nazimabad",
+    "name:hi": "नॉर्थ नाज़िमाबाद",
+    "network": "Karachi Circular Railway",
+    "operator": "PR",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8294603458,
+  "lat": 24.8476897,
+  "lon": 66.9901492,
+  "tags": {
+    "internet_access": "no",
+    "name": "Tower/KPT",
+    "network": "Karachi Circular Railway",
+    "operator": "PR",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8294610400,
+  "lat": 24.9159474,
+  "lon": 67.0203973,
+  "tags": {
+    "internet_access": "no",
+    "name": "اورنگی",
+    "name:en": "Orangi",
+    "name:hi": "ओरंगी",
+    "name:ks": "اورنگی",
+    "name:ru": "Оранги",
+    "name:sd": "اورنگي",
+    "name:ur": "اورنگی",
+    "network": "کراچی سرکلر ریلوے",
+    "operator": "پاکستان ریلویز",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8294621168,
+  "lat": 24.9052186,
+  "lon": 67.0018707,
+  "tags": {
+    "name": "منگھوپیر",
+    "name:en": "Manghopir",
+    "name:hi": "मंघोपीर",
+    "network": "Karachi Circular Railway",
+    "operator": "PR",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8294625989,
+  "lat": 24.8680359,
+  "lon": 66.9801817,
+  "tags": {
+    "name": "لیاری",
+    "name:en": "Layari",
+    "name:hi": "लियारी",
+    "name:ur": "لیاری",
+    "network": "کراچی سرکلر ریلوے",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8423212826,
+  "lat": 24.9088053,
+  "lon": 67.0784111,
+  "tags": {
+    "internet_access": "no",
+    "name": "گیلانی",
+    "name:de": "Gilani",
+    "name:en": "Gilani",
+    "name:fr": "Gilani",
+    "name:hi": "गीलानी",
+    "name:ur": "گیلانی",
+    "network": "کراچی سرکلر ریلوے",
+    "operator": "پاکستانی ریلوے",
+    "operator:en": "Pakistani Railways",
+    "operator:ur": "پاکستانی ریلوے",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12211994174,
+  "lat": 24.9220522,
+  "lon": 67.0477690,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:street": "W2CX+Q47, Federal B Area Musa Colony Gulberg Town",
+    "name": "Pakistan Railways online Reservation Ticketing Private",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12250544749,
+  "lat": 24.8946480,
+  "lon": 66.9872078,
+  "tags": {
+    "addr:city": "Karachi",
+    "addr:street": "Sindh Industrial Trading Estate, Karachi, Karachi City, Sindh, Pakistan",
+    "name": "S.I.T.E Station",
+    "public_transport": "station",
+    "railway": "station",
+    "train": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13306443776,
+  "lat": 24.8438300,
+  "lon": 67.2694563,
+  "tags": {
+    "name": "جمعھ حماہتی",
+    "name:en": "Jummah Goth",
+    "name:ur": "جمعھ حماہتی",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "JMTH",
+    "train": "yes",
+    "wikidata": "Q18517009",
+    "wikipedia": "en:Jummah Goth railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13306443777,
+  "lat": 24.8773046,
+  "lon": 67.1902424,
+  "tags": {
+    "name": "ملیر",
+    "name:en": "Malir",
+    "name:ur": "ملیر",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "MXB",
+    "train": "yes",
+    "wikidata": "Q18516336",
+    "wikipedia": "en:Malir railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13368860471,
+  "lat": 24.7908981,
+  "lon": 67.5553787,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "گهارو",
+    "name:en": "Gharo",
+    "name:ur": "گهارو",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "GHO",
+    "source": "NGA-GNS",
+    "train": "yes",
+    "wikidata": "Q18392328",
+    "wikipedia": "en:Gharo railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13368860506,
+  "lat": 24.8454207,
+  "lon": 67.4283628,
+  "tags": {
+    "alt_name:en": "Ghagar",
+    "name": "گڈار",
+    "name:en": "Gaddar",
+    "name:ur": "گڈار",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "GDR",
+    "source": "NGA-GNS",
+    "train": "yes",
+    "wikidata": "Q18392188",
+    "wikipedia": "en:Gaddar railway station"
+  }
+},
+{
+  "type": "node",
+  "id": 13368860507,
+  "lat": 24.8448251,
+  "lon": 67.3671636,
+  "tags": {
+    "abandoned:railway": "station",
+    "name": "بادل نالا",
+    "name:en": "Badal Nala",
+    "name:ur": "بادل نالا",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "BDNL",
+    "train": "yes",
+    "wikidata": "Q18346558",
+    "wikipedia": "en:Badal Nala railway station"
+  }
+},
+{
+  "type": "way",
+  "id": 59263683,
+  "bounds": {
+    "minlat": 24.9504601,
+    "minlon": 67.2259062,
+    "maxlat": 24.9534113,
+    "maxlon": 67.2265565
+  },
+  "nodes": [
+    734881452,
+    734881453,
+    734881454,
+    734881455,
+    734881452
+  ],
+  "geometry": [
+    { "lat": 24.9534113, "lon": 67.2262929 },
+    { "lat": 24.9533826, "lon": 67.2265565 },
+    { "lat": 24.9504601, "lon": 67.2261697 },
+    { "lat": 24.9504888, "lon": 67.2259062 },
+    { "lat": 24.9534113, "lon": 67.2262929 }
+  ],
+  "tags": {
+    "building": "yes",
+    "description": "No Longer in use",
+    "internet_access": "no",
+    "name": "Malir Cantt",
+    "network": "None",
+    "operator": "none",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "MXBC",
+    "train": "yes",
+    "wikidata": "Q18516335",
+    "wikipedia": "en:Malir Cantonment railway station"
+  }
+},
+{
+  "type": "way",
+  "id": 408164895,
+  "bounds": {
+    "minlat": 24.8434120,
+    "minlon": 67.0403677,
+    "maxlat": 24.8441465,
+    "maxlon": 67.0416663
+  },
+  "nodes": [
+    4101567199,
+    4101567194,
+    6887385058,
+    6887385057,
+    6887385059,
+    6887385056,
+    4101567192,
+    4101567193,
+    6479369378,
+    5291817736,
+    5291817734,
+    5291817731,
+    5291817730,
+    5291817728,
+    5291817729,
+    5291817732,
+    5291817733,
+    4101567199
+  ],
+  "geometry": [
+    { "lat": 24.8441465, "lon": 67.0416061 },
+    { "lat": 24.8440346, "lon": 67.0416663 },
+    { "lat": 24.8439603, "lon": 67.0415070 },
+    { "lat": 24.8438912, "lon": 67.0415555 },
+    { "lat": 24.8436073, "lon": 67.0410232 },
+    { "lat": 24.8436899, "lon": 67.0409727 },
+    { "lat": 24.8434120, "lon": 67.0404274 },
+    { "lat": 24.8434970, "lon": 67.0403677 },
+    { "lat": 24.8436439, "lon": 67.0406446 },
+    { "lat": 24.8438911, "lon": 67.0411106 },
+    { "lat": 24.8439092, "lon": 67.0410989 },
+    { "lat": 24.8439226, "lon": 67.0411243 },
+    { "lat": 24.8439295, "lon": 67.0411198 },
+    { "lat": 24.8439610, "lon": 67.0411646 },
+    { "lat": 24.8439813, "lon": 67.0412176 },
+    { "lat": 24.8439745, "lon": 67.0412221 },
+    { "lat": 24.8439843, "lon": 67.0412405 },
+    { "lat": 24.8441465, "lon": 67.0416061 }
+  ],
+  "tags": {
+    "alt_name:en": "Karachi Cantt",
+    "alt_name:pa-Arab": "کراچی چھونی",
+    "alt_name:pnb": "کراچی چھونی",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "کراچی چھاؤنی",
+    "name:en": "Karachi Cantonment",
+    "name:hi": "कराची छावनी",
+    "name:pa-Arab": "کراچی چھوݨی",
+    "name:pnb": "کراچی چھوݨی",
+    "name:sd": "ڪراچي ڇاوڻي",
+    "name:ur": "کراچی چھاؤنی",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "KC",
+    "wikidata": "Q3605245"
+  }
+},
+{
+  "type": "way",
+  "id": 514129560,
+  "bounds": {
+    "minlat": 24.9138605,
+    "minlon": 67.0534272,
+    "maxlat": 24.9141973,
+    "maxlon": 67.0538461
+  },
+  "nodes": [
+    5023694173,
+    5023694174,
+    5023694175,
+    5023694176,
+    5023694177,
+    5023694178,
+    5023694179,
+    5023694180,
+    5023694173
+  ],
+  "geometry": [
+    { "lat": 24.9141973, "lon": 67.0535345 },
+    { "lat": 24.9140560, "lon": 67.0534272 },
+    { "lat": 24.9138605, "lon": 67.0537402 },
+    { "lat": 24.9140001, "lon": 67.0538461 },
+    { "lat": 24.9140457, "lon": 67.0537731 },
+    { "lat": 24.9139750, "lon": 67.0537194 },
+    { "lat": 24.9140750, "lon": 67.0535592 },
+    { "lat": 24.9141475, "lon": 67.0536143 },
+    { "lat": 24.9141973, "lon": 67.0535345 }
+  ],
+  "tags": {
+    "addr:city": "Karachi",
+    "area": "yes",
+    "building": "yes",
+    "name": "Sharifabad Railway Station",
+    "railway": "station"
+  }
+},
+{
+  "type": "way",
+  "id": 539432952,
+  "bounds": {
+    "minlat": 24.8478059,
+    "minlon": 67.0059224,
+    "maxlat": 24.8493326,
+    "maxlon": 67.0065536
+  },
+  "nodes": [
+    5219766475,
+    5219766476,
+    5219766477,
+    5219766478,
+    5219766479,
+    5219766480,
+    5219766481,
+    5219766482,
+    5219766483,
+    5219766484,
+    8636774056,
+    8636774055,
+    8636774057,
+    8636774054,
+    5219766485,
+    5219766486,
+    5219766487,
+    5219766488,
+    5219766489,
+    5219766490,
+    5219766491,
+    5219766492,
+    5219766493,
+    5219766494,
+    5219766495,
+    5219766496,
+    5219766497,
+    5219766498,
+    5219766475
+  ],
+  "geometry": [
+    { "lat": 24.8493217, "lon": 67.0059224 },
+    { "lat": 24.8493326, "lon": 67.0060803 },
+    { "lat": 24.8492338, "lon": 67.0060913 },
+    { "lat": 24.8492370, "lon": 67.0061237 },
+    { "lat": 24.8490536, "lon": 67.0061456 },
+    { "lat": 24.8490491, "lon": 67.0060998 },
+    { "lat": 24.8487434, "lon": 67.0061361 },
+    { "lat": 24.8487481, "lon": 67.0061839 },
+    { "lat": 24.8484356, "lon": 67.0062209 },
+    { "lat": 24.8484454, "lon": 67.0063225 },
+    { "lat": 24.8488124, "lon": 67.0062786 },
+    { "lat": 24.8488289, "lon": 67.0064377 },
+    { "lat": 24.8478227, "lon": 67.0065536 },
+    { "lat": 24.8478059, "lon": 67.0064004 },
+    { "lat": 24.8484135, "lon": 67.0063262 },
+    { "lat": 24.8484038, "lon": 67.0062261 },
+    { "lat": 24.8483379, "lon": 67.0062338 },
+    { "lat": 24.8483338, "lon": 67.0061918 },
+    { "lat": 24.8482398, "lon": 67.0062028 },
+    { "lat": 24.8482250, "lon": 67.0060496 },
+    { "lat": 24.8483206, "lon": 67.0060384 },
+    { "lat": 24.8483250, "lon": 67.0060849 },
+    { "lat": 24.8487396, "lon": 67.0060365 },
+    { "lat": 24.8487454, "lon": 67.0059935 },
+    { "lat": 24.8490219, "lon": 67.0059602 },
+    { "lat": 24.8490259, "lon": 67.0060009 },
+    { "lat": 24.8492145, "lon": 67.0059782 },
+    { "lat": 24.8492106, "lon": 67.0059359 },
+    { "lat": 24.8493217, "lon": 67.0059224 }
+  ],
+  "tags": {
+    "addr:city": "کراچی",
+    "addr:street": "اسٹیشن روڈ",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "کراچی شہر",
+    "name:en": "Karachi City",
+    "name:hi": "कराची शहर",
+    "name:ur": "کراچی شہر",
+    "operator": "پاکستان ریلویز",
+    "operator:ur": "پاکستان ریلویز",
+    "operator:wikidata": "Q918096",
+    "operator:wikipedia": "ur:پاکستان ریلویز",
+    "public_transport": "station",
+    "railway": "station",
+    "ref": "KYC",
+    "start_date": "1935",
+    "train": "yes",
+    "wikidata": "Q4373381",
+    "wikipedia": "en:Karachi City railway station"
+  }
+}
+
+  ]
+}
