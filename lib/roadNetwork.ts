@@ -1,12 +1,13 @@
 import { along, bearing, distance, lineString, nearestPointOnLine } from '@turf/turf';
 import type { Feature, Geometry } from 'geojson';
 import type { Coordinate } from './routeData';
+import { roadLevelFromProperties, type RoadLevel } from './roadLevel';
 
 export type Turn = 'left' | 'straight' | 'right';
-export interface RoadEdge { id: string; from: string; to: string; a: Coordinate; b: Coordinate; km: number; heading: number; name: string; level: string }
+export interface RoadEdge { id: string; from: string; to: string; a: Coordinate; b: Coordinate; km: number; heading: number; name: string; level: string; roadLevel: RoadLevel }
 export interface RoadCursor { edgeId: string; km: number; history: string[] }
 export interface JunctionDecision { nodeId: string; edgeId: string; turn: Turn }
-export interface Junction { meters: number; choices: { turn: Turn; edge: RoadEdge; angle: number }[] }
+export interface Junction { nodeId?: string; meters: number; choices: { turn: Turn; edge: RoadEdge; angle: number }[] }
 const DRIVABLE = new Set(['motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'street', 'street_limited', 'service']);
 const delta = (from: number, to: number) => ((to - from + 540) % 360) - 180;
 const CELL = .0005; // ~50m index cells; connection tolerance remains only one metre.
@@ -30,6 +31,27 @@ export class RoadNetwork {
   // Keep old edges for cursors/history; replacements resolve them without teleporting.
   private replacements = new Map<string, { first: string; second: string; splitKm: number }>();
   private changedEdges = new Set<string>();
+  private endpoints = new Map<string, Set<string>>();
+  private gradeConnections = new Map<string, Set<string>>();
+
+  private registerEndpoint(point: Coordinate, level: string) {
+    if (!point.every(Number.isFinite)) return;
+    const id = this.node(point, level);
+    // Only shared source endpoints establish a grade transition. Interior
+    // vertices and projected crossings remain isolated by their grade.
+    const location = `${point[0].toFixed(6)},${point[1].toFixed(6)}`;
+    const endpoints = this.endpoints.get(location) ?? new Set<string>();
+    for (const other of endpoints) {
+      const otherLevel = this.nodes.get(other)!.level;
+      if (level === otherLevel || (level !== '0' && otherLevel !== '0')) continue;
+      if (!this.gradeConnections.has(id)) this.gradeConnections.set(id, new Set());
+      if (!this.gradeConnections.has(other)) this.gradeConnections.set(other, new Set());
+      this.gradeConnections.get(id)!.add(other);
+      this.gradeConnections.get(other)!.add(id);
+    }
+    endpoints.add(id);
+    this.endpoints.set(location, endpoints);
+  }
 
   private cells(a: Coordinate, b: Coordinate, level: string) {
     const result: string[] = [];
@@ -88,8 +110,8 @@ export class RoadNetwork {
         if ((projection.properties.dist ?? Infinity) > .001 || km < .001 || edge.km - km < .001) continue;
         // A T-junction can end inside another road segment without a matching vertex.
         // Split both directed edges independently, retaining one-way restrictions.
-        const first = this.addEdge(edge.a, node.point, edge.level, edge.name);
-        const second = this.addEdge(node.point, edge.b, edge.level, edge.name);
+        const first = this.addEdge(edge.a, node.point, edge.level, edge.name, edge.roadLevel);
+        const second = this.addEdge(node.point, edge.b, edge.level, edge.name, edge.roadLevel);
         if (!first || !second) continue;
         for (const path of this.paths.get(id) ?? []) {
           this.recordPath(first, path); this.recordPath(second, path);
@@ -108,17 +130,22 @@ export class RoadNetwork {
       const geometry = feature.geometry;
       const lines = geometry.type === 'LineString' ? [geometry.coordinates] : geometry.type === 'MultiLineString' ? geometry.coordinates : [];
       const level = String(properties.layer ?? (properties.structure === 'bridge' ? 1 : properties.structure === 'tunnel' ? -1 : 0));
+      const roadLevel = roadLevelFromProperties(properties);
       for (const coordinates of lines) {
         const signature = `${level}:${properties.oneway}:${JSON.stringify(coordinates)}`;
         if (this.seen.has(signature)) continue;
         this.seen.add(signature);
+        if (coordinates.length >= 2) {
+          this.registerEndpoint(coordinates[0] as Coordinate, level);
+          this.registerEndpoint(coordinates[coordinates.length - 1] as Coordinate, level);
+        }
         for (let i = 1; i < coordinates.length; i++) {
           const a = coordinates[i - 1] as Coordinate, b = coordinates[i] as Coordinate;
           if (!a.every(Number.isFinite) || !b.every(Number.isFinite) || distance(a, b) < .0001) continue;
-          const forward = this.addEdge(a, b, level, String(properties.name ?? properties.ref ?? 'Unnamed road'));
+          const forward = this.addEdge(a, b, level, String(properties.name ?? properties.ref ?? 'Unnamed road'), roadLevel);
           if (forward) this.recordPath(forward, signature);
           if (properties.oneway !== 'true' && properties.oneway !== true) {
-            const reverse = this.addEdge(b, a, level, String(properties.name ?? properties.ref ?? 'Unnamed road'));
+            const reverse = this.addEdge(b, a, level, String(properties.name ?? properties.ref ?? 'Unnamed road'), roadLevel);
             if (reverse) this.recordPath(reverse, signature);
           }
         }
@@ -127,12 +154,12 @@ export class RoadNetwork {
     this.connectJunctions();
   }
 
-  private addEdge(a: Coordinate, b: Coordinate, level: string, name: string) {
+  private addEdge(a: Coordinate, b: Coordinate, level: string, name: string, roadLevel: RoadLevel) {
     const from = this.node(a, level), to = this.node(b, level), id = `${from}>${to}`;
     if (from === to) return null;
     if (this.edges.has(id)) return id;
     a = this.nodes.get(from)!.point; b = this.nodes.get(to)!.point;
-    this.edges.set(id, { id, from, to, a, b, km: distance(a, b), heading: (bearing(a, b) + 360) % 360, name, level });
+    this.edges.set(id, { id, from, to, a, b, km: distance(a, b), heading: (bearing(a, b) + 360) % 360, name, level, roadLevel });
     if (!this.outgoing.has(from)) this.outgoing.set(from, new Set());
     this.outgoing.get(from)!.add(id);
     for (const cell of this.cells(a, b, level)) {
@@ -161,7 +188,7 @@ export class RoadNetwork {
     const edge = this.edges.get(cursor.edgeId)!;
     const km = Math.max(0, Math.min(edge.km, cursor.km));
     const position = km === edge.km ? edge.b : along(lineString([edge.a, edge.b]), km).geometry.coordinates as Coordinate;
-    return { position, heading: edge.heading, name: edge.name };
+    return { position, heading: edge.heading, name: edge.name, roadLevel: edge.roadLevel };
   }
 
   private recordPath(id: string, path: string) {
@@ -182,8 +209,9 @@ export class RoadNetwork {
     return [...(this.paths.get(incoming.id) ?? [])].some(path => paths?.has(path));
   }
   private choices(edge: RoadEdge) {
-    return [...(this.outgoing.get(edge.to) ?? [])].map(id => this.edges.get(id)!)
-      .filter(next => next.to !== edge.from)
+    const nodes = [edge.to, ...(this.gradeConnections.get(edge.to) ?? [])];
+    return [...new Set(nodes.flatMap(node => [...(this.outgoing.get(node) ?? [])]))].map(id => this.edges.get(id)!)
+      .filter(next => next.to !== edge.from && !this.gradeConnections.get(edge.from)?.has(next.to))
       .map(next => {
         const angle = delta(edge.heading, next.heading);
         return { edge: next, angle, turn: this.followsGeometry(edge, next, angle) ? 'straight' as const : turnOf(angle) };
@@ -199,7 +227,7 @@ export class RoadNetwork {
     while (meters <= maximumMeters && !visited.has(edge.id)) {
       visited.add(edge.id);
       const choices = this.choices(edge);
-      if (choices.length !== 1 || choices[0].turn !== 'straight') return { meters, choices };
+      if (choices.length !== 1 || choices[0].turn !== 'straight') return { nodeId: edge.to, meters, choices };
       edge = choices[0].edge; meters += edge.km * 1000;
     }
     return null;
@@ -209,7 +237,7 @@ export class RoadNetwork {
     const junction = this.junction(cursor);
     if (!junction || junction.meters > 50) return null;
     const choice = junction.choices.filter(choice => choice.turn === turn).sort((a, b) => Math.abs(a.angle) - Math.abs(b.angle))[0];
-    return choice ? { nodeId: choice.edge.from, edgeId: choice.edge.id, turn } : null;
+    return choice ? { nodeId: junction.nodeId ?? choice.edge.from, edgeId: choice.edge.id, turn } : null;
   }
   advance(cursor: RoadCursor, signedKm: number, requestedTurn: Turn | null, decision: JunctionDecision | null = null) {
     let current = { ...this.resolve(cursor), history: [...cursor.history] };
@@ -218,7 +246,7 @@ export class RoadNetwork {
     // A tile split can resolve a cursor already at the node directly onto the
     // chosen outgoing segment. Treat that as passage too, so the lock releases.
     const selectedStart = decision ? this.resolve({ edgeId: decision.edgeId, km: 0, history: [] }) : null;
-    let decisionPassed = !!decision && current.edgeId === selectedStart?.edgeId && this.edges.get(current.edgeId)?.from === decision.nodeId;
+    let decisionPassed = !!decision && current.edgeId === selectedStart?.edgeId && (this.edges.get(current.edgeId)?.from === decision.nodeId || !!this.gradeConnections.get(decision.nodeId)?.has(this.edges.get(current.edgeId)!.from));
     for (let transitions = 0; Math.abs(remaining) > 1e-12 && transitions < 100; transitions++) {
       current = this.resolve(current);
       const edge = this.edges.get(current.edgeId);
@@ -249,7 +277,7 @@ export class RoadNetwork {
       if (atDecision && decision) {
         const resolved = this.resolve({ edgeId: decision.edgeId, km: 0, history: [] });
         const committed = this.edges.get(resolved.edgeId);
-        next = committed?.from === edge.to ? committed : undefined;
+        next = committed && choices.some(choice => choice.edge.id === committed.id) ? committed : undefined;
       }
       if (requested) queuedTurn = null;
       if (!next) {

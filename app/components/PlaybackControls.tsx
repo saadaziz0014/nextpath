@@ -6,8 +6,11 @@ import type { DrivingRoute } from '@/lib/routes';
 import type { Turn } from '@/lib/roadNetwork';
 import type { DriveKey } from '@/lib/driving';
 import type { SimulationMode } from '@/app/hooks/useVehicleSimulation';
+import type { RoadLevel } from '@/lib/roadLevel';
+import RoadLevelIndicator from './RoadLevelIndicator';
 interface Props {
   freeDriving: boolean; turnLocked: boolean;
+  roadLevel: RoadLevel | null;
   pendingTurn: Turn | null; junctionHint: string; roadName: string; roadsReady: boolean; onStraight: () => void;
   mode: SimulationMode; active: boolean; speed: PlaybackSpeed; ready: boolean; following: boolean;
   route: DrivingRoute | null; speedKmh: number; traveledKm: number; remainingKm: number | null; progress: number; arrived: boolean; position: [number, number];
@@ -33,10 +36,11 @@ export default function PlaybackControls(props: Props) {
       <div><p className="text-xs text-slate-400">{!route && !freeDriving ? 'Choose free drive or build a route' : arrived ? 'Destination reached' : mode === 'drive' ? !roadsReady ? 'Loading connected roads…' : active ? 'You are at the wheel' : 'Driving paused' : active ? 'Following the road' : 'Playback paused'}</p><p className="mt-1 text-3xl font-semibold tabular-nums">{Math.abs(speedKmh).toFixed(0)} <span className="text-xs font-normal text-slate-400">km/h {speedKmh < -.5 && '· reverse'}</span></p></div>
       <div className="text-right text-xs text-slate-400"><p>{traveledKm.toFixed(2)} km driven</p>{remainingKm !== null && <p className="mt-1">{remainingKm < 1 ? `${Math.round(remainingKm * 1000)} m` : `${remainingKm.toFixed(1)} km`} to destination <span className="text-[10px]">{mode === 'drive' ? '(direct)' : '(road)'}</span></p>}</div>
     </div>
+    {mode === 'drive' && props.roadLevel && <RoadLevelIndicator level={props.roadLevel} />}
     <div className="mb-3 flex items-center gap-2">
       <button disabled={!ready} onClick={onToggle} aria-label={active ? mode === 'drive' ? 'Pause driving' : 'Pause playback' : mode === 'drive' ? 'Resume driving' : 'Play route'} className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-sky-400 py-2.5 text-sm font-semibold text-slate-950 hover:bg-sky-300 disabled:opacity-40">{active ? <Pause size={16} /> : <Play size={16} />}{active ? 'Pause' : 'Resume'}</button>
       <button disabled={!ready} onClick={onReset} aria-label="Reset vehicle to start" className="rounded-xl border border-slate-600 p-2.5 disabled:opacity-40"><RotateCcw size={18} /></button>
-      <button disabled={!ready} onClick={onFollow} aria-label="Follow vehicle at street zoom" aria-pressed={following} className={`rounded-xl border p-2.5 disabled:opacity-40 ${following ? 'border-sky-400 text-sky-300' : 'border-slate-600 text-slate-400'}`}><LocateFixed size={18} /></button>
+      <button disabled={!ready} onClick={onFollow} aria-label="Follow car from behind" aria-pressed={following} className={`flex items-center gap-1.5 rounded-xl border p-2.5 text-xs disabled:opacity-40 ${following ? 'border-sky-400 text-sky-300' : 'border-slate-600 text-slate-400'}`}><LocateFixed size={18} /><span>Follow car</span></button>
     </div>
     {mode === 'drive' ? <div className="flex items-center justify-between gap-4"><div className="text-[11px] leading-5 text-slate-400"><p><b className="text-slate-200">W</b> accelerate · <b className="text-slate-200">S</b> brake / reverse</p><p className="text-sky-300">{turnLocked ? 'Turn selected · A / D locked until junction passed' : 'A / D: choose turn · Enter: straight'}</p><p className="text-slate-500">Hold W / S to drive.</p></div><div className="grid grid-cols-3 gap-1"><div /><DriveButton driveKey="w" label="Accelerate (hold W)" disabled={!ready || !active} onKey={onKey} /><div />{(['a', 's', 'd'] as const).map(key => <DriveButton key={key} driveKey={key} label={key === 'a' ? 'Choose left turn (A)' : key === 'd' ? 'Choose right turn (D)' : 'Brake or reverse (hold S)'} disabled={!ready || !active || (turnLocked && key !== 's')} onKey={onKey} />)}</div></div> : <div>
       <div className="mb-2 flex justify-between text-xs text-slate-400"><span>Route completion</span><span>{progress.toFixed(1)}%</span></div><div role="progressbar" aria-label="Route completion" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Number(progress.toFixed(1))} className="h-1.5 overflow-hidden rounded-full bg-slate-700"><div className="h-full bg-sky-400" style={{ width: `${progress}%` }} /></div>

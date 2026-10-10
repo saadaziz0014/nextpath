@@ -5,6 +5,7 @@ import Map, { Layer, Source, Marker, NavigationControl, ScaleControl, type MapRe
 import type { Map as MapboxMap } from 'mapbox-gl';
 import type { Coordinate } from '@/lib/routeData';
 import { DEFAULT_START, type DrivingRoute, type Place } from '@/lib/routes';
+import { DRIVING_CAMERA_PITCH, DRIVING_CAMERA_ZOOM } from '@/lib/drivingCamera';
 
 interface Props {
   token: string; route: DrivingRoute | null; start: Place | null; end: Place | null; picking: boolean;
@@ -14,12 +15,11 @@ interface Props {
 // Memoized map remains isolated from the 10Hz telemetry panel.
 export default memo(function MapCanvas({ token, route, start, end, picking, onReady, onFailure, onInteraction, onPick }: Props) {
   const ref = useRef<MapRef>(null);
-  return <Map ref={ref} mapboxAccessToken={token} mapStyle="mapbox://styles/mapbox/streets-v12"
-    initialViewState={{ longitude: DEFAULT_START.coordinate[0], latitude: DEFAULT_START.coordinate[1], zoom: 17, pitch: 60 }}
+  return <Map ref={ref} mapboxAccessToken={token} mapStyle="mapbox://styles/mapbox/streets-v12" maxPitch={75}
+    initialViewState={{ longitude: DEFAULT_START.coordinate[0], latitude: DEFAULT_START.coordinate[1], zoom: DRIVING_CAMERA_ZOOM, pitch: DRIVING_CAMERA_PITCH }}
     style={{ width: '100%', height: '100%' }} cursor={picking ? 'crosshair' : 'grab'}
     onLoad={() => { if (ref.current) onReady(ref.current.getMap()); }}
     onError={event => onFailure(event.error.message)} onDragStart={onInteraction}
-    onZoomStart={event => { if (event.originalEvent) onInteraction(); }}
     onRotateStart={event => { if (event.originalEvent) onInteraction(); }}
     onClick={event => { if (picking) onPick([event.lngLat.lng, event.lngLat.lat]); }}
   >
