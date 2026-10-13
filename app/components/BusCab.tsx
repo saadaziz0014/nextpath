@@ -1,5 +1,6 @@
 'use client';
-import { Gauge, Zap, DoorOpen, DoorClosed, Play, Pause, RotateCcw, LocateFixed, Volume2, VolumeX, Megaphone, ArrowRight, BusFront } from 'lucide-react';
+import { Gauge, Zap, DoorOpen, DoorClosed, Play, Pause, RotateCcw, LocateFixed, Volume2, VolumeX, Megaphone, ArrowRight } from 'lucide-react';
+import DoubleBusIcon from './DoubleBusIcon';
 import Link from 'next/link';
 import { BUS_NETWORKS, type BusNetwork } from '@/lib/bus/networks';
 import { transitJourneyFinished } from '@/lib/transit/stops';
@@ -14,7 +15,7 @@ export default function BusCab(p:Props) {
   const hold=(key:string)=>({onPointerDown:(event:React.PointerEvent<HTMLButtonElement>)=>{event.currentTarget.setPointerCapture(event.pointerId);p.onKey(key,true);},onPointerUp:()=>p.onKey(key,false),onPointerCancel:()=>p.onKey(key,false),onLostPointerCapture:()=>p.onKey(key,false)});
   return <aside className="bus-cab" aria-label={`${p.network.title} driver cab`}>
     <nav className="bus-network-switch" aria-label="Metrobus networks">{Object.values(BUS_NETWORKS).map(n=><Link key={n.id} href={n.href} aria-current={n.id===p.network.id?'page':undefined}>{n.shortName}</Link>)}</nav>
-    <div className="bus-cab-heading"><span className="bus-kicker">DRIVER CONSOLE</span><BusFront size={22}/></div>
+    <div className="bus-cab-heading"><span className="bus-kicker">DRIVER CONSOLE</span><DoubleBusIcon size={22}/></div>
     <div className="bus-destination"><span>BOUND FOR</span><h2>{p.path.destination}</h2><p><Zap size={13}/> {p.network.vehicleDescription}</p></div>
     {!p.active?<div className="bus-departure">
       <label htmlFor="bus-direction">Direction</label><select id="bus-direction" value={p.direction} onChange={event=>p.onDirection(event.target.value as BusDirection)}>{p.network.directions.map(d=><option key={d.id} value={d.id}>Towards {d.destination}</option>)}</select>

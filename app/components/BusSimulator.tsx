@@ -3,7 +3,8 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Marker, type Map as MapboxMap } from 'mapbox-gl';
-import { ArrowUpRight, LoaderCircle, BusFront, Map as MapIcon } from 'lucide-react';
+import { ArrowUpRight, LoaderCircle, Map as MapIcon } from 'lucide-react';
+import DoubleBusIcon from './DoubleBusIcon';
 import { busDeparture, platformAt, stepBus, toggleBusDoors, toggleBusAutomatic, type BusMotion } from '@/lib/bus/motion';
 import { indexBusTrack, sampleBusTrack, validateBusDataset } from '@/lib/bus/track';
 import { restoreBusSave, type BusSave } from '@/lib/bus/persistence';
@@ -141,7 +142,7 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
   const configure=()=>{persist();keys.current.clear();silence();activeRef.current=false;pausedRef.current=false;setActive(false);setPaused(false);if(path)preview(path,departureId.current);};
   const tunnel=indexed?sampleBusTrack(indexed,telemetry.km).underground:false;
   return <main className={`bus-shell${network.id==='peshawar-brt'?' bus-shell-zu':''}`}>
-    <header className="bus-header"><Link href={network.href} className="bus-brand"><span><BusFront size={23}/></span><div><h1>{network.title}</h1><p>{network.subtitle}</p></div></Link><nav aria-label="Transport modes"><Link href="/">Road <ArrowUpRight size={13}/></Link><Link href="/rail">Pakistan Rail <ArrowUpRight size={13}/></Link><Link href="/metro">Orange Line <ArrowUpRight size={13}/></Link></nav></header>
+    <header className="bus-header"><Link href={network.href} className="bus-brand"><span><DoubleBusIcon size={23}/></span><div><h1>{network.title}</h1><p>{network.subtitle}</p></div></Link><nav aria-label="Transport modes"><Link href="/">Road <ArrowUpRight size={13}/></Link><Link href="/rail">Pakistan Rail <ArrowUpRight size={13}/></Link><Link href="/metro">Orange Line <ArrowUpRight size={13}/></Link></nav></header>
     <div className="bus-layout">
       {path?<BusCab network={network} path={path} motion={telemetry} ready={!!map&&!error} active={active} paused={paused} following={following} stationId={stationId} direction={direction} sound={enabled} soundStarted={started} audioError={audioError} volume={volume} onVolume={setVolume} onStation={id=>preview(path,id)} onDirection={value=>{const selected=data!.paths.find(p=>p.direction===value)!;preview(selected,stationId===path.stations[0].id?selected.stations[0].id:stationId);}} onStart={start} onPause={setPause} onReset={reset} onConfigure={configure} onFollow={follow} onAutomatic={automatic} onDoors={doors} onSound={toggle} onHorn={announce} onKey={setKey}/>:<aside className="bus-cab"><LoaderCircle className="animate-spin"/> Loading bus cab…</aside>}
       <section className="bus-map-panel" aria-label={`${network.title} map`}>

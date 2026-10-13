@@ -225,6 +225,24 @@ test('Directions uses returned road geometry and snapped endpoints', async () =>
   } finally { globalThis.fetch = original; }
 });
 
+test('advance accurately tracks covered distance in km across forward driving and reversing', () => {
+  const graph = network();
+  const cursor = graph.nearest(a, 0)!;
+  const forwardStep = graph.advance(cursor, .03, 'straight');
+  assert.equal(forwardStep.blocked, null);
+  assert.ok(Math.abs(forwardStep.movedKm - .03) < 1e-6);
+
+  // Reversing along driven history also counts toward total distance covered
+  const reverseStep = graph.advance(forwardStep.cursor, -.02, null);
+  assert.equal(reverseStep.blocked, null);
+  assert.ok(Math.abs(reverseStep.movedKm - .02) < 1e-6);
+
+  // When stopped at the end of driven history, movedKm is bounded to available travel
+  const blockedReverse = graph.advance(reverseStep.cursor, -.05, null);
+  assert.ok(blockedReverse.blocked);
+  assert.ok(blockedReverse.movedKm < .02);
+});
+
 
 
 

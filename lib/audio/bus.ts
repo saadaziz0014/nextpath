@@ -40,15 +40,15 @@ export function busProfile(input: BusInput, previousGear?: number) {
   return {
     speedKmh, rpm, gear: index + 1,
     engineHz: rpm / 20,
-    engineCutoff: power ? 1250 : input.braking ? 500 : 760,
-    engineGain: input.audible ? power ? .065 : input.braking ? .016 : moving ? .033 : .026 : 0,
-    bassGain: input.audible ? power ? .034 : .021 : 0,
-    turboHz: 650 + speedKmh * 13 + (power ? 350 : 0),
-    turboGain: input.audible && moving && power ? .003 * speedKmh / 60 : 0,
-    rollingHz: 230 + speedKmh * 12,
-    rollingGain: input.audible && moving ? .012 + speedKmh / 60 * .038 : 0,
-    intakeGain: input.audible && power ? .007 + speedKmh / 60 * .008 : 0,
-    brakeGain: input.audible && moving && input.braking ? .012 + speedKmh / 60 * .016 : 0,
+    engineCutoff: power ? 1150 : input.braking ? 520 : 760,
+    engineGain: input.audible ? (power ? .085 : input.braking ? .022 : moving ? .048 : .036) : 0,
+    bassGain: input.audible ? (power ? .048 : .032) : 0,
+    turboHz: 520 + speedKmh * 16 + (power ? 260 : 0),
+    turboGain: input.audible && moving && power ? .012 * speedKmh / 60 : 0,
+    rollingHz: 120 + speedKmh * 3,
+    rollingGain: input.audible && moving ? .002 + speedKmh / 60 * .006 : 0,
+    intakeGain: input.audible && power ? .001 + speedKmh / 60 * .002 : 0,
+    brakeGain: input.audible && moving && input.braking ? .002 + speedKmh / 60 * .003 : 0,
   };
 }
 
@@ -92,8 +92,8 @@ export class BusAudio {
     compressor.attack.value = .006; compressor.release.value = .14;
     this.master.connect(compressor).connect(context.destination);
 
-    // A short harmonic series has a warm pulse rather than a raw sawtooth buzz.
-    const engineWave = context.createPeriodicWave(new Float32Array(9), new Float32Array([0, 1, .55, .28, .16, .09, .05, .03, .02]));
+    // A rich harmonic wave provides a clear, musical synthetic engine tone.
+    const engineWave = context.createPeriodicWave(new Float32Array(9), new Float32Array([0, 1, .72, .52, .36, .22, .14, .08, .04]));
     this.engine = oscillator(); this.engine.setPeriodicWave(engineWave);
     this.bass = oscillator(); this.bass.type = 'sine';
     this.turbo = oscillator(); this.turbo.type = 'sine';
@@ -103,14 +103,13 @@ export class BusAudio {
     this.bass.connect(this.bassGain).connect(this.master);
     this.turbo.connect(this.turboGain).connect(this.master);
 
-    // Allocate a single noise loop once, then colour it into independent layers.
-    // Random noise has no tonal loop seam; each filter has its own smooth state.
+    // Allocate a single noise loop once, then colour it into subtle background air/road layers.
     const buffer = context.createBuffer(1, Math.round(context.sampleRate * 2), context.sampleRate);
     const samples = buffer.getChannelData(0);
     for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
     const noise = track(context.createBufferSource()); noise.buffer = buffer; noise.loop = true;
     this.sources.push(noise);
-    this.roadFilter = filter('lowpass', 230);
+    this.roadFilter = filter('lowpass', 160);
     const intakeFilter = filter('bandpass', 1500, .7), airFilter = filter('bandpass', 1900, .45);
     this.rollingGain = gain(); this.intakeGain = gain(); this.brakeGain = gain(); this.airGain = gain();
     noise.connect(this.roadFilter).connect(this.rollingGain).connect(this.master);
@@ -140,7 +139,7 @@ export class BusAudio {
     // Slew frequencies and filter/gain changes to avoid clicks on gearbox shifts
     // or instant keyboard transitions. Combustion stays audible at station idle.
     this.engine.frequency.setTargetAtTime(p.engineHz, now, .12);
-    this.bass.frequency.setTargetAtTime(p.engineHz / 3, now, .12);
+    this.bass.frequency.setTargetAtTime(p.engineHz, now, .12);
     this.turbo.frequency.setTargetAtTime(p.turboHz, now, .2);
     this.engineFilter.frequency.setTargetAtTime(p.engineCutoff, now, .1);
     this.roadFilter.frequency.setTargetAtTime(p.rollingHz, now, .15);

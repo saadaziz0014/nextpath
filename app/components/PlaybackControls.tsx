@@ -34,7 +34,7 @@ export default function PlaybackControls(props: Props) {
     </div>
     <div className="mb-3 flex items-center justify-between gap-3">
       <div><p className="text-xs text-slate-400">{!route && !freeDriving ? 'Choose free drive or build a route' : arrived ? 'Destination reached' : mode === 'drive' ? !roadsReady ? 'Loading connected roads…' : active ? 'You are at the wheel' : 'Driving paused' : active ? 'Following the road' : 'Playback paused'}</p><p className="mt-1 text-3xl font-semibold tabular-nums">{Math.abs(speedKmh).toFixed(0)} <span className="text-xs font-normal text-slate-400">km/h {speedKmh < -.5 && '· reverse'}</span></p></div>
-      <div className="text-right text-xs text-slate-400"><p>{traveledKm.toFixed(2)} km driven</p>{remainingKm !== null && <p className="mt-1">{remainingKm < 1 ? `${Math.round(remainingKm * 1000)} m` : `${remainingKm.toFixed(1)} km`} to destination <span className="text-[10px]">{mode === 'drive' ? '(direct)' : '(road)'}</span></p>}</div>
+      <div className="text-right" aria-label="Distance covered"><p className="text-xs text-slate-400">Distance covered</p><p className="mt-1 text-2xl font-semibold tabular-nums text-sky-300">{traveledKm.toFixed(2)} <span className="text-xs font-normal text-slate-400">km</span></p>{remainingKm !== null && <p className="mt-1 text-[11px] text-slate-400">{remainingKm < 1 ? `${Math.round(remainingKm * 1000)} m` : `${remainingKm.toFixed(1)} km`} to destination <span className="text-[10px]">{mode === 'drive' ? '(direct)' : '(road)'}</span></p>}</div>
     </div>
     {mode === 'drive' && props.roadLevel && <RoadLevelIndicator level={props.roadLevel} />}
     <div className="mb-3 flex items-center gap-2">
