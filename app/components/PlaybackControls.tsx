@@ -1,6 +1,7 @@
 'use client';
 
-import { Pause, Play, RotateCcw, LocateFixed, Car, Film } from 'lucide-react';
+import { useState } from 'react';
+import { Pause, Play, RotateCcw, LocateFixed, Car, Film, ChevronDown, ChevronUp } from 'lucide-react';
 import { SPEED_OPTIONS, type PlaybackSpeed } from '@/lib/routeData';
 import type { DrivingRoute } from '@/lib/routes';
 import type { Turn } from '@/lib/roadNetwork';
@@ -18,19 +19,48 @@ interface Props {
   onSpeed: (speed: PlaybackSpeed) => void; onFollow: () => void; onKey: (key: DriveKey, pressed: boolean) => void;
 }
 function DriveButton({ driveKey, label, disabled, onKey }: { driveKey: DriveKey; label: string; disabled: boolean; onKey: Props['onKey'] }) {
-  return <button disabled={disabled} aria-label={label} className="h-9 w-12 touch-none select-none rounded-lg border border-slate-600 bg-slate-800 text-sm font-bold text-slate-200 hover:border-sky-400 active:bg-sky-500 active:text-slate-950 disabled:opacity-40"
+  const arrow = driveKey === 'w' ? '▲' : driveKey === 's' ? '▼' : driveKey === 'a' ? '◀' : '▶';
+  return <button disabled={disabled} aria-label={label} className="flex h-9 w-12 flex-col items-center justify-center touch-none select-none rounded-lg border border-slate-600 bg-slate-800 text-xs font-bold text-slate-200 hover:border-sky-400 active:bg-sky-500 active:text-slate-950 disabled:opacity-40"
     onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); onKey(driveKey, true); }}
     onPointerUp={() => onKey(driveKey, false)} onPointerCancel={() => onKey(driveKey, false)} onLostPointerCapture={() => onKey(driveKey, false)}
     onKeyDown={event => { if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); onKey(driveKey, true); } }}
     onKeyUp={event => { if (event.key === ' ' || event.key === 'Enter') onKey(driveKey, false); }}
-    onBlur={() => onKey(driveKey, false)}>{driveKey.toUpperCase()}</button>;
+    onBlur={() => onKey(driveKey, false)}>
+    <span className="text-[10px] leading-tight text-sky-400">{arrow}</span>
+    <span className="leading-none">{driveKey.toUpperCase()}</span>
+  </button>;
 }
 export default function PlaybackControls(props: Props) {
   const { mode, active, speed, ready, following, route, speedKmh, traveledKm, remainingKm, progress, arrived, position, onMode, onToggle, onReset, onSpeed, onFollow, onKey, freeDriving, turnLocked, pendingTurn, junctionHint, roadName, roadsReady, onStraight } = props;
-  return <section aria-label="Driving controls" className="glass absolute bottom-10 left-3 right-3 z-10 rounded-2xl p-4 sm:left-6 sm:right-auto sm:w-96">
-    <div className="mb-4 grid grid-cols-2 gap-1 rounded-xl bg-slate-950/60 p-1">
-      <button aria-pressed={mode === 'drive'} onClick={() => onMode('drive')} className={`flex items-center justify-center gap-2 rounded-lg py-2 text-xs font-semibold ${mode === 'drive' ? 'bg-slate-700 text-sky-300' : 'text-slate-400'}`}><Car size={16} />Manual drive</button>
-      <button disabled={!route} aria-pressed={mode === 'playback'} onClick={() => onMode('playback')} className={`flex items-center justify-center gap-2 rounded-lg py-2 text-xs font-semibold disabled:opacity-30 ${mode === 'playback' ? 'bg-slate-700 text-sky-300' : 'text-slate-400'}`}><Film size={16} />Route playback</button>
+  const [collapsed, setCollapsed] = useState(false);
+
+  if (collapsed) {
+    return <section aria-label="Driving controls (compact)" className="glass absolute bottom-4 left-3 z-10 flex items-center gap-2 rounded-2xl p-2.5 sm:left-6">
+      <div className="px-2">
+        <span className="text-lg font-bold tabular-nums">{Math.abs(speedKmh).toFixed(0)}</span>
+        <span className="ml-1 text-[10px] text-slate-400">km/h</span>
+      </div>
+      <button disabled={!ready} onClick={onToggle} aria-label={active ? 'Pause' : 'Resume'} className="rounded-xl bg-sky-400 p-2 text-slate-950 hover:bg-sky-300 disabled:opacity-40">
+        {active ? <Pause size={14} /> : <Play size={14} />}
+      </button>
+      <button disabled={!ready} onClick={onFollow} aria-label="Follow car" aria-pressed={following} className={`rounded-xl border p-2 ${following ? 'border-sky-400 text-sky-300' : 'border-slate-600 text-slate-400'}`}>
+        <LocateFixed size={14} />
+      </button>
+      <button type="button" onClick={() => setCollapsed(false)} aria-label="Expand driving controls" className="rounded-xl border border-slate-600 p-2 text-slate-300">
+        <ChevronUp size={14} />
+      </button>
+    </section>;
+  }
+
+  return <section aria-label="Driving controls" className="glass absolute bottom-10 left-3 right-3 z-10 max-h-[calc(100dvh-180px)] overflow-y-auto rounded-2xl p-4 sm:left-6 sm:right-auto sm:w-96">
+    <div className="mb-3 flex items-center justify-between gap-1">
+      <div className="grid flex-1 grid-cols-2 gap-1 rounded-xl bg-slate-950/60 p-1">
+        <button aria-pressed={mode === 'drive'} onClick={() => onMode('drive')} className={`flex items-center justify-center gap-2 rounded-lg py-1.5 text-xs font-semibold ${mode === 'drive' ? 'bg-slate-700 text-sky-300' : 'text-slate-400'}`}><Car size={15} />Manual drive</button>
+        <button disabled={!route} aria-pressed={mode === 'playback'} onClick={() => onMode('playback')} className={`flex items-center justify-center gap-2 rounded-lg py-1.5 text-xs font-semibold disabled:opacity-30 ${mode === 'playback' ? 'bg-slate-700 text-sky-300' : 'text-slate-400'}`}><Film size={15} />Route playback</button>
+      </div>
+      <button type="button" onClick={() => setCollapsed(true)} aria-label="Minimize driving controls" className="ml-1 rounded-lg border border-slate-700 p-1.5 text-slate-400 hover:text-slate-200 sm:hidden">
+        <ChevronDown size={14} />
+      </button>
     </div>
     <div className="mb-3 flex items-center justify-between gap-3">
       <div><p className="text-xs text-slate-400">{!route && !freeDriving ? 'Choose free drive or build a route' : arrived ? 'Destination reached' : mode === 'drive' ? !roadsReady ? 'Loading connected roads…' : active ? 'You are at the wheel' : 'Driving paused' : active ? 'Following the road' : 'Playback paused'}</p><p className="mt-1 text-3xl font-semibold tabular-nums">{Math.abs(speedKmh).toFixed(0)} <span className="text-xs font-normal text-slate-400">km/h {speedKmh < -.5 && '· reverse'}</span></p></div>

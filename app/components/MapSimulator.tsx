@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { LoaderCircle, AlertTriangle } from 'lucide-react';
 import PlaybackControls from './PlaybackControls';
 import TurnPrompt from './TurnPrompt';
+import TouchDpad from './TouchDpad';
 import RoutePlanner, { type Endpoint, type PlaceDraft } from './RoutePlanner';
 import { useVehicleSimulation } from '@/app/hooks/useVehicleSimulation';
 import { DEFAULT_START, DEFAULT_END, fetchDrivingRoute, type DrivingRoute, type Place } from '@/lib/routes';
@@ -121,6 +122,7 @@ export default function MapSimulator() {
     {(!validToken || mapError) && <div role="alert" className="absolute inset-0 z-30 flex items-center justify-center bg-slate-950/90 px-6"><div className="max-w-lg rounded-2xl border border-slate-700 bg-slate-900 p-6"><AlertTriangle className="mb-3 text-amber-400" /><h2 className="text-lg font-semibold">{validToken ? 'Unable to load the map' : 'Connect your Mapbox account'}</h2><p className="mt-2 text-sm text-slate-400">{validToken ? 'Check your connection, token permissions and allowed URLs, then reload.' : 'Set NEXT_PUBLIC_MAPBOX_TOKEN to a public pk.* token in .env.local and restart the server.'}</p>{mapError && <p className="mt-3 break-words text-xs text-slate-500">{mapError}</p>}{validToken && <button onClick={() => window.location.reload()} className="mt-4 rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-slate-950">Retry</button>}</div></div>}
     <TurnPrompt prompt={usable ? simulation.telemetry.turnPrompt : null} enabled={usable && simulation.active} onChoose={simulation.chooseTurn} />
     <PlaybackControls mode={simulation.mode} active={simulation.active} speed={simulation.speed} ready={usable && (simulation.mode === 'playback' ? !!route : simulation.telemetry.roadsReady)} freeDriving={simulation.freeDriving} following={simulation.following} route={route} {...simulation.telemetry} onMode={simulation.setMode} onToggle={simulation.toggle} onReset={simulation.reset} onSpeed={simulation.setSpeed} onFollow={simulation.follow} onKey={simulation.setKey} onStraight={() => simulation.chooseTurn(null)} />
+    {usable && simulation.active && simulation.mode === 'drive' && <TouchDpad mode="road" active={simulation.active} onAccelerate={pressed => simulation.setKey('w', pressed)} onBrake={pressed => simulation.setKey('s', pressed)} onLeft={() => simulation.chooseTurn('left')} onRight={() => simulation.chooseTurn('right')} leftDisabled={simulation.telemetry.turnLocked} rightDisabled={simulation.telemetry.turnLocked} />}
   </div>;
 }
 

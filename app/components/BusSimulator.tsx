@@ -15,6 +15,7 @@ import { isTransitShortcut, transitCommand } from '@/lib/transit/controls';
 import { useBusAudio } from '@/app/hooks/useBusAudio';
 import { busAudioInput } from '@/lib/audio/bus';
 import BusCab from './BusCab';
+import TouchDpad from './TouchDpad';
 import { busNetwork } from '@/lib/bus/networks';
 const BusMap=dynamic(()=>import('./BusMap'),{ssr:false});
 const initial:BusMotion={km:0,velocity:0,doorsOpen:false,dwellSeconds:0,nextStop:1,automatic:false};
@@ -153,5 +154,6 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
       </section>
     </div>
     {path&&<footer className="bus-route-ribbon" aria-label={`${network.title} station sequence`}>{path.stations.map((s,index)=><div key={s.id} className={`${s.km<telemetry.km-.025?'bus-stop-passed':''} ${station?.id===s.id?'bus-stop-current':''}`}><span>{String(index+1).padStart(2,'0')}</span><strong>{s.name}</strong>{s.underground&&<small>UNDERGROUND</small>}</div>)}</footer>}
+    {active && <TouchDpad mode="transit" active={active && !paused} onAccelerate={pressed => setKey('w', pressed)} onBrake={pressed => setKey('s', pressed)} upDisabled={telemetry.doorsOpen} onDoors={doors} doorsOpen={telemetry.doorsOpen} doorsDisabled={!station && !telemetry.doorsOpen} onAutomatic={automatic} automaticActive={telemetry.automatic} onHorn={() => announce()} hornDisabled={!enabled || !started || paused} />}
   </main>;
 }
