@@ -2,19 +2,20 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import mapboxgl, { type Map as MapboxMap, type Marker } from 'mapbox-gl';
-import { destination, distance } from '@turf/turf';
+import { distance } from '@turf/turf';
 import { RoadNetwork, type RoadCursor, type Turn, type JunctionDecision } from '@/lib/roadNetwork';
 import { DEFAULT_START, sampleDrivingRoute, type DrivingRoute, type Place } from '@/lib/routes';
 import { isDrivingKey, nextVelocity, type DriveKey, type RoadVehicleState } from '@/lib/driving';
 import { smoothBearing } from '@/lib/simulation';
 import { getTurnPrompt, type TurnPrompt } from '@/lib/turnPrompt';
 import type { PlaybackSpeed } from '@/lib/routeData';
+import { ROAD_LEVEL_PRESENTATION, type RoadLevel } from '@/lib/roadLevel';
+import { drivingCameraPadding, drivingCameraOptions, vehicleScreenHeading } from '@/lib/drivingCamera';
 
 export type SimulationMode = 'drive' | 'playback';
-const DRIVE_ZOOM = 17;
 const INITIAL_VEHICLE: RoadVehicleState = { position: DEFAULT_START.coordinate, heading: 180, velocity: 0, traveledKm: 0, routeKm: 0 };
-interface Telemetry { turnLocked: boolean; turnPrompt: TurnPrompt | null; speedKmh: number; traveledKm: number; remainingKm: number | null; progress: number; arrived: boolean; position: [number, number]; pendingTurn: Turn | null; junctionHint: string; roadName: string; roadsReady: boolean }
-const INITIAL_TELEMETRY: Telemetry = { turnLocked: false, turnPrompt: null, speedKmh: 0, traveledKm: 0, remainingKm: null, progress: 0, arrived: false, position: DEFAULT_START.coordinate, pendingTurn: null, junctionHint: 'Build a route to start driving', roadName: '', roadsReady: false };
+interface Telemetry { roadLevel: RoadLevel | null; turnLocked: boolean; turnPrompt: TurnPrompt | null; speedKmh: number; traveledKm: number; remainingKm: number | null; progress: number; arrived: boolean; position: [number, number]; pendingTurn: Turn | null; junctionHint: string; roadName: string; roadsReady: boolean }
+const INITIAL_TELEMETRY: Telemetry = { roadLevel: null, turnLocked: false, turnPrompt: null, speedKmh: 0, traveledKm: 0, remainingKm: null, progress: 0, arrived: false, position: DEFAULT_START.coordinate, pendingTurn: null, junctionHint: 'Build a route to start driving', roadName: '', roadsReady: false };
 
 export function useVehicleSimulation() {
   const [freeDriving, setFreeDriving] = useState(false);
@@ -27,6 +28,7 @@ export function useVehicleSimulation() {
   const [telemetry, setTelemetry] = useState(INITIAL_TELEMETRY);
   const mapRef = useRef<MapboxMap | null>(null);
   const markerRef = useRef<Marker | null>(null);
+  const roadLevelMarkerRef = useRef<Marker | null>(null);
   const stateRef = useRef<RoadVehicleState>({ ...INITIAL_VEHICLE });
   const startRef = useRef(INITIAL_VEHICLE);
   const routeRef = useRef<DrivingRoute | null>(null);
@@ -43,6 +45,8 @@ export function useVehicleSimulation() {
   const followRef = useRef(true);
   const speedRef = useRef<PlaybackSpeed>(1);
   const cameraHeadingRef = useRef(INITIAL_VEHICLE.heading);
+  const zoomIntentUntilRef = useRef(0);
+  const cameraPaddingRef = useRef(drivingCameraPadding({ width: 1280, height: 800, controlsTop: 400, controlsRight: 408, plannerBottom: 100 }));
   const keysRef = useRef(new Set<DriveKey>());
   const suspendedRef = useRef(false);
   const reducedRef = useRef(false);
@@ -60,12 +64,24 @@ export function useVehicleSimulation() {
     const remainingKm = route ? modeRef.current === 'drive' ? distance(state.position, route.end.coordinate) : Math.max(0, route.distanceKm - routeDistanceRef.current) : null;
     const arrived = !!route && (modeRef.current === 'drive' ? remainingKm! < .015 : routeDistanceRef.current >= route.distanceKm);
     const junction = cursorRef.current ? networkRef.current.junction(cursorRef.current) : null;
-    const junctionId = junction?.choices[0]?.edge.from ?? null;
+    const junctionId = junction?.nodeId ?? junction?.choices[0]?.edge.from ?? null;
     if (dismissedJunctionRef.current !== junctionId) dismissedJunctionRef.current = null;
     const turnPrompt = modeRef.current === 'drive' && !decisionRef.current ? getTurnPrompt(junction, dismissedJunctionRef.current) : null;
-    const roadName = cursorRef.current ? networkRef.current.sample(cursorRef.current).name : '';
+    const road = modeRef.current === 'drive' && cursorRef.current ? networkRef.current.sample(cursorRef.current) : null;
+    const roadName = road?.name ?? '';
+    const roadLevel = road?.roadLevel ?? null;
+    const levelElement = roadLevelMarkerRef.current?.getElement();
+    if (levelElement) {
+      levelElement.hidden = roadLevel === null;
+      if (roadLevel) {
+        const presentation = ROAD_LEVEL_PRESENTATION[roadLevel];
+        levelElement.textContent = presentation.label;
+        levelElement.style.color = presentation.color;
+        levelElement.style.borderColor = presentation.color;
+      }
+    }
     const junctionHint = !cursorRef.current && freeDriveRef.current ? 'Loading nearby roads — pick a start on a road if none is found' : blockedRef.current ?? (junction ? junction.choices.length ? "In " + Math.round(junction.meters) + ' m: ' + [...new Set(junction.choices.map(choice => choice.turn))].join(' / ') : 'Road ends ahead — brake or reverse' : 'Continue along this road');
-    setTelemetry({ turnLocked: !!decisionRef.current, turnPrompt, pendingTurn: turnRef.current, junctionHint, roadName, roadsReady: !!cursorRef.current, speedKmh: state.velocity * 3.6, traveledKm: state.traveledKm, remainingKm, progress: route ? Math.min(100, routeDistanceRef.current / route.distanceKm * 100) : 0, arrived, position: state.position });
+    setTelemetry({ roadLevel, turnLocked: !!decisionRef.current, turnPrompt, pendingTurn: turnRef.current, junctionHint, roadName, roadsReady: !!cursorRef.current, speedKmh: state.velocity * 3.6, traveledKm: state.traveledKm, remainingKm, progress: route ? Math.min(100, routeDistanceRef.current / route.distanceKm * 100) : 0, arrived, position: state.position });
     return arrived;
   }, []);
 
@@ -73,16 +89,16 @@ export function useVehicleSimulation() {
     const vehicle = stateRef.current;
     if (markerRef.current) {
       markerRef.current.getElement().style.display = (routeRef.current || freeDriveRef.current) && (modeRef.current === 'playback' || cursorRef.current) ? '' : 'none';
-      markerRef.current.setLngLat(vehicle.position).setRotation(vehicle.heading);
+      markerRef.current.setLngLat(vehicle.position);
     }
-    cameraHeadingRef.current = recenter ? vehicle.heading : smoothBearing(cameraHeadingRef.current, vehicle.heading, 1 - Math.exp(-dt * 5));
+    roadLevelMarkerRef.current?.setLngLat(vehicle.position);
+    cameraHeadingRef.current = recenter ? vehicle.heading : smoothBearing(cameraHeadingRef.current, vehicle.heading, 1 - Math.exp(-Math.min(dt, .1) * 8));
     if (followRef.current && mapRef.current) {
-      // Look a little ahead to leave more road visible in front of the vehicle.
-      const center = reducedRef.current ? vehicle.position : destination(vehicle.position, .025, cameraHeadingRef.current).geometry.coordinates as [number, number];
-      const mobile = mapRef.current.getContainer().clientWidth < 640;
-      const padding = { top: mobile ? 70 : 0, bottom: mobile ? 430 : 0, left: 0, right: 0 };
-      mapRef.current.jumpTo({ center, padding, bearing: reducedRef.current ? 0 : cameraHeadingRef.current, pitch: reducedRef.current ? 0 : 60, ...(recenter ? { zoom: DRIVE_ZOOM } : {}) });
+      // Match rail's raised rear camera and yield to wheel/buttons/pinch zoom.
+      const camera = drivingCameraOptions({ position: vehicle.position, padding: cameraPaddingRef.current, bearing: cameraHeadingRef.current, recenter, zooming: mapRef.current.isZooming(), now: performance.now(), zoomIntentUntil: zoomIntentUntilRef.current });
+      if (camera) mapRef.current.jumpTo(camera);
     }
+    if (mapRef.current) markerRef.current?.setRotation(vehicleScreenHeading(vehicle.heading, mapRef.current.getBearing()));
   }, []);
 
   const initializeRoad = useCallback(() => {
@@ -108,23 +124,52 @@ export function useVehicleSimulation() {
   const attachMap = useCallback((map: MapboxMap) => {
     roadCleanupRef.current?.();
     mapRef.current = map;
+    const container = map.getContainer();
+    const simulator = container.closest('[data-road-simulator]');
+    const controls = simulator?.querySelector('[aria-label="Driving controls"]');
+    const planner = simulator?.querySelector('[aria-label="Route planner"]');
+    const measureCamera = () => {
+      const bounds = container.getBoundingClientRect();
+      const controlBounds = controls?.getBoundingClientRect();
+      const plannerBounds = planner?.getBoundingClientRect();
+      cameraPaddingRef.current = drivingCameraPadding({ width: bounds.width, height: bounds.height, controlsTop: controlBounds ? controlBounds.top - bounds.top : bounds.height, controlsRight: controlBounds ? controlBounds.right - bounds.left : 0, plannerBottom: plannerBounds ? plannerBounds.bottom - bounds.top : 0 });
+      renderVehicle();
+    };
+    const cameraObserver = new ResizeObserver(measureCamera);
+    cameraObserver.observe(container);
+    if (controls) cameraObserver.observe(controls);
+    if (planner) cameraObserver.observe(planner);
+    measureCamera();
     map.keyboard.disable(); // Mapbox keyboard movement must not compete with driving.
     markerRef.current?.remove();
+    roadLevelMarkerRef.current?.remove();
     const element = document.createElement('div');
     element.className = 'vehicle';
     element.setAttribute('role', 'img');
     element.setAttribute('aria-label', 'Your vehicle');
-    // Static trusted SVG, north-facing. Mapbox compensates for camera bearing.
-    element.innerHTML = '<svg viewBox="0 0 30 52" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="10" width="5" height="10" rx="2" fill="#020617"/><rect x="24" y="10" width="5" height="10" rx="2" fill="#020617"/><rect x="1" y="34" width="5" height="10" rx="2" fill="#020617"/><rect x="24" y="34" width="5" height="10" rx="2" fill="#020617"/><rect x="5" y="1" width="20" height="50" rx="7" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.5"/><path d="M8 13h14l-2 10H10z" fill="#0f172a"/><rect x="9" y="28" width="12" height="12" rx="2" fill="#0f172a"/><path d="M8 4h4M18 4h4" stroke="white" stroke-width="3"/><path d="M8 47h4M18 47h4" stroke="#fb7185" stroke-width="2"/></svg>';
-    markerRef.current = new mapboxgl.Marker({ element, anchor: 'center', offset: [0, 0], altitude: 0, draggable: false, rotationAlignment: 'map', pitchAlignment: 'map' }).setLngLat(stateRef.current.position).addTo(map);
+    // Rear perspective, nose toward the top; screen rotation is computed from
+    // the actual camera bearing after it moves, so W always follows the nose.
+    element.innerHTML = '<svg viewBox="0 0 48 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="58" rx="22" ry="5" fill="#020617" opacity=".4"/><rect x="5" y="40" width="8" height="19" rx="3" fill="#020617"/><rect x="35" y="40" width="8" height="19" rx="3" fill="#020617"/><path d="M7 28 13 10Q24 3 35 10l6 18v26q-17 8-34 0Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.5"/><path d="m14 12 20 0 3 11H11Z" fill="#7dd3fc"/><path d="M12 25h24l3 15H9Z" fill="#0f172a" stroke="#bae6fd"/><path d="M8 42h32v11q-16 5-32 0Z" fill="#0284c7"/><path d="M10 46h8m12 0h8" stroke="#fb7185" stroke-width="4"/><rect x="20" y="47" width="8" height="5" rx="1" fill="#e2e8f0"/><path d="M10 55q14 5 28 0" fill="none" stroke="#0f172a" stroke-width="3"/></svg>';
+    markerRef.current = new mapboxgl.Marker({ element, anchor: 'center', offset: [0, 0], altitude: 0, draggable: false, rotationAlignment: 'viewport', pitchAlignment: 'viewport' }).setLngLat(stateRef.current.position).addTo(map);
+    const levelElement = document.createElement('div');
+    levelElement.className = 'vehicle-road-level';
+    levelElement.hidden = true;
+    levelElement.setAttribute('aria-hidden', 'true');
+    roadLevelMarkerRef.current = new mapboxgl.Marker({ element: levelElement, anchor: 'bottom', offset: [0, -42], rotationAlignment: 'viewport', pitchAlignment: 'viewport' }).setLngLat(stateRef.current.position).addTo(map);
+    updateTelemetry();
     renderVehicle(0, true);
     setReady(true);
     readRoads(map);
     let roadTimer: ReturnType<typeof setTimeout> | null = null;
     const refreshRoads = () => { if (roadTimer) return; roadTimer = setTimeout(() => { roadTimer = null; readRoads(map); }, 300); };
     map.on('idle', refreshRoads); map.on('sourcedata', refreshRoads);
-    roadCleanupRef.current = () => { if (roadTimer) clearTimeout(roadTimer); map.off('idle', refreshRoads); map.off('sourcedata', refreshRoads); };
-  }, [renderVehicle, readRoads]);
+    const orientVehicle = () => markerRef.current?.setRotation(vehicleScreenHeading(stateRef.current.heading, map.getBearing()));
+    map.on('rotate', orientVehicle);
+    const onWheel = () => { zoomIntentUntilRef.current = performance.now() + 100; };
+    const onZoomEnd = () => { zoomIntentUntilRef.current = 0; renderVehicle(); };
+    map.on('wheel', onWheel); map.on('zoomend', onZoomEnd);
+    roadCleanupRef.current = () => { cameraObserver.disconnect(); if (roadTimer) clearTimeout(roadTimer); map.off('idle', refreshRoads); map.off('sourcedata', refreshRoads); map.off('rotate', orientVehicle); map.off('wheel', onWheel); map.off('zoomend', onZoomEnd); };
+  }, [renderVehicle, readRoads, updateTelemetry]);
 
   const reset = useCallback(() => {
     clearInput();
@@ -287,6 +332,7 @@ export function useVehicleSimulation() {
       window.removeEventListener('resize', resize);
       roadCleanupRef.current?.(); roadCleanupRef.current = null;
       markerRef.current?.remove(); markerRef.current = null; mapRef.current = null;
+      roadLevelMarkerRef.current?.remove(); roadLevelMarkerRef.current = null;
       pressedKeys.clear();
     };
   }, [clearInput, chooseTurn, renderVehicle, updateTelemetry]);

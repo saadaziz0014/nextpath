@@ -8,6 +8,7 @@ import {BUS_MAX_KMH} from '../lib/bus/types';
 import {busDeparture,stepBus,toggleBusDoors,BUS_DWELL_SECONDS} from '../lib/bus/motion';
 import {restoreBusSave,BUS_SAVE_KEY,type BusSave} from '../lib/bus/persistence';
 import {articulatedBus,busSectionSvg} from '../lib/bus/vehicle';
+import DoubleBusIcon from '../app/components/DoubleBusIcon';
 import {busProfile,BusAudio} from '../lib/audio/bus';
 import {audioHarness} from './helpers/audioHarness';
 const data=validateBusDataset(JSON.parse(readFileSync('public/data/bus/lahore-metrobus.json','utf8')));
@@ -87,4 +88,14 @@ test('bus audio reuses one graph and disposes every source once',async()=>{
  for(let i=0;i<60;i++)audio.update({speedKmh:i,traction:true,braking:false,audible:true});audio.horn();assert.equal(h.nodes.length,count);
  await audio.dispose();await audio.dispose();assert.equal(h.closes(),1);
  for(const node of h.nodes){assert.equal(node.disconnects,1);if(node.kind==='oscillator'||node.kind==='buffer-source'){assert.equal(node.starts,1);assert.equal(node.stops,1);}}
+});
+
+test('DoubleBusIcon renders an articulated two-section bus with custom and default sizes',()=>{
+ const defaultIcon=DoubleBusIcon({});
+ assert.equal(defaultIcon.type,'svg');
+ assert.equal(defaultIcon.props.width,24);
+ assert.equal(defaultIcon.props.viewBox,'0 0 24 24');
+ const customIcon=DoubleBusIcon({size:23});
+ assert.equal(customIcon.props.width,23);
+ assert.equal(customIcon.props.height,23);
 });

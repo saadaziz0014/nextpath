@@ -10,6 +10,44 @@ const road = (coordinates: Coordinate[], properties = {}): Feature<LineString> =
 const a: Coordinate = [74, 31], junction: Coordinate = [74, 31.001], north: Coordinate = [74, 31.002], west: Coordinate = [73.999, 31.001], east: Coordinate = [74.001, 31.001];
 const network = () => { const graph = new RoadNetwork(); graph.ingest([road([a, junction, north]), road([west, junction, east])]); return graph; };
 
+test('shared bridge endpoints allow committed turns, continued driving and history reversal', () => {
+  for (const structure of ['bridge', 'tunnel']) {
+    for (const elevatedFirst of [false, true]) {
+      const graph = new RoadNetwork();
+      const approach = road([a, junction]);
+      const ramp = road([junction, east], { structure, oneway: 'true' });
+      // The ground connection is also a source endpoint, not an interior crossing.
+      const features = [approach, ramp, road([junction, north])];
+      if (elevatedFirst) features.reverse();
+      graph.ingest(features);
+      const cursor = graph.advance(graph.nearest(a, 0)!, distance(a, junction) - .02, null).cursor;
+      assert.equal(graph.sample(cursor).roadLevel, 'ground');
+      const decision = graph.decide(cursor, 'right');
+      assert.ok(decision);
+      const result = graph.advance(cursor, .04, null, decision);
+      assert.equal(result.blocked, null);
+      assert.equal(result.decisionPassed, true);
+      assert.ok(graph.sample(result.cursor).position[0] > junction[0]);
+      assert.equal(graph.sample(result.cursor).roadLevel, structure);
+      const reverse = graph.advance(result.cursor, -.04, null);
+      assert.equal(reverse.blocked, null);
+      assert.ok(graph.sample(reverse.cursor).position[1] < junction[1]);
+      assert.equal(graph.sample(reverse.cursor).roadLevel, 'ground');
+      // A one-way ramp is not available as a forward exit from its far end.
+      assert.ok(graph.advance(result.cursor, 1, null).blocked);
+    }
+  }
+});
+
+test('grade transitions do not join interior crossings or nearby ramp endpoints', () => {
+  for (const elevated of [road([west, junction, east], { structure: 'bridge' }), road([[74.00002, 31.001], east], { structure: 'bridge' })]) {
+    const graph = new RoadNetwork();
+    graph.ingest([road([a, junction]), elevated]);
+    assert.equal(graph.decide(graph.advance(graph.nearest(a, 0)!, distance(a, junction), null).cursor, 'right'), null);
+    assert.ok(graph.advance(graph.nearest(a, 0)!, distance(a, junction) + .02, 'right').blocked);
+  }
+});
+
 test('A/D and W/S are recognized, throttle is capped, and braking reverses', () => {
   for (const key of ['w', 'a', 's', 'd', 'A', 'D']) assert.ok(isDrivingKey(key));
   assert.equal(isDrivingKey('x'), false);
@@ -185,6 +223,24 @@ test('Directions uses returned road geometry and snapped endpoints', async () =>
     assert.deepEqual(route.end.coordinate, coordinates.at(-1));
     assert.equal(route.durationSeconds, 300);
   } finally { globalThis.fetch = original; }
+});
+
+test('advance accurately tracks covered distance in km across forward driving and reversing', () => {
+  const graph = network();
+  const cursor = graph.nearest(a, 0)!;
+  const forwardStep = graph.advance(cursor, .03, 'straight');
+  assert.equal(forwardStep.blocked, null);
+  assert.ok(Math.abs(forwardStep.movedKm - .03) < 1e-6);
+
+  // Reversing along driven history also counts toward total distance covered
+  const reverseStep = graph.advance(forwardStep.cursor, -.02, null);
+  assert.equal(reverseStep.blocked, null);
+  assert.ok(Math.abs(reverseStep.movedKm - .02) < 1e-6);
+
+  // When stopped at the end of driven history, movedKm is bounded to available travel
+  const blockedReverse = graph.advance(reverseStep.cursor, -.05, null);
+  assert.ok(blockedReverse.blocked);
+  assert.ok(blockedReverse.movedKm < .02);
 });
 
 

@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { Marker, type Map as MapboxMap } from 'mapbox-gl';
-import { Volume2, VolumeX, LoaderCircle, TrainFront, RotateCcw, Pause, Play, LocateFixed, ZoomIn, ZoomOut } from 'lucide-react';
+import { Volume2, VolumeX, LoaderCircle, TrainFront, RotateCcw, Pause, Play, LocateFixed, ZoomIn, ZoomOut, ChevronDown, ChevronUp } from 'lucide-react';
+import TouchDpad from './TouchDpad';
 import type { RailBranch, RailDataset, RailMotion } from '@/lib/rail/types';
 import { stepCruiseJourney } from '@/lib/rail/cruise';
 import { nextReversal, confirmableReversal } from '@/lib/rail/journey';
@@ -53,6 +54,7 @@ export default function RailSimulator() {
   const driveDirection = useRef<1 | -1>(1);
   const [paused, setPaused] = useState(false);
   const [following, setFollowing] = useState(true);
+  const [panelCollapsed, setPanelCollapsed] = useState(false);
   const [telemetry, setTelemetry] = useState<RailMotion>(initialMotion);
   const carMarkers = useRef<Marker[]>([]);
   const motion = useRef<RailMotion>({ ...initialMotion }), keys = useRef(new Set<string>());
@@ -312,8 +314,26 @@ export default function RailSimulator() {
     {token && visibleDataset && <RailMap token={token} dataset={visibleDataset} onReady={onReady} onFailure={onFailure} onExplore={onExplore} />}
     <div className="absolute left-4 top-4 flex items-center gap-3 rounded-xl glass px-4 py-3"><TrainFront className="text-emerald-400" /><div><h1 className="font-bold">Pakistan Rail</h1><p className="text-xs text-slate-400">{explore ? 'Explore Pakistan tracks' : 'Choose your train journey'}</p></div><Link href="/" className="ml-4 text-sm text-sky-300 underline">Road mode</Link><Link href="/metro" className="text-sm text-orange-300 underline">Orange Line</Link><Link href="/metrobus" className="text-sm text-rose-300 underline">Metrobus</Link></div>
     {(!token || error) ? <div role="alert" className="absolute inset-0 grid place-items-center bg-slate-950/90 p-8"><p className="max-w-lg rounded-xl glass p-6">{!token ? 'Set NEXT_PUBLIC_MAPBOX_TOKEN in .env.local and restart the server.' : error}</p></div> : !ready && <div role="status" className="absolute inset-0 grid place-items-center bg-slate-950/80"><div className="flex items-center gap-3"><LoaderCircle className="animate-spin" /> Loading Pakistan tracks…</div></div>}
-    <section aria-label="Train controls" className="glass absolute bottom-8 left-4 right-4 max-w-md max-h-[calc(100dvh-124px)] overflow-y-auto rounded-2xl p-5">
-      <div className="flex items-center justify-between"><div><span className="text-4xl font-bold tabular-nums">{(telemetry.velocity * 3.6).toFixed(0)}</span><span className="ml-2 text-sm text-slate-400">km/h · max {railSpeedLimitKmh(branch ?? (explore ? undefined : train.pathId), backing ? -1 : 1)}</span></div><button aria-label="Reset journey" onClick={reset} className="rounded-lg p-3 hover:bg-white/10"><RotateCcw size={20} /></button></div>
+    {panelCollapsed && !!branch && <section aria-label="Train HUD (compact)" className="glass absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-2xl p-2.5 sm:hidden">
+      <div className="px-2">
+        <span className="text-lg font-bold tabular-nums">{(telemetry.velocity * 3.6).toFixed(0)}</span>
+        <span className="ml-1 text-[10px] text-slate-400">km/h</span>
+      </div>
+      <button aria-label={paused ? 'Resume simulation' : 'Pause simulation'} onClick={() => { silence(); keys.current.clear(); pauseRef.current = !pauseRef.current; setPaused(pauseRef.current); }} className="rounded-xl bg-white/10 p-2 text-white">
+        {paused ? <Play size={14} /> : <Pause size={14} />}
+      </button>
+      <button type="button" onClick={() => setPanelCollapsed(false)} aria-label="Expand train controls" className="rounded-xl border border-slate-600 p-2 text-slate-300">
+        <ChevronUp size={14} />
+      </button>
+    </section>}
+    <section aria-label="Train controls" className={`glass absolute bottom-8 left-4 right-4 max-w-md max-h-[calc(100dvh-124px)] overflow-y-auto rounded-2xl p-5 ${panelCollapsed && !!branch ? 'hidden sm:block' : ''}`}>
+      <div className="flex items-center justify-between">
+        <div><span className="text-4xl font-bold tabular-nums">{(telemetry.velocity * 3.6).toFixed(0)}</span><span className="ml-2 text-sm text-slate-400">km/h · max {railSpeedLimitKmh(branch ?? (explore ? undefined : train.pathId), backing ? -1 : 1)}</span></div>
+        <div className="flex items-center gap-1">
+          {!!branch && <button type="button" aria-label="Minimize train controls" onClick={() => setPanelCollapsed(true)} className="rounded-lg p-3 hover:bg-white/10 sm:hidden"><ChevronDown size={20} /></button>}
+          <button aria-label="Reset journey" onClick={reset} className="rounded-lg p-3 hover:bg-white/10"><RotateCcw size={20} /></button>
+        </div>
+      </div>
       <div role="group" aria-label="Rail map controls" className="mt-3 flex flex-wrap items-center gap-2 border-t border-white/10 pt-3">
         <span className="mr-auto text-xs text-slate-400">Map view</span>
         <button type="button" aria-label="Zoom out rail map" title="Zoom out" disabled={!ready} onClick={() => changeZoom(-1)} className="rounded-lg bg-white/10 p-3 hover:bg-white/20 disabled:opacity-40"><ZoomOut size={18} aria-hidden="true" /></button>
@@ -368,6 +388,7 @@ export default function RailSimulator() {
       <p className="mt-3 text-xs leading-relaxed text-slate-400">Hold W for traction, S for manual braking. Release to coast. Stations do not stop the train automatically. Space pauses. A/D are locked.</p>
       <p className="mt-2 text-[10px] text-slate-500">OSM tracks · Train stop profiles researched {train.researchedOn} from published lists; official current timetable unverified. Manual station stops.</p>
     </section>
+    {ready && !!branch && <TouchDpad mode="rail" active={!!branch && !paused} onAccelerate={pressed => { if (pressed) { cancelCruise(); keys.current.add('w'); unlock(); } else keys.current.delete('w'); }} onBrake={pressed => { if (pressed) { cancelCruise(); keys.current.add('s'); } else keys.current.delete('s'); }} onCruise={toggleCruise} cruiseActive={cruise !== null} onReverser={toggleReverser} reverserBacking={backing} reverserDisabled={telemetry.velocity !== 0} onHorn={pressed => horn('pointer-touch', pressed)} hornDisabled={!soundEnabled || paused} />}
   </div>;
 }
 

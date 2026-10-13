@@ -7,6 +7,6 @@ export function getTurnPrompt(junction: Junction | null, dismissedId: string | n
   if (!junction || junction.meters > 50 || !junction.choices.length) return null;
   const turns = [...new Set(junction.choices.map(choice => choice.turn))];
   if (turns.every(turn => turn === 'straight')) return null;
-  const id = junction.choices[0].edge.from;
+  const id = junction.nodeId ?? junction.choices[0].edge.from;
   return id === dismissedId ? null : { id, meters: Math.max(0, junction.meters), turns };
 }

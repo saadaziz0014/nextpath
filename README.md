@@ -88,6 +88,13 @@ again before driving. Failed routing shows an error rather than inventing a
 straight-line route. Requests have timeouts, cancellation and stale-response
 protection.
 
+Use **Use my location** below Start or Destination to fill that endpoint from
+your device, then allow the browser's location request. This needs HTTPS or
+localhost. Each click requests one location fix; it does not track your movement.
+After choosing your endpoints, select **Build road route**, or use **Free drive
+from start**. Directions snaps route endpoints to roads. If location is denied,
+unavailable or times out, you can retry, search, or pick on the map.
+
 ### Controls and junctions
 
 | Input | Action |
@@ -110,6 +117,14 @@ change clears the commitment.
 Nearby map tiles extend the drivable graph during free driving. True dead ends
 or unavailable road connectivity stop movement. The graph respects mapped
 one-way directions and bridge/tunnel levels where tile data provides them.
+Ground roads can enter bridges and tunnels at shared source endpoints;
+interior crossings remain separated by level. Missing source connections
+still stop the vehicle rather than moving it off-road.
+Manual driving shows the current road level beside the car and in a small
+diagram in the controls: ground road, flyover/bridge, or underpass/tunnel.
+Labels use the current driven segment's map metadata, including after leaving
+the planned route. Roads with only a layer value show elevated/below-ground
+labels; missing structure metadata cannot identify every real-world underpass.
 It represents road centre lines, without lane widths, collisions or a complete
 legal turn-restriction model. Free drive has no destination progress; manual
 route mode shows direct remaining distance, while playback uses route distance.
@@ -119,9 +134,16 @@ Playback follows the planned geometry at a **60 km/h base speed** with
 On-screen driving controls support touch; editable fields do not drive the car.
 Focus loss and tab hiding clear road input and suspend motion.
 
-The road camera follows at zoom 17 and pitch 60, with a look-ahead offset.
-Pan/zoom releases follow; **Follow** restores driving zoom. Reduced-motion
-preferences disable automatic road camera bearing and pitch.
+The road camera uses the same elevated rear angle as rail: zoom 16.5 and pitch
+50 on recenter, with the car centred
+in the visible map area so more road is shown ahead. Camera spacing adapts to
+the planner and driving controls. The car stays upright and readable on the
+tilted map with a rear perspective; heading follows turns smoothly across north.
+Dragging or rotating releases follow. Zoom keeps follow enabled and retains
+your chosen zoom, yielding to wheel, buttons and pinch while they animate;
+**Follow** restores driving zoom. Reduced-motion
+preferences disable animated overview and place-selection transitions. The
+driving camera keeps its forward-facing perspective when following the car.
 
 ## Pakistan Rail
 

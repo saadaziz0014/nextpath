@@ -13,6 +13,7 @@ import { smoothBearing } from '@/lib/simulation';
 import { isTransitShortcut, transitCommand } from '@/lib/transit/controls';
 import { useMetroAudio } from '@/app/hooks/useMetroAudio';
 import MetroCab from './MetroCab';
+import TouchDpad from './TouchDpad';
 const MetroMap=dynamic(()=>import('./MetroMap'),{ssr:false});
 const initial:MetroMotion={km:0,velocity:0,doorsOpen:false,dwellSeconds:0,nextStop:1,automatic:false};
 
@@ -151,5 +152,6 @@ export default function MetroSimulator() {
       </section>
     </div>
     {path&&<footer className="metro-route-ribbon" aria-label="Orange Line station sequence">{path.stations.map((s,index)=><div key={s.id} className={`${s.km<telemetry.km-.025?'metro-stop-passed':''} ${station?.id===s.id?'metro-stop-current':''}`}><span>{String(index+1).padStart(2,'0')}</span><strong>{s.name}</strong>{s.underground&&<small>UNDERGROUND</small>}</div>)}</footer>}
+    {active && <TouchDpad mode="transit" active={active && !paused} onAccelerate={pressed => setKey('w', pressed)} onBrake={pressed => setKey('s', pressed)} upDisabled={telemetry.doorsOpen} onDoors={doors} doorsOpen={telemetry.doorsOpen} doorsDisabled={!station && !telemetry.doorsOpen} onAutomatic={automatic} automaticActive={telemetry.automatic} onHorn={() => announce()} hornDisabled={!enabled || !started || paused} />}
   </main>;
 }
