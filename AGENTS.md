@@ -91,9 +91,17 @@ the shortest angle. Dispose frames, markers, listeners and audio on cleanup.
   connected junction exits. The prompt appears within 50 metres; Enter commits
   an available straight exit. Committing an exit locks A/D until that junction
   is traversed. Ordinary bends continue; no forward road means stop and wait
-  for a legal choice. Respect mapped one-way directions and grade separation.
-  Never bypass missing connectivity by moving the car off-road. Search defaults
-  to Pakistan with map proximity; worldwide search is an explicit option.
+  for a legal choice. Junction exits are matched by driven heading, previous
+  segment, road continuity and where the exit leads, never by nearest distance
+  alone, so shallow U-turn lanes and slip roads are not auto-followed; A/D can
+  still pick a leaning branch of a shallow fork. Respect mapped one-way
+  directions and grade separation. Never bypass missing connectivity by moving
+  the car off-road. Search defaults to Pakistan with map proximity; worldwide
+  search is an explicit option. While free driving, a changed start (location,
+  search or map pick) restarts the drive there and a changed destination waits
+  for the route build instead of ending the session. Use my location tries one
+  precise device fix, then one coarse network fix if the device stalls, and
+  always ends with a filled endpoint or a visible error.
 - Rail: W traction, S manual brake, C cruise, V stopped reverser, R stopped
   confirmation at a declared station reversal, H horn, Space pause. Forward
   limit is 110 km/h except KCR at 90 km/h; backing stays at 20 km/h for all

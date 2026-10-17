@@ -21,7 +21,7 @@ export default function MapSimulator() {
   const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
   const validToken = !!token?.startsWith('pk.') && !token.includes('your_mapbox');
   const simulation = useVehicleSimulation();
-  const { attachMap, stop, explore, suspend, relocate, configureRoute, focusPlace } = simulation;
+  const { attachMap, stop, explore, suspend, relocate, configureRoute, focusPlace, startFreeDrive, freeDriving } = simulation;
   const [start, setStart] = useState<PlaceDraft>(draft(DEFAULT_START));
   const [end, setEnd] = useState<PlaceDraft>(draft(DEFAULT_END));
   const [route, setRoute] = useState<DrivingRoute | null>(null);
@@ -57,25 +57,34 @@ export default function MapSimulator() {
   const selectPlace = useCallback((endpoint: Endpoint, place: Place, focus = true) => {
     cancelLocation();
     cancelRequest(); setRouteError(null); setRoute(null);
+    pickingRef.current = null; setPicking(null);
+    // Free drive has no route to invalidate: keep the session alive when an
+    // endpoint changes. A new start restarts the drive there; a destination is
+    // kept for a later build instead of silently ending the drive.
+    if (freeDriving && endpoint === 'start') { startRef.current = draft(place); setStart(draft(place)); startFreeDrive(place); return; }
+    if (freeDriving && endpoint === 'end') { setEnd(draft(place)); return; }
     if (endpoint === 'start') { startRef.current = draft(place); setStart(draft(place)); relocate(place); }
     else { setEnd(draft(place)); relocate(startRef.current.place ?? DEFAULT_START); }
-    pickingRef.current = null; setPicking(null);
     if (focus) focusPlace(place);
-  }, [cancelLocation, cancelRequest, relocate, focusPlace]);
+  }, [cancelLocation, cancelRequest, relocate, focusPlace, startFreeDrive, freeDriving]);
   const useLocation = async (endpoint: Endpoint) => {
     cancelLocation();
     if (!window.isSecureContext) { setLocationError('Location requires HTTPS or localhost. Open NextPath on a secure address to use your location.'); return; }
     if (!navigator.geolocation) { setLocationError('This browser does not support location. Search for a place or pick on the map.'); return; }
     const controller = new AbortController();
     locationRequestRef.current = controller; setLocating(endpoint);
+    let place: Place | null = null;
     try {
-      const place = await currentLocation(navigator.geolocation, controller.signal);
-      if (!controller.signal.aborted && locationRequestRef.current === controller) selectPlace(endpoint, place);
+      place = await currentLocation(navigator.geolocation, controller.signal);
     } catch (failure) {
-      if (!controller.signal.aborted && locationRequestRef.current === controller) setLocationError(failure instanceof Error ? failure.message : 'Unable to find your location.');
-    } finally {
-      if (locationRequestRef.current === controller) { locationRequestRef.current = null; setLocating(null); }
+      if (locationRequestRef.current !== controller) return; // A newer click, edit or map pick superseded this request.
+      if (!(failure instanceof DOMException && failure.name === 'AbortError')) setLocationError(failure instanceof Error ? failure.message : 'Unable to find your location.');
     }
+    if (locationRequestRef.current !== controller) return;
+    locationRequestRef.current = null; setLocating(null);
+    if (!place) return;
+    try { selectPlace(endpoint, place); }
+    catch { setLocationError('Your location was found, but the map could not start there. Try again or pick on the map.'); }
   };
   const mapPick = useCallback((coordinate: Coordinate) => {
     const endpoint = pickingRef.current;
@@ -106,7 +115,7 @@ export default function MapSimulator() {
   const freeDrive = () => {
     if (!start.place || !simulation.ready) return;
     cancelRequest(); setRouteError(null); setRoute(null); onPick(null);
-    simulation.startFreeDrive(start.place);
+    startFreeDrive(start.place);
   };
   const preset = () => {
     cancelRequest(); setRouteError(null); setRoute(null); onPick(null);
