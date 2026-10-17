@@ -7,17 +7,29 @@ export type Turn = 'left' | 'straight' | 'right';
 export interface RoadEdge { id: string; from: string; to: string; a: Coordinate; b: Coordinate; km: number; heading: number; name: string; level: string; roadLevel: RoadLevel }
 export interface RoadCursor { edgeId: string; km: number; history: string[] }
 export interface JunctionDecision { nodeId: string; edgeId: string; turn: Turn }
-export interface Junction { nodeId?: string; meters: number; choices: { turn: Turn; edge: RoadEdge; angle: number }[] }
+export interface JunctionChoice { turn: Turn; edge: RoadEdge; angle: number; exitAngle: number; continuity: number }
+export interface Junction { nodeId?: string; meters: number; choices: JunctionChoice[] }
 const DRIVABLE = new Set(['motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'street', 'street_limited', 'service']);
+const APPROACH_KM = .02; // recently driven distance that defines the movement direction.
+const LOOKAHEAD_KM = .045; // how far past a node a choice is followed to judge where it leads.
+const STEP_LIMIT = 45; // maximum bend still treated as the same road while following a choice.
+const HAIRPIN_LIMIT = 120; // same-source/same-name roads may curve into a U-turn lane.
+const CONTINUATION_ANGLE = 65; // a named/same-source road bend that remains drive-through.
+const STRAIGHT_ANGLE = 30; // user-facing straight/turn classification boundary.
 const delta = (from: number, to: number) => ((to - from + 540) % 360) - 180;
 const CELL = .0005; // ~50m index cells; connection tolerance remains only one metre.
 const cellKey = (x: number, y: number, level: string) => [x, y, level].join(':');
 const key = (point: Coordinate, level: string) => `${point[0].toFixed(6)},${point[1].toFixed(6)}:${level}`;
-const turnOf = (angle: number): Turn => angle < -30 ? 'left' : angle > 30 ? 'right' : 'straight';
+const turnOf = (angle: number): Turn => angle < -STRAIGHT_ANGLE ? 'left' : angle > STRAIGHT_ANGLE ? 'right' : 'straight';
+// Continuity evidence first (same source polyline, then same named road), then
+// where the choice actually leads, then its immediate alignment.
+const compareChoices = (a: JunctionChoice, b: JunctionChoice) => a.continuity - b.continuity || Math.abs(a.exitAngle) - Math.abs(b.exitAngle) || Math.abs(a.angle) - Math.abs(b.angle) || a.edge.id.localeCompare(b.edge.id);
 
 /** A local graph of actual road centerlines from loaded Mapbox Streets tiles.
  * Navigation traverses connected edges, never a free-space destination point.
  * Grade keys prevent a crossing bridge/tunnel becoming a ground intersection.
+ * Junction exits are chosen by driven direction, connectivity, source road
+ * continuity and where the exit actually leads, not by nearest distance alone.
  * This is a driving simulation, not a traffic/turn-restriction routing engine.
  */
 export class RoadNetwork {
@@ -177,7 +189,12 @@ export class RoadNetwork {
       const point = nearestPointOnLine(lineString([edge.a, edge.b]), position, { units: 'kilometers' });
       const meters = (point.properties.dist ?? Infinity) * 1000;
       if (meters > maximumMeters) continue;
-      const score = meters + Math.abs(delta(heading, edge.heading)) / 25;
+      // Direction is a real part of the score so a nearby opposite carriageway,
+      // U-turn connector or parallel lane does not beat the road being driven.
+      // Angular penalty reaches 25m at a full reversal and stays secondary to
+      // distance for gently offset candidates.
+      const angle = Math.abs(delta(heading, edge.heading));
+      const score = meters + Math.pow(angle / 180, 2) * 25;
       if (!best || score < best.score) best = { score, cursor: { edgeId: edge.id, km: point.properties.location ?? 0, history: [] } };
     }
     return best?.cursor ?? null;
@@ -199,22 +216,100 @@ export class RoadNetwork {
     if (split) { this.recordPath(split.first, path); this.recordPath(split.second, path); }
   }
 
-  private followsGeometry(incoming: RoadEdge, outgoing: RoadEdge, angle: number) {
-    // A 30-degree bearing cutoff alone mistakes curved road geometry for a
-    // junction turn. Preserve continuity only with evidence from the same
-    // source polyline, and still reject sharp corners and U-turns. Road names
-    // alone are insufficient: two side roads can share the same street name.
-    if (Math.abs(angle) > 65) return false;
-    const paths = this.paths.get(outgoing.id);
-    return [...(this.paths.get(incoming.id) ?? [])].some(path => paths?.has(path));
+  private pointAt(edge: RoadEdge, km: number): Coordinate {
+    if (km <= 0) return edge.a;
+    if (km >= edge.km) return edge.b;
+    return along(lineString([edge.a, edge.b]), km).geometry.coordinates as Coordinate;
   }
-  private choices(edge: RoadEdge) {
+
+  private sharesPath(incoming: RoadEdge, outgoing: RoadEdge) {
+    const paths = this.paths.get(outgoing.id);
+    if (!paths?.size) return false;
+    for (const path of this.paths.get(incoming.id) ?? []) if (paths.has(path)) return true;
+    return false;
+  }
+
+  private sameNamedRoad(incoming: RoadEdge, outgoing: RoadEdge) {
+    // A shared non-generic name is continuity evidence for a feature split at a
+    // junction; stand-in names and other grades never count.
+    return incoming.name !== 'Unnamed road' && incoming.name === outgoing.name && incoming.level === outgoing.level && incoming.roadLevel === outgoing.roadLevel;
+  }
+
+  /** Direction actually driven over the last APPROACH_KM. Walking stops at
+   *  bends sharper than a normal lane change so a just-completed turn cannot
+   *  skew how the next junction is classified. */
+  private approachHeading(cursor: RoadCursor): number {
+    const edge = this.edges.get(cursor.edgeId);
+    if (!edge) return 0;
+    const here = this.pointAt(edge, cursor.km);
+    let back = edge.a;
+    if (cursor.km >= APPROACH_KM) back = this.pointAt(edge, cursor.km - APPROACH_KM);
+    else {
+      let walked = cursor.km, direction = edge.heading;
+      for (let i = cursor.history.length - 1; i >= 0 && walked < APPROACH_KM; i--) {
+        const previous = this.edges.get(cursor.history[i]);
+        if (!previous || Math.abs(delta(direction, previous.heading)) > STRAIGHT_ANGLE) break;
+        direction = previous.heading;
+        const step = Math.min(previous.km, APPROACH_KM - walked);
+        back = step >= previous.km ? previous.a : this.pointAt(previous, previous.km - step);
+        walked += step;
+      }
+    }
+    return distance(back, here) > 1e-9 ? (bearing(back, here) + 360) % 360 : edge.heading;
+  }
+
+  /** Where a choice leads rather than how its first metres are drawn: follows
+   *  the most continuous road up to LOOKAHEAD_KM and returns the chord bearing
+   *  from the junction. A U-turn lane curving across the median therefore
+   *  exposes its real direction even when it departs at a shallow angle. */
+  private exitBearing(start: RoadEdge): number {
+    let edge = start, direction = edge.heading;
+    let walked = Math.min(edge.km, LOOKAHEAD_KM);
+    let end = this.pointAt(edge, walked);
+    while (walked < LOOKAHEAD_KM) {
+      const next = this.stepForward(edge, direction);
+      if (!next) break;
+      edge = next; direction = edge.heading;
+      const step = Math.min(edge.km, LOOKAHEAD_KM - walked);
+      walked += step;
+      end = this.pointAt(edge, step);
+    }
+    return (bearing(start.a, end) + 360) % 360;
+  }
+
+  /** Best continuation of an edge for lookahead walks only: as aligned as
+   *  possible, preferring the same source road and then the same road name.
+   *  A curving U-turn lane stays on its own source feature at up to 120°. */
+  private stepForward(edge: RoadEdge, direction: number): RoadEdge | null {
+    let best: { score: number; edge: RoadEdge } | null = null;
+    for (const node of new Set([edge.to, ...(this.gradeConnections.get(edge.to) ?? [])])) {
+      for (const id of this.outgoing.get(node) ?? []) {
+        if (this.replacements.has(id)) continue;
+        const next = this.edges.get(id)!;
+        if (next.to === edge.from || this.gradeConnections.get(edge.from)?.has(next.to)) continue;
+        const angle = Math.abs(delta(direction, next.heading));
+        const rank = this.sharesPath(edge, next) ? 0 : this.sameNamedRoad(edge, next) ? 1 : 2;
+        if (angle > (rank <= 1 ? HAIRPIN_LIMIT : STEP_LIMIT)) continue;
+        const score = rank * 1000 + angle;
+        if (!best || score < best.score) best = { score, edge: next };
+      }
+    }
+    return best?.edge ?? null;
+  }
+
+  private choices(edge: RoadEdge, heading = edge.heading): JunctionChoice[] {
     const nodes = [edge.to, ...(this.gradeConnections.get(edge.to) ?? [])];
     return [...new Set(nodes.flatMap(node => [...(this.outgoing.get(node) ?? [])]))].map(id => this.edges.get(id)!)
       .filter(next => next.to !== edge.from && !this.gradeConnections.get(edge.from)?.has(next.to))
       .map(next => {
-        const angle = delta(edge.heading, next.heading);
-        return { edge: next, angle, turn: this.followsGeometry(edge, next, angle) ? 'straight' as const : turnOf(angle) };
+        // Same-source and same-name roads keep their drive-through behaviour.
+        // Everything else is classified by where it actually leads, so a
+        // shallow U-turn departure, slip road or curved side street is a turn.
+        const angle = delta(heading, next.heading);
+        const exitAngle = delta(heading, this.exitBearing(next));
+        const shared = this.sharesPath(edge, next), named = this.sameNamedRoad(edge, next);
+        const turn: Turn = (shared || named) && Math.abs(exitAngle) <= CONTINUATION_ANGLE ? 'straight' : turnOf(exitAngle);
+        return { edge: next, angle, exitAngle, turn, continuity: shared ? 0 : named ? 1 : 2 };
       });
   }
 
@@ -223,20 +318,34 @@ export class RoadNetwork {
     let edge = this.edges.get(cursor.edgeId);
     if (!edge) return null;
     let meters = (edge.km - cursor.km) * 1000;
+    let heading = this.approachHeading(cursor);
     const visited = new Set<string>();
     while (meters <= maximumMeters && !visited.has(edge.id)) {
       visited.add(edge.id);
-      const choices = this.choices(edge);
+      const choices = this.choices(edge, heading);
       if (choices.length !== 1 || choices[0].turn !== 'straight') return { nodeId: edge.to, meters, choices };
-      edge = choices[0].edge; meters += edge.km * 1000;
+      edge = choices[0].edge; heading = edge.heading; meters += edge.km * 1000;
     }
     return null;
+  }
+
+  /** Exact turn classification wins. When a shallow fork leaves several
+   *  straight-classified branches, A/D still picks the branch leaning in the
+   *  requested direction instead of ignoring the driver. */
+  private matchChoice(choices: JunctionChoice[], turn: Turn): JunctionChoice | undefined {
+    const exact = choices.filter(choice => choice.turn === turn).sort(compareChoices)[0];
+    if (exact || turn === 'straight') return exact;
+    const straight = choices.filter(choice => choice.turn === 'straight');
+    if (straight.length < 2) return undefined;
+    return straight.sort(turn === 'left'
+      ? (a, b) => Math.min(a.exitAngle, a.angle) - Math.min(b.exitAngle, b.angle)
+      : (a, b) => Math.max(b.exitAngle, b.angle) - Math.max(a.exitAngle, a.angle))[0];
   }
 
   decide(cursor: RoadCursor, turn: Turn): JunctionDecision | null {
     const junction = this.junction(cursor);
     if (!junction || junction.meters > 50) return null;
-    const choice = junction.choices.filter(choice => choice.turn === turn).sort((a, b) => Math.abs(a.angle) - Math.abs(b.angle))[0];
+    const choice = this.matchChoice(junction.choices, turn);
     return choice ? { nodeId: junction.nodeId ?? choice.edge.from, edgeId: choice.edge.id, turn } : null;
   }
   advance(cursor: RoadCursor, signedKm: number, requestedTurn: Turn | null, decision: JunctionDecision | null = null) {
@@ -263,13 +372,13 @@ export class RoadNetwork {
       const amount = Math.min(remaining, Math.max(0, edge.km - current.km));
       current.km += amount; remaining -= amount; movedKm += amount;
       if (remaining <= 1e-12) break;
-      const choices = this.choices(edge);
+      const choices = this.choices(edge, this.approachHeading(current));
 
       // Only a forward exit is automatic. Never pick the least sharp side road
       // as a fallback: a T-junction (even with one legal exit) requires A/D.
       const isJunction = choices.length > 1 || (choices.length === 1 && choices[0].turn !== 'straight');
-      const requested = isJunction && queuedTurn ? choices.filter(choice => choice.turn === queuedTurn).sort((a, b) => Math.abs(a.angle) - Math.abs(b.angle))[0] : undefined;
-      const ahead = choices.filter(choice => choice.turn === 'straight').sort((a, b) => Math.abs(a.angle) - Math.abs(b.angle))[0];
+      const requested = isJunction && queuedTurn ? choices.filter(choice => choice.turn === queuedTurn).sort(compareChoices)[0] : undefined;
+      const ahead = choices.filter(choice => choice.turn === 'straight').sort(compareChoices)[0];
       // A prompt commits an actual connected edge, not a heading category that
       // may change when another tile arrives. Follow that exact road at its node.
       let next: RoadEdge | undefined = (requested ?? ahead)?.edge;

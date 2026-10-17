@@ -91,6 +91,10 @@ protection.
 Use **Use my location** below Start or Destination to fill that endpoint from
 your device, then allow the browser's location request. This needs HTTPS or
 localhost. Each click requests one location fix; it does not track your movement.
+A precise fix is tried first and a coarse network fix if the device stalls, so
+every click ends with a filled endpoint or a clear error. While free driving,
+choosing a new start (location, search or map pick) restarts the drive at that
+point, and a new destination waits for **Build road route**.
 After choosing your endpoints, select **Build road route**, or use **Free drive
 from start**. Directions snaps route endpoints to roads. If location is denied,
 unavailable or times out, you can retry, search, or pick on the map.
@@ -113,6 +117,18 @@ W/S remain available. Ordinary bends follow the road; a junction without a
 forward continuation stops the car until an available turn is chosen. An
 unavailable turn stays queued when a forward exit exists. Reset or a mode
 change clears the commitment.
+
+Junction exits are matched by the driven direction, previous segment, road
+connectivity and where the exit actually leads over the next metres, not by
+nearest distance or first-segment angle alone. A shallow U-turn lane, slip road
+or curved side street is therefore a turn even when it departs at a similar
+angle, and W never follows one by itself. Same-source and same-named roads keep
+their drive-through bends. At a shallow fork where both branches read as
+straight, A/D still picks the branch leaning left or right while W keeps the
+same road. If a continuation tile has not loaded, the car waits at the node and
+resumes when it arrives instead of switching to a nearby connector. Free-drive
+snapping also weights the vehicle heading so a nearby opposite carriageway is
+not chosen over the aligned road.
 
 Nearby map tiles extend the drivable graph during free driving. True dead ends
 or unavailable road connectivity stop movement. The graph respects mapped
