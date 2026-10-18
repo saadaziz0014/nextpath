@@ -16,6 +16,15 @@ Built with **Next.js 16 · React 19 · TypeScript · Mapbox GL JS · react-map-g
 
 ## Quick start
 
+On phones and tablets, including Pixel 7, transport navigation wraps to fit the
+screen and driving controls use a bottom touch dock. Road and rail panels start
+compact; expand them for route, journey, playback, map and audio settings. Hold
+the accelerator or brake to drive, and use the dock's action buttons for turns,
+train cruise/reverser, or transit doors and automatic stops. Transit cab settings
+remain available by scrolling below the map. Portrait and landscape layouts use
+the available browser height and reserve space for the touch dock. Tap Enable
+sound to unlock audio. Device location requires HTTPS (or localhost).
+
 You need Node.js **20.9+**, npm, a public Mapbox access token, and a browser
 with WebGL support.
 

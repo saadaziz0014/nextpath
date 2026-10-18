@@ -54,7 +54,7 @@ export default function RailSimulator() {
   const driveDirection = useRef<1 | -1>(1);
   const [paused, setPaused] = useState(false);
   const [following, setFollowing] = useState(true);
-  const [panelCollapsed, setPanelCollapsed] = useState(false);
+  const [panelCollapsed, setPanelCollapsed] = useState(true);
   const [telemetry, setTelemetry] = useState<RailMotion>(initialMotion);
   const carMarkers = useRef<Marker[]>([]);
   const motion = useRef<RailMotion>({ ...initialMotion }), keys = useRef(new Set<string>());
@@ -310,7 +310,7 @@ export default function RailSimulator() {
     if (!path || departureLocked.current) return;
     configureDeparture(createRailDeparture(path, stationId, backwards)); persistJourney();
   };
-  return <div className="relative h-dvh min-h-[560px] overflow-hidden bg-slate-950">
+  return <div data-rail-simulator className="relative h-dvh min-h-[560px] overflow-hidden bg-slate-950">
     {token && visibleDataset && <RailMap token={token} dataset={visibleDataset} onReady={onReady} onFailure={onFailure} onExplore={onExplore} />}
     <div className="absolute left-4 top-4 flex items-center gap-3 rounded-xl glass px-4 py-3"><TrainFront className="text-emerald-400" /><div><h1 className="font-bold">Pakistan Rail</h1><p className="text-xs text-slate-400">{explore ? 'Explore Pakistan tracks' : 'Choose your train journey'}</p></div><Link href="/" className="ml-4 text-sm text-sky-300 underline">Road mode</Link><Link href="/metro" className="text-sm text-orange-300 underline">Orange Line</Link><Link href="/metrobus" className="text-sm text-rose-300 underline">Metrobus</Link></div>
     {(!token || error) ? <div role="alert" className="absolute inset-0 grid place-items-center bg-slate-950/90 p-8"><p className="max-w-lg rounded-xl glass p-6">{!token ? 'Set NEXT_PUBLIC_MAPBOX_TOKEN in .env.local and restart the server.' : error}</p></div> : !ready && <div role="status" className="absolute inset-0 grid place-items-center bg-slate-950/80"><div className="flex items-center gap-3"><LoaderCircle className="animate-spin" /> Loading Pakistan tracks…</div></div>}
@@ -391,4 +391,3 @@ export default function RailSimulator() {
     {ready && !!branch && <TouchDpad mode="rail" active={!!branch && !paused} onAccelerate={pressed => { if (pressed) { cancelCruise(); keys.current.add('w'); unlock(); } else keys.current.delete('w'); }} onBrake={pressed => { if (pressed) { cancelCruise(); keys.current.add('s'); } else keys.current.delete('s'); }} onCruise={toggleCruise} cruiseActive={cruise !== null} onReverser={toggleReverser} reverserBacking={backing} reverserDisabled={telemetry.velocity !== 0} onHorn={pressed => horn('pointer-touch', pressed)} hornDisabled={!soundEnabled || paused} />}
   </div>;
 }
-

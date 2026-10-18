@@ -61,7 +61,7 @@
 .bus-route-ribbon>div:before { content:''; position:absolute; top:-6px; left:0; width:9px; height:9px; border:2px solid #e11d48; border-radius:50%; background:white; }
 .bus-route-ribbon span { font-size:8px; color:#9f1239; }.bus-route-ribbon strong { display:block; font-size:10px; margin-top:3px; }.bus-route-ribbon small { display:block; font-size:7px; color:#64748b; margin-top:3px; }.bus-stop-passed { opacity:.4; }.bus-stop-current strong { color:#be123c; }
 .bus-shell .mapboxgl-ctrl-group { background:white; }.bus-shell .mapboxgl-ctrl-icon { filter:none; }
-@media(max-width:800px) { .bus-shell { height:auto; min-height:100dvh; grid-template-rows:76px auto 96px; }.bus-layout { display:flex; flex-direction:column-reverse; }.bus-map-panel { height:52dvh; min-height:360px; }.bus-cab { overflow:visible; }.bus-cab-heading,.bus-destination,.bus-departure,.bus-platform-display,.bus-system-status,.bus-traction-buttons,.bus-action-grid,.bus-utility,.bus-hint,.bus-new-trip,.bus-save-note { max-width:480px; margin-left:auto; margin-right:auto; }.bus-cab-heading { margin-bottom:10px; }.bus-destination { text-align:center; }.bus-destination p { justify-content:center; }.bus-header { padding:0 16px; }.bus-header nav { gap:12px; font-size:10px; }.bus-brand h1 { font-size:20px; }.bus-brand p { letter-spacing:1px; font-size:8px; }.bus-brand>span { padding:9px; }.bus-map-top { left:12px; right:12px; top:12px; }.bus-map-top>span { font-size:8px; letter-spacing:.4px; }.bus-journey-strip { left:12px; bottom:16px; padding:14px; }.bus-journey-strip strong { font-size:16px; }.bus-strip-distance span { font-size:7px!important; letter-spacing:.3px!important; } }
+@media(max-width:1023px) { .bus-shell { height:auto; min-height:100dvh; grid-template-rows:76px auto 96px; }.bus-layout { display:flex; flex-direction:column-reverse; }.bus-map-panel { height:52dvh; min-height:360px; }.bus-cab { overflow:visible; }.bus-cab-heading,.bus-destination,.bus-departure,.bus-platform-display,.bus-system-status,.bus-traction-buttons,.bus-action-grid,.bus-utility,.bus-hint,.bus-new-trip,.bus-save-note { max-width:480px; margin-left:auto; margin-right:auto; }.bus-cab-heading { margin-bottom:10px; }.bus-destination { text-align:center; }.bus-destination p { justify-content:center; }.bus-header { padding:0 16px; }.bus-header nav { gap:12px; font-size:10px; }.bus-brand h1 { font-size:20px; }.bus-brand p { letter-spacing:1px; font-size:8px; }.bus-brand>span { padding:9px; }.bus-map-top { left:12px; right:12px; top:12px; }.bus-map-top>span { font-size:8px; letter-spacing:.4px; }.bus-journey-strip { left:12px; bottom:16px; padding:14px; }.bus-journey-strip strong { font-size:16px; }.bus-strip-distance span { font-size:7px!important; letter-spacing:.3px!important; } }
 @media(prefers-reduced-motion:reduce) { .bus-shell button { transition:none; } }
 
 @media(max-width:600px) { .bus-shell { grid-template-rows:108px auto 96px; } .bus-header { flex-wrap:wrap; align-content:center; gap:8px; padding:10px 16px; } .bus-header nav { width:100%; justify-content:flex-end; gap:16px; } .bus-brand h1 { font-size:20px; } }
@@ -70,13 +70,13 @@
 .bus-network-switch a { flex:1; display:flex; align-items:center; justify-content:center; padding:10px 4px; text-align:center; font-size:10px; color:#cbd5e1; text-decoration:none; border-radius:5px; }
 .bus-network-switch a[aria-current=page] { background:#be123c; color:white; font-weight:700; }
 .bus-network-switch a:hover { background:#344651; }
-@media(max-width:800px) { .bus-network-switch { max-width:480px; margin-left:auto; margin-right:auto; } }
+@media(max-width:1023px) { .bus-network-switch { max-width:480px; margin-left:auto; margin-right:auto; } }
 .bus-volume { display:flex; align-items:center; gap:10px; margin:14px 0; font-size:10px; color:#a7b5be; }
 .bus-volume label { white-space:nowrap; }
 .bus-volume input { flex:1; min-width:0; accent-color:#fb7185; }
 .bus-volume output { min-width:30px; text-align:right; font-variant-numeric:tabular-nums; }
 .bus-shell input:focus-visible { outline:2px solid #fb7185; outline-offset:3px; }
-@media(max-width:800px) { .bus-volume { max-width:480px; margin-left:auto; margin-right:auto; } }
+@media(max-width:1023px) { .bus-volume { max-width:480px; margin-left:auto; margin-right:auto; } }
 
 /* Zu's green identity stays scoped to Peshawar. The shared cab, keyboard
    controls and accessible city switcher work identically in all three cities. */
