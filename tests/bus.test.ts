@@ -11,6 +11,7 @@ import {articulatedBus,busSectionSvg} from '../lib/bus/vehicle';
 import DoubleBusIcon from '../app/components/DoubleBusIcon';
 import {busProfile,BusAudio} from '../lib/audio/bus';
 import {audioHarness} from './helpers/audioHarness';
+import {BUS_NETWORKS} from '../lib/bus/networks';
 const data=validateBusDataset(JSON.parse(readFileSync('public/data/bus/lahore-metrobus.json','utf8')));
 const source=JSON.parse(readFileSync('data/bus/lahore-metrobus.osm.json','utf8')) as BusSourceSnapshot;
 const ways=busSourceWays(source);
@@ -72,6 +73,21 @@ test('Metrobus saves are isolated, support every starting station and reject inv
 test('articulated bus bodies remain on the corridor with close 9 metre spacing and different cab/rear silhouettes',()=>{
  const track=indexBusTrack(data.paths[0]);for(let km=.05;km<track.lengthKm;km+=.05){const bodies=articulatedBus(track,km);assert.equal(bodies.length,2);assert.ok(bodies.every(b=>b.visible));assert.ok(distance(bodies[0].position,bodies[1].position)<.00901);}
  assert.ok(busSectionSvg(0).includes('#e11d48'));assert.notEqual(busSectionSvg(0),busSectionSvg(1));assert.equal(articulatedBus(track,0)[1].visible,false);
+});
+
+test('redesigned buses retain two on-corridor sections in both directions of every city',()=>{
+ for(const network of Object.values(BUS_NETWORKS)){
+  const dataset=validateBusDataset(JSON.parse(readFileSync('public'+network.dataUrl,'utf8')),network.id);
+  for(const path of dataset.paths){
+   const track=indexBusTrack(path);
+   for(const head of [.05,track.lengthKm/2,track.lengthKm]){
+    const bodies=articulatedBus(track,head);
+    assert.equal(bodies.length,2);assert.ok(bodies.every(body=>body.visible));
+    bodies.forEach((body,index)=>assert.deepEqual(body.position,sampleBusTrack(track,head-index*.009).position));
+   }
+   assert.equal(articulatedBus(track,0)[1].visible,false);
+  }
+ }
 });
 
 test('bus sound has engine idle, gear changes, braking and mute behavior',()=>{

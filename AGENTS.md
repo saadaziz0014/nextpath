@@ -65,6 +65,8 @@ The destination terminal requires switching direction before departing.
   app/hooks/useVehicleSimulation.ts implement road UI, map and simulation.
   lib/routes.ts handles Geocoding/Directions; lib/roadNetwork.ts,
   lib/driving.ts and lib/turnPrompt.ts handle manual road traversal.
+  lib/roadVehicle.ts owns the shared road-car SVG; keep its nose pointing up
+  and its marker proportions aligned with .vehicle in app/globals.css.
 - app/components/RailSimulator.tsx and RailMap.tsx own rail presentation and
   lifecycle. lib/rail/ separates trains, datasets, departure, track sampling,
   physics, journey boundaries, cruise, consist and persistence.
@@ -110,7 +112,7 @@ the shortest angle. Dispose frames, markers, listeners and audio on cleanup.
 - Rail: W traction, S manual brake, C cruise, V stopped reverser, R stopped
   confirmation at a declared station reversal, H horn, Space pause. Forward
   limit is 110 km/h except KCR at 90 km/h; backing stays at 20 km/h for all
-  trains. Seven coaches follow the locomotive
+  trains. Ten coaches follow the locomotive
   with close zoom-aware spacing and sample their own chainages. Preserve Kasur,
   Sibi and Habib Kot reversal boundaries. Zoom must keep the chosen level while
   following; map dragging enters exploration. Station stops remain manual.
@@ -118,6 +120,8 @@ the shortest angle. Dispose frames, markers, listeners and audio on cleanup.
   80 km/h simulation cap. Do not reuse diesel train sound or rail cab UI.
 - Metrobus: two articulated sections; 60 km/h simulation cap. Lahore, Islamabad
   and Multan use red livery; Peshawar uses green Zu livery and hybrid labeling.
+  lib/bus/vehicle.ts owns the two SVG body halves and their shared proportions;
+  retain the separate Zu roof treatment, articulation and on-track sampling.
 - Both transit categories: W power, S brake, T Manual / Auto stops, O platform
   doors, H horn and Space pause. Open doors interlock traction. Auto serves
   pending platforms with 12-second dwell, never snaps back to a passed stop,

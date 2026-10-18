@@ -8,7 +8,7 @@ import DoubleBusIcon from './DoubleBusIcon';
 import { busDeparture, platformAt, stepBus, toggleBusDoors, toggleBusAutomatic, type BusMotion } from '@/lib/bus/motion';
 import { indexBusTrack, sampleBusTrack, validateBusDataset } from '@/lib/bus/track';
 import { restoreBusSave, type BusSave } from '@/lib/bus/persistence';
-import { articulatedBus, busSectionSvg } from '@/lib/bus/vehicle';
+import { articulatedBus, busSectionSvg, BUS_SECTION_WIDTH, BUS_SECTION_HEIGHT } from '@/lib/bus/vehicle';
 import { type BusDataset, type BusDirection, type BusPath, type BusNetworkId } from '@/lib/bus/types';
 import { smoothBearing } from '@/lib/simulation';
 import { isTransitShortcut, transitCommand } from '@/lib/transit/controls';
@@ -105,7 +105,7 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
   useEffect(()=>{
     if(!map||!data)return;
     const markers=Array.from({length:2},(_,index)=>{
-      const element=document.createElement('div');element.style.cssText='width:12px;height:36px;pointer-events:none;filter:drop-shadow(0 2px 2px #0006)';element.innerHTML=busSectionSvg(index,network.colour,network.darkColour);element.dataset.busCar=String(index);element.setAttribute('role','img');element.setAttribute('aria-label',`${network.title} articulated bus section ${index+1}`);
+      const element=document.createElement('div');element.style.cssText=`width:${36*BUS_SECTION_WIDTH/BUS_SECTION_HEIGHT}px;height:36px;pointer-events:none;filter:drop-shadow(0 2px 2px #0006)`;element.innerHTML=busSectionSvg(index,network.colour,network.darkColour,network.id==='peshawar-brt'?'zu':'metrobus');element.dataset.busCar=String(index);element.setAttribute('role','img');element.setAttribute('aria-label',`${network.title} articulated bus section ${index+1}`);
       return new Marker({element,rotationAlignment:'map',pitchAlignment:'map'}).setLngLat(trackRef.current!.path.coordinates[0]).addTo(map);
     });
     let frame=0,previous=0,lastUI=0,lastSave=0,cameraBearing=map.getBearing();
@@ -126,7 +126,7 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
       // keeps the bus a road vehicle, without a train's detached coaches.
       const metresPerPixel=156543.03392*Math.cos(sample.position[1]*Math.PI/180)/2**map.getZoom();
       const height=Math.min(100,Math.max(18,9/metresPerPixel));
-      articulatedBus(track,motion.current.km).forEach(body=>{const marker=markers[body.index],element=marker.getElement();marker.setLngLat(body.position).setRotation(body.heading);element.style.visibility=body.visible?'visible':'hidden';element.style.height=height+'px';element.style.width=height*30/92+'px';});
+      articulatedBus(track,motion.current.km).forEach(body=>{const marker=markers[body.index],element=marker.getElement();marker.setLngLat(body.position).setRotation(body.heading);element.style.visibility=body.visible?'visible':'hidden';element.style.height=height+'px';element.style.width=height*BUS_SECTION_WIDTH/BUS_SECTION_HEIGHT+'px';});
       cameraBearing=smoothBearing(cameraBearing,sample.heading,1-Math.exp(-Math.min(seconds,.1)*6));
       if(followRef.current)map.jumpTo({center:sample.position,bearing:cameraBearing,pitch:40});
       if(now-lastUI>=100){setTelemetry({...motion.current});lastUI=now;}
@@ -135,7 +135,7 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
     };
     frame=requestAnimationFrame(tick);
     return()=>{cancelAnimationFrame(frame);markers.forEach(marker=>marker.remove());silence();};
-  },[map,data,update,persist,silence,network.title,network.colour,network.darkColour]);
+  },[map,data,update,persist,silence,network.id,network.title,network.colour,network.darkColour]);
   const path=data?.paths.find(path=>path.direction===direction),indexed=useMemo(()=>path?indexBusTrack(path):null,[path]);
   const station=path?platformAt(path,telemetry):null,next=path?.stations[telemetry.nextStop];
   const overview=()=>{if(!map||!path)return;unfollow();const xs=path.coordinates.map(c=>c[0]),ys=path.coordinates.map(c=>c[1]);map.fitBounds([[Math.min(...xs),Math.min(...ys)],[Math.max(...xs),Math.max(...ys)]],{padding:70,pitch:0,bearing:0,duration:600});};
