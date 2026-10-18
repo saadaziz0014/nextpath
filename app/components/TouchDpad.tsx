@@ -32,6 +32,7 @@ export interface TouchDpadProps {
   mode: 'road' | 'rail' | 'transit';
   /** Whether the simulation is active and driving */
   active: boolean;
+  sessionActive?: boolean;
 
   /** W key press/release (Accelerate / Power) */
   onAccelerate: (pressed: boolean) => void;
@@ -101,6 +102,7 @@ function HoldButton({
     >
       {icon}
       {badge && <span className="touch-dpad-badge">{badge}</span>}
+      {badge && <span className="touch-dpad-caption">{({ W: 'Power', S: 'Brake', H: 'Horn', C: 'Cruise', V: 'Reverse', O: 'Doors', T: 'Auto', A: 'Left', D: 'Right' } as Record<string, string>)[badge]}</span>}
     </button>
   );
 }
@@ -136,6 +138,7 @@ function TapButton({
     >
       {icon}
       {badge && <span className="touch-dpad-badge">{badge}</span>}
+      {badge && <span className="touch-dpad-caption">{({ O: 'Doors', T: 'Auto', C: 'Cruise', V: 'Reverse', A: 'Left', D: 'Right' } as Record<string, string>)[badge]}</span>}
     </button>
   );
 }
@@ -189,7 +192,7 @@ export default function TouchDpad(props: TouchDpadProps) {
   const showTransitActions = mode === 'transit' && (!!onDoors || !!onAutomatic || !!onHorn);
 
   return (
-    <aside className="touch-dpad" aria-label="On-screen driving controls" role="region">
+    <aside className={`touch-dpad touch-dpad-${mode}`} aria-label="On-screen driving controls" role="region">
       {/* Header bar with minimize toggle */}
       <div className="touch-dpad-bar">
         <span className="touch-dpad-label">
@@ -226,7 +229,7 @@ export default function TouchDpad(props: TouchDpadProps) {
                 active={cruiseActive}
                 icon={<Gauge size={18} />}
                 onClick={onCruise}
-                disabled={!active}
+                disabled={!(props.sessionActive ?? active)}
                 className="touch-dpad-btn-sm"
               />
             )}
@@ -265,7 +268,7 @@ export default function TouchDpad(props: TouchDpadProps) {
                 active={automaticActive}
                 icon={<Sparkles size={18} />}
                 onClick={onAutomatic}
-                disabled={!active}
+                disabled={!(props.sessionActive ?? active)}
                 className="touch-dpad-btn-sm"
               />
             )}

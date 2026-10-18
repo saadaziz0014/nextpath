@@ -281,3 +281,123 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
   [data-road-simulator] [aria-label="Driving controls"] { right: 50%; }
   [data-road-simulator] .route-planner-fields { max-height: calc(100dvh - 100px); }
 }
+
+/* Keep the map mounted at a stable size while the cab opens over its lower edge. */
+.mobile-cab-panel, .mobile-cab-content { display: contents; }
+.mobile-cab-toolbar { display: none; }
+@media (max-width: 1023px) {
+  .metro-shell.metro-shell, .bus-shell.bus-shell {
+    height: 100dvh; min-height: 0; overflow: hidden;
+    grid-template-rows: auto minmax(0, 1fr) 64px;
+  }
+  .metro-shell .metro-layout, .bus-shell .bus-layout { position: relative; display: block; min-height: 0; }
+  .metro-shell .metro-map-panel, .bus-shell .bus-map-panel { height: 100%; min-height: 0; }
+  .mobile-cab-panel {
+    display: flex; flex-direction: column; position: absolute; z-index: 5;
+    bottom: 8px; left: 8px; right: 8px; border: 1px solid #475569;
+    border-radius: 12px; background: #162128; color: #f1f5f9;
+    box-shadow: 0 4px 20px #0006; overflow: hidden;
+  }
+  .mobile-cab-toolbar { display: flex; align-items: center; gap: 8px; padding: 4px 10px; min-height: 52px; flex-shrink: 0; }
+  .mobile-cab-toolbar strong { margin-right: auto; font-size: 22px; }
+  .mobile-cab-toolbar small { font-size: 11px; font-weight: normal; }
+  .mobile-cab-toolbar button { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px; border-radius: 8px; background: #334155; color: white; font-size: 12px; }
+  .mobile-cab-content { display: none; }
+  .cab-expanded .mobile-cab-content { display: block; max-height: 35dvh; overflow-y: auto; overscroll-behavior: contain; }
+  .metro-shell .metro-cab, .bus-shell .bus-cab { overflow: visible; }
+  .metro-shell .metro-journey-strip, .bus-shell .bus-journey-strip { bottom: 72px; padding: 8px 12px; }
+  .metro-shell .metro-journey-strip p, .bus-shell .bus-journey-strip p { display: none; }
+  .metro-shell .metro-route-ribbon, .bus-shell .bus-route-ribbon { padding: 8px 12px; min-height: 0; }
+  [data-rail-simulator] [aria-label="Train controls"],
+  [data-rail-simulator]:has(.touch-dpad) [aria-label="Train controls"] {
+    top: auto; max-height: 40dvh; padding: 12px;
+  }
+  [data-rail-simulator] [aria-label="Train HUD (compact)"] button { min-height: 44px; display: flex; align-items: center; gap: 6px; }
+}
+
+/* Mobile driving uses the map as the play area; desktop consoles stay unchanged. */
+.touch-dpad-caption { display: none; }
+@media (max-width: 1023px) {
+  .touch-dpad-rail, .touch-dpad-transit {
+    position: fixed; inset: auto 12px max(24px, env(safe-area-inset-bottom)) 12px;
+    padding: 0; border: 0; background: none; pointer-events: none;
+  }
+  .touch-dpad-rail .touch-dpad-bar, .touch-dpad-transit .touch-dpad-bar { display: none; }
+  .touch-dpad-rail .touch-dpad-body, .touch-dpad-transit .touch-dpad-body { align-items: flex-end; }
+  .touch-dpad-rail .touch-dpad-vertical, .touch-dpad-transit .touch-dpad-vertical {
+    order: -1; flex-direction: column; gap: 10px;
+  }
+  .touch-dpad-rail .touch-dpad-actions, .touch-dpad-transit .touch-dpad-actions { flex-direction: column; gap: 8px; }
+  .touch-dpad-rail .touch-dpad-btn, .touch-dpad-transit .touch-dpad-btn {
+    pointer-events: auto; flex-direction: column; gap: 3px; width: 64px; height: 64px;
+    border-radius: 18px; background: #0f172aeb; border-width: 2px;
+  }
+  .touch-dpad-rail .touch-dpad-btn-primary, .touch-dpad-transit .touch-dpad-btn-primary { background: #075985e8; }
+  .touch-dpad-rail .touch-dpad-btn-brake, .touch-dpad-transit .touch-dpad-btn-brake { background: #881337e8; }
+  .touch-dpad-rail .touch-dpad-btn-active, .touch-dpad-transit .touch-dpad-btn-active { background: #065f46; }
+  .touch-dpad-rail .touch-dpad-caption, .touch-dpad-transit .touch-dpad-caption { display: block; font-size: 10px; font-weight: 700; }
+  .touch-dpad-rail .touch-dpad-badge, .touch-dpad-transit .touch-dpad-badge { display: none; }
+  .metro-shell.metro-shell, .bus-shell.bus-shell,
+  .metro-shell:has(.touch-dpad), .bus-shell:has(.touch-dpad) { padding-bottom: env(safe-area-inset-bottom); }
+  .metro-shell[data-driving="true"] .touch-dpad, .bus-shell[data-driving="true"] .touch-dpad { bottom: max(80px, env(safe-area-inset-bottom)); }
+  .mobile-cab-panel { top: 8px; bottom: auto; }
+  .mobile-cab-toolbar { flex-wrap: wrap; gap: 4px; }
+  .mobile-cab-toolbar strong { font-size: 22px; }
+  .mobile-cab-toolbar button { padding: 8px; }
+  .cab-expanded .mobile-cab-content { max-height: 45dvh; }
+  .mobile-cab-panel[data-selecting="true"] { top: 12px; bottom: 12px; }
+  .mobile-cab-panel[data-selecting="true"] .mobile-cab-content { flex: 1; max-height: none; min-height: 0; overflow-y: auto; }
+  .mobile-cab-panel[data-selecting="true"] .mobile-cab-toolbar strong { display: none; }
+  .mobile-journey-title { padding: 8px 4px; font-weight: 700; }
+  .mobile-cab-panel[data-selecting="true"] :is(.metro-cab, .bus-cab) > :not(.metro-departure, .bus-departure, .metro-destination, .bus-destination, .bus-network-switch, .metro-save-note, .bus-save-note) { display: none; }
+  .metro-shell[data-driving="true"] .metro-header, .bus-shell[data-driving="true"] .bus-header { padding: 6px 12px; gap: 0; }
+  .metro-shell[data-driving="true"] .metro-brand > span, .bus-shell[data-driving="true"] .bus-brand > span { padding: 6px; }
+  .metro-shell[data-driving="true"] .metro-brand h1, .bus-shell[data-driving="true"] .bus-brand h1 { font-size: 16px; }
+  .metro-shell[data-driving="true"] .metro-brand p, .bus-shell[data-driving="true"] .bus-brand p { display: none; }
+  .metro-shell[data-driving="true"] .metro-header nav, .bus-shell[data-driving="true"] .bus-header nav { width: auto; gap: 10px; font-size: 9px; margin-left: auto; }
+  .metro-shell[data-driving="true"] .metro-header nav svg, .bus-shell[data-driving="true"] .bus-header nav svg { display: none; }
+  .metro-shell .metro-map-top, .bus-shell .bus-map-top { display: none; }
+  .metro-shell .metro-journey-strip, .bus-shell .bus-journey-strip { top: 76px; bottom: auto; left: 12px; right: 12px; pointer-events: none; }
+  .metro-shell .metro-strip-distance, .bus-shell .bus-strip-distance { display: none; }
+  .metro-shell .metro-journey-strip strong, .bus-shell .bus-journey-strip strong { font-size: 14px; }
+  [data-rail-simulator] > div.glass { gap: 2px 10px; padding: 6px 10px; }
+  [data-rail-simulator] > div.glass > div { flex: 1 0 70%; }
+  [data-rail-simulator] > div.glass p { display: none; }
+  [data-rail-simulator] > div.glass a { font-size: 11px; min-height: 36px; }
+  [data-rail-simulator]:has(.touch-dpad) [aria-label="Train HUD (compact)"],
+  [data-rail-simulator] [aria-label="Train HUD (compact)"] {
+    top: 104px; bottom: auto; max-height: none; padding: 6px; gap: 4px;
+  }
+  [data-rail-simulator] [aria-label="Train HUD (compact)"] > div { margin-right: auto; padding: 0 4px; }
+  [data-rail-simulator] [aria-label="Train HUD (compact)"] button { padding: 8px; }
+  [data-rail-simulator]:has(.touch-dpad) [aria-label="Train controls"],
+  [data-rail-simulator] [aria-label="Train controls"] {
+    bottom: 16px; left: 88px; right: 88px; max-height: min(55dvh, calc(100dvh - 180px)); z-index: 40;
+  }
+  [data-rail-simulator] [aria-label="Train controls"][data-selecting="true"] {
+    top: 108px; bottom: 16px; left: 8px; right: 8px; max-height: none;
+  }
+  [data-rail-simulator] [data-selecting="true"] > :not([data-rail-selection]) { display: none; }
+  [data-rail-simulator] [data-selecting="true"] [data-rail-selection] { margin: 0; }
+}
+@media (max-width: 1023px) and (max-height: 500px) {
+  .touch-dpad-rail .touch-dpad-actions, .touch-dpad-transit .touch-dpad-actions { flex-direction: row; }
+  .touch-dpad-rail .touch-dpad-vertical, .touch-dpad-transit .touch-dpad-vertical { flex-direction: row; }
+  .touch-dpad-rail .touch-dpad-btn, .touch-dpad-transit .touch-dpad-btn { width: 56px; height: 56px; }
+  [data-rail-simulator] > div.glass > div { flex: initial; }
+  [data-rail-simulator] [aria-label="Train HUD (compact)"],
+  [data-rail-simulator]:has(.touch-dpad) [aria-label="Train HUD (compact)"] { top: 64px; }
+  [data-rail-simulator] [aria-label="Train controls"][data-selecting="true"] { top: 68px; }
+}
+.mobile-drive-status, .mobile-line-overview, .mobile-rail-status, .mobile-rail-reversal { display: none; }
+@media (max-width: 1023px) {
+  .mobile-drive-status { display: block; padding: 0 12px 8px; margin: 0; color: #cbd5e1; font-size: 11px; }
+  .mobile-line-overview { display: block; margin: 12px; padding: 10px 14px; min-height: 44px; border: 1px solid #64748b; border-radius: 8px; color: #f1f5f9; }
+  .metro-shell .metro-journey-strip, .bus-shell .bus-journey-strip { top: 100px; }
+  .mobile-rail-status { display: block; flex-basis: 100%; padding: 0 8px; margin: 0; font-size: 11px; color: #cbd5e1; }
+  .mobile-rail-reversal { display: block; color: #fde68a; font-size: 11px; }
+  [data-rail-simulator] [aria-label="Train HUD (compact)"] { flex-wrap: wrap; }
+  [data-rail-simulator]:has(.touch-dpad) [aria-label="Train controls"],
+  [data-rail-simulator] [aria-label="Train controls"] { left: 8px; right: 8px; max-height: 45dvh; }
+  [data-rail-simulator] [aria-label="Train controls"][data-selecting="true"] { max-height: none; }
+}

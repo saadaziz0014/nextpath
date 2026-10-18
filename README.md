@@ -16,14 +16,19 @@ Built with **Next.js 16 · React 19 · TypeScript · Mapbox GL JS · react-map-g
 
 ## Quick start
 
-On phones and tablets, including Pixel 7, transport navigation wraps to fit the
-screen and driving controls use a bottom touch dock. Road and rail panels start
-compact; expand them for route, journey, playback, map and audio settings. Hold
-the accelerator or brake to drive, and use the dock's action buttons for turns,
-train cruise/reverser, or transit doors and automatic stops. Transit cab settings
-remain available by scrolling below the map. Portrait and landscape layouts use
-the available browser height and reserve space for the touch dock. Tap Enable
-sound to unlock audio. Device location requires HTTPS (or localhost).
+On phones and tablets (below 1024 CSS pixels), Rail, Orange Line and Metrobus
+start with journey selection. Choose the train/network, direction and departure
+station, then enter the map driving screen. Hold Power and Brake on the left;
+horn and vehicle actions sit on the right. Rail offers cruise and reverser;
+urban transit offers doors and Auto stops. Auto remains available while paused.
+A compact toolbar shows speed, pause/resume, camera follow and sound. Station
+and door status stay visible without opening the dashboard. Cab settings opens
+a separate scrollable panel for journey changes, audio, map and other controls;
+Hide cab returns to driving. Rail reversal confirmation also appears in the
+compact display when required. Portrait and landscape layouts keep the middle
+of the map available. Desktop retains its full cab layout. Road mode keeps its
+compact panels and bottom touch dock. Tap Enable sound to unlock audio. Device
+location requires HTTPS (or localhost).
 
 You need Node.js **20.9+**, npm, a public Mapbox access token, and a browser
 with WebGL support.

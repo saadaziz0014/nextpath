@@ -16,6 +16,7 @@ import { useBusAudio } from '@/app/hooks/useBusAudio';
 import { busAudioInput } from '@/lib/audio/bus';
 import BusCab from './BusCab';
 import TouchDpad from './TouchDpad';
+import MobileCabPanel from './MobileCabPanel';
 import { busNetwork } from '@/lib/bus/networks';
 const BusMap=dynamic(()=>import('./BusMap'),{ssr:false});
 const initial:BusMotion={km:0,velocity:0,doorsOpen:false,dwellSeconds:0,nextStop:1,automatic:false};
@@ -142,10 +143,12 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
   const reset=()=>{if(!path)return;motion.current=busDeparture(path,departureId.current);keys.current.clear();pausedRef.current=false;setPaused(false);setTelemetry({...motion.current});persist();};
   const configure=()=>{persist();keys.current.clear();silence();activeRef.current=false;pausedRef.current=false;setActive(false);setPaused(false);if(path)preview(path,departureId.current);};
   const tunnel=indexed?sampleBusTrack(indexed,telemetry.km).underground:false;
-  return <main className={`bus-shell${network.id==='peshawar-brt'?' bus-shell-zu':''}`}>
+  return <main data-driving={active} className={`bus-shell${network.id==='peshawar-brt'?' bus-shell-zu':''}`}>
     <header className="bus-header"><Link href={network.href} className="bus-brand"><span><DoubleBusIcon size={23}/></span><div><h1>{network.title}</h1><p>{network.subtitle}</p></div></Link><nav aria-label="Transport modes"><Link href="/">Road <ArrowUpRight size={13}/></Link><Link href="/rail">Pakistan Rail <ArrowUpRight size={13}/></Link><Link href="/metro">Orange Line <ArrowUpRight size={13}/></Link></nav></header>
     <div className="bus-layout">
+      <MobileCabPanel speed={telemetry.velocity} active={active} paused={paused} onPause={setPause} onFollow={follow} onSound={toggle} following={following} sound={enabled && started} onOverview={overview} status={telemetry.doorsOpen ? `Doors open | ${telemetry.automatic ? Math.ceil(telemetry.dwellSeconds) + 's dwell' : 'power locked'}` : `${telemetry.automatic ? 'Auto stops' : 'Manual'} | ${next ? Math.max(0, (next.km - telemetry.km) * 1000).toFixed(0) + ' m to platform' : 'Terminal'}`}>
       {path?<BusCab network={network} path={path} motion={telemetry} ready={!!map&&!error} active={active} paused={paused} following={following} stationId={stationId} direction={direction} sound={enabled} soundStarted={started} audioError={audioError} volume={volume} onVolume={setVolume} onStation={id=>preview(path,id)} onDirection={value=>{const selected=data!.paths.find(p=>p.direction===value)!;preview(selected,stationId===path.stations[0].id?selected.stations[0].id:stationId);}} onStart={start} onPause={setPause} onReset={reset} onConfigure={configure} onFollow={follow} onAutomatic={automatic} onDoors={doors} onSound={toggle} onHorn={announce} onKey={setKey}/>:<aside className="bus-cab"><LoaderCircle className="animate-spin"/> Loading bus cab…</aside>}
+      </MobileCabPanel>
       <section className="bus-map-panel" aria-label={`${network.title} map`}>
         {token&&path&&<BusMap colour={network.colour} darkColour={network.darkColour} path={path} attribution={data!.attribution} token={token} onReady={onReady} onFailure={onFailure} onInteraction={unfollow}/>}
         <div className="bus-map-top"><span>{tunnel?'BUSWAY UNDERPASS':'DEDICATED BUS CORRIDOR'} · {network.stations.length} STATIONS</span><button onClick={overview} disabled={!map}><MapIcon size={15}/> Line overview</button></div>
@@ -154,6 +157,6 @@ export default function BusSimulator({networkId='lahore-metrobus'}:{networkId?:B
       </section>
     </div>
     {path&&<footer className="bus-route-ribbon" aria-label={`${network.title} station sequence`}>{path.stations.map((s,index)=><div key={s.id} className={`${s.km<telemetry.km-.025?'bus-stop-passed':''} ${station?.id===s.id?'bus-stop-current':''}`}><span>{String(index+1).padStart(2,'0')}</span><strong>{s.name}</strong>{s.underground&&<small>UNDERGROUND</small>}</div>)}</footer>}
-    {active && <TouchDpad mode="transit" active={active && !paused} onAccelerate={pressed => setKey('w', pressed)} onBrake={pressed => setKey('s', pressed)} upDisabled={telemetry.doorsOpen} onDoors={doors} doorsOpen={telemetry.doorsOpen} doorsDisabled={!station && !telemetry.doorsOpen} onAutomatic={automatic} automaticActive={telemetry.automatic} onHorn={() => announce()} hornDisabled={!enabled || !started || paused} />}
+    {active && <TouchDpad mode="transit" sessionActive={active} active={active && !paused} onAccelerate={pressed => setKey('w', pressed)} onBrake={pressed => setKey('s', pressed)} upDisabled={telemetry.doorsOpen} onDoors={doors} doorsOpen={telemetry.doorsOpen} doorsDisabled={!station && !telemetry.doorsOpen} onAutomatic={automatic} automaticActive={telemetry.automatic} onHorn={pressed => { if (pressed) announce(); }} hornDisabled={!enabled || !started || paused} />}
   </main>;
 }
