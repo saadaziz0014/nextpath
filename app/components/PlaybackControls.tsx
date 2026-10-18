@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useMobileLayout } from '@/app/hooks/useMobileLayout';
 import { Pause, Play, RotateCcw, LocateFixed, Car, Film, ChevronDown, ChevronUp } from 'lucide-react';
 import { SPEED_OPTIONS, type PlaybackSpeed } from '@/lib/routeData';
 import type { DrivingRoute } from '@/lib/routes';
@@ -32,7 +33,9 @@ function DriveButton({ driveKey, label, disabled, onKey }: { driveKey: DriveKey;
 }
 export default function PlaybackControls(props: Props) {
   const { mode, active, speed, ready, following, route, speedKmh, traveledKm, remainingKm, progress, arrived, position, onMode, onToggle, onReset, onSpeed, onFollow, onKey, freeDriving, turnLocked, pendingTurn, junctionHint, roadName, roadsReady, onStraight } = props;
-  const [collapsed, setCollapsed] = useState(false);
+  const mobile = useMobileLayout();
+  const [collapsedChoice, setCollapsed] = useState<boolean | null>(null);
+  const collapsed = mobile && (collapsedChoice ?? true);
 
   if (collapsed) {
     return <section aria-label="Driving controls (compact)" className="glass absolute bottom-4 left-3 z-10 flex items-center gap-2 rounded-2xl p-2.5 sm:left-6">
