@@ -165,7 +165,10 @@ On-screen driving controls support touch; editable fields do not drive the car.
 Focus loss and tab hiding clear road input and suspend motion.
 
 The road camera uses the same elevated rear angle as rail: zoom 16.5 and pitch
-50 on recenter, with the car centred
+50 on recenter. The road marker is an unbranded metallic-blue sedan with a
+glazed cabin, side mirrors, four wheels, headlights and rear lights, shared by
+free drive and route driving/playback. It remains readable at its 40 by 80 pixel
+display size, with the car centred
 in the visible map area so more road is shown ahead. Camera spacing adapts to
 the planner and driving controls. The car stays upright and readable on the
 tilted map with a rear perspective; heading follows turns smoothly across north.
@@ -236,7 +239,10 @@ Fareed requires a stopped direction-change confirmation at **Kasur**; Jaffar at
 **Sibi**; Mohenjo Daro at **Habib Kot**. Backing cannot cross a physical reversal
 boundary. Ordinary route ends also stop the train.
 
-Each train has one locomotive and **seven amber coaches**. Coaches follow their
+Each train has one diesel locomotive and **ten green-and-cream passenger coaches**.
+The map uses distinct, slender locomotive and passenger-car drawings with cab
+windscreens, roof fans, coach windows, bogies and couplers, inspired by Pakistan
+Railways livery rather than a specific fleet model. Coaches follow their
 own track positions around bends and while backing, with zoom-aware spacing.
 At a route origin they appear as the train advances onto the imported corridor;
 no track is invented beyond the route boundary.
@@ -251,6 +257,14 @@ are discarded; unavailable browser storage does not interrupt driving.
 Choose a direction and starting station, then enter the driver cab. Orange Line
 has **five electric cars** and its own cab/audio. Metrobus has **two articulated
 sections**, with a city selector and network-specific livery.
+
+Metrobus map artwork uses a curved windscreen, mirrors, side glazing, passenger
+doors, roof equipment, three axles and ribbed articulation bellows. Lahore,
+Multan and Islamabad retain red bodies with light roofs; Peshawar uses green Zu
+livery and a separate hybrid roof treatment. These are illustrative upper-body
+views, not exact manufacturer replicas. Visual references include the
+[Punjab Masstransit Authority](https://pma.punjab.gov.pk/) and
+[TransPeshawar's bus advertising drawings](https://transpeshawar.pk/wp-content/uploads/2025/06/BSD-for-Bus-Wrap-Advertising.pdf).
 
 | Input | Action |
 | --- | --- |

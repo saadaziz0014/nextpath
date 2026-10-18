@@ -7,6 +7,7 @@ import { RoadNetwork, type RoadCursor, type Turn, type JunctionDecision } from '
 import { DEFAULT_START, sampleDrivingRoute, type DrivingRoute, type Place } from '@/lib/routes';
 import { isDrivingKey, nextVelocity, type DriveKey, type RoadVehicleState } from '@/lib/driving';
 import { smoothBearing } from '@/lib/simulation';
+import { roadCarSvg } from '@/lib/roadVehicle';
 import { getTurnPrompt, type TurnPrompt } from '@/lib/turnPrompt';
 import type { PlaybackSpeed } from '@/lib/routeData';
 import { ROAD_LEVEL_PRESENTATION, type RoadLevel } from '@/lib/roadLevel';
@@ -149,7 +150,7 @@ export function useVehicleSimulation() {
     element.setAttribute('aria-label', 'Your vehicle');
     // Rear perspective, nose toward the top; screen rotation is computed from
     // the actual camera bearing after it moves, so W always follows the nose.
-    element.innerHTML = '<svg viewBox="0 0 48 64" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="58" rx="22" ry="5" fill="#020617" opacity=".4"/><rect x="5" y="40" width="8" height="19" rx="3" fill="#020617"/><rect x="35" y="40" width="8" height="19" rx="3" fill="#020617"/><path d="M7 28 13 10Q24 3 35 10l6 18v26q-17 8-34 0Z" fill="#38bdf8" stroke="#e0f2fe" stroke-width="1.5"/><path d="m14 12 20 0 3 11H11Z" fill="#7dd3fc"/><path d="M12 25h24l3 15H9Z" fill="#0f172a" stroke="#bae6fd"/><path d="M8 42h32v11q-16 5-32 0Z" fill="#0284c7"/><path d="M10 46h8m12 0h8" stroke="#fb7185" stroke-width="4"/><rect x="20" y="47" width="8" height="5" rx="1" fill="#e2e8f0"/><path d="M10 55q14 5 28 0" fill="none" stroke="#0f172a" stroke-width="3"/></svg>';
+    element.innerHTML = roadCarSvg();
     markerRef.current = new mapboxgl.Marker({ element, anchor: 'center', offset: [0, 0], altitude: 0, draggable: false, rotationAlignment: 'viewport', pitchAlignment: 'viewport' }).setLngLat(stateRef.current.position).addTo(map);
     const levelElement = document.createElement('div');
     levelElement.className = 'vehicle-road-level';

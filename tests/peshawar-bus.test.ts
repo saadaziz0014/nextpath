@@ -82,4 +82,9 @@ test('Zu bus livery is green and existing cities keep their original red vehicle
  assert.ok(busSectionSvg(0,network.colour,network.darkColour).includes('fill="#16a34a"'));
  assert.ok(busSectionSvg(1,network.colour,network.darkColour).includes('stroke="#14532d"'));
  assert.ok(busSectionSvg(0).includes('fill="#e11d48"'));
+ // Hybrid detailing changes without dropping either configured livery colour.
+ const hybrid=busSectionSvg(0,network.colour,network.darkColour,'zu');
+ assert.ok(hybrid.includes('fill="#16a34a"'));
+ assert.ok(hybrid.includes('stroke="#14532d"'));
+ assert.notEqual(hybrid,busSectionSvg(0,network.colour,network.darkColour,'metrobus'));
 });

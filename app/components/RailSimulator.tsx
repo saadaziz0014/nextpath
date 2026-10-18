@@ -15,7 +15,7 @@ import { RAIL_ROUTES, validateRailDataset } from '@/lib/rail/dataset';
 import { smoothBearing } from '@/lib/simulation';
 import { createRailDeparture } from '@/lib/rail/departure';
 import { RAIL_SAVE_KEY, restoreRailSave, type RailSave } from '@/lib/rail/persistence';
-import { sampleConsist, trainCarSvg } from '@/lib/rail/consist';
+import { sampleConsist, trainCarSvg, TRAIN_COACH_COUNT, TRAIN_CAR_WIDTH, TRAIN_CAR_HEIGHT } from '@/lib/rail/consist';
 import { indexTrack, nextStation, sampleTrack, reversePath } from '@/lib/rail/track';
 import { useTrainAudio } from '@/app/hooks/useTrainAudio';
 const RailMap = dynamic(() => import('./RailMap'), { ssr: false });
@@ -205,7 +205,7 @@ export default function RailSimulator() {
   useEffect(() => {
     if (!mapInstance || !tracks.length) return;
     const instance = mapInstance;
-    // Allocate one locomotive and seven coaches once; never render React at
+    // Allocate one locomotive and ten coaches once; never render React at
     // animation frequency. Rotation and pitch align each car with the map.
     carMarkers.current = sampleConsist(tracks[0], 0).map(car => {
       const element = document.createElement('div');
@@ -214,7 +214,7 @@ export default function RailSimulator() {
       element.dataset.trainCar = String(car.index);
       element.style.pointerEvents = 'none';
       element.style.visibility = car.visible ? 'visible' : 'hidden';
-      element.style.width = (32 * 26 / 58) + 'px'; element.style.height = '32px';
+      element.style.width = (36 * TRAIN_CAR_WIDTH / TRAIN_CAR_HEIGHT) + 'px'; element.style.height = '36px';
       element.innerHTML = trainCarSvg(car.index === 0);
       return new Marker({ element, rotationAlignment: 'map', pitchAlignment: 'map' }).setLngLat(car.position).addTo(instance);
     });
@@ -244,7 +244,7 @@ export default function RailSimulator() {
       // and couple them using projected screen distance, including map pitch.
       const metresPerPixel = 156543.03392 * Math.cos(sample.position[1] * Math.PI / 180) / 2 ** instance.getZoom();
       // At close zoom, cap marker size so the train does not obscure nearby places.
-      const carHeight = Math.min(96, Math.max(32, 26 / metresPerPixel));
+      const carHeight = Math.min(96, Math.max(36, 26 / metresPerPixel));
       // Map perspective scales ground distances and DOM markers differently.
       // Measure the rendered car and projected rail instead of assuming that
       // metres-per-pixel gives the visible gap on a pitched navigation map.
@@ -264,7 +264,7 @@ export default function RailSimulator() {
         const element = marker.getElement();
         element.style.visibility = car.visible ? 'visible' : 'hidden';
         element.style.height = carHeight + 'px';
-        element.style.width = (carHeight * 26 / 58) + 'px';
+        element.style.width = (carHeight * TRAIN_CAR_WIDTH / TRAIN_CAR_HEIGHT) + 'px';
       });
       // Smooth angular changes in frame-rate independent time, including north.
       cameraBearing = smoothBearing(cameraBearing, sample.heading, 1 - Math.exp(-Math.min(dt, .1) * 8));
@@ -376,7 +376,7 @@ export default function RailSimulator() {
       <div aria-live="polite" className="mb-3 text-sm"><p>{stoppedAt ? `At ${stoppedAt.name}` : station ? `Next: ${station.name}` : 'End of track'}</p><p className="mt-1 text-xs text-slate-400">{station ? `${Math.max(0, (backing ? telemetry.km - station.km : station.km - telemetry.km) * 1000).toFixed(0)} m to next station · ` : ''}Braking distance ≈ {brakingDistanceMeters(telemetry.velocity).toFixed(0)} m</p></div>
       {reversal && <div className="mb-3 rounded-lg border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-200"><p>{active?.path.stations.find(station => station.id === reversal.stationId)?.name ?? 'Station'} direction change · {Math.max(0,(reversal.km-telemetry.km)*1000).toFixed(0)} m ahead. Brake manually before arrival. The train cannot pass this boundary until confirmed.</p><button disabled={!canReverse} onClick={confirmReversal} className="mt-2 rounded-lg bg-amber-400/20 px-3 py-2 disabled:opacity-40">R · Continue after reversal</button></div>}
       <p className="mb-2 text-[10px] text-slate-400">Journey auto-save · refresh restores paused · Selecting a new journey replaces the save</p>
-      <p className="mb-2 text-xs text-emerald-300">1 locomotive · 7 coaches</p>
+      <p className="mb-2 text-xs text-emerald-300">1 locomotive · {TRAIN_COACH_COUNT} coaches</p>
       <progress aria-label="Journey progress" max={remainingKm || 1} value={Math.max(0, telemetry.km - departureKm)} className="mb-3 h-1 w-full accent-emerald-400" />
       <div className="flex gap-2"><button disabled={!branch || !ready} onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); cancelCruise(); keys.current.add('w'); unlock(); }} onPointerUp={() => keys.current.delete('w')} onPointerCancel={() => keys.current.delete('w')} onLostPointerCapture={() => keys.current.delete('w')} className="touch-none flex-1 select-none rounded-xl bg-emerald-600 px-4 py-3 font-semibold disabled:opacity-40">W · Accelerate</button><button onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); cancelCruise(); keys.current.add('s'); }} onPointerUp={() => keys.current.delete('s')} onPointerCancel={() => keys.current.delete('s')} onLostPointerCapture={() => keys.current.delete('s')} className="touch-none flex-1 select-none rounded-xl bg-rose-600 px-4 py-3 font-semibold">S · Brake</button><button aria-label={paused ? 'Resume simulation' : 'Pause simulation'} onClick={() => { silence(); keys.current.clear(); pauseRef.current = !pauseRef.current; setPaused(pauseRef.current); }} className="rounded-xl bg-white/10 p-3">{paused ? <Play size={18} /> : <Pause size={18} />}</button></div>
       <button aria-pressed={cruise !== null} disabled={!branch || !ready || (cruise === null && (paused || telemetry.velocity <= 0))} onClick={toggleCruise} className={"mt-3 w-full rounded-lg px-3 py-2 text-sm disabled:opacity-40 " + (cruise !== null ? 'bg-emerald-600 text-white' : 'bg-white/10 text-slate-200')}>C · {cruise !== null ? 'Cruise ' + (cruise * 3.6).toFixed(0) + ' km/h — cancel' : 'Cruise at current speed'}</button>
