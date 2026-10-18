@@ -14,6 +14,7 @@ import { isTransitShortcut, transitCommand } from '@/lib/transit/controls';
 import { useMetroAudio } from '@/app/hooks/useMetroAudio';
 import MetroCab from './MetroCab';
 import TouchDpad from './TouchDpad';
+import MobileCabPanel from './MobileCabPanel';
 const MetroMap=dynamic(()=>import('./MetroMap'),{ssr:false});
 const initial:MetroMotion={km:0,velocity:0,doorsOpen:false,dwellSeconds:0,nextStop:1,automatic:false};
 
@@ -140,10 +141,12 @@ export default function MetroSimulator() {
   const reset=()=>{if(!path)return;motion.current=metroDeparture(path,departureId.current);keys.current.clear();pausedRef.current=false;setPaused(false);setTelemetry({...motion.current});persist();};
   const configure=()=>{persist();keys.current.clear();silence();activeRef.current=false;pausedRef.current=false;setActive(false);setPaused(false);if(path)preview(path,departureId.current);};
   const tunnel=indexed?sampleMetroTrack(indexed,telemetry.km).underground:false;
-  return <main className="metro-shell">
+  return <main className="metro-shell" data-driving={active}>
     <header className="metro-header"><Link href="/metro" className="metro-brand"><span><TrainFront size={23}/></span><div><h1>Orange Line</h1><p>LAHORE METRO · ELECTRIC</p></div></Link><nav aria-label="Transport modes"><Link href="/">Road <ArrowUpRight size={13}/></Link><Link href="/rail">Pakistan Rail <ArrowUpRight size={13}/></Link><Link href="/metrobus">Metrobus <ArrowUpRight size={13}/></Link></nav></header>
     <div className="metro-layout">
+      <MobileCabPanel speed={telemetry.velocity} active={active} paused={paused} onPause={setPause} onFollow={follow} onSound={toggle} following={following} sound={enabled && started} onOverview={overview} status={telemetry.doorsOpen ? `Doors open | ${telemetry.automatic ? Math.ceil(telemetry.dwellSeconds) + 's dwell' : 'power locked'}` : `${telemetry.automatic ? 'Auto stops' : 'Manual'} | ${next ? Math.max(0, (next.km - telemetry.km) * 1000).toFixed(0) + ' m to platform' : 'Terminal'}`}>
       {path?<MetroCab path={path} motion={telemetry} ready={!!map&&!error} active={active} paused={paused} following={following} stationId={stationId} direction={direction} sound={enabled} soundStarted={started} audioError={audioError} onStation={id=>preview(path,id)} onDirection={value=>{const selected=data!.paths.find(p=>p.direction===value)!;preview(selected,stationId===path.stations[0].id?selected.stations[0].id:stationId);}} onStart={start} onPause={setPause} onReset={reset} onConfigure={configure} onFollow={follow} onAutomatic={automatic} onDoors={doors} onSound={toggle} onChime={announce} onKey={setKey}/>:<aside className="metro-cab"><LoaderCircle className="animate-spin"/> Loading metro cab…</aside>}
+      </MobileCabPanel>
       <section className="metro-map-panel" aria-label="Lahore Orange Line map">
         {token&&path&&<MetroMap path={path} attribution={data!.attribution} token={token} onReady={onReady} onFailure={onFailure} onInteraction={unfollow}/>}
         <div className="metro-map-top"><span>{tunnel?'UNDERGROUND SECTION':'ELEVATED LINE'} · 26 STATIONS</span><button onClick={overview} disabled={!map}><MapIcon size={15}/> Line overview</button></div>
@@ -152,6 +155,6 @@ export default function MetroSimulator() {
       </section>
     </div>
     {path&&<footer className="metro-route-ribbon" aria-label="Orange Line station sequence">{path.stations.map((s,index)=><div key={s.id} className={`${s.km<telemetry.km-.025?'metro-stop-passed':''} ${station?.id===s.id?'metro-stop-current':''}`}><span>{String(index+1).padStart(2,'0')}</span><strong>{s.name}</strong>{s.underground&&<small>UNDERGROUND</small>}</div>)}</footer>}
-    {active && <TouchDpad mode="transit" active={active && !paused} onAccelerate={pressed => setKey('w', pressed)} onBrake={pressed => setKey('s', pressed)} upDisabled={telemetry.doorsOpen} onDoors={doors} doorsOpen={telemetry.doorsOpen} doorsDisabled={!station && !telemetry.doorsOpen} onAutomatic={automatic} automaticActive={telemetry.automatic} onHorn={() => announce()} hornDisabled={!enabled || !started || paused} />}
+    {active && <TouchDpad mode="transit" sessionActive={active} active={active && !paused} onAccelerate={pressed => setKey('w', pressed)} onBrake={pressed => setKey('s', pressed)} upDisabled={telemetry.doorsOpen} onDoors={doors} doorsOpen={telemetry.doorsOpen} doorsDisabled={!station && !telemetry.doorsOpen} onAutomatic={automatic} automaticActive={telemetry.automatic} onHorn={pressed => { if (pressed) announce(); }} hornDisabled={!enabled || !started || paused} />}
   </main>;
 }

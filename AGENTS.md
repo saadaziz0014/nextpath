@@ -69,6 +69,11 @@ The destination terminal requires switching direction before departing.
   lifecycle. lib/rail/ separates trains, datasets, departure, track sampling,
   physics, journey boundaries, cruise, consist and persistence.
 - MetroSimulator/MetroMap/MetroCab use lib/metro/ for Orange Line.
+- MobileCabPanel separates urban-transit journey selection from the mobile
+  driving toolbar and expandable settings. TouchDpad places traction/brake on
+  the left and vehicle actions on the right below 1024 CSS pixels; rail uses
+  its own compact status/selection panels. Desktop cabs retain their layouts.
+  Keep the map mounted when settings change and preserve paused Auto selection.
 - BusSimulator/BusMap/BusCab share lib/bus/ across cities. Register networks
   in lib/bus/networks.ts and their ID/direction types in lib/bus/types.ts.
   Keep bounds, station order, URLs, colours and save keys network-specific.

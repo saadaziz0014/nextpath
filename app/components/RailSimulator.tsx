@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Marker, type Map as MapboxMap } from 'mapbox-gl';
 import { Volume2, VolumeX, LoaderCircle, TrainFront, RotateCcw, Pause, Play, LocateFixed, ZoomIn, ZoomOut, ChevronDown, ChevronUp } from 'lucide-react';
 import TouchDpad from './TouchDpad';
+import { useMobileLayout } from '@/app/hooks/useMobileLayout';
 import type { RailBranch, RailDataset, RailMotion } from '@/lib/rail/types';
 import { stepCruiseJourney } from '@/lib/rail/cruise';
 import { nextReversal, confirmableReversal } from '@/lib/rail/journey';
@@ -54,6 +55,7 @@ export default function RailSimulator() {
   const driveDirection = useRef<1 | -1>(1);
   const [paused, setPaused] = useState(false);
   const [following, setFollowing] = useState(true);
+  const mobile = useMobileLayout();
   const [panelCollapsed, setPanelCollapsed] = useState(true);
   const [telemetry, setTelemetry] = useState<RailMotion>(initialMotion);
   const carMarkers = useRef<Marker[]>([]);
@@ -130,7 +132,7 @@ export default function RailSimulator() {
     if (!ready || selected.current || !dataset?.paths.some(path => path.id === value)) return;
     const path = dataset.paths.find(path => path.id === value)!;
     configureDeparture(createRailDeparture(path, path.stations[0].id, false));
-    selected.current = value; setBranch(value);
+    selected.current = value; setBranch(value); setPanelCollapsed(true);
     saveSelection.current = {trainId,serviceId:null,branch:value}; persistJourney();
   }, [ready, dataset, configureDeparture, trainId, persistJourney]);
   const chooseService = useCallback((id: string) => {
@@ -145,7 +147,7 @@ export default function RailSimulator() {
       // direction. Keyboard shortcuts obey the same eligibility as buttons.
       if (!start || directed.distanceKm - start.km < .015) return;
       configureDeparture(createRailDeparture(directed, startId, false));
-      selected.current = train.pathId; setBranch(train.pathId); setServiceId(id);
+      selected.current = train.pathId; setBranch(train.pathId); setServiceId(id); setPanelCollapsed(true);
       saveSelection.current = {trainId:train.id,serviceId:id,branch:train.pathId}; persistJourney();
     } catch (cause) { setError(cause instanceof Error ? cause.message : 'Train service could not be loaded.'); }
   }, [ready, dataset, train, configureDeparture, plannedStationId, persistJourney]);
@@ -310,11 +312,11 @@ export default function RailSimulator() {
     if (!path || departureLocked.current) return;
     configureDeparture(createRailDeparture(path, stationId, backwards)); persistJourney();
   };
-  return <div data-rail-simulator className="relative h-dvh min-h-[560px] overflow-hidden bg-slate-950">
+  return <div data-rail-simulator data-driving={!!branch} className="relative h-dvh min-h-[560px] overflow-hidden bg-slate-950">
     {token && visibleDataset && <RailMap token={token} dataset={visibleDataset} onReady={onReady} onFailure={onFailure} onExplore={onExplore} />}
     <div className="absolute left-4 top-4 flex items-center gap-3 rounded-xl glass px-4 py-3"><TrainFront className="text-emerald-400" /><div><h1 className="font-bold">Pakistan Rail</h1><p className="text-xs text-slate-400">{explore ? 'Explore Pakistan tracks' : 'Choose your train journey'}</p></div><Link href="/" className="ml-4 text-sm text-sky-300 underline">Road mode</Link><Link href="/metro" className="text-sm text-orange-300 underline">Orange Line</Link><Link href="/metrobus" className="text-sm text-rose-300 underline">Metrobus</Link></div>
     {(!token || error) ? <div role="alert" className="absolute inset-0 grid place-items-center bg-slate-950/90 p-8"><p className="max-w-lg rounded-xl glass p-6">{!token ? 'Set NEXT_PUBLIC_MAPBOX_TOKEN in .env.local and restart the server.' : error}</p></div> : !ready && <div role="status" className="absolute inset-0 grid place-items-center bg-slate-950/80"><div className="flex items-center gap-3"><LoaderCircle className="animate-spin" /> Loading Pakistan tracks…</div></div>}
-    {panelCollapsed && !!branch && <section aria-label="Train HUD (compact)" className="glass absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-2xl p-2.5 sm:hidden">
+    {mobile && panelCollapsed && !!branch && <section aria-label="Train HUD (compact)" className="glass absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-2xl p-2.5 sm:hidden">
       <div className="px-2">
         <span className="text-lg font-bold tabular-nums">{(telemetry.velocity * 3.6).toFixed(0)}</span>
         <span className="ml-1 text-[10px] text-slate-400">km/h</span>
@@ -322,15 +324,19 @@ export default function RailSimulator() {
       <button aria-label={paused ? 'Resume simulation' : 'Pause simulation'} onClick={() => { silence(); keys.current.clear(); pauseRef.current = !pauseRef.current; setPaused(pauseRef.current); }} className="rounded-xl bg-white/10 p-2 text-white">
         {paused ? <Play size={14} /> : <Pause size={14} />}
       </button>
+      <button type="button" onClick={() => { followRef.current = !followRef.current; setFollowing(followRef.current); }} aria-label="Follow train" aria-pressed={following} className="rounded-xl border border-slate-600 p-2"><LocateFixed size={18}/></button>
+      <button type="button" onClick={toggleSound} aria-label={soundEnabled && soundStarted ? 'Mute sound' : 'Enable sound'} className="rounded-xl border border-slate-600 p-2"><Volume2 size={18}/></button>
       <button type="button" onClick={() => setPanelCollapsed(false)} aria-label="Expand train controls" className="rounded-xl border border-slate-600 p-2 text-slate-300">
-        <ChevronUp size={14} />
+        <ChevronUp size={14} /><span className="text-xs">{branch ? 'Cab settings' : 'Choose journey'}</span>
       </button>
+      <p className="mobile-rail-status">{paused ? 'Paused | ' : ''}{stoppedAt ? `At ${stoppedAt.name}` : station ? `${station.name} | ${Math.max(0, (backing ? telemetry.km - station.km : station.km - telemetry.km) * 1000).toFixed(0)} m` : 'End of track'}</p>
+      {reversal && <button type="button" disabled={!canReverse} onClick={confirmReversal} className="mobile-rail-reversal">{canReverse ? 'Continue after reversal' : 'Brake for station reversal'}</button>}
     </section>}
-    <section aria-label="Train controls" className={`glass absolute bottom-8 left-4 right-4 max-w-md max-h-[calc(100dvh-124px)] overflow-y-auto rounded-2xl p-5 ${panelCollapsed && !!branch ? 'hidden sm:block' : ''}`}>
+    <section aria-label="Train controls" data-selecting={!branch} style={mobile && panelCollapsed && !!branch ? { display: 'none' } : undefined} className={`glass absolute bottom-8 left-4 right-4 max-w-md max-h-[calc(100dvh-124px)] overflow-y-auto rounded-2xl p-5 `}>
       <div className="flex items-center justify-between">
         <div><span className="text-4xl font-bold tabular-nums">{(telemetry.velocity * 3.6).toFixed(0)}</span><span className="ml-2 text-sm text-slate-400">km/h · max {railSpeedLimitKmh(branch ?? (explore ? undefined : train.pathId), backing ? -1 : 1)}</span></div>
         <div className="flex items-center gap-1">
-          {!!branch && <button type="button" aria-label="Minimize train controls" onClick={() => setPanelCollapsed(true)} className="rounded-lg p-3 hover:bg-white/10 sm:hidden"><ChevronDown size={20} /></button>}
+          {mobile && <button type="button" aria-label="Minimize train controls" onClick={() => setPanelCollapsed(true)} className="rounded-lg p-3 hover:bg-white/10 sm:hidden"><ChevronDown size={20} /></button>}
           <button aria-label="Reset journey" onClick={reset} className="rounded-lg p-3 hover:bg-white/10"><RotateCcw size={20} /></button>
         </div>
       </div>
@@ -341,7 +347,7 @@ export default function RailSimulator() {
         <button type="button" aria-label="Toggle camera follow" aria-pressed={following} disabled={!ready} onClick={() => { followRef.current = !followRef.current; setFollowing(followRef.current); }} className={`flex items-center gap-2 rounded-lg px-3 py-3 text-xs disabled:opacity-40 ${following ? 'bg-sky-600' : 'bg-white/10'}`}><LocateFixed size={18} aria-hidden="true" />Follow train</button>
       </div>
       <p className="mt-2 text-xs text-slate-400">Scroll or pinch to zoom. Drag to explore nearby places; Follow train recenters at your chosen zoom.</p>
-      {!branch ? <div className="my-4">
+      {!branch ? <div data-rail-selection className="my-4"><h2 className="mb-4 text-xl font-semibold">Choose your train journey</h2>
         <div className="mb-3 flex gap-2"><button aria-pressed={!explore} onClick={() => setExplore(false)} className={`rounded-lg px-3 py-2 text-sm ${!explore ? 'bg-emerald-600' : 'bg-white/10'}`}>Train journeys</button><button aria-pressed={explore} onClick={() => setExplore(true)} className={`rounded-lg px-3 py-2 text-sm ${explore ? 'bg-sky-600' : 'bg-white/10'}`}>Explore tracks</button></div>
         {explore ? <fieldset><legend className="mb-2 text-sm">Choose a track</legend><div className="grid grid-cols-2 gap-2">{RAIL_ROUTES.map(route => <button key={route.id} disabled={!ready} onClick={() => choose(route.id)} className="rounded-xl bg-sky-500/20 p-3 text-sm text-sky-200 disabled:opacity-40">{route.key} · {route.label}</button>)}</div></fieldset> : <>
           <label htmlFor="rail-train" className="text-xs text-slate-400">Train</label><select id="rail-train" value={trainId} onChange={event => { setTrainId(event.target.value); setPlannedStationId(''); }} className="mt-1 w-full rounded-lg border border-slate-600 bg-slate-900 p-2 text-sm">{TRAINS.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select>
@@ -388,6 +394,6 @@ export default function RailSimulator() {
       <p className="mt-3 text-xs leading-relaxed text-slate-400">Hold W for traction, S for manual braking. Release to coast. Stations do not stop the train automatically. Space pauses. A/D are locked.</p>
       <p className="mt-2 text-[10px] text-slate-500">OSM tracks · Train stop profiles researched {train.researchedOn} from published lists; official current timetable unverified. Manual station stops.</p>
     </section>
-    {ready && !!branch && <TouchDpad mode="rail" active={!!branch && !paused} onAccelerate={pressed => { if (pressed) { cancelCruise(); keys.current.add('w'); unlock(); } else keys.current.delete('w'); }} onBrake={pressed => { if (pressed) { cancelCruise(); keys.current.add('s'); } else keys.current.delete('s'); }} onCruise={toggleCruise} cruiseActive={cruise !== null} onReverser={toggleReverser} reverserBacking={backing} reverserDisabled={telemetry.velocity !== 0} onHorn={pressed => horn('pointer-touch', pressed)} hornDisabled={!soundEnabled || paused} />}
+    {ready && !!branch && <TouchDpad mode="rail" sessionActive={!!branch} active={!!branch && !paused} onAccelerate={pressed => { if (pressed) { cancelCruise(); keys.current.add('w'); unlock(); } else keys.current.delete('w'); }} onBrake={pressed => { if (pressed) { cancelCruise(); keys.current.add('s'); } else keys.current.delete('s'); }} onCruise={toggleCruise} cruiseActive={cruise !== null} onReverser={toggleReverser} reverserBacking={backing} reverserDisabled={telemetry.velocity !== 0} onHorn={pressed => horn('pointer-touch', pressed)} hornDisabled={!soundEnabled || paused} />}
   </div>;
 }
