@@ -4,13 +4,13 @@ import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { LoaderCircle, AlertTriangle } from 'lucide-react';
 import PlaybackControls from './PlaybackControls';
-import TurnPrompt from './TurnPrompt';
 import TouchDpad from './TouchDpad';
 import RoutePlanner, { type Endpoint, type PlaceDraft } from './RoutePlanner';
 import { useVehicleSimulation } from '@/app/hooks/useVehicleSimulation';
 import { DEFAULT_START, DEFAULT_END, fetchDrivingRoute, type DrivingRoute, type Place } from '@/lib/routes';
 import type { Coordinate } from '@/lib/routeData';
-import { currentLocation } from '@/lib/geolocation';
+import { currentLocation, LocationError } from '@/lib/geolocation';
+import { approximateLocation } from '@/lib/ipLocation';
 
 // Server page/layout wrap this client-only WebGL boundary.
 const MapCanvas = dynamic(() => import('./MapCanvas'), { ssr: false });
@@ -35,9 +35,10 @@ export default function MapSimulator() {
   const locationRequestRef = useRef<AbortController | null>(null);
   const [locating, setLocating] = useState<Endpoint | null>(null);
   const [locationError, setLocationError] = useState<string | null>(null);
+  const [fallbackEndpoint, setFallbackEndpoint] = useState<Endpoint | null>(null);
   const cancelLocation = useCallback(() => {
     locationRequestRef.current?.abort(); locationRequestRef.current = null;
-    setLocating(null); setLocationError(null);
+    setLocating(null); setLocationError(null); setFallbackEndpoint(null);
   }, []);
 
   useEffect(() => () => {
@@ -67,24 +68,53 @@ export default function MapSimulator() {
     else { setEnd(draft(place)); relocate(startRef.current.place ?? DEFAULT_START); }
     if (focus) focusPlace(place);
   }, [cancelLocation, cancelRequest, relocate, focusPlace, startFreeDrive, freeDriving]);
+  const applyLocation = useCallback((endpoint: Endpoint, place: Place) => {
+    try { selectPlace(endpoint, place); }
+    catch { setFallbackEndpoint(endpoint); setLocationError('Your location was found, but the map could not start there. Try again, search or pick on the map.'); }
+  }, [selectPlace]);
   const useLocation = async (endpoint: Endpoint) => {
     cancelLocation();
-    if (!window.isSecureContext) { setLocationError('Location requires HTTPS or localhost. Open NextPath on a secure address to use your location.'); return; }
-    if (!navigator.geolocation) { setLocationError('This browser does not support location. Search for a place or pick on the map.'); return; }
+    if (!window.isSecureContext) { setFallbackEndpoint(endpoint); setLocationError('Location requires HTTPS or localhost. Open NextPath on a secure address to use your location.'); return; }
+    if (!navigator.geolocation) { setFallbackEndpoint(endpoint); setLocationError('This browser does not support location. Use an approximate location or search for a place.'); return; }
     const controller = new AbortController();
     locationRequestRef.current = controller; setLocating(endpoint);
+    const aborted = (failure: unknown) => failure instanceof DOMException && failure.name === 'AbortError';
     let place: Place | null = null;
+    let deviceMessage = '';
+    let approximateTried = false;
     try {
       place = await currentLocation(navigator.geolocation, controller.signal);
     } catch (failure) {
-      if (locationRequestRef.current !== controller) return; // A newer click, edit or map pick superseded this request.
-      if (!(failure instanceof DOMException && failure.name === 'AbortError')) setLocationError(failure instanceof Error ? failure.message : 'Unable to find your location.');
+      if (locationRequestRef.current !== controller || aborted(failure)) return;
+      deviceMessage = failure instanceof Error ? failure.message : 'Unable to find your location.';
+      // A denied permission is the driver's decision, so only other device
+      // failures fall back to a city-level lookup without another click.
+      if (!(failure instanceof LocationError) || failure.reason !== 'denied') {
+        approximateTried = true;
+        try { place = await approximateLocation(controller.signal); }
+        catch (network) { if (locationRequestRef.current !== controller || aborted(network)) return; }
+      }
     }
     if (locationRequestRef.current !== controller) return;
     locationRequestRef.current = null; setLocating(null);
-    if (!place) return;
-    try { selectPlace(endpoint, place); }
-    catch { setLocationError('Your location was found, but the map could not start there. Try again or pick on the map.'); }
+    if (place) { applyLocation(endpoint, place); return; }
+    setFallbackEndpoint(endpoint);
+    setLocationError(approximateTried ? `${deviceMessage} Approximate location is also unavailable.` : deviceMessage || 'Use an approximate location, search, or pick on the map.');
+  };
+  const useApproximate = async (endpoint: Endpoint) => {
+    cancelLocation();
+    const controller = new AbortController();
+    locationRequestRef.current = controller; setLocating(endpoint);
+    let place: Place | null = null;
+    try { place = await approximateLocation(controller.signal); }
+    catch (failure) {
+      if (locationRequestRef.current !== controller) return;
+      if (!(failure instanceof DOMException && failure.name === 'AbortError')) setLocationError(failure instanceof Error ? failure.message : 'Approximate location is unavailable. Search for a place or pick on the map.');
+    }
+    if (locationRequestRef.current !== controller) return;
+    locationRequestRef.current = null; setLocating(null);
+    if (place) { applyLocation(endpoint, place); return; }
+    setFallbackEndpoint(endpoint);
   };
   const mapPick = useCallback((coordinate: Coordinate) => {
     const endpoint = pickingRef.current;
@@ -126,10 +156,9 @@ export default function MapSimulator() {
   const usable = simulation.ready && !mapError && !loadingRoute && picking === null;
   return <div data-road-simulator className="relative h-dvh min-h-[540px] w-full overflow-hidden bg-slate-950">
     {validToken && <MapCanvas token={token!} route={route} start={route?.start ?? start.place} end={simulation.freeDriving ? null : route?.end ?? end.place} picking={!!picking} onReady={onReady} onFailure={onFailure} onInteraction={explore} onPick={mapPick} />}
-    <RoutePlanner locating={locating} locationError={locationError} onUseLocation={useLocation} getSearchProximity={simulation.getSearchProximity} token={token ?? ''} start={start} end={end} picking={picking} loading={loadingRoute} ready={simulation.ready && !mapError} error={routeError} hasRoute={!!route} freeDriving={simulation.freeDriving} onFreeDrive={freeDrive} onEdit={edit} onSelect={selectPlace} onPick={onPick} onBuild={build} onPreset={preset} onOverview={simulation.overview} />
+    <RoutePlanner locating={locating} locationError={locationError} onUseLocation={useLocation} fallbackEndpoint={fallbackEndpoint} onApproximate={useApproximate} getSearchProximity={simulation.getSearchProximity} token={token ?? ''} start={start} end={end} picking={picking} loading={loadingRoute} ready={simulation.ready && !mapError} error={routeError} hasRoute={!!route} freeDriving={simulation.freeDriving} onFreeDrive={freeDrive} onEdit={edit} onSelect={selectPlace} onPick={onPick} onBuild={build} onPreset={preset} onOverview={simulation.overview} />
     {!simulation.ready && validToken && !mapError && <div role="status" className="absolute inset-0 flex items-center justify-center bg-slate-950/60"><div className="flex items-center gap-3 rounded-xl bg-slate-900 p-5"><LoaderCircle className="animate-spin text-sky-400" />Loading street map…</div></div>}
     {(!validToken || mapError) && <div role="alert" className="absolute inset-0 z-30 flex items-center justify-center bg-slate-950/90 px-6"><div className="max-w-lg rounded-2xl border border-slate-700 bg-slate-900 p-6"><AlertTriangle className="mb-3 text-amber-400" /><h2 className="text-lg font-semibold">{validToken ? 'Unable to load the map' : 'Connect your Mapbox account'}</h2><p className="mt-2 text-sm text-slate-400">{validToken ? 'Check your connection, token permissions and allowed URLs, then reload.' : 'Set NEXT_PUBLIC_MAPBOX_TOKEN to a public pk.* token in .env.local and restart the server.'}</p>{mapError && <p className="mt-3 break-words text-xs text-slate-500">{mapError}</p>}{validToken && <button onClick={() => window.location.reload()} className="mt-4 rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-slate-950">Retry</button>}</div></div>}
-    <TurnPrompt prompt={usable ? simulation.telemetry.turnPrompt : null} enabled={usable && simulation.active} onChoose={simulation.chooseTurn} />
     <PlaybackControls mode={simulation.mode} active={simulation.active} speed={simulation.speed} ready={usable && (simulation.mode === 'playback' ? !!route : simulation.telemetry.roadsReady)} freeDriving={simulation.freeDriving} following={simulation.following} route={route} {...simulation.telemetry} onMode={simulation.setMode} onToggle={simulation.toggle} onReset={simulation.reset} onSpeed={simulation.setSpeed} onFollow={simulation.follow} onKey={simulation.setKey} onStraight={() => simulation.chooseTurn(null)} />
     {usable && simulation.active && simulation.mode === 'drive' && <TouchDpad mode="road" active={simulation.active} onAccelerate={pressed => simulation.setKey('w', pressed)} onBrake={pressed => simulation.setKey('s', pressed)} onLeft={() => simulation.chooseTurn('left')} onRight={() => simulation.chooseTurn('right')} leftDisabled={simulation.telemetry.turnLocked} rightDisabled={simulation.telemetry.turnLocked} />}
   </div>;

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { distance } from '@turf/turf';
-import { nextVelocity, isDrivingKey } from '../lib/driving';
+import { nextVelocity, isDrivingKey, ROAD_SPEED_LIMIT_KMH } from '../lib/driving';
 import { RoadNetwork } from '../lib/roadNetwork';
 import { createDrivingRoute, sampleDrivingRoute, searchPlaces, fetchDrivingRoute, DEFAULT_START, DEFAULT_END } from '../lib/routes';
 import type { Coordinate } from '../lib/routeData';
@@ -53,8 +53,19 @@ test('A/D and W/S are recognized, throttle is capped, and braking reverses', () 
   assert.equal(isDrivingKey('x'), false);
   assert.ok(nextVelocity(10, new Set(['s']), .1) < 10);
   assert.ok(nextVelocity(0, new Set(['s']), .1) < 0);
-  assert.equal(nextVelocity(120 / 3.6, new Set(['w']), .1), 120 / 3.6);
+  assert.equal(nextVelocity(ROAD_SPEED_LIMIT_KMH / 3.6, new Set(['w']), .1), ROAD_SPEED_LIMIT_KMH / 3.6);
+  assert.equal(nextVelocity(70 / 3.6, new Set(['w']), .1), ROAD_SPEED_LIMIT_KMH / 3.6);
   assert.equal(nextVelocity(0, new Set(['w']), 10), nextVelocity(0, new Set(['w']), .1));
+});
+
+test('a car accelerates to 60 km/h at a realistic pace', () => {
+  let velocity = 0;
+  for (let step = 0; step < 50; step++) velocity = nextVelocity(velocity, new Set(['w']), .1);
+  const atFiveSeconds = velocity * 3.6;
+  assert.ok(atFiveSeconds > 40 && atFiveSeconds < 50, `5 s should be about 45 km/h, got ${atFiveSeconds}`);
+  for (let step = 0; step < 20; step++) velocity = nextVelocity(velocity, new Set(['w']), .1);
+  assert.ok(Math.abs(velocity * 3.6 - ROAD_SPEED_LIMIT_KMH) < .01, '7 s should reach the 60 km/h cap');
+  assert.equal(nextVelocity(velocity, new Set(['w']), .1), velocity);
 });
 test('left/right choose connected roads instead of staying on the guide route', () => {
   const graph = network();

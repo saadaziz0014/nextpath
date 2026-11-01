@@ -1,6 +1,6 @@
 import { test, mock } from 'node:test';
 import assert from 'node:assert/strict';
-import { currentLocation } from '../lib/geolocation';
+import { currentLocation, LocationError } from '../lib/geolocation';
 
 const PRECISE = { enableHighAccuracy: true, timeout: 6000, maximumAge: 30000 };
 const COARSE = { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 };
@@ -13,7 +13,7 @@ function device() {
   return {
     geolocation,
     success: (latitude: number, longitude: number, index = calls.length - 1) => calls[index].success({ coords: { latitude, longitude } } as GeolocationPosition),
-    failure: (code: number, index = calls.length - 1) => calls[index].failure({ code } as GeolocationPositionError),
+    failure: (code: number, index = calls.length - 1, detail?: string) => calls[index].failure({ code, ...(detail ? { message: detail } : {}) } as GeolocationPositionError),
     options: (index: number) => calls[index].options,
     count: () => calls.length
   };
@@ -60,6 +60,50 @@ test('denied fixes are final; unavailable and timed-out fixes retry once and rep
     await assert.rejects(result, text);
     assert.equal(gps.count(), 2);
   }
+});
+
+test('the browser-provided reason appears with the guidance', async () => {
+  const gps = device();
+  const result = currentLocation(gps.geolocation, new AbortController().signal);
+  gps.failure(2, 0, 'Location services are disabled');
+  await flush();
+  gps.failure(2, 1, 'Location services are disabled');
+  await assert.rejects(result, /unavailable[\s\S]*Location services are disabled/);
+});
+
+test('failures carry a reason so the UI can offer the right fallback', async () => {
+  const expected = (reason: string) => (error: unknown) => {
+    assert.ok(error instanceof LocationError, 'expected a LocationError');
+    assert.equal(error.reason, reason);
+    return true;
+  };
+  const denied = device();
+  const deniedResult = currentLocation(denied.geolocation, new AbortController().signal);
+  denied.failure(1);
+  await assert.rejects(deniedResult, expected('denied'));
+  for (const [code, reason] of [[2, 'unavailable'], [3, 'timeout']] as const) {
+    const gps = device();
+    const result = currentLocation(gps.geolocation, new AbortController().signal);
+    gps.failure(code);
+    await flush();
+    gps.failure(code);
+    await assert.rejects(result, expected(reason));
+  }
+  const silent = device();
+  mock.timers.enable({ apis: ['setTimeout'] });
+  try {
+    const result = currentLocation(silent.geolocation, new AbortController().signal);
+    mock.timers.tick(PRECISE.timeout! + 2500);
+    await flush();
+    mock.timers.tick(COARSE.timeout! + 2500);
+    await assert.rejects(result, expected('timeout'));
+  } finally {
+    mock.timers.reset();
+  }
+  const invalid = device();
+  const invalidResult = currentLocation(invalid.geolocation, new AbortController().signal);
+  invalid.success(91, 74);
+  await assert.rejects(invalidResult, expected('invalid'));
 });
 
 test('a provider that never answers still settles, retries coarse and can succeed', async () => {

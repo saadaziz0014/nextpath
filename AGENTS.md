@@ -63,8 +63,8 @@ The destination terminal requires switching direction before departing.
   DOM, WebGL, animation, localStorage or Web Audio belong behind 'use client'.
 - app/components/MapSimulator.tsx, MapCanvas.tsx and
   app/hooks/useVehicleSimulation.ts implement road UI, map and simulation.
-  lib/routes.ts handles Geocoding/Directions; lib/roadNetwork.ts,
-  lib/driving.ts and lib/turnPrompt.ts handle manual road traversal.
+  lib/routes.ts handles Geocoding/Directions; lib/roadNetwork.ts and
+  lib/driving.ts handle manual road traversal.
   lib/roadVehicle.ts owns the shared road-car SVG; keep its nose pointing up
   and its marker proportions aligned with .vehicle in app/globals.css.
 - app/components/RailSimulator.tsx and RailMap.tsx own rail presentation and
@@ -95,20 +95,26 @@ every frame. Interpolate track positions and smooth bearings across north by
 the shortest angle. Dispose frames, markers, listeners and audio on cleanup.
 
 - Road: W accelerates; S brakes, then reverses along driven history. A/D choose
-  connected junction exits. The prompt appears within 50 metres; Enter commits
-  an available straight exit. Committing an exit locks A/D until that junction
-  is traversed. Ordinary bends continue; no forward road means stop and wait
-  for a legal choice. Junction exits are matched by driven heading, previous
-  segment, road continuity and where the exit leads, never by nearest distance
-  alone, so shallow U-turn lanes and slip roads are not auto-followed; A/D can
-  still pick a leaning branch of a shallow fork. Respect mapped one-way
+  connected junction exits. There is no blocking junction prompt; the driving
+  panel shows the upcoming choices and distance, and A/D commit within 50 metres.
+  Enter commits an available straight exit. Committing an exit locks A/D until
+  that junction is traversed. Forward speed is capped at 60 km/h and acceleration
+  is realistic (about seven seconds from rest), not arcade-fast. Ordinary bends
+  continue; no forward road means stop and wait for a legal choice. Junction
+  exits are matched by driven heading, previous segment, road continuity and
+  where the exit leads, never by nearest distance alone, so shallow U-turn lanes
+  and slip roads are not auto-followed; A/D can still pick a leaning branch of a
+  shallow fork. Respect mapped one-way
   directions and grade separation. Never bypass missing connectivity by moving
   the car off-road. Search defaults to Pakistan with map proximity; worldwide
   search is an explicit option. While free driving, a changed start (location,
   search or map pick) restarts the drive there and a changed destination waits
   for the route build instead of ending the session. Use my location tries one
-  precise device fix, then one coarse network fix if the device stalls, and
-  always ends with a filled endpoint or a visible error.
+  precise device fix, then one coarse network fix if the device stalls. Non-denied
+  device failures fall back once to the city-level ipwho.is lookup in
+  lib/ipLocation.ts, labelled Approximate location; a denied permission shows an
+  explicit approximate action instead of overriding the block. Every click ends
+  with a filled endpoint or a visible error.
 - Rail: W traction, S manual brake, C cruise, V stopped reverser, R stopped
   confirmation at a declared station reversal, H horn, Space pause. Forward
   limit is 110 km/h except KCR at 90 km/h; backing stays at 20 km/h for all

@@ -4,29 +4,33 @@ Automated checks: `npm test`, `npm run lint`, `npm run typecheck`, `npm run buil
 
 The junction decision regressions cover selecting an exact straight road before
 new tile geometry subdivides it, retaining a committed right exit against a
-competing direction, 50-metre prompt timing, and preserving genuine T-junction
-stops. Existing tests cover road seams, grade separation, reverse history,
-one-way edges, route sampling and API failures.
+competing direction, the 50-metre A/D decision window, and preserving genuine
+T-junction stops. Road physics regressions cover the 60 km/h cap and the
+realistic 0-60 km/h acceleration curve. Existing tests cover road seams, grade
+separation, reverse history, one-way edges, route sampling and API failures.
 
 Browser checks on the Lahore example streets:
 
-- Start free drive without a destination.
-- Press Enter at the first junction prompt: straight is committed, the prompt
-  closes, A/D buttons disable, and pressing D does not replace the choice.
-- Drive through the straight exit: the vehicle crosses without stopping and
-  A/D unlock for the next junction.
-- Press A at the next prompt, then D: left remains selected; driving crosses
-  onto the selected left road and releases the lock.
-- Focus Pause and press Enter: playback input does not steal the button action.
-- Reset while a direction is committed: the vehicle returns to its start,
-  the lock clears, and the junction prompt becomes available again.
+- Start free drive without a destination and hold W: speed rises smoothly
+  (about 45 km/h after five seconds) and stops at 60 km/h instead of exceeding it.
+- No junction popup appears. The driving panel shows the upcoming choices and
+  distance; A/D within 50 metres commits an exit, and the car crosses it with
+  A/D locked until the junction is passed.
+- With a straight exit available, Enter also commits it; without a choice the
+  car continues straight.
+- Reset while a direction is committed: the vehicle returns to its start and
+  the lock clears.
+- The car marker is 28x56 CSS pixels and the road-level badge stays above it.
+
+Earlier reports here described a junction prompt with clickable turn buttons;
+that prompt was removed in favour of direct A/D control.
 
 Mapbox road coverage and tile topology vary by location. For a new reported
 stop, record the displayed coordinates, status message, selected direction,
 and whether W remains held; those distinguish missing road data from decision
 or input failures.
 
-Route-mode checks: build the nearby Lahore route after free driving, switch to Route playback (manual prompts disappear), and start playback at 60 km/h.
+Route-mode checks: build the nearby Lahore route after free driving, switch to Route playback (manual turn decisions no longer apply), and start playback at 60 km/h.
 
 ## Rail pilot browser verification
 
