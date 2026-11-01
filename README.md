@@ -106,31 +106,40 @@ Use **Use my location** below Start or Destination to fill that endpoint from
 your device, then allow the browser's location request. This needs HTTPS or
 localhost. Each click requests one location fix; it does not track your movement.
 A precise fix is tried first and a coarse network fix if the device stalls, so
-every click ends with a filled endpoint or a clear error. While free driving,
+every click ends with a filled endpoint or a clear error. If the device still
+cannot supply a fix (for example, system location services are off), the click
+falls back to a city-level lookup through `ipwho.is` and labels the endpoint
+**Approximate location · <city>**. That fallback sends one request to that
+external service and is not exact; search or pick on the map for a precise
+start. If location permission is denied, NextPath respects the block and offers
+an explicit **Use approximate location** action instead. While free driving,
 choosing a new start (location, search or map pick) restarts the drive at that
 point, and a new destination waits for **Build road route**.
 After choosing your endpoints, select **Build road route**, or use **Free drive
 from start**. Directions snaps route endpoints to roads. If location is denied,
-unavailable or times out, you can retry, search, or pick on the map.
+unavailable or times out, you can retry, search, or pick on the map. The planner
+shows the browser's own reason and points to the browser or system setting to fix.
 
 ### Controls and junctions
 
 | Input | Action |
 | --- | --- |
-| Hold **W** | Accelerate, up to 120 km/h |
+| Hold **W** | Accelerate smoothly, up to 60 km/h |
 | Hold **S** | Brake, then reverse along driven history, up to 25 km/h |
 | **A / D** | Choose a connected left/right junction exit |
-| **Enter** at a junction prompt | Commit the available straight exit |
+| **Enter** | Commit the available straight exit (optional) |
 | **Follow road** | Clear an uncommitted turn request |
 | **Pause / Reset** | Suspend driving / return to the selected start |
 | **Follow / Route overview** | Recenter at driving zoom / show the planned trip |
 
-Within 50 metres of a junction, the prompt lists connected choices. Selecting
-one commits that specific exit and locks A/D until the car crosses the junction.
+There is no blocking junction prompt: the driving panel shows the upcoming
+choices and distance, and A/D decide within 50 metres of the junction. A choice
+commits that specific exit and locks A/D until the car crosses the junction.
 W/S remain available. Ordinary bends follow the road; a junction without a
 forward continuation stops the car until an available turn is chosen. An
 unavailable turn stays queued when a forward exit exists. Reset or a mode
-change clears the commitment.
+change clears the commitment. The car reaches its 60 km/h limit from rest in
+about seven seconds.
 
 Junction exits are matched by the driven direction, previous segment, road
 connectivity and where the exit actually leads over the next metres, not by
@@ -319,7 +328,7 @@ app/
   hooks/                      Road animation and transport audio hooks
 lib/
   routes.ts, roadNetwork.ts    Place search, Directions and connected road graph
-  driving.ts, turnPrompt.ts    Road physics and junction decisions
+  driving.ts                   Road physics, 60 km/h cap and junction decisions
   simulation.ts               Bearing smoothing
   rail/                       Train profiles, track, motion, consists and saves
   metro/, bus/, transit/      Transit networks, motion, shared stops and saves

@@ -8,15 +8,14 @@ import { DEFAULT_START, sampleDrivingRoute, type DrivingRoute, type Place } from
 import { isDrivingKey, nextVelocity, type DriveKey, type RoadVehicleState } from '@/lib/driving';
 import { smoothBearing } from '@/lib/simulation';
 import { roadCarSvg } from '@/lib/roadVehicle';
-import { getTurnPrompt, type TurnPrompt } from '@/lib/turnPrompt';
 import type { PlaybackSpeed } from '@/lib/routeData';
 import { ROAD_LEVEL_PRESENTATION, type RoadLevel } from '@/lib/roadLevel';
 import { drivingCameraPadding, drivingCameraOptions, vehicleScreenHeading } from '@/lib/drivingCamera';
 
 export type SimulationMode = 'drive' | 'playback';
 const INITIAL_VEHICLE: RoadVehicleState = { position: DEFAULT_START.coordinate, heading: 180, velocity: 0, traveledKm: 0, routeKm: 0 };
-interface Telemetry { roadLevel: RoadLevel | null; turnLocked: boolean; turnPrompt: TurnPrompt | null; speedKmh: number; traveledKm: number; remainingKm: number | null; progress: number; arrived: boolean; position: [number, number]; pendingTurn: Turn | null; junctionHint: string; roadName: string; roadsReady: boolean }
-const INITIAL_TELEMETRY: Telemetry = { roadLevel: null, turnLocked: false, turnPrompt: null, speedKmh: 0, traveledKm: 0, remainingKm: null, progress: 0, arrived: false, position: DEFAULT_START.coordinate, pendingTurn: null, junctionHint: 'Build a route to start driving', roadName: '', roadsReady: false };
+interface Telemetry { roadLevel: RoadLevel | null; turnLocked: boolean; speedKmh: number; traveledKm: number; remainingKm: number | null; progress: number; arrived: boolean; position: [number, number]; pendingTurn: Turn | null; junctionHint: string; roadName: string; roadsReady: boolean }
+const INITIAL_TELEMETRY: Telemetry = { roadLevel: null, turnLocked: false, speedKmh: 0, traveledKm: 0, remainingKm: null, progress: 0, arrived: false, position: DEFAULT_START.coordinate, pendingTurn: null, junctionHint: 'Build a route to start driving', roadName: '', roadsReady: false };
 
 export function useVehicleSimulation() {
   const [freeDriving, setFreeDriving] = useState(false);
@@ -38,7 +37,6 @@ export function useVehicleSimulation() {
   const cursorRef = useRef<RoadCursor | null>(null);
   const turnRef = useRef<Turn | null>(null);
   const decisionRef = useRef<JunctionDecision | null>(null);
-  const dismissedJunctionRef = useRef<string | null>(null);
   const blockedRef = useRef<string | null>(null);
   const roadCleanupRef = useRef<(() => void) | null>(null);
   const modeRef = useRef<SimulationMode>('drive');
@@ -65,9 +63,6 @@ export function useVehicleSimulation() {
     const remainingKm = route ? modeRef.current === 'drive' ? distance(state.position, route.end.coordinate) : Math.max(0, route.distanceKm - routeDistanceRef.current) : null;
     const arrived = !!route && (modeRef.current === 'drive' ? remainingKm! < .015 : routeDistanceRef.current >= route.distanceKm);
     const junction = cursorRef.current ? networkRef.current.junction(cursorRef.current) : null;
-    const junctionId = junction?.nodeId ?? junction?.choices[0]?.edge.from ?? null;
-    if (dismissedJunctionRef.current !== junctionId) dismissedJunctionRef.current = null;
-    const turnPrompt = modeRef.current === 'drive' && !decisionRef.current ? getTurnPrompt(junction, dismissedJunctionRef.current) : null;
     const road = modeRef.current === 'drive' && cursorRef.current ? networkRef.current.sample(cursorRef.current) : null;
     const roadName = road?.name ?? '';
     const roadLevel = road?.roadLevel ?? null;
@@ -82,7 +77,7 @@ export function useVehicleSimulation() {
       }
     }
     const junctionHint = !cursorRef.current && freeDriveRef.current ? 'Loading nearby roads — pick a start on a road if none is found' : blockedRef.current ?? (junction ? junction.choices.length ? "In " + Math.round(junction.meters) + ' m: ' + [...new Set(junction.choices.map(choice => choice.turn))].join(' / ') : 'Road ends ahead — brake or reverse' : 'Continue along this road');
-    setTelemetry({ roadLevel, turnLocked: !!decisionRef.current, turnPrompt, pendingTurn: turnRef.current, junctionHint, roadName, roadsReady: !!cursorRef.current, speedKmh: state.velocity * 3.6, traveledKm: state.traveledKm, remainingKm, progress: route ? Math.min(100, routeDistanceRef.current / route.distanceKm * 100) : 0, arrived, position: state.position });
+    setTelemetry({ roadLevel, turnLocked: !!decisionRef.current, pendingTurn: turnRef.current, junctionHint, roadName, roadsReady: !!cursorRef.current, speedKmh: state.velocity * 3.6, traveledKm: state.traveledKm, remainingKm, progress: route ? Math.min(100, routeDistanceRef.current / route.distanceKm * 100) : 0, arrived, position: state.position });
     return arrived;
   }, []);
 
@@ -156,7 +151,7 @@ export function useVehicleSimulation() {
     levelElement.className = 'vehicle-road-level';
     levelElement.hidden = true;
     levelElement.setAttribute('aria-hidden', 'true');
-    roadLevelMarkerRef.current = new mapboxgl.Marker({ element: levelElement, anchor: 'bottom', offset: [0, -42], rotationAlignment: 'viewport', pitchAlignment: 'viewport' }).setLngLat(stateRef.current.position).addTo(map);
+    roadLevelMarkerRef.current = new mapboxgl.Marker({ element: levelElement, anchor: 'bottom', offset: [0, -30], rotationAlignment: 'viewport', pitchAlignment: 'viewport' }).setLngLat(stateRef.current.position).addTo(map);
     updateTelemetry();
     renderVehicle(0, true);
     setReady(true);
@@ -176,7 +171,6 @@ export function useVehicleSimulation() {
     clearInput();
     stateRef.current = { ...startRef.current, position: [...startRef.current.position] };
     decisionRef.current = null;
-    dismissedJunctionRef.current = null;
     routeDistanceRef.current = 0; cursorRef.current = null; turnRef.current = null; blockedRef.current = null;
     initializeRoad();
     activeRef.current = (!!routeRef.current || freeDriveRef.current) && modeRef.current === 'drive';
@@ -252,7 +246,6 @@ export function useVehicleSimulation() {
     const decision = networkRef.current.decide(cursorRef.current, turn ?? 'straight');
     if (!decision) return; // Invalid/unavailable directions never replace a valid choice.
     decisionRef.current = decision;
-    dismissedJunctionRef.current = decision.nodeId;
     turnRef.current = decision.turn; blockedRef.current = null; updateTelemetry();
   }, [updateTelemetry]);
   const setKey = useCallback((key: DriveKey, pressed: boolean) => {

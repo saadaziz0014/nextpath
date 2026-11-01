@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ChevronDown, ChevronUp, Crosshair, LocateFixed, LoaderCircle, Search, X } from 'lucide-react';
+import { ChevronDown, ChevronUp, Crosshair, Globe, LocateFixed, LoaderCircle, Search, X } from 'lucide-react';
 import type { Coordinate } from '@/lib/routeData';
 import { searchPlaces, type Place } from '@/lib/routes';
 
@@ -50,8 +50,13 @@ function PlaceSearch({ label, draft, token, disabled, onEdit, onSelect, onPick, 
   </div>;
 }
 
+function ApproximateAction({ endpoint, disabled, onApproximate }: { endpoint: Endpoint; disabled: boolean; onApproximate: () => void }) {
+  return <button type="button" onClick={onApproximate} disabled={disabled} aria-label={`Use approximate location as ${endpoint === 'start' ? 'start' : 'destination'}`} className="flex items-center gap-1.5 text-xs font-semibold text-sky-300 underline-offset-4 hover:underline disabled:opacity-40"><Globe size={14} />Use approximate location</button>;
+}
+
 interface Props {
   locating: Endpoint | null; locationError: string | null; onUseLocation: (endpoint: Endpoint) => void;
+  fallbackEndpoint: Endpoint | null; onApproximate: (endpoint: Endpoint) => void;
   getSearchProximity: () => Coordinate;
   token: string; start: PlaceDraft; end: PlaceDraft; picking: Endpoint | null;
   freeDriving: boolean; onFreeDrive: () => void;
@@ -61,7 +66,7 @@ interface Props {
   onPick: (endpoint: Endpoint | null) => void;
   onBuild: () => void; onPreset: () => void; onOverview: () => void;
 }
-export default function RoutePlanner({ locating, locationError, onUseLocation, getSearchProximity, token, start, end, picking, loading, ready, error, hasRoute, freeDriving, onFreeDrive, onEdit, onSelect, onPick, onBuild, onPreset, onOverview }: Props) {
+export default function RoutePlanner({ locating, locationError, onUseLocation, fallbackEndpoint, onApproximate, getSearchProximity, token, start, end, picking, loading, ready, error, hasRoute, freeDriving, onFreeDrive, onEdit, onSelect, onPick, onBuild, onPreset, onOverview }: Props) {
   const [country, setCountry] = useState<'pk' | 'worldwide'>('pk');
   const [expanded, setExpanded] = useState(false);
   return <section aria-label="Route planner" className="glass absolute left-3 right-14 top-3 z-20 rounded-2xl sm:left-6 sm:right-auto sm:top-6 sm:w-96">
@@ -73,8 +78,8 @@ export default function RoutePlanner({ locating, locationError, onUseLocation, g
       <button disabled={!ready || loading || !start.place} onClick={() => { onFreeDrive(); setExpanded(false); }} className="w-full rounded-xl border border-sky-400 px-4 py-2.5 text-sm font-semibold text-sky-300 disabled:opacity-40">Free drive from start</button>
       <p className="text-[11px] text-slate-400">Explore nearby roads without a destination, or plan a route below.</p>
       <PlaceSearch locating={locating === 'end'} onUseLocation={() => onUseLocation('end')} key={`${country}-end`} country={country} getSearchProximity={getSearchProximity} label="Destination" draft={end} token={token} disabled={!ready || loading} onEdit={query => onEdit('end', query)} onSelect={place => onSelect('end', place)} onPick={() => { onPick('end'); setExpanded(false); }} />
-      {locating && <p role="status" className="text-xs text-sky-300">Allow location access in your browser to set your {locating === 'start' ? 'start' : 'destination'}.</p>}
-      {locationError && <p role="alert" className="text-xs text-amber-300">{locationError}</p>}
+      {locating && <p role="status" className="text-xs text-sky-300">Finding your location for your {locating === 'start' ? 'start' : 'destination'}...</p>}
+      {locationError && <div role="alert" className="space-y-2"><p className="text-xs text-amber-300">{locationError}</p>{fallbackEndpoint && <ApproximateAction endpoint={fallbackEndpoint} disabled={!ready || loading || locating !== null} onApproximate={() => onApproximate(fallbackEndpoint)} />}</div>}
       <p className="text-[11px] text-slate-500">Search then choose a result, or use the target buttons to pick on the map.</p>
       <button disabled={!ready || loading || !start.place || !end.place} onClick={() => { onBuild(); setExpanded(false); }} className="flex w-full items-center justify-center gap-2 rounded-xl bg-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 disabled:opacity-40">{loading && <LoaderCircle size={16} className="animate-spin" />}{loading ? 'Finding road route…' : 'Build road route'}</button>
       {error && <p role="alert" className="text-xs text-amber-300">{error}</p>}
@@ -82,7 +87,7 @@ export default function RoutePlanner({ locating, locationError, onUseLocation, g
     </div>}
     {loading && !expanded && <p role="status" className="border-t border-slate-700 px-4 py-3 text-xs text-sky-300">Finding road route…</p>}
     {locating && !expanded && <p role="status" className="border-t border-slate-700 px-4 py-3 text-xs text-sky-300">Finding your location for {locating === 'start' ? 'start' : 'destination'}...</p>}
-    {locationError && !expanded && <div role="alert" className="border-t border-slate-700 px-4 py-3 text-xs text-amber-300">{locationError}<button onClick={() => setExpanded(true)} className="ml-2 underline">Edit journey</button></div>}
+    {locationError && !expanded && <div role="alert" className="space-y-2 border-t border-slate-700 px-4 py-3 text-xs text-amber-300"><p>{locationError}</p><div className="flex flex-wrap items-center gap-3"><button onClick={() => setExpanded(true)} className="underline">Edit journey</button>{fallbackEndpoint && <ApproximateAction endpoint={fallbackEndpoint} disabled={!ready || loading || locating !== null} onApproximate={() => onApproximate(fallbackEndpoint)} />}</div></div>}
     {error && !expanded && <div role="alert" className="border-t border-slate-700 px-4 py-3 text-xs text-amber-300">{error}<button onClick={() => setExpanded(true)} className="ml-2 underline">Edit route</button></div>}
     {picking && <div role="status" className="flex items-center justify-between gap-2 border-t border-slate-700 bg-sky-950/70 px-4 py-3 text-xs text-sky-200">Click the map to set your {picking === 'start' ? 'start' : 'destination'}.<button onClick={() => onPick(null)} aria-label="Cancel map selection"><X size={16} /></button></div>}
   </section>;
