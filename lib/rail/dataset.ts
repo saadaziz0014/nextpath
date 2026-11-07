@@ -34,6 +34,17 @@ export function validateRailDataset(value: unknown): RailDataset {
     if (!finite(path.distanceKm) || path.distanceKm <= 0 || !Array.isArray(path.coordinates) || path.coordinates.length < 2 || !path.coordinates.every(coordinate)) throw new Error(`Invalid track geometry: ${path.id}.`);
     if (!Array.isArray(path.stations) || path.stations.length < 2) throw new Error(`Missing stations: ${path.id}.`);
     if (path.reversals !== undefined && (!Array.isArray(path.reversals) || path.reversals.some((stop, i) => !stop || typeof stop.stationId !== 'string' || !finite(stop.km) || stop.km <= 0 || stop.km >= path.distanceKm || (i > 0 && stop.km <= path.reversals![i-1].km) || path.reversals!.slice(0,i).some(previous => previous.stationId === stop.stationId) || !path.stations.some(station => station.id === stop.stationId && Math.abs(station.km-stop.km) < .000001)))) throw new Error('Invalid rail reversal.');
+    if (path.trackSections !== undefined) {
+      if (!Array.isArray(path.trackSections) || !path.trackSections.length) throw new Error(`Invalid track sections: ${path.id}.`);
+      let previousEnd: number | null = null;
+      for (const section of path.trackSections) {
+        if (!section || !finite(section.startKm) || !finite(section.endKm) || section.startKm < 0 || section.endKm <= section.startKm || section.endKm > path.distanceKm + .001) throw new Error(`Invalid track section range: ${path.id}.`);
+        if (section.tracks !== null && (!Number.isInteger(section.tracks) || section.tracks < 1 || section.tracks > 4)) throw new Error(`Invalid track count: ${path.id}.`);
+        if (previousEnd !== null && section.startKm > previousEnd + .001) throw new Error(`Track section gap: ${path.id}.`);
+        previousEnd = section.endKm;
+      }
+      if (path.trackSections[0].startKm > .001 || previousEnd === null || previousEnd < path.distanceKm - .001) throw new Error(`Track sections do not cover the route: ${path.id}.`);
+    }
     let previous = -Infinity;
     const ids = new Set<string>();
     for (const station of path.stations) {

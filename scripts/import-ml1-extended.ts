@@ -10,6 +10,7 @@ import { buildKcrLocalPath, type KcrStationSnapshot } from '../lib/rail/kcrImpor
 import { TRAINS, servicePath } from '../lib/rail/trains';
 import { validateRailDataset } from '../lib/rail/dataset';
 import { assertRailPathQuality } from '../lib/rail/quality';
+import { appendTrackSections, buildTrackSections, trackCountFromTags } from '../lib/rail/trackSections';
 
 interface Element { type: string; id: number; lat?: number; lon?: number; center?: { lat: number; lon: number }; nodes?: number[]; geometry?: { lat: number; lon: number }[]; tags?: Record<string, string> }
 
@@ -21,8 +22,11 @@ if (!local.elements?.length) throw new Error('No local source railway data');
 const localStations = local.elements.filter(e => e.tags?.railway === 'station' && e.tags?.subway !== 'yes' && e.tags?.station !== 'subway' && e.tags?.light_rail !== 'yes' && e.tags?.disused !== 'yes' && (e.type === 'node' || e.center)).map(e => ({ id: String(e.id), name: e.tags?.['name:en'] ?? e.tags?.name ?? '', coordinate: [e.lon ?? e.center!.lon, e.lat ?? e.center!.lat] as Coordinate }));
 let localVirtual = -1;
 const localNodes = new Map<number, Coordinate>(), localEdges = new Map<number, { to: number; km: number }[]>();
+const localEdgeTracks = new Map<string, number | null>();
+const edgeKey = (from: number, to: number) => `${from}:${to}`;
 for (const way of local.elements.filter(e => e.type === 'way' && e.tags?.railway === 'rail' && !['yard','siding','spur'].includes(e.tags?.service ?? '') && e.tags?.disused !== 'yes')) {
   if (!way.nodes || !way.geometry || way.nodes.length !== way.geometry.length) throw new Error(`Invalid local OSM way ${way.id}`);
+  const tracks = trackCountFromTags(way.tags);
   for (let i = 0; i < way.nodes.length; i++) localNodes.set(way.nodes[i], [way.geometry[i].lon, way.geometry[i].lat]);
   for (let i = 1; i < way.nodes.length; i++) {
     const a = way.nodes[i - 1], b = way.nodes[i], km = distance(localNodes.get(a)!, localNodes.get(b)!);
@@ -38,6 +42,7 @@ for (const way of local.elements.filter(e => e.type === 'way' && e.tags?.railway
     splits.sort((a, b) => a.km - b.km);
     for (let j = 1; j < splits.length; j++) for (const [f, t] of [[splits[j - 1].id, splits[j].id], [splits[j].id, splits[j - 1].id]]) {
       if (!localEdges.has(f)) localEdges.set(f, []); localEdges.get(f)!.push({ to: t, km: splits[j].km - splits[j - 1].km });
+      localEdgeTracks.set(edgeKey(f, t), tracks);
     }
   }
 }
@@ -90,8 +95,10 @@ const stationNames: Record<string,string> = { '1778013861': 'Narowal Junction', 
 const extStations = extElements.filter(e => !(e.type === 'way' && e.id === 408164895) && isStationElement(e) && e.tags?.station !== 'subway' && e.tags?.subway !== 'yes' && e.tags?.light_rail !== 'yes' && e.tags?.disused !== 'yes' && (e.type === 'node' || e.center)).map(e => ({ id: String(e.id), name: stationNames[String(e.id)] ?? e.tags?.['name:en'] ?? e.tags?.name ?? '', coordinate: [e.lon ?? e.center!.lon, e.lat ?? e.center!.lat] as Coordinate })).filter(s => { if (seenStationIds.has(s.id)) return false; seenStationIds.add(s.id); return true; });
 let extVirtual = -1;
 const extNodes = new Map<number, Coordinate>(), extEdges = new Map<number, { to: number; km: number }[]>();
+const extEdgeTracks = new Map<string, number | null>();
 for (const way of extElements.filter(e => e.type === 'way' && e.tags?.railway === 'rail')) {
   if (!way.nodes || !way.geometry || way.nodes.length !== way.geometry.length) throw new Error(`Invalid extension OSM way ${way.id}`);
+  const tracks = trackCountFromTags(way.tags);
   for (let i = 0; i < way.nodes.length; i++) extNodes.set(way.nodes[i], [way.geometry[i].lon, way.geometry[i].lat]);
   for (let i = 1; i < way.nodes.length; i++) {
     const a = way.nodes[i - 1], b = way.nodes[i], km = distance(extNodes.get(a)!, extNodes.get(b)!);
@@ -114,6 +121,7 @@ for (const way of extElements.filter(e => e.type === 'way' && e.tags?.railway ==
     splits.sort((a, b) => a.km - b.km);
     for (let j = 1; j < splits.length; j++) for (const [f, t] of [[splits[j - 1].id, splits[j].id], [splits[j].id, splits[j - 1].id]]) {
       if (!extEdges.has(f)) extEdges.set(f, []); extEdges.get(f)!.push({ to: t, km: splits[j].km - splits[j - 1].km });
+      extEdgeTracks.set(edgeKey(f, t), tracks);
     }
   }
 }
@@ -128,7 +136,8 @@ function localPath(id: RailPath['id'], name: string, anchors: typeof localStatio
   const line = lineString(coordinates);
   const linked = localStations.map(s => { const p = nearestPointOnLine(line, s.coordinate); return { ...s, sourceCoordinate: s.coordinate, coordinate: p.geometry.coordinates as Coordinate, km: p.properties.location ?? 0, offsetMeters: (p.properties.dist ?? Infinity) * 1000 }; }).filter(s => s.offsetMeters <= 250).sort((a, b) => a.km - b.km);
   const distanceKm = coordinates.slice(1).reduce((km, pt, i) => km + distance(coordinates[i], pt), 0);
-  return { id, name, coordinates, stations: linked, distanceKm };
+  const trackSections = buildTrackSections(coordinates, ids.slice(1).map((id, i) => localEdgeTracks.get(edgeKey(ids[i], id)) ?? null));
+  return { id, name, coordinates, stations: linked, distanceKm, trackSections };
 }
 
 // ---- Build the extended paths (south, north, branch) ----
@@ -150,7 +159,8 @@ function extPath(id: RailPath['id'], name: string, anchors: { id: string; name: 
   const uniqueStations = mergedStations.filter(s => { if (seenMerged.has(s.id)) return false; seenMerged.add(s.id); return true; });
   const linked = uniqueStations.map(s => { const p = nearestPointOnLine(line, s.coordinate); return { ...s, sourceCoordinate: s.coordinate, coordinate: p.geometry.coordinates as Coordinate, km: p.properties.location ?? 0, offsetMeters: (p.properties.dist ?? Infinity) * 1000 }; }).filter(s => s.offsetMeters <= 250 && s.name.trim()).sort((a, b) => a.km - b.km);
   const distanceKm = coordinates.slice(1).reduce((km, pt, i) => km + distance(coordinates[i], pt), 0);
-  return { id, name, coordinates, stations: linked, distanceKm };
+  const trackSections = buildTrackSections(coordinates, ids.slice(1).map((id, i) => extEdgeTracks.get(edgeKey(ids[i], id)) ?? null));
+  return { id, name, coordinates, stations: linked, distanceKm, trackSections };
 }
 
 // Anchors sourced from OSM (operating status unverified)
@@ -211,6 +221,7 @@ const fareed: RailPath = {
   distanceKm: pivot + fareedDeparture.distanceKm,
   stations: [...arrivalStations, ...fareedDeparture.stations.filter(station => !arrivalIds.has(station.id)).map(station => ({...station, km: pivot + station.km}))].sort((a,b) => a.km-b.km),
   reversals: [{stationId: kasurStop.id, km: pivot}],
+  trackSections: appendTrackSections(fareedArrival.trackSections!, fareedDeparture.trackSections!, pivot),
 };
 
 // Quetta reaches ML-1 at Rohri, then uses the Multan main line.
@@ -229,6 +240,7 @@ const jaffar: RailPath = {
  distanceKm:sibiKm+jaffarDeparture.distanceKm,
  stations:[...jaffarArrivalStations,...jaffarDeparture.stations.filter(station=>!jaffarArrivalIds.has(station.id)).map(station=>({...station,km:sibiKm+station.km}))].sort((a,b)=>a.km-b.km),
  reversals:[{stationId:sibi.id,km:sibiKm}],
+ trackSections:appendTrackSections(jaffarArrival.trackSections!,jaffarDeparture.trackSections!,sibiKm),
 };
 
 // Green Line uses the Jahanian chord, then the main line to Rawalpindi
@@ -268,6 +280,7 @@ const mohenjoDaro: RailPath = {
   distanceKm:habibKm+mohenjoDeparture.distanceKm,
   stations:[...mohenjoStations,...mohenjoDeparture.stations.filter(station=>!mohenjoIds.has(station.id)).map(station=>({...station,km:habibKm+station.km}))].sort((a,b)=>a.km-b.km),
   reversals:[{stationId:habibKot.id,km:habibKm}],
+  trackSections:appendTrackSections(mohenjoArrival.trackSections!,mohenjoDeparture.trackSections!,habibKm),
 };
 
 // Millat leaves ML-1 at Khanewal and follows the Faisalabad–Sargodha

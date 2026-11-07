@@ -254,7 +254,22 @@ windscreens, roof fans, coach windows, bogies and couplers, inspired by Pakistan
 Railways livery rather than a specific fleet model. Coaches follow their
 own track positions around bends and while backing, with zoom-aware spacing.
 At a route origin they appear as the train advances onto the imported corridor;
-no track is invented beyond the route boundary.
+no track is invented beyond the route boundary. The locomotive is drawn with a
+yellow warning nose, twin headlights and a dark long hood; passenger coaches use
+a cream body, twin window rows and a green roof so the formation reads clearly.
+
+### Single and double track
+
+The map separates **double-track** runs (two parallel rails) from **single-track**
+runs (one rail) using the sourced OSM `passenger_lines` / `tracks` tags. A dashed
+line means the source does not state a track count; it is not treated as single.
+On a double-track section the driven train runs on the left-hand rail of its
+travel direction, leaving the other rail visibly clear for a future opposing
+service. The legend stays in the lower-right corner, and the driving panel names
+the current section and shows the route's mapped double/single distances. Track
+counts are display information only: this is not a signalling, block-working or
+token-section simulation. Where OSM omits the tag, the UI keeps the uncertainty
+visible rather than inventing a track count.
 
 Dragging releases camera follow. Zooming preserves follow and the chosen level.
 Saved journeys restore paused, including service, starting station, progress,
