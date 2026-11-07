@@ -1,6 +1,7 @@
 import { along, bearing, distance, lineString } from '@turf/turf';
 import type { Coordinate } from '../routeData';
 import type { RailPath } from './types';
+import { reverseTrackSections } from './trackSections';
 
 export function indexTrack(path: RailPath) {
   const cumulative = [0];
@@ -17,5 +18,5 @@ export function sampleTrack(track: ReturnType<typeof indexTrack>, km: number) {
 }
 export function nextStation(path: RailPath, km: number) { return path.stations.find(station => station.km > km + .015) ?? null; }
 export function reversePath(path: RailPath): RailPath {
-  return { ...path, reversals: path.reversals?.toReversed().map(stop => ({ ...stop, km: path.distanceKm - stop.km })), coordinates: [...path.coordinates].reverse(), stations: [...path.stations].reverse().map(station => ({ ...station, km: path.distanceKm - station.km })) };
+  return { ...path, reversals: path.reversals?.toReversed().map(stop => ({ ...stop, km: path.distanceKm - stop.km })), coordinates: [...path.coordinates].reverse(), stations: [...path.stations].reverse().map(station => ({ ...station, km: path.distanceKm - station.km })), trackSections: path.trackSections ? reverseTrackSections(path.trackSections, path.distanceKm) : undefined };
 }

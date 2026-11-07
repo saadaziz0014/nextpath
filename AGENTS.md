@@ -69,7 +69,8 @@ The destination terminal requires switching direction before departing.
   and its marker proportions aligned with .vehicle in app/globals.css.
 - app/components/RailSimulator.tsx and RailMap.tsx own rail presentation and
   lifecycle. lib/rail/ separates trains, datasets, departure, track sampling,
-  physics, journey boundaries, cruise, consist and persistence.
+  single/double track sections, physics, journey boundaries, cruise, consist and
+  persistence.
 - MetroSimulator/MetroMap/MetroCab use lib/metro/ for Orange Line.
 - MobileCabPanel separates urban-transit journey selection from the mobile
   driving toolbar and expandable settings. TouchDpad places traction/brake on
@@ -119,7 +120,10 @@ the shortest angle. Dispose frames, markers, listeners and audio on cleanup.
   confirmation at a declared station reversal, H horn, Space pause. Forward
   limit is 110 km/h except KCR at 90 km/h; backing stays at 20 km/h for all
   trains. Ten coaches follow the locomotive
-  with close zoom-aware spacing and sample their own chainages. Preserve Kasur,
+  with close zoom-aware spacing and sample their own chainages; size each car
+  from its local projected spacing so pitch does not open uneven gaps. On mapped
+  double track, keep the train on the left-hand rail of its travel direction and
+  leave the other rail visually empty. Preserve Kasur,
   Sibi and Habib Kot reversal boundaries. Zoom must keep the chosen level while
   following; map dragging enters exploration. Station stops remain manual.
 - Orange Line: five electric cars with separate metro presentation and audio;
@@ -228,3 +232,13 @@ Never claim that a whole real-time train journey was driven without doing so.
 Keep README.md and the relevant route/audio document aligned with changes.
 Keep future guidance factual and actionable; avoid fixed passing-test counts
 in this file because they become stale as the suite grows.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

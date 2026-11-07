@@ -15,8 +15,9 @@ import { RAIL_ROUTES, validateRailDataset } from '@/lib/rail/dataset';
 import { smoothBearing } from '@/lib/simulation';
 import { createRailDeparture } from '@/lib/rail/departure';
 import { RAIL_SAVE_KEY, restoreRailSave, type RailSave } from '@/lib/rail/persistence';
-import { sampleConsist, trainCarSvg, TRAIN_COACH_COUNT, TRAIN_CAR_WIDTH, TRAIN_CAR_HEIGHT } from '@/lib/rail/consist';
+import { COACH_SPACING_KM, sampleConsist, trainCarSvg, TRAIN_COACH_COUNT, TRAIN_CAR_WIDTH, TRAIN_CAR_HEIGHT } from '@/lib/rail/consist';
 import { indexTrack, nextStation, sampleTrack, reversePath } from '@/lib/rail/track';
+import { offsetCoordinate, trackSectionAt, trackSectionLabel, TRACK_OFFSET_METERS } from '@/lib/rail/trackSections';
 import { useTrainAudio } from '@/app/hooks/useTrainAudio';
 const RailMap = dynamic(() => import('./RailMap'), { ssr: false });
 const initialMotion = { km: 0, velocity: 0 };
@@ -214,7 +215,7 @@ export default function RailSimulator() {
       element.dataset.trainCar = String(car.index);
       element.style.pointerEvents = 'none';
       element.style.visibility = car.visible ? 'visible' : 'hidden';
-      element.style.width = (36 * TRAIN_CAR_WIDTH / TRAIN_CAR_HEIGHT) + 'px'; element.style.height = '36px';
+      element.style.width = (40 * TRAIN_CAR_WIDTH / TRAIN_CAR_HEIGHT) + 'px'; element.style.height = '40px';
       element.innerHTML = trainCarSvg(car.index === 0);
       return new Marker({ element, rotationAlignment: 'map', pitchAlignment: 'map' }).setLngLat(car.position).addTo(instance);
     });
@@ -240,29 +241,34 @@ export default function RailSimulator() {
       if (!departureLocked.current && motion.current.velocity > 0) { departureLocked.current = true; setDeparted(true); }
       updateAudio({ speedKmh: motion.current.velocity * 3.6, throttle: keys.current.has('w') || cruiseRef.current !== null, braking: keys.current.has('s'), active: !!selected.current, paused: pauseRef.current || document.hidden });
       const sample = sampleTrack(track, motion.current.km);
-      // Preserve the locomotive aspect ratio for every car. Keep cars readable
-      // and couple them using projected screen distance, including map pitch.
-      const metresPerPixel = 156543.03392 * Math.cos(sample.position[1] * Math.PI / 180) / 2 ** instance.getZoom();
-      // At close zoom, cap marker size so the train does not obscure nearby places.
-      const carHeight = Math.min(96, Math.max(36, 26 / metresPerPixel));
-      // Map perspective scales ground distances and DOM markers differently.
-      // Measure the rendered car and projected rail instead of assuming that
-      // metres-per-pixel gives the visible gap on a pitched navigation map.
-      const probeKm = Math.min(.029, Math.max(.001, motion.current.km));
-      const center = instance.project(sample.position);
-      const probe = instance.project(sampleTrack(track, Math.max(0, motion.current.km - probeKm)).position);
-      const projectedDistance = Math.hypot(center.x - probe.x, center.y - probe.y);
-      const bounds = carMarkers.current[0].getElement().getBoundingClientRect();
-      const renderedLength = .9 * Math.hypot(bounds.width, bounds.height);
-      const spacingKm = projectedDistance > .01 && renderedLength > 0
-        ? probeKm * (renderedLength + 1) / projectedDistance
-        : (carHeight + 1) * metresPerPixel / 1000;
-      const consist = sampleConsist(track, motion.current.km, spacingKm);
+      // Keep the physical 29 m coupling distance. Under a pitched map the same
+      // ground distance projects to different screen lengths along the train, so
+      // size each car from its own local projection instead of one shared size.
+      // That removes the uneven gaps that appeared toward the near end.
+      const pitchFactor = Math.cos(instance.getPitch() * Math.PI / 180);
+      const consist = sampleConsist(track, motion.current.km, COACH_SPACING_KM);
       consist.forEach(car => {
         const marker = carMarkers.current[car.index];
-        marker.setLngLat(car.position).setRotation(car.heading);
         const element = marker.getElement();
         element.style.visibility = car.visible ? 'visible' : 'hidden';
+        if (!car.visible) return;
+        // Pakistan Railways runs left-hand. Each car stays on the left rail of
+        // its own section, so the other rail remains visibly empty and a future
+        // opposing service can use it. At a double→single transition the cars
+        // shift one by one rather than the whole formation jumping sideways.
+        const sectionTracks = trackSectionAt(track.path.trackSections, car.km)?.tracks ?? null;
+        const lateralOffset = sectionTracks !== null && sectionTracks >= 2 ? -TRACK_OFFSET_METERS : 0;
+        const position = lateralOffset ? offsetCoordinate(car.position, car.heading, lateralOffset) : car.position;
+        marker.setLngLat(position).setRotation(car.heading);
+        // Measure the local rail spacing in screen space, then counter the
+        // marker's pitched/rotated foreshortening so every coach fills it.
+        const probeKm = car.km >= COACH_SPACING_KM ? car.km - COACH_SPACING_KM : car.km + COACH_SPACING_KM;
+        const here = instance.project(car.position);
+        const probe = instance.project(sampleTrack(track, probeKm).position);
+        const screenHeading = (car.heading - instance.getBearing()) * Math.PI / 180;
+        const foreshortening = Math.max(.2, Math.hypot(Math.sin(screenHeading), Math.cos(screenHeading) * pitchFactor));
+        const desiredPixels = Math.max(18, Math.hypot(here.x - probe.x, here.y - probe.y) - 1.5);
+        const carHeight = Math.min(140, Math.max(24, desiredPixels / foreshortening));
         element.style.height = carHeight + 'px';
         element.style.width = (carHeight * TRAIN_CAR_WIDTH / TRAIN_CAR_HEIGHT) + 'px';
       });
@@ -290,6 +296,15 @@ export default function RailSimulator() {
   const stoppedAt = active?.path.stations.find(station => Math.abs(station.km - telemetry.km) < .08 && telemetry.velocity < .15);
   const reversal = active ? nextReversal(active.path, telemetry.km, confirmedForUI) : null;
   const canReverse = active ? confirmableReversal(active.path, telemetry, confirmedForUI) : null;
+  const trackSection = active ? trackSectionAt(active.path.trackSections, telemetry.km) : null;
+  const trackSectionText = trackSection ? trackSectionLabel(trackSection.tracks) : null;
+  const routeTrackMix = active?.path.trackSections?.reduce((mix, section) => {
+    const km = section.endKm - section.startKm;
+    if (section.tracks === 1) mix.single += km;
+    else if (section.tracks === null) mix.unknown += km;
+    else mix.multiple += km;
+    return mix;
+  }, { single: 0, multiple: 0, unknown: 0 });
   const reset = () => { if (journey.current) { configureDeparture(journey.current); persistJourney(); } };
   const changeRoute = () => {
     persistJourney();
@@ -329,7 +344,7 @@ export default function RailSimulator() {
       <button type="button" onClick={() => setPanelCollapsed(false)} aria-label="Expand train controls" className="rounded-xl border border-slate-600 p-2 text-slate-300">
         <ChevronUp size={14} /><span className="text-xs">{branch ? 'Cab settings' : 'Choose journey'}</span>
       </button>
-      <p className="mobile-rail-status">{paused ? 'Paused | ' : ''}{stoppedAt ? `At ${stoppedAt.name}` : station ? `${station.name} | ${Math.max(0, (backing ? telemetry.km - station.km : station.km - telemetry.km) * 1000).toFixed(0)} m` : 'End of track'}</p>
+      <p className="mobile-rail-status">{trackSectionText ? `${trackSectionText} | ` : ''}{paused ? 'Paused | ' : ''}{stoppedAt ? `At ${stoppedAt.name}` : station ? `${station.name} | ${Math.max(0, (backing ? telemetry.km - station.km : station.km - telemetry.km) * 1000).toFixed(0)} m` : 'End of track'}</p>
       {reversal && <button type="button" disabled={!canReverse} onClick={confirmReversal} className="mobile-rail-reversal">{canReverse ? 'Continue after reversal' : 'Brake for station reversal'}</button>}
     </section>}
     <section aria-label="Train controls" data-selecting={!branch} style={mobile && panelCollapsed && !!branch ? { display: 'none' } : undefined} className={`glass absolute bottom-8 left-4 right-4 max-w-md max-h-[calc(100dvh-124px)] overflow-y-auto rounded-2xl p-5 `}>
@@ -373,10 +388,11 @@ export default function RailSimulator() {
         {service && train.pathId === 'kcr' && <p className="mt-2 text-xs text-amber-200">{train.note}</p>}
         <p className="mt-2 text-xs text-slate-400">{departed ? 'Departure locked. Reset to change your starting station.' : 'Choose your starting station, then use the controls below. Tab out of the selector to drive with W/S.'}</p>
       </div>}
-      <div aria-live="polite" className="mb-3 text-sm"><p>{stoppedAt ? `At ${stoppedAt.name}` : station ? `Next: ${station.name}` : 'End of track'}</p><p className="mt-1 text-xs text-slate-400">{station ? `${Math.max(0, (backing ? telemetry.km - station.km : station.km - telemetry.km) * 1000).toFixed(0)} m to next station · ` : ''}Braking distance ≈ {brakingDistanceMeters(telemetry.velocity).toFixed(0)} m</p></div>
+      <div aria-live="polite" className="mb-3 text-sm"><p>{stoppedAt ? `At ${stoppedAt.name}` : station ? `Next: ${station.name}` : 'End of track'}</p><p className="mt-1 text-xs text-slate-400">{station ? `${Math.max(0, (backing ? telemetry.km - station.km : station.km - telemetry.km) * 1000).toFixed(0)} m to next station · ` : ''}Braking distance ≈ {brakingDistanceMeters(telemetry.velocity).toFixed(0)} m</p>{trackSectionText && <p className={`mt-1 text-xs ${trackSection?.tracks === null ? 'text-amber-200' : 'text-slate-300'}`}>{trackSectionText}{trackSection ? ` · ${(trackSection.endKm - trackSection.startKm).toFixed(1)} km section` : ''}</p>}</div>
       {reversal && <div className="mb-3 rounded-lg border border-amber-400/30 bg-amber-400/10 p-3 text-xs text-amber-200"><p>{active?.path.stations.find(station => station.id === reversal.stationId)?.name ?? 'Station'} direction change · {Math.max(0,(reversal.km-telemetry.km)*1000).toFixed(0)} m ahead. Brake manually before arrival. The train cannot pass this boundary until confirmed.</p><button disabled={!canReverse} onClick={confirmReversal} className="mt-2 rounded-lg bg-amber-400/20 px-3 py-2 disabled:opacity-40">R · Continue after reversal</button></div>}
       <p className="mb-2 text-[10px] text-slate-400">Journey auto-save · refresh restores paused · Selecting a new journey replaces the save</p>
       <p className="mb-2 text-xs text-emerald-300">1 locomotive · {TRAIN_COACH_COUNT} coaches</p>
+      {routeTrackMix && <p className="mb-2 text-xs text-slate-400">Route track: {routeTrackMix.multiple.toFixed(1)} km double · {routeTrackMix.single.toFixed(1)} km single{routeTrackMix.unknown > .05 ? ` · ${routeTrackMix.unknown.toFixed(1)} km not mapped` : ''}</p>}
       <progress aria-label="Journey progress" max={remainingKm || 1} value={Math.max(0, telemetry.km - departureKm)} className="mb-3 h-1 w-full accent-emerald-400" />
       <div className="flex gap-2"><button disabled={!branch || !ready} onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); cancelCruise(); keys.current.add('w'); unlock(); }} onPointerUp={() => keys.current.delete('w')} onPointerCancel={() => keys.current.delete('w')} onLostPointerCapture={() => keys.current.delete('w')} className="touch-none flex-1 select-none rounded-xl bg-emerald-600 px-4 py-3 font-semibold disabled:opacity-40">W · Accelerate</button><button onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); cancelCruise(); keys.current.add('s'); }} onPointerUp={() => keys.current.delete('s')} onPointerCancel={() => keys.current.delete('s')} onLostPointerCapture={() => keys.current.delete('s')} className="touch-none flex-1 select-none rounded-xl bg-rose-600 px-4 py-3 font-semibold">S · Brake</button><button aria-label={paused ? 'Resume simulation' : 'Pause simulation'} onClick={() => { silence(); keys.current.clear(); pauseRef.current = !pauseRef.current; setPaused(pauseRef.current); }} className="rounded-xl bg-white/10 p-3">{paused ? <Play size={18} /> : <Pause size={18} />}</button></div>
       <button aria-pressed={cruise !== null} disabled={!branch || !ready || (cruise === null && (paused || telemetry.velocity <= 0))} onClick={toggleCruise} className={"mt-3 w-full rounded-lg px-3 py-2 text-sm disabled:opacity-40 " + (cruise !== null ? 'bg-emerald-600 text-white' : 'bg-white/10 text-slate-200')}>C · {cruise !== null ? 'Cruise ' + (cruise * 3.6).toFixed(0) + ' km/h — cancel' : 'Cruise at current speed'}</button>

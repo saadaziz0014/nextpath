@@ -2,6 +2,7 @@ import { distance, lineString, nearestPointOnLine } from '@turf/turf';
 import type { Coordinate } from '../routeData';
 import { indexTrack } from './track';
 import { assertRailPathQuality } from './quality';
+import { clipTrackSections } from './trackSections';
 import type { RailPath, RailStation } from './types';
 
 export interface KcrStationSnapshot {
@@ -57,7 +58,7 @@ export function buildKcrLocalPath(corridor: RailPath, snapshot: KcrStationSnapsh
     if (!Number.isFinite(offsetMeters) || offsetMeters > 250) throw new Error(`KCR station too far from track: ${name}.`);
     return { id, name, sourceCoordinate, coordinate: projected.geometry.coordinates as Coordinate, km: projected.properties.location, offsetMeters };
   });
-  const result: RailPath = { id: 'kcr', name: 'KCR local · Karachi City–Dhabeji', coordinates, stations, distanceKm: indexTrack({ ...corridor, coordinates }).lengthKm };
+  const result: RailPath = { id: 'kcr', name: 'KCR local · Karachi City–Dhabeji', coordinates, stations, distanceKm: indexTrack({ ...corridor, coordinates }).lengthKm, trackSections: corridor.trackSections ? clipTrackSections(corridor.trackSections, dhabeji.km) : undefined };
   if (result.distanceKm < 50 || result.distanceKm > 60 || stations.some((station, i) => i > 0 && station.km <= stations[i - 1].km)) throw new Error('Unexpected KCR corridor length or station order.');
   if (stations[0].km > .000001 || result.distanceKm - stations.at(-1)!.km > .000001) throw new Error('KCR stations do not match its track terminals.');
   assertRailPathQuality(result);

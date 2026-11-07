@@ -74,7 +74,10 @@ Public endpoint documentation: https://wiki.openstreetmap.org/wiki/Overpass_API
 
 This is a geometry-based simulation, not an operational railway model. Station
 lists are sourced OSM objects near the track, not an exhaustive timetable or
-confirmation that every station is open. There are no signals, timetable-based
+confirmation that every station is open. Single/double-track rendering uses the
+OSM `passenger_lines` / `tracks` tags on each source way; unstated runs remain
+dashed and are not inferred as single. Track count is not used for signalling,
+crossing loops or block occupancy. There are no signals, timetable-based
 station stops or automatic journey transfers. Reverse travel along a selected itinerary is supported. The via-Multan
 geometry length still differs from a previously consulted 121 km project
 reference; distances should not be used as official railway chainages.
